@@ -116,8 +116,8 @@
       <script>scripts\point_in_rect.gml</script>
       <script>scripts\number_to_frames_string.gml</script>
       <script>scripts\string_split.gml</script>
-      <script>scripts\real_to_base32string.gml</script>
       <script>scripts\base32string_to_real.gml</script>
+      <script>scripts\real_to_base32string.gml</script>
       <script>scripts\highlightGetFraction.gml</script>
     </scripts>
     <scripts name="jump analysis">
