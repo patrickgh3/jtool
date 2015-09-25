@@ -190,8 +190,19 @@ menuButton(x+230,y+120,96,32,'Death: '+str
 ,false,buttonCallback_KillPlayer,
 ok_to_click_button,false)
 
+// change skin
 menuButton(x+340,y+120,96,32,'Change Skin'
 ,false,buttonCallback_Skin,
+ok_to_click_button,false)
+
+// save map
+menuButton(x+450,y+120,96,32,'Save Map'
+,false,buttonCallback_SaveMap,
+ok_to_click_button,false)
+
+// load map
+menuButton(x+560,y+120,96,32,'Open Map'
+,false,buttonCallback_LoadMap,
 ok_to_click_button,false)
 
 // cancel hint cutoff

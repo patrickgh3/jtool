@@ -116,6 +116,9 @@
       <script>scripts\point_in_rect.gml</script>
       <script>scripts\number_to_frames_string.gml</script>
       <script>scripts\string_split.gml</script>
+      <script>scripts\real_to_base32string.gml</script>
+      <script>scripts\base32string_to_real.gml</script>
+      <script>scripts\highlightGetFraction.gml</script>
     </scripts>
     <scripts name="jump analysis">
       <script>scripts\jumpDurations_Create.gml</script>
@@ -137,13 +140,17 @@
       <script>scripts\buttonCallback_KillPlayer.gml</script>
       <script>scripts\buttonCallback_CancelHint.gml</script>
       <script>scripts\buttonCallback_Skin.gml</script>
+      <script>scripts\buttonCallback_SaveMap.gml</script>
+      <script>scripts\buttonCallback_LoadMap.gml</script>
     </scripts>
     <script>scripts\saveGame.gml</script>
     <script>scripts\loadGame.gml</script>
     <script>scripts\saveConfig.gml</script>
     <script>scripts\loadConfig.gml</script>
     <script>scripts\loadSkin.gml</script>
-    <script>scripts\highlightGetFraction.gml</script>
+    <script>scripts\saveMap.gml</script>
+    <script>scripts\loadMap.gml</script>
+    <script>scripts\object_is_edit.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_small</font>

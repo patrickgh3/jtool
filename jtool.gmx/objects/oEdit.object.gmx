@@ -78,9 +78,9 @@ if cursor_in_area {
     }
     else if mouse_check_button_pressed(mb_right) {
         with all {
-            if object_index == oPlayer or object_index == oEdit
-            or object_index == oBlock or object_index == oPlayerBlood continue
-            if place_meeting(x,y,oEdit) instance_destroy()
+            if object_is_edit(object_index) and place_meeting(x,y,oEdit) {
+                instance_destroy()
+            }
         }
     }
 }
