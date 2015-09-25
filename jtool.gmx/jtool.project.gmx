@@ -143,6 +143,7 @@
     <script>scripts\saveConfig.gml</script>
     <script>scripts\loadConfig.gml</script>
     <script>scripts\loadSkin.gml</script>
+    <script>scripts\highlightGetFraction.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_small</font>
@@ -196,6 +197,7 @@
     <object>objects\oOptionsButton</object>
     <object>objects\oMenu</object>
     <object>objects\oEdit</object>
+    <object>objects\oBorderDeath</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rMain</room>

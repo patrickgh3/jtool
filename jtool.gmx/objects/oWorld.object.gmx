@@ -131,13 +131,8 @@ global.state = globalstate_idle
 global.count = 0
 global.firstRoomStart = true
 
-global.color_killerhue = 0
-global.color_killersat = 0
-global.color_killerval = 175
-global.color_killer2hue = 0
-global.color_killer2sat = 150
-global.color_killer2val = 255
-global.color_killer = make_color_hsv(global.color_killerhue,global.color_killersat,global.color_killerval)
+global.killer_holdduration = 12
+global.killer_fadeduration = 4
 
 global.frameaction_jump = false
 global.frameaction_djump = false

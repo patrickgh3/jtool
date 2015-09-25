@@ -25,9 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hold_duration = 12
-fade_duration = 4
-highlight_count = hold_duration + fade_duration
+            <string>highlight_count = 1000
 </string>
           </argument>
         </arguments>
@@ -51,8 +49,7 @@ highlight_count = hold_duration + fade_duration
           <argument>
             <kind>1</kind>
             <string>highlight_count += 1
-var fraction = 1-(highlight_count - hold_duration)/fade_duration
-fraction = clamp(fraction,0,1)
+var fraction = highlightGetFraction(highlight_count)
 
 var hue = lerp(global.color_killerhue,global.color_killer2hue,fraction)
 var sat = lerp(global.color_killersat,global.color_killer2sat,fraction)

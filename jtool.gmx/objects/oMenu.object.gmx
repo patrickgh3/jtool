@@ -94,7 +94,7 @@ else if global.state == globalstate_idle {
             <kind>1</kind>
             <string>draw_set_color(color_background)
 draw_set_alpha(1)
-draw_rectangle(x,y,x+room_width,y+160,false)
+draw_rectangle(x,y,x+room_width,y+menu_height-1,false)
 draw_set_color(c_black)
 draw_line(x-1,y+menu_height-1,x+room_width,y+menu_height-1)
 

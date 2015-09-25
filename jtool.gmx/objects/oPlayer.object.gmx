@@ -47,6 +47,44 @@ else {
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if x &lt; 0 {
+    if global.edgeDeath killPlayer()
+    with oBorderDeath if type == 'left' highlight_count = 0
+}
+if x &gt; 800 {
+    if global.edgeDeath killPlayer()
+    with oBorderDeath if type == 'right' highlight_count = 0
+}
+if y &lt; 0 {
+    if global.edgeDeath killPlayer()
+    with oBorderDeath if type == 'top' highlight_count = 0
+}
+if y &gt; 608 {
+    if global.edgeDeath killPlayer()
+    with oBorderDeath if type == 'bottom' highlight_count = 0
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -335,32 +373,6 @@ if not place_free(x,y+vspeed) {
 
 if not place_free(x+hspeed,y+vspeed) {
     hspeed = 0
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if global.edgeDeath and
-(x &lt; 0 or x &gt; room_width or y &lt; 0 or y &gt; room_height) {
-    killPlayer()
 }
 </string>
           </argument>
