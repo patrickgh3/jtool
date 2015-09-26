@@ -177,39 +177,39 @@ for (i = 0; i &lt; 30; i += 1) {
 
 // room speed
 menuButton(x+10,y+120,100,32,'(F) FPS: '+string(room_speed)
-,ord('F'),buttonCallback_RoomSpeed,
+,ord('F'),false,buttonCallback_RoomSpeed,
 ok_to_click_button,true)
 
 // grid snap
 menuButton(x+120,y+120,100,32,'(G) Grid: '+string(oEdit.snap)
-,ord('G'),buttonCallback_GridSnap,
+,ord('G'),false,buttonCallback_GridSnap,
 ok_to_click_button,true)
 
 // kill player
 var str = 'On'
 if not global.deathEnabled str = 'Off'
 menuButton(x+230,y+120,100,32,'Death: '+str
-,false,buttonCallback_KillPlayer,
+,false,false,buttonCallback_KillPlayer,
 ok_to_click_button,false)
 
 // change skin
 menuButton(x+340,y+120,100,32,'Change Skin'
-,false,buttonCallback_Skin,
+,false,false,buttonCallback_Skin,
 ok_to_click_button,false)
 
 // save map
 menuButton(x+450,y+120,100,32,'Save Map'
-,false,buttonCallback_SaveMap,
+,ord('S'),true,buttonCallback_SaveMap,
 ok_to_click_button,false)
 
 // load map
 menuButton(x+560,y+120,100,32,'Open Map'
-,false,buttonCallback_LoadMap,
+,ord('O'),true,buttonCallback_LoadMap,
 ok_to_click_button,false)
 
 // fullscreen
 menuButton(x+670,y+120,100,32,'Fullscreen'
-,false,buttonCallback_Fullscreen,
+,false,false,buttonCallback_Fullscreen,
 ok_to_click_button,false)
 
 // cancel hint cutoff
