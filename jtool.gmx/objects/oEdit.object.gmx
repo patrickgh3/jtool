@@ -43,6 +43,7 @@ selected_killer = false
 xsnapped = 0
 ysnapped = 0
 cursor_in_area = false
+undo_objectstring = ''
 </string>
           </argument>
         </arguments>
@@ -73,15 +74,66 @@ if cursor_in_area {
     x = mouse_x
     y = mouse_y
     
+    // creating
     if mouse_check_button_pressed(mb_left) and global.state == globalstate_idle {
-        instance_create(xsnapped,ysnapped,selected_object)
+        with all if object_is_edit(object_index) undo_recent = false
+        undo_objectstring = 'create'
+        
+        var i = instance_create(xsnapped,ysnapped,selected_object);
+        i.undo_recent = true
     }
+    // destroying
     else if mouse_check_button_pressed(mb_right) {
+        with all if object_is_edit(object_index) undo_recent = false
+        undo_objectstring = ''
+        
         with all {
             if object_is_edit(object_index) and place_meeting(x,y,oEdit) {
+                other.undo_objectstring += edit_object_serialize(self)
                 instance_destroy()
             }
         }
+    }
+}
+
+// undo
+if keyboard_check(vk_control) and keyboard_check_pressed(ord('Z')) and undo_objectstring != '' {
+    if undo_objectstring == 'create' {
+        with all {
+            if object_is_edit(object_index) {
+                if undo_recent instance_destroy()
+            }
+        }
+    }
+    else {
+        create_from_serialization(undo_objectstring)
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>with all {
+    if object_is_edit(object_index) {
+        undo_recent = false
     }
 }
 </string>

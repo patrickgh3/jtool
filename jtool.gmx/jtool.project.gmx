@@ -119,6 +119,8 @@
       <script>scripts\base32string_to_real.gml</script>
       <script>scripts\real_to_base32string.gml</script>
       <script>scripts\highlightGetFraction.gml</script>
+      <script>scripts\edit_object_serialize.gml</script>
+      <script>scripts\create_from_serialization.gml</script>
     </scripts>
     <scripts name="jump analysis">
       <script>scripts\jumpDurations_Create.gml</script>
