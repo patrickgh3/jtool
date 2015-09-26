@@ -87,6 +87,7 @@
       <sprite>sprites\sEditorKiller</sprite>
       <sprite>sprites\sEditorWorld</sprite>
       <sprite>sprites\sEditorTriggerKiller</sprite>
+      <sprite>sprites\sEditorButton</sprite>
     </sprites>
     <sprite>sprites\sPlatformMask</sprite>
     <sprite>sprites\sSaveFlip</sprite>
@@ -149,6 +150,7 @@
       <script>scripts\buttonCallback_SaveMap.gml</script>
       <script>scripts\buttonCallback_LoadMap.gml</script>
       <script>scripts\buttonCallback_Fullscreen.gml</script>
+      <script>scripts\buttonCallback_ToggleAnalysis.gml</script>
     </scripts>
     <scripts name="saveload">
       <script>scripts\saveGame.gml</script>
@@ -214,6 +216,7 @@
     <object>objects\oEdit</object>
     <object>objects\oBorderDeath</object>
     <object>objects\oSidebar</object>
+    <object>objects\oToggleAnalysis</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rMain</room>

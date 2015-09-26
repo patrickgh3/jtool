@@ -18,7 +18,7 @@ global.edgeDeath = true
 global.startRoom = rMain
 randomize()
 display_set_gui_size(view_wview[0],view_hview[0])
-window_set_caption("jump tool")
+window_set_caption("jtool")
 for (var i=0; i < 100; i+=1) {
     global.trigger[i] = 0
 }
