@@ -48,6 +48,7 @@ for (var i=0; i<30; i+=1) {
         case 15: spr_index=sWalljumpL spr_default=sWalljumpLDefault file='walljumpL.png' xo=0 yo=0 frames=1 break
         case 16: spr_index=sWalljumpR spr_default=sWalljumpRDefault file='walljumpR.png' xo=0 yo=0 frames=1 break
         case 17: spr_index=sKillerBlock spr_default=sKillerBlockDefault file='killerblock.png' xo=0 yo=0 frames=1 break
+        case 18: spr_index=sSidebar spr_default=sSidebarDefault file='sidebar.png' xo=0 yo=0 frames=1 break
         default: continue
     }
     

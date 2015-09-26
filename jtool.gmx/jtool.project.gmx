@@ -38,6 +38,7 @@
       <sprite>sprites\sKillerBlock</sprite>
       <sprite>sprites\sWalljumpL</sprite>
       <sprite>sprites\sWalljumpR</sprite>
+      <sprite>sprites\sSidebar</sprite>
     </sprites>
     <sprites name="skin defaults">
       <sprite>sprites\sEditBlockDefault</sprite>
@@ -58,6 +59,7 @@
       <sprite>sprites\sKillerBlockDefault</sprite>
       <sprite>sprites\sWalljumpLDefault</sprite>
       <sprite>sprites\sWalljumpRDefault</sprite>
+      <sprite>sprites\sSidebarDefault</sprite>
     </sprites>
     <sprites name="player">
       <sprite>sprites\sPlayerMask</sprite>
@@ -94,8 +96,6 @@
     <sprite>sprites\sBorderDeath</sprite>
   </sprites>
   <backgrounds name="background">
-    <background>background\bgTileOutline</background>
-    <background>background\bgTile</background>
     <background>background\bgBackground</background>
     <background>background\bgBackgroundDefault</background>
   </backgrounds>
@@ -122,6 +122,7 @@
       <script>scripts\highlightGetFraction.gml</script>
       <script>scripts\edit_object_serialize.gml</script>
       <script>scripts\create_from_serialization.gml</script>
+      <script>scripts\object_is_edit.gml</script>
     </scripts>
     <scripts name="jump analysis">
       <script>scripts\jumpDurations_Create.gml</script>
@@ -147,14 +148,15 @@
       <script>scripts\buttonCallback_LoadMap.gml</script>
       <script>scripts\buttonCallback_Fullscreen.gml</script>
     </scripts>
-    <script>scripts\saveGame.gml</script>
-    <script>scripts\loadGame.gml</script>
-    <script>scripts\saveConfig.gml</script>
-    <script>scripts\loadConfig.gml</script>
-    <script>scripts\loadSkin.gml</script>
-    <script>scripts\saveMap.gml</script>
-    <script>scripts\loadMap.gml</script>
-    <script>scripts\object_is_edit.gml</script>
+    <scripts name="saveload">
+      <script>scripts\saveGame.gml</script>
+      <script>scripts\loadGame.gml</script>
+      <script>scripts\saveConfig.gml</script>
+      <script>scripts\loadConfig.gml</script>
+      <script>scripts\saveMap.gml</script>
+      <script>scripts\loadMap.gml</script>
+      <script>scripts\loadSkin.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_small</font>
@@ -209,6 +211,7 @@
     <object>objects\oMenu</object>
     <object>objects\oEdit</object>
     <object>objects\oBorderDeath</object>
+    <object>objects\oSidebar</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rMain</room>
