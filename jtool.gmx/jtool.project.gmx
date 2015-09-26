@@ -39,6 +39,7 @@
       <sprite>sprites\sWalljumpL</sprite>
       <sprite>sprites\sWalljumpR</sprite>
       <sprite>sprites\sSidebar</sprite>
+      <sprite>sprites\sMenu</sprite>
     </sprites>
     <sprites name="skin defaults">
       <sprite>sprites\sEditBlockDefault</sprite>
@@ -60,6 +61,7 @@
       <sprite>sprites\sWalljumpLDefault</sprite>
       <sprite>sprites\sWalljumpRDefault</sprite>
       <sprite>sprites\sSidebarDefault</sprite>
+      <sprite>sprites\sMenuDefault</sprite>
     </sprites>
     <sprites name="player">
       <sprite>sprites\sPlayerMask</sprite>

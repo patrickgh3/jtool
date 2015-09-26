@@ -92,11 +92,7 @@ else if global.state == globalstate_idle {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(color_background)
-draw_set_alpha(1)
-draw_rectangle(x,y,x+room_width,y+menu_height-1,false)
-draw_set_color(c_black)
-draw_line(x-1,y+menu_height-1,x+room_width,y+menu_height-1)
+            <string>draw_sprite(sMenu,0,0,y-(sprite_get_height(sMenu)-menu_height))
 
 var xo = 10
 var dx = 55
@@ -150,13 +146,19 @@ for (i = 0; i &lt; 30; i += 1) {
     var frame = 0
     if spike frame = floor((global.count mod (global.spikeframes/global.spikeanimspeed))*global.spikeanimspeed)
     if minispike frame = floor((global.count mod (global.minispikeframes/global.minispikeanimspeed))*global.minispikeanimspeed)
-    draw_sprite_ext(spr,frame,xxx+w/2-off+2,yyy+h/2-off+2,1,1,0,color,1)
+    draw_sprite_ext(spr,frame,xxx+w/2-off,yyy+h/2-off,1,1,0,color,1)
+    draw_set_color(c_black)
     draw_set_alpha(0.3)
     draw_text(xxx+1,yyy-2,str)
     if button_active {
-        draw_set_alpha(0.5)
-        draw_set_color(c_white)
+        draw_set_alpha(global.color_buttonhoveralpha)
+        draw_set_color(global.color_buttonhover)
         draw_rectangle(xxx+1,yyy+1,xxx+w-2,yyy+h-2,false)
+        if global.buttonhoverborder {
+            draw_set_alpha(0.3)
+            draw_set_color(c_black)
+            draw_rectangle(xxx-1,yyy-1,xxx+w,yyy+h,true)
+        }
     }
     
     // click or hotkey button

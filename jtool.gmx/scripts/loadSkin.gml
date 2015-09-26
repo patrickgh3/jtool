@@ -13,11 +13,21 @@ ini_open(ini_filename)
 global.color_killerhue = ini_read_real('config','killerhue',0)
 global.color_killersat = ini_read_real('config','killersat',0)
 global.color_killerval = ini_read_real('config','killerval',0)
+global.color_killer = make_color_hsv(global.color_killerhue,global.color_killersat,global.color_killerval)
 global.color_killer2hue = ini_read_real('config','killer2hue',0)
 global.color_killer2sat = ini_read_real('config','killer2sat',0)
 global.color_killer2val = ini_read_real('config','killer2val',0)
-global.color_killer = make_color_hsv(global.color_killerhue,global.color_killersat,global.color_killerval)
 global.color_killer2 = make_color_hsv(global.color_killer2hue,global.color_killer2sat,global.color_killer2val)
+var buttonhue = ini_read_real('config','buttonhue',0)
+var buttonsat = ini_read_real('config','buttonsat',0)
+var buttonval = ini_read_real('config','buttonval',175)
+global.color_button = make_color_hsv(buttonhue,buttonsat,buttonval)
+var buttonhoverhue = ini_read_real('config','buttonhoverhue',0)
+var buttonhoversat = ini_read_real('config','buttonhoversat',0)
+var buttonhoverval = ini_read_real('config','buttonhoverval',255)
+global.color_buttonhover = make_color_hsv(buttonhoverhue,buttonhoversat,buttonhoverval)
+global.color_buttonhoveralpha = ini_read_real('config','buttonhoveralpha',0.5)
+global.buttonhoverborder = ini_read_real('config','buttonhoverborder',false)
 global.spikeframes = ini_read_real('config','spikeframes',1)
 global.spikeanimspeed = ini_read_real('config','spikeanimspeed',1)
 global.minispikeframes = ini_read_real('config','minispikeframes',1)
@@ -49,6 +59,7 @@ for (var i=0; i<30; i+=1) {
         case 16: spr_index=sWalljumpR spr_default=sWalljumpRDefault file='walljumpR.png' xo=0 yo=0 frames=1 break
         case 17: spr_index=sKillerBlock spr_default=sKillerBlockDefault file='killerblock.png' xo=0 yo=0 frames=1 break
         case 18: spr_index=sSidebar spr_default=sSidebarDefault file='sidebar.png' xo=0 yo=0 frames=1 break
+        case 19: spr_index=sMenu spr_default=sMenuDefault file='menu.png' xo=0 yo=0 frames=1 break
         default: continue
     }
     
