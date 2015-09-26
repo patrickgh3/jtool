@@ -51,35 +51,30 @@
             <string>highlight_count += 1
 var alpha = highlightGetFraction(highlight_count) * 0.75
 
-var size = 8
-var xx,yy,w,h
+var xx,yy,angle
 if type == 'top' {
+    angle=0
     xx=0
     yy=0
-    w=800
-    h=size
 }
 else if type == 'bottom' {
-    xx=0
-    yy=608-size
-    w=800
-    h=size
+    angle=180
+    xx=800
+    yy=608
 }
 else if type == 'left' {
+    angle=90
     xx=0
-    yy=0
-    w=size
-    h=608
+    yy=608
 }
 else if type == 'right' {
-    xx=800-size
+    angle=270
+    xx=800
     yy=0
-    w=size
-    h=608
 }
-draw_set_color(global.color_killer2)
-draw_set_alpha(alpha)
-draw_rectangle(xx,yy,xx+w-1,yy+h-1,false)
+draw_sprite_ext(sBorderDeath,0,xx,yy
+,800/sprite_get_width(sBorderDeath),8/sprite_get_height(sBorderDeath)
+,angle,global.color_killer2,alpha)
 </string>
           </argument>
         </arguments>

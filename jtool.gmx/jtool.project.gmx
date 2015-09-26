@@ -91,6 +91,7 @@
     <sprite>sprites\sEditCursor</sprite>
     <sprite>sprites\sTextBack</sprite>
     <sprite>sprites\sHintCursor</sprite>
+    <sprite>sprites\sBorderDeath</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bgTileOutline</background>
@@ -195,8 +196,8 @@
       <object>objects\oGravityArrowDown</object>
     </objects>
     <objects name="misc">
-      <object>objects\oPlayerBullet</object>
       <object>objects\oPlayerBlood</object>
+      <object>objects\oPlayerBullet</object>
     </objects>
     <object>objects\oWorld</object>
     <object>objects\oPlayer</object>
