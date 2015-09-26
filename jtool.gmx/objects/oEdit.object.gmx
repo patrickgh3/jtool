@@ -68,22 +68,41 @@ undo_objectstring = ''
             <kind>1</kind>
             <string>cursor_in_area = point_in_rect(mouse_x,mouse_y,xmin,ymin,xmax,ymax)
 
-if cursor_in_area {
+if cursor_in_area and global.state == globalstate_idle {
     xsnapped = floor(mouse_x/snap)*snap
     ysnapped = floor(mouse_y/snap)*snap
     x = mouse_x
     y = mouse_y
     
+    var left = mouse_check_button(mb_left)
+    var right = mouse_check_button(mb_right)
+    var shift = keyboard_check(vk_shift)
+    var leftpressed = mouse_check_button_pressed(mb_left)
+    var rightpressed = mouse_check_button_pressed(mb_right)
+    
     // creating
-    if mouse_check_button_pressed(mb_left) and global.state == globalstate_idle {
+    if leftpressed and not right {
         with all if object_is_edit(object_index) undo_recent = false
         undo_objectstring = 'create'
         
         var i = instance_create(xsnapped,ysnapped,selected_object);
         i.undo_recent = true
     }
+    if shift and left and not right {
+        var object_at_position = false
+        with selected_object {
+            if x == other.xsnapped and y == other.ysnapped {
+                object_at_position = true
+            }
+        }
+        if not object_at_position {
+            var i = instance_create(xsnapped,ysnapped,selected_object);
+            i.undo_recent = true
+        }
+    }
+    
     // destroying
-    else if mouse_check_button_pressed(mb_right) {
+    if rightpressed and not left {
         with all if object_is_edit(object_index) undo_recent = false
         undo_objectstring = ''
         
@@ -94,10 +113,18 @@ if cursor_in_area {
             }
         }
     }
+    if shift and right and not left {
+        with all {
+            if object_is_edit(object_index) and place_meeting(x,y,oEdit) {
+                other.undo_objectstring += edit_object_serialize(self)
+                instance_destroy()
+            }
+        }
+    }
 }
 
 // undo
-if keyboard_check(vk_control) and keyboard_check_pressed(ord('Z')) and undo_objectstring != '' {
+if keyboard_check(vk_control) and keyboard_check_pressed(ord('Z')) and global.state == globalstate_idle {
     if undo_objectstring == 'create' {
         with all {
             if object_is_edit(object_index) {
@@ -105,9 +132,15 @@ if keyboard_check(vk_control) and keyboard_check_pressed(ord('Z')) and undo_obje
             }
         }
     }
-    else {
-        create_from_serialization(undo_objectstring)
+    else if undo_objectstring != '' {
+        var i = 1
+        while i &lt; string_length(undo_objectstring) {
+            var s = string_copy(undo_objectstring,i,5)
+            create_from_serialization(s)
+            i += 5
+        }
     }
+    undo_objectstring = ''
 }
 </string>
           </argument>
