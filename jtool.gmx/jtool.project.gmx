@@ -217,6 +217,7 @@
     <object>objects\oBorderDeath</object>
     <object>objects\oSidebar</object>
     <object>objects\oToggleAnalysis</object>
+    <object>objects\oPalatte</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rMain</room>

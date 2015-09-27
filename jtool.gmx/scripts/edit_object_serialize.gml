@@ -23,6 +23,6 @@ switch obj.object_index {
     default: show_message('tried to serialize a non-edit object! should have check object_is_edit first.') exit
 }
 
-return real_to_base32string(sid,1)   // 1 chars since sid < 32
-     + real_to_base32string(obj.x,2) // 2 chars since x will be < 1024
-     + real_to_base32string(obj.y,2) // 2 chars since y will be < 1024
+return real_to_base32string(sid,1)       // 1 chars since sid < 32
+     + real_to_base32string(obj.x+128,2) // 2 chars since x will have a range of < 1024
+     + real_to_base32string(obj.y+128,2) // 2 chars since y will have a range of < 1024

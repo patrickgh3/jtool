@@ -25,5 +25,5 @@ switch sid {
     case 18: obj=oKillerBlock break
     default: show_message('non-existent object code in deserialization: '+string(sid)) exit
 }
-var inst = instance_create(xx,yy,obj);
+var inst = instance_create(xx-128,yy-128,obj);
 inst.undo_recent = false

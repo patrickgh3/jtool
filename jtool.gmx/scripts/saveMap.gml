@@ -17,7 +17,9 @@ var objects_out_of_range = false
 
 with all {
     if not object_is_edit(object_index) continue
-    if x >= 4096 or y >= 4096 or x < 0 or y < 0 {
+    var maxpos = 896
+    var minpos = -128
+    if x >= maxpos or y >= maxpos or x < minpos or y < minpos {
         objects_out_of_range = true
         continue
     }
@@ -27,5 +29,5 @@ with all {
 file_text_close(f)
 
 if objects_out_of_range {
-    show_message('Some objects were out of range. (x or y < 0 or >= 4096)')
+    show_message('Some objects were out of range. (x or y < '+string(minpos)+' or >= '+string(maxpos)+')')
 }

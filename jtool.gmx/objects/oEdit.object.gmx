@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-100</depth>
+  <depth>-80</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>sEditCursor</maskName>
@@ -44,6 +44,8 @@ xsnapped = 0
 ysnapped = 0
 cursor_in_area = false
 undo_objectstring = ''
+undo_rightpressedinedit=false
+undo_leftpressedinedit=false
 </string>
           </argument>
         </arguments>
@@ -68,27 +70,30 @@ undo_objectstring = ''
             <kind>1</kind>
             <string>cursor_in_area = point_in_rect(mouse_x,mouse_y,xmin,ymin,xmax,ymax)
 
-if cursor_in_area and global.state == globalstate_idle {
-    xsnapped = floor(mouse_x/snap)*snap
-    ysnapped = floor(mouse_y/snap)*snap
-    x = mouse_x
-    y = mouse_y
-    
-    var left = mouse_check_button(mb_left)
+var left = mouse_check_button(mb_left)
     var right = mouse_check_button(mb_right)
     var shift = keyboard_check(vk_shift)
     var leftpressed = mouse_check_button_pressed(mb_left)
     var rightpressed = mouse_check_button_pressed(mb_right)
+
+if not left undo_leftpressedinedit = false
+if not right undo_rightpressedinedit = false
+
+if cursor_in_area and global.state == globalstate_idle {
+    var xx = mouse_x+(snap-sprite_get_width(selected_sprite))/2
+    var yy = mouse_y+(snap-sprite_get_height(selected_sprite))/2
+    xsnapped = floor(xx/snap)*snap
+    ysnapped = floor(yy/snap)*snap
+    x = mouse_x
+    y = mouse_y
     
     // creating
     if leftpressed and not right {
         with all if object_is_edit(object_index) undo_recent = false
         undo_objectstring = 'create'
-        
-        var i = instance_create(xsnapped,ysnapped,selected_object);
-        i.undo_recent = true
+        undo_leftpressedinedit = true
     }
-    if shift and left and not right {
+    if left and not right and undo_leftpressedinedit {
         var object_at_position = false
         with selected_object {
             if x == other.xsnapped and y == other.ysnapped {
@@ -105,15 +110,9 @@ if cursor_in_area and global.state == globalstate_idle {
     if rightpressed and not left {
         with all if object_is_edit(object_index) undo_recent = false
         undo_objectstring = ''
-        
-        with all {
-            if object_is_edit(object_index) and place_meeting(x,y,oEdit) {
-                other.undo_objectstring += edit_object_serialize(self)
-                instance_destroy()
-            }
-        }
+        undo_rightpressedinedit = true
     }
-    if shift and right and not left {
+    if right and not left and undo_rightpressedinedit {
         with all {
             if object_is_edit(object_index) and place_meeting(x,y,oEdit) {
                 other.undo_objectstring += edit_object_serialize(self)
@@ -124,7 +123,8 @@ if cursor_in_area and global.state == globalstate_idle {
 }
 
 // undo
-if keyboard_check(vk_control) and keyboard_check_pressed(ord('Z')) and global.state == globalstate_idle {
+if keyboard_check(vk_control) and keyboard_check_pressed(ord('Z'))
+and global.state == globalstate_idle and not left and not right {
     if undo_objectstring == 'create' {
         with all {
             if object_is_edit(object_index) {
@@ -194,7 +194,7 @@ if keyboard_check(vk_control) and keyboard_check_pressed(ord('Z')) and global.st
             <string>if cursor_in_area and global.state == globalstate_idle {
     var color = c_white
     if selected_killer color = global.color_killer
-    draw_sprite_ext(selected_sprite,0,xsnapped,ysnapped,1,1,0,color,0.2)
+    draw_sprite_ext(selected_sprite,0,xsnapped,ysnapped,1,1,0,color,0.3)
 }
 </string>
           </argument>
