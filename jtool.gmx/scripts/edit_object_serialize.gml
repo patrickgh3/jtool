@@ -20,6 +20,7 @@ switch obj.object_index {
     case oWalljumpL: sid=16 break
     case oWalljumpR: sid=17 break
     case oKillerBlock: sid=18 break
+    case oBulletBlocker: sid=19 break
     default: show_message('tried to serialize a non-edit object! should have check object_is_edit first.') exit
 }
 

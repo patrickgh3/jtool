@@ -7,6 +7,7 @@ switch objectindex {
     case oApple: case oSave: case oPlatform: case oKillerBlock:
     case oWater: case oWater2:
     case oWalljumpL: case oWalljumpR:
+    case oBulletBlocker:
         return true
     default:
         return false

@@ -40,6 +40,7 @@
       <sprite>sprites\sWalljumpR</sprite>
       <sprite>sprites\sSidebar</sprite>
       <sprite>sprites\sMenu</sprite>
+      <sprite>sprites\sBulletBlocker</sprite>
     </sprites>
     <sprites name="skin defaults">
       <sprite>sprites\sEditBlockDefault</sprite>
@@ -62,6 +63,7 @@
       <sprite>sprites\sWalljumpRDefault</sprite>
       <sprite>sprites\sSidebarDefault</sprite>
       <sprite>sprites\sMenuDefault</sprite>
+      <sprite>sprites\sBulletBlockerDefault</sprite>
     </sprites>
     <sprites name="player">
       <sprite>sprites\sPlayerMask</sprite>
@@ -219,6 +221,7 @@
     <object>objects\oSidebar</object>
     <object>objects\oToggleAnalysis</object>
     <object>objects\oPalatte</object>
+    <object>objects\oBulletBlocker</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rMain</room>

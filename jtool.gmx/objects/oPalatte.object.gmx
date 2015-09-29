@@ -50,16 +50,17 @@ for (i = 0; i &lt; 30; i += 1) {
         
         case 9:  xx=0 yy=2 spr=sEditBlock obj=oEditBlock off = 16 killer=false break
         case 10: xx=1 yy=2 spr=sEditMiniBlock obj=oEditMiniBlock off = 8 killer=false break
-        case 11: xx=2 yy=2 spr=sPlatform obj=oPlatform off=16 killer=false break
+        case 12: xx=2 yy=2 spr=sPlatform obj=oPlatform off=16 killer=false break
         case 13: xx=3 yy=2 spr=sSave obj=oSave off=16 killer=false break
         
-        case 15: xx=0 yy=3 spr=sWater1 obj=oWater off = 16 killer=false break
-        case 14: xx=1 yy=3 spr=sWater2 obj=oWater2 off = 16 killer=false break
+        case 14: xx=0 yy=3 spr=sWater1 obj=oWater off = 16 killer=false break
+        case 15: xx=1 yy=3 spr=sWater2 obj=oWater2 off = 16 killer=false break
         case 16: xx=2 yy=3 spr=sWalljumpR obj=oWalljumpR off = 16 killer=false break
         case 17: xx=3 yy=3 spr=sWalljumpL obj=oWalljumpL off = 16 killer=false break
         
-        case 12: xx=0 yy=4 spr=sApple obj=oApple off = 0 killer=true break
-        case 18: xx=1 yy=4 spr=sKillerBlock obj=oKillerBlock off = 16 killer=true break
+        case 18: xx=0 yy=4 spr=sApple obj=oApple off = 0 killer=true break
+        case 19: xx=1 yy=4 spr=sKillerBlock obj=oKillerBlock off = 16 killer=true break
+        case 20: xx=2 yy=4 spr=sBulletBlocker obj=oBulletBlocker off = 16 killer=false break
         default: continue
     }
     

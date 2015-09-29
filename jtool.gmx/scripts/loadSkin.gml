@@ -32,6 +32,7 @@ global.spikeframes = ini_read_real('config','spikeframes',1)
 global.spikeanimspeed = ini_read_real('config','spikeanimspeed',1)
 global.minispikeframes = ini_read_real('config','minispikeframes',1)
 global.minispikeanimspeed = ini_read_real('config','minispikeanimspeed',1)
+global.bulletblockeralpha = ini_read_real('config','bulletblockeralpha',0.3)
 var bg_type = ini_read_string('config','bg_type','stretch')
 var bg_hspeed = ini_read_real('config','bg_hspeed',0)
 var bg_vspeed = ini_read_real('config','bg_vspeed',0)
@@ -60,6 +61,7 @@ for (var i=0; i<30; i+=1) {
         case 17: spr_index=sKillerBlock spr_default=sKillerBlockDefault file='killerblock.png' xo=0 yo=0 frames=1 break
         case 18: spr_index=sSidebar spr_default=sSidebarDefault file='sidebar.png' xo=0 yo=0 frames=1 break
         case 19: spr_index=sMenu spr_default=sMenuDefault file='menu.png' xo=0 yo=0 frames=1 break
+        case 20: spr_index=sBulletBlocker spr_default=sBulletBlockerDefault file='bulletblocker.png' xo=0 yo=0 frames=1 break
         default: continue
     }
     
