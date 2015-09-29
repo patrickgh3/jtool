@@ -97,6 +97,7 @@
     <sprite>sprites\sTextBack</sprite>
     <sprite>sprites\sHintCursor</sprite>
     <sprite>sprites\sBorderDeath</sprite>
+    <sprite>sprites\sCursorDropper</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bgBackground</background>

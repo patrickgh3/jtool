@@ -80,43 +80,63 @@ if not left undo_leftpressedinedit = false
 if not right undo_rightpressedinedit = false
 
 if cursor_in_area and global.state == globalstate_idle {
-    var xx = mouse_x+(snap-sprite_get_width(selected_sprite))/2
-    var yy = mouse_y+(snap-sprite_get_height(selected_sprite))/2
-    xsnapped = floor(xx/snap)*snap
-    ysnapped = floor(yy/snap)*snap
-    x = mouse_x
-    y = mouse_y
-    
-    // creating
-    if leftpressed and not right {
-        with all if object_is_edit(object_index) undo_recent = false
-        undo_objectstring = 'create'
-        undo_leftpressedinedit = true
-    }
-    if left and not right and undo_leftpressedinedit {
-        var object_at_position = false
-        with selected_object {
-            if x == other.xsnapped and y == other.ysnapped {
-                object_at_position = true
+
+    if not keyboard_check(vk_control) {
+        cursor_sprite = -1
+        window_set_cursor(cr_default)
+        var xx = mouse_x+(snap-sprite_get_width(selected_sprite))/2
+        var yy = mouse_y+(snap-sprite_get_height(selected_sprite))/2
+        xsnapped = floor(xx/snap)*snap
+        ysnapped = floor(yy/snap)*snap
+        x = mouse_x
+        y = mouse_y
+        
+        // creating
+        if leftpressed and not right {
+            with all if object_is_edit(object_index) undo_recent = false
+            undo_objectstring = 'create'
+            undo_leftpressedinedit = true
+        }
+        if left and not right and undo_leftpressedinedit {
+            var object_at_position = false
+            with selected_object {
+                if x == other.xsnapped and y == other.ysnapped {
+                    object_at_position = true
+                }
+            }
+            if not object_at_position {
+                var i = instance_create(xsnapped,ysnapped,selected_object);
+                i.undo_recent = true
             }
         }
-        if not object_at_position {
-            var i = instance_create(xsnapped,ysnapped,selected_object);
-            i.undo_recent = true
+        
+        // destroying
+        if rightpressed and not left {
+            with all if object_is_edit(object_index) undo_recent = false
+            undo_objectstring = ''
+            undo_rightpressedinedit = true
+        }
+        if right and not left and undo_rightpressedinedit {
+            with all {
+                if object_is_edit(object_index) and place_meeting(x,y,oEdit) {
+                    other.undo_objectstring += edit_object_serialize(self)
+                    instance_destroy()
+                }
+            }
         }
     }
-    
-    // destroying
-    if rightpressed and not left {
-        with all if object_is_edit(object_index) undo_recent = false
-        undo_objectstring = ''
-        undo_rightpressedinedit = true
-    }
-    if right and not left and undo_rightpressedinedit {
-        with all {
-            if object_is_edit(object_index) and place_meeting(x,y,oEdit) {
-                other.undo_objectstring += edit_object_serialize(self)
-                instance_destroy()
+    // dropper
+    else {
+        cursor_sprite = sCursorDropper
+        window_set_cursor(cr_none)
+        if leftpressed {
+            x = -1000
+            y = -1000
+            var inst = instance_position(mouse_x,mouse_y,all)
+            if inst != noone {
+                selected_object = inst.object_index
+                selected_sprite = inst.sprite_index
+                selected_killer = object_is_ancestor(inst.object_index, oKiller)
             }
         }
     }
@@ -192,9 +212,11 @@ and global.state == globalstate_idle and not left and not right {
           <argument>
             <kind>1</kind>
             <string>if cursor_in_area and global.state == globalstate_idle {
-    var color = c_white
-    if selected_killer color = global.color_killer
-    draw_sprite_ext(selected_sprite,0,xsnapped,ysnapped,1,1,0,color,0.3)
+    if not keyboard_check(vk_control) {
+        var color = c_white
+        if selected_killer color = global.color_killer
+        draw_sprite_ext(selected_sprite,0,xsnapped,ysnapped,1,1,0,color,0.3)
+    }
 }
 </string>
           </argument>
