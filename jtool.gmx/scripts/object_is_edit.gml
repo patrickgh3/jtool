@@ -8,6 +8,7 @@ switch objectindex {
     case oWater: case oWater2:
     case oWalljumpL: case oWalljumpR:
     case oBulletBlocker:
+    case oPlayerStart:
         return true
     default:
         return false

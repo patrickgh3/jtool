@@ -82,8 +82,7 @@ global.count += 1
           <argument>
             <kind>1</kind>
             <string>with oPlayerStart {
-    if not instance_exists(oPlayer)
-    {
+    if not instance_exists(oPlayer) {
         instance_create(x+17,y+23,oPlayer)
     }
 }

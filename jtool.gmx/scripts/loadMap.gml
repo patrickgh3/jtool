@@ -46,6 +46,10 @@ while index <= string_length(content) {
                     create_from_serialization(s)
                     i += 5
                 }
+                global.savePlayerX = oPlayerStart.x+17
+                global.savePlayerY = oPlayerStart.y+23
+                global.savePlayerXScale = 1
+                loadGame()
             }
         }
         section_number += 1

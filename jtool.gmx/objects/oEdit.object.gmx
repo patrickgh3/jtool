@@ -105,6 +105,12 @@ if cursor_in_area and global.state == globalstate_idle {
                 }
             }
             if not object_at_position {
+                if selected_object == oPlayerStart {
+                    with oPlayerStart instance_destroy()
+                    global.savePlayerX = xsnapped+17
+                    global.savePlayerY = ysnapped+23
+                    global.savePlayerXScale = 1
+                }
                 var i = instance_create(xsnapped,ysnapped,selected_object);
                 i.undo_recent = true
             }
@@ -118,7 +124,8 @@ if cursor_in_area and global.state == globalstate_idle {
         }
         if right and not left and undo_rightpressedinedit {
             with all {
-                if object_is_edit(object_index) and place_meeting(x,y,oEdit) {
+                if object_is_edit(object_index) and place_meeting(x,y,oEdit) 
+                and object_index != oPlayerStart {
                     other.undo_objectstring += edit_object_serialize(self)
                     instance_destroy()
                 }
@@ -147,8 +154,10 @@ if keyboard_check(vk_control) and keyboard_check_pressed(ord('Z'))
 and global.state == globalstate_idle and not left and not right {
     if undo_objectstring == 'create' {
         with all {
-            if object_is_edit(object_index) {
-                if undo_recent instance_destroy()
+            if object_is_edit(object_index)
+            and object_index != oPlayerStart
+            and undo_recent {
+                instance_destroy()
             }
         }
     }

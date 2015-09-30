@@ -41,6 +41,7 @@
       <sprite>sprites\sSidebar</sprite>
       <sprite>sprites\sMenu</sprite>
       <sprite>sprites\sBulletBlocker</sprite>
+      <sprite>sprites\sPlayerStart</sprite>
     </sprites>
     <sprites name="skin defaults">
       <sprite>sprites\sEditBlockDefault</sprite>
@@ -64,6 +65,7 @@
       <sprite>sprites\sSidebarDefault</sprite>
       <sprite>sprites\sMenuDefault</sprite>
       <sprite>sprites\sBulletBlockerDefault</sprite>
+      <sprite>sprites\sPlayerStartDefault</sprite>
     </sprites>
     <sprites name="player">
       <sprite>sprites\sPlayerMask</sprite>
@@ -85,7 +87,7 @@
       <sprite>sprites\sSlideBlockR</sprite>
     </sprites>
     <sprites name="editor">
-      <sprite>sprites\sPlayerStart</sprite>
+      <sprite>sprites\sPlayerStartOld</sprite>
       <sprite>sprites\sEditorKiller</sprite>
       <sprite>sprites\sEditorWorld</sprite>
       <sprite>sprites\sEditorTriggerKiller</sprite>
@@ -216,8 +218,6 @@
       <object>objects\oPlayerBlood</object>
       <object>objects\oPlayerBullet</object>
     </objects>
-    <object>objects\oWorld</object>
-    <object>objects\oPlayer</object>
     <objects name="sidebar">
       <object>objects\oSidebar</object>
       <object>objects\oKeyDisplay</object>
@@ -231,6 +231,8 @@
         <object>objects\oPlayerPosition</object>
       </objects>
     </objects>
+    <object>objects\oWorld</object>
+    <object>objects\oPlayer</object>
     <object>objects\oMenu</object>
     <object>objects\oEdit</object>
     <object>objects\oBorderDeath</object>

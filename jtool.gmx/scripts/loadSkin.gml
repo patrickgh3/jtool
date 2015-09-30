@@ -62,6 +62,7 @@ for (var i=0; i<30; i+=1) {
         case 18: spr_index=sSidebar spr_default=sSidebarDefault file='sidebar.png' xo=0 yo=0 frames=1 break
         case 19: spr_index=sMenu spr_default=sMenuDefault file='menu.png' xo=0 yo=0 frames=1 break
         case 20: spr_index=sBulletBlocker spr_default=sBulletBlockerDefault file='bulletblocker.png' xo=0 yo=0 frames=1 break
+        case 21: spr_index=sPlayerStart spr_default=sPlayerStartDefault file='playerstart.png' xo=0 yo=0 frames=1 break
         default: continue
     }
     

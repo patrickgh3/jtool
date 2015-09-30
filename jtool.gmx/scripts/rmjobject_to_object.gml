@@ -18,5 +18,5 @@ switch rmjobject {
     case 27: return oKillerBlock
     case 28: return oWalljumpR
     case 29: return oWalljumpL
-    case 3: return noone // player start (TODO)
+    case 3: return oPlayerStart
 }

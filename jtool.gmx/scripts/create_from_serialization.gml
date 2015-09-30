@@ -24,6 +24,7 @@ switch sid {
     case 17: obj=oWalljumpR break
     case 18: obj=oKillerBlock break
     case 19: obj=oBulletBlocker break
+    case 20: obj=oPlayerStart break
     default: show_message('non-existent object code in deserialization: '+string(sid)) exit
 }
 var inst = instance_create(xx-128,yy-128,obj);

@@ -16,9 +16,12 @@ while not file_text_eoln(f) {
     var xx = file_text_read_real(f)
     var yy = file_text_read_real(f)
     var type = file_text_read_real(f)
-    if type == 3 continue // player start (TODO)
     instance_create(xx,yy,rmjobject_to_object(type))
     if file_text_eoln(f) break
 }
-
 file_text_close(f)
+
+global.savePlayerX = oPlayerStart.x+17
+global.savePlayerY = oPlayerStart.y+23
+global.savePlayerXScale = 1
+loadGame()

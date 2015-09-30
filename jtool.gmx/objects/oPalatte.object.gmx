@@ -61,6 +61,7 @@ for (i = 0; i &lt; 30; i += 1) {
         case 18: xx=0 yy=4 spr=sApple obj=oApple off = 0 killer=true break
         case 19: xx=1 yy=4 spr=sKillerBlock obj=oKillerBlock off = 16 killer=true break
         case 20: xx=2 yy=4 spr=sBulletBlocker obj=oBulletBlocker off = 16 killer=false break
+        case 21: xx=3 yy=4 spr=sPlayerStart obj=oPlayerStart off = 16 killer=false break
         default: continue
     }
     
