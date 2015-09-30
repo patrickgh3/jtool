@@ -143,6 +143,11 @@ menuButton(x+670,y+120,100,32,'Fullscreen'
 ,false,false,buttonCallback_Fullscreen,
 ok_to_click_button,false)
 
+// load RMJ map
+menuButton(x+50,y+60,100,32,'Load RMJ map'
+,false,false,buttonCallback_LoadRMJMap,
+ok_to_click_button,false)
+
 // cancel hint cutoff
 /*menuButton(x+340,y+120,128,32,'Hint cutoff: '+string(oDisplay.jc_cutoff)
 ,false,buttonCallback_CancelHint,

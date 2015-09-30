@@ -132,6 +132,7 @@
       <script>scripts\edit_object_serialize.gml</script>
       <script>scripts\create_from_serialization.gml</script>
       <script>scripts\object_is_edit.gml</script>
+      <script>scripts\rmjobject_to_object.gml</script>
     </scripts>
     <scripts name="jump analysis">
       <script>scripts\jumpDurations_Create.gml</script>
@@ -157,6 +158,7 @@
       <script>scripts\buttonCallback_LoadMap.gml</script>
       <script>scripts\buttonCallback_Fullscreen.gml</script>
       <script>scripts\buttonCallback_ToggleAnalysis.gml</script>
+      <script>scripts\buttonCallback_LoadRMJMap.gml</script>
     </scripts>
     <scripts name="saveload">
       <script>scripts\saveGame.gml</script>
@@ -166,6 +168,7 @@
       <script>scripts\saveMap.gml</script>
       <script>scripts\loadMap.gml</script>
       <script>scripts\loadSkin.gml</script>
+      <script>scripts\loadRMJMap.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">

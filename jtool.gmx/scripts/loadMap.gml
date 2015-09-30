@@ -38,9 +38,7 @@ while index <= string_length(content) {
             if string_split(currentstring,0,':') == 'objects' {
                 // parse objects aaaaa
                 oEdit.undo_objectstring = ''
-                with all {
-                    if object_is_edit(object_index) instance_destroy()
-                }
+                with all if object_is_edit(object_index) instance_destroy()
                 var objectstring = string_split(currentstring,1,':')
                 var i = 1
                 while i < string_length(objectstring) {
