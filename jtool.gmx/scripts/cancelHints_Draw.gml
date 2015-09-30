@@ -34,7 +34,3 @@ if jc_show {
     
     draw_text(xx+90,yy,jc_duration)
 }
-/*yy += dy*2
-if jc_show and jc_duration == 0 and not jc_successwaitingforrelease {
-    draw_text(xx+xo2,yy,'dur: '+string(jc_successduration))
-}*/

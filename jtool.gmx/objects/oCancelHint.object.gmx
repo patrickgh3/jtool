@@ -25,10 +25,30 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Draws the player's position stuff.
-
-align = 0
-ypos = 0
+            <string>cancelHints_Create()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>cancelHints_EndStep()
 </string>
           </argument>
         </arguments>
@@ -51,16 +71,15 @@ ypos = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not global.showanalysis exit
-
-drawButton(x,y,128,32,false)
-fontSetup(font_small,c_black,fa_left,fa_top,1)
-if instance_exists(oPlayer) {
-    align = oPlayer.x mod 3
-    ypos = oPlayer.y - floor(oPlayer.y)
+            <string>if global.showanalysis {
+    var xo = 8
+    var yo = 5
+    var dy = 20
+    var w = 128
+    var h = 32
+    drawButton(x,y,w,h,false)
+    cancelHints_Draw(x+xo,y+yo,dy)
 }
-draw_text(x+7,y+5,'Y '+string(ypos))
-draw_text(x+70,y+5,'Align '+string(align))
 </string>
           </argument>
         </arguments>

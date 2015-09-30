@@ -90,6 +90,9 @@
       <sprite>sprites\sEditorWorld</sprite>
       <sprite>sprites\sEditorTriggerKiller</sprite>
       <sprite>sprites\sEditorButton</sprite>
+      <sprite>sprites\sEditorPencil</sprite>
+      <sprite>sprites\sEditorBorderDeath</sprite>
+      <sprite>sprites\sEditorMenu</sprite>
     </sprites>
     <sprite>sprites\sPlatformMask</sprite>
     <sprite>sprites\sSaveFlip</sprite>
@@ -182,6 +185,7 @@
       <object>objects\oPlatform</object>
       <object>objects\oPlatform2</object>
       <object>objects\oPlayerStart</object>
+      <object>objects\oBulletBlocker</object>
     </objects>
     <objects name="killers">
       <object>objects\oSpikeUp</object>
@@ -211,17 +215,22 @@
     </objects>
     <object>objects\oWorld</object>
     <object>objects\oPlayer</object>
-    <object>objects\oPlayerDisplay</object>
-    <object>objects\oKeyDisplay</object>
-    <object>objects\oDisplay</object>
-    <object>objects\oOptionsButton</object>
+    <objects name="sidebar">
+      <object>objects\oSidebar</object>
+      <object>objects\oKeyDisplay</object>
+      <object>objects\oOptionsButton</object>
+      <object>objects\oPalatte</object>
+      <objects name="jump analysis">
+        <object>objects\oToggleAnalysis</object>
+        <object>objects\oJumpDurations</object>
+        <object>objects\oCancelHint</object>
+        <object>objects\oBhopHint</object>
+        <object>objects\oPlayerPosition</object>
+      </objects>
+    </objects>
     <object>objects\oMenu</object>
     <object>objects\oEdit</object>
     <object>objects\oBorderDeath</object>
-    <object>objects\oSidebar</object>
-    <object>objects\oToggleAnalysis</object>
-    <object>objects\oPalatte</object>
-    <object>objects\oBulletBlocker</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rMain</room>
