@@ -53,7 +53,6 @@
   <instances>
     <instance objName="oSidebar" x="800" y="0" name="inst_F1401864" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oWorld" x="64" y="64" name="inst_2E47D279" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="&lt;undefined&gt;" x="832" y="384" name="inst_1B3687B6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oOptionsButton" x="944" y="16" name="inst_2C3731AE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oKeyDisplay" x="848" y="672" name="inst_AD866872" locked="0" code="index=1&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oKeyDisplay" x="928" y="672" name="inst_01C2B663" locked="0" code="index=2&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

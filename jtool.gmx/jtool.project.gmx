@@ -19,7 +19,7 @@
     <sound>sound\sndWallJump</sound>
   </sounds>
   <sprites name="sprites">
-    <sprites name="edit">
+    <sprites name="skin">
       <sprite>sprites\sEditBlock</sprite>
       <sprite>sprites\sEditMiniBlock</sprite>
       <sprite>sprites\sSpikeUp</sprite>
@@ -38,10 +38,10 @@
       <sprite>sprites\sKillerBlock</sprite>
       <sprite>sprites\sWalljumpL</sprite>
       <sprite>sprites\sWalljumpR</sprite>
-      <sprite>sprites\sSidebar</sprite>
-      <sprite>sprites\sMenu</sprite>
       <sprite>sprites\sBulletBlocker</sprite>
       <sprite>sprites\sPlayerStart</sprite>
+      <sprite>sprites\sSidebar</sprite>
+      <sprite>sprites\sMenu</sprite>
     </sprites>
     <sprites name="skin defaults">
       <sprite>sprites\sEditBlockDefault</sprite>
@@ -62,29 +62,33 @@
       <sprite>sprites\sKillerBlockDefault</sprite>
       <sprite>sprites\sWalljumpLDefault</sprite>
       <sprite>sprites\sWalljumpRDefault</sprite>
-      <sprite>sprites\sSidebarDefault</sprite>
-      <sprite>sprites\sMenuDefault</sprite>
       <sprite>sprites\sBulletBlockerDefault</sprite>
       <sprite>sprites\sPlayerStartDefault</sprite>
+      <sprite>sprites\sSidebarDefault</sprite>
+      <sprite>sprites\sMenuDefault</sprite>
     </sprites>
     <sprites name="player">
-      <sprite>sprites\sPlayerMask</sprite>
-      <sprite>sprites\sPlayerMaskFlip</sprite>
       <sprite>sprites\sPlayerFall</sprite>
       <sprite>sprites\sPlayerIdle</sprite>
       <sprite>sprites\sPlayerJump</sprite>
       <sprite>sprites\sPlayerRunning</sprite>
       <sprite>sprites\sPlayerSliding</sprite>
+      <sprite>sprites\sPlayerMask</sprite>
+      <sprite>sprites\sPlayerMaskFlip</sprite>
       <sprite>sprites\sPlayerBullet</sprite>
       <sprite>sprites\sPlayerBlood</sprite>
     </sprites>
-    <sprites name="blocks">
+    <sprites name="engine misc">
+      <sprite>sprites\sPlatformMask</sprite>
+      <sprite>sprites\sSaveFlip</sprite>
       <sprite>sprites\sBlockMask</sprite>
       <sprite>sprites\sBlockMaskMini</sprite>
       <sprite>sprites\sBlockMaskSlip</sprite>
       <sprite>sprites\sPink32</sprite>
       <sprite>sprites\sSlideBlockL</sprite>
       <sprite>sprites\sSlideBlockR</sprite>
+      <sprite>sprites\sGravityArrowUp</sprite>
+      <sprite>sprites\sGravityArrowDown</sprite>
     </sprites>
     <sprites name="editor">
       <sprite>sprites\sPlayerStartOld</sprite>
@@ -95,13 +99,9 @@
       <sprite>sprites\sEditorPencil</sprite>
       <sprite>sprites\sEditorBorderDeath</sprite>
       <sprite>sprites\sEditorMenu</sprite>
+      <sprite>sprites\sEditorKid</sprite>
     </sprites>
-    <sprite>sprites\sPlatformMask</sprite>
-    <sprite>sprites\sSaveFlip</sprite>
-    <sprite>sprites\sGravityArrowDown</sprite>
-    <sprite>sprites\sGravityArrowUp</sprite>
     <sprite>sprites\sEditCursor</sprite>
-    <sprite>sprites\sTextBack</sprite>
     <sprite>sprites\sHintCursor</sprite>
     <sprite>sprites\sBorderDeath</sprite>
     <sprite>sprites\sCursorDropper</sprite>
@@ -177,22 +177,11 @@
     <font>fonts\font_small</font>
   </fonts>
   <objects name="objects">
-    <objects name="blocks">
-      <object>objects\oBlock</object>
+    <objects name="palatte">
       <object>objects\oEditBlock</object>
       <object>objects\oEditMiniBlock</object>
-      <object>objects\oWater</object>
-      <object>objects\oWater2</object>
-      <object>objects\oWater3</object>
-      <object>objects\oSlipBlock</object>
-      <object>objects\oSlideBlock</object>
-      <object>objects\oSlideBlockR</object>
-      <object>objects\oPlatform</object>
-      <object>objects\oPlatform2</object>
       <object>objects\oPlayerStart</object>
       <object>objects\oBulletBlocker</object>
-    </objects>
-    <objects name="killers">
       <object>objects\oSpikeUp</object>
       <object>objects\oSpikeRight</object>
       <object>objects\oSpikeLeft</object>
@@ -203,26 +192,35 @@
       <object>objects\oMiniSpikeDown</object>
       <object>objects\oApple</object>
       <object>objects\oKillerBlock</object>
-      <object>objects\oKillerTrigger</object>
-      <object>objects\oKiller</object>
-    </objects>
-    <objects name="other elements">
-      <object>objects\oSave</object>
-      <object>objects\oSaveFlip</object>
+      <object>objects\oWater</object>
+      <object>objects\oWater2</object>
+      <object>objects\oPlatform</object>
       <object>objects\oWalljumpL</object>
       <object>objects\oWalljumpR</object>
+      <object>objects\oSave</object>
+    </objects>
+    <objects name="other elements">
+      <object>objects\oSlipBlock</object>
+      <object>objects\oWater3</object>
+      <object>objects\oSlideBlock</object>
+      <object>objects\oSlideBlockR</object>
       <object>objects\oGravityArrowUp</object>
       <object>objects\oGravityArrowDown</object>
+      <object>objects\oPlatform2</object>
+      <object>objects\oSaveFlip</object>
     </objects>
     <objects name="misc">
       <object>objects\oPlayerBlood</object>
       <object>objects\oPlayerBullet</object>
+      <object>objects\oKiller</object>
+      <object>objects\oKillerTrigger</object>
+      <object>objects\oBlock</object>
     </objects>
     <objects name="sidebar">
       <object>objects\oSidebar</object>
+      <object>objects\oPalatte</object>
       <object>objects\oKeyDisplay</object>
       <object>objects\oOptionsButton</object>
-      <object>objects\oPalatte</object>
       <objects name="jump analysis">
         <object>objects\oToggleAnalysis</object>
         <object>objects\oJumpDurations</object>
@@ -239,7 +237,6 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\rMain</room>
-    <room>rooms\rOld</room>
   </rooms>
   <constants number="7">
     <constant name="globalstate_idle">1</constant>
