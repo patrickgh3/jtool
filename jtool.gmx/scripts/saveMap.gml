@@ -1,5 +1,6 @@
 // Saves all the present edit objects to file.
 
+window_set_fullscreen(false)
 filename = get_save_filename_ext('jtool map|*.jmap','','','Save Map')
 if filename == '' exit
 var f = file_text_open_write(filename)

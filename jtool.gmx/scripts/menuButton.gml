@@ -1,6 +1,6 @@
 // Draws and performs the action of a button.
 
-// menuButton(x,y,w,h,text,hotkey,callback,click_enabled,hotkey_enabled)
+// menuButton(x,y,w,h,text,hotkey,hotkey_control,callback,click_enabled,hotkey_enabled,centered)
 
 var xx = argument0
 var yy = argument1
@@ -12,11 +12,19 @@ var hotkey_control = argument6
 var callback = argument7
 var click_enabled = argument8
 var hotkey_enabled = argument9
+var centered = argument10
 
-var mouse_hover = point_in_rect(mouse_x,mouse_y,xx,yy,xx+w,yy+h)
+var mouse_hover = point_in_rect(mouse_x,mouse_y,xx,yy,xx+w,yy+h) and not global.comboboxselected
 drawButton(xx,yy,w,h,mouse_hover)
-fontSetup(font_small,c_black,fa_left,fa_top,1)
-draw_text(xx+5,yy+5,text)
+
+if not centered {
+    fontSetup(font_small,c_black,fa_left,fa_top,1)
+    draw_text(xx+5,yy+5,text)
+}
+else {
+    fontSetup(font_small,c_black,fa_center,fa_center,1)
+    draw_text(xx+w/2,yy+h/2,text)
+}
 
 var clicked = mouse_hover and mouse_check_button_pressed(mb_left)
 var hotkey_pressed = hotkey != 0 and keyboard_check_pressed(hotkey)

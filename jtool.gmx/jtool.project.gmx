@@ -91,7 +91,6 @@
       <sprite>sprites\sGravityArrowDown</sprite>
     </sprites>
     <sprites name="editor">
-      <sprite>sprites\sPlayerStartOld</sprite>
       <sprite>sprites\sEditorKiller</sprite>
       <sprite>sprites\sEditorWorld</sprite>
       <sprite>sprites\sEditorTriggerKiller</sprite>
@@ -100,6 +99,7 @@
       <sprite>sprites\sEditorBorderDeath</sprite>
       <sprite>sprites\sEditorMenu</sprite>
       <sprite>sprites\sEditorKid</sprite>
+      <sprite>sprites\sEditorInputOverlay</sprite>
     </sprites>
     <sprite>sprites\sEditCursor</sprite>
     <sprite>sprites\sHintCursor</sprite>
@@ -152,7 +152,6 @@
       <script>scripts\menuButton.gml</script>
       <script>scripts\drawButton.gml</script>
       <script>scripts\buttonCallback_RoomSpeed.gml</script>
-      <script>scripts\buttonCallback_GridSnap.gml</script>
       <script>scripts\buttonCallback_KillPlayer.gml</script>
       <script>scripts\buttonCallback_CancelHint.gml</script>
       <script>scripts\buttonCallback_Skin.gml</script>
@@ -161,6 +160,12 @@
       <script>scripts\buttonCallback_Fullscreen.gml</script>
       <script>scripts\buttonCallback_ToggleAnalysis.gml</script>
       <script>scripts\buttonCallback_LoadRMJMap.gml</script>
+    </scripts>
+    <scripts name="combo boxes">
+      <script>scripts\comboBoxButton.gml</script>
+      <script>scripts\comboBoxOptionButton.gml</script>
+      <script>scripts\buttonCallback_GridPreset.gml</script>
+      <script>scripts\buttonCallback_GridCustom.gml</script>
     </scripts>
     <scripts name="saveload">
       <script>scripts\saveGame.gml</script>
@@ -221,6 +226,7 @@
       <object>objects\oPalatte</object>
       <object>objects\oKeyDisplay</object>
       <object>objects\oOptionsButton</object>
+      <object>objects\oGridComboBox</object>
       <objects name="jump analysis">
         <object>objects\oToggleAnalysis</object>
         <object>objects\oJumpDurations</object>
@@ -238,9 +244,10 @@
   <rooms name="rooms">
     <room>rooms\rMain</room>
   </rooms>
-  <constants number="7">
+  <constants number="8">
     <constant name="globalstate_idle">1</constant>
     <constant name="globalstate_menu">2</constant>
+    <constant name="globalstate_input">3</constant>
     <constant name="jstate_1hold">1</constant>
     <constant name="jstate_1wait">2</constant>
     <constant name="jstate_2hold">3</constant>

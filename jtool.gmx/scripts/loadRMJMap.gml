@@ -1,3 +1,4 @@
+window_set_fullscreen(false)
 filename = get_open_filename_ext('RMJ map|*.map','','','Open RMJ map')
 if filename == '' exit
 var f = file_text_open_read(filename)

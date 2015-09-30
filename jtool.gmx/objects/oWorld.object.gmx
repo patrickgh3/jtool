@@ -129,6 +129,8 @@ global.frameaction_jump = false
 global.frameaction_djump = false
 global.frameaction_jumpslow = false
 
+global.comboboxselected = false
+
 loadConfig()
 </string>
           </argument>

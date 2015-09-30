@@ -1,5 +1,6 @@
 // Deletes all edit objects and loads a map from file.
 
+window_set_fullscreen(false)
 filename = get_open_filename_ext('jtool map|*.jmap','','','Open Map')
 if filename == '' exit
 var f = file_text_open_read(filename)

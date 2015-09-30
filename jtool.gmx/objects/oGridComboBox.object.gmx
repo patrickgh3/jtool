@@ -3,11 +3,34 @@
   <spriteName>sEditorButton</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-100</depth>
+  <depth>-110</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>selected = false
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -25,12 +48,36 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var str = 'Hide Analysis'
-if not global.showanalysis str = 'Show Analysis'
+            <string>var w = 112
+var h = 32
+var droph = 100
 
-menuButton(x,y,112,32,str
-,false,false,buttonCallback_ToggleAnalysis,
-global.state == globalstate_idle,false,false)
+comboBoxButton(x,y,w,h,'Grid snap ('+string(oEdit.snap)+')',self)
+
+if mouse_x &lt; x-8 or mouse_x &gt; x+w+8
+or mouse_y &lt; y-8 or mouse_y &gt; y+h+droph+8 {
+    selected = false
+    global.comboboxselected = false
+}
+
+if selected {
+    drawButton(x,y+h-1,w,droph,false)
+    var bx = x+9
+    var by = y+h+20
+    var bw = 28
+    var bh = 28
+    var dx = 35
+    comboBoxOptionButton(bx,by,bw,bh,'32',buttonCallback_GridPreset,32)
+    bx += dx
+    comboBoxOptionButton(bx,by,bw,bh,'16',buttonCallback_GridPreset,16)
+    bx += dx
+    comboBoxOptionButton(bx,by,bw,bh,'8',buttonCallback_GridPreset,8)
+    by += dx
+    bx -= dx*2
+    comboBoxOptionButton(bx,by,bw,bh,'4',buttonCallback_GridPreset,4)
+    bx += dx
+    comboBoxOptionButton(bx,by,50,bh,'other',buttonCallback_GridCustom,false)
+}
 </string>
           </argument>
         </arguments>
