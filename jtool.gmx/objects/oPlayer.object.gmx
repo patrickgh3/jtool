@@ -136,7 +136,7 @@ var h = R
 if h == 0 h = -L
 if frozen h = 0
 
-var slipBlockTouching = instance_place(x,y+(4*global.grav),oSlipBlock)
+var slipBlockTouching = instance_place(x,y+4*global.grav,oSlipBlock)
 
 // moving
 if h != 0 {
@@ -186,13 +186,13 @@ if not onPlatform {
 }
 // fall off platform
 else {
-    if not place_meeting(x,y+(4*global.grav),oPlatform) {
+    if not place_meeting(x,y+4*global.grav,oPlatform) {
         onPlatform = false
     }
 }
 
 // slide block
-var slideBlockTouching = instance_place(x,round(y+(global.grav)),oSlideBlock)
+var slideBlockTouching = instance_place(x,y+global.grav,oSlideBlock)
 if slideBlockTouching != noone {
     hspeed += slideBlockTouching.h
 }
