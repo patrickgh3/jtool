@@ -54,6 +54,10 @@ var droph = 100
 
 comboBoxButton(x,y,w,h,droph,'Grid snap: '+string(oEdit.snap))
 
+if keyboard_check_pressed(ord('G')) and global.state != globalstate_input {
+    buttonCallback_GridCustom()
+}
+
 if selected {
     drawButton(x,y+h-1,w,droph,false)
     var bx = x+9
@@ -70,7 +74,7 @@ if selected {
     bx -= dx*2
     comboBoxOptionButton(bx,by,bw,bh,buttonCallback_GridPreset,'1',1)
     bx += dx
-    comboBoxOptionButton(bx,by,50,bh,buttonCallback_GridCustom,'other',false)
+    comboBoxOptionButton(bx,by,60,bh,buttonCallback_GridCustom,'other (G)',false)
 }
 </string>
           </argument>

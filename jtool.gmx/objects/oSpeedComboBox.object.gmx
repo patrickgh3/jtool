@@ -51,7 +51,12 @@
             <string>var w = 112
 var h = 32
 var droph = 100
+
 comboBoxButton(x,y,w,h,droph,'Frame rate: '+string(room_speed))
+
+if keyboard_check_pressed(ord('F')) and global.state != globalstate_input {
+    buttonCallback_SpeedCustom()
+}
 
 if selected {
     drawButton(x,y+h-1,w,droph,false)
@@ -67,7 +72,7 @@ if selected {
     comboBoxOptionButton(bx,by,bw,bh,buttonCallback_SpeedPreset,'100',100)
     by += dx
     bx -= dx*2
-    comboBoxOptionButton(bx,by,50,bh,buttonCallback_SpeedCustom,'other',false)
+    comboBoxOptionButton(bx,by,70,bh,buttonCallback_SpeedCustom,'other (F)',false)
 }
 </string>
           </argument>
