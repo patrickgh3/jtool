@@ -136,7 +136,7 @@
     <option_ios_google_analytics_enable>false</option_ios_google_analytics_enable>
     <option_ios_google_play_id></option_ios_google_play_id>
     <option_ios_google_tracking_id></option_ios_google_tracking_id>
-    <option_ios_half_ipad1_textures>false</option_ios_half_ipad1_textures>
+    <option_ios_half_ipad1_textures>0</option_ios_half_ipad1_textures>
     <option_ios_icon_114>Configs\Default\ios\icons\icon114.png</option_ios_icon_114>
     <option_ios_icon_120>Configs\Default\ios\icons\icon120.png</option_ios_icon_120>
     <option_ios_icon_144>Configs\Default\ios\icons\icon144.png</option_ios_icon_144>
@@ -334,7 +334,7 @@
     <option_win8_logo_background_colour>#000000</option_win8_logo_background_colour>
     <option_win8_logo_foreground_text>light</option_win8_logo_foreground_text>
     <option_win8_major_version>1</option_win8_major_version>
-    <option_win8_microphone_capable>false</option_win8_microphone_capable>
+    <option_win8_microphone_capable>0</option_win8_microphone_capable>
     <option_win8_minor_version>0</option_win8_minor_version>
     <option_win8_native_certificate_location>Win8NativeRunner_TemporaryKey.pfx</option_win8_native_certificate_location>
     <option_win8_native_cpu>x86</option_win8_native_cpu>
@@ -372,7 +372,7 @@
     <option_windows_splash_screen>Configs\Default\windows\splash.png</option_windows_splash_screen>
     <option_windows_steam_app_id>0</option_windows_steam_app_id>
     <option_windows_texture_page>2048</option_windows_texture_page>
-    <option_windows_use_splash>true</option_windows_use_splash>
+    <option_windows_use_splash>0</option_windows_use_splash>
     <option_winphone_480_splash_image>Configs\Default\WinPhone\SplashScreenImage480.jpg</option_winphone_480_splash_image>
     <option_winphone_720_splash_image>Configs\Default\WinPhone\SplashScreenImage720.jpg</option_winphone_720_splash_image>
     <option_winphone_768_splash_image>Configs\Default\WinPhone\SplashScreenImage.jpg</option_winphone_768_splash_image>
@@ -424,7 +424,7 @@
     <option_winphone_portrait_allowed>-1</option_winphone_portrait_allowed>
     <option_winphone_publisher>YourPublisherName</option_winphone_publisher>
     <option_winphone_publisher_id>f47823f0-220d-459a-bf68-b6ea984b24a8</option_winphone_publisher_id>
-    <option_winphone_record_audio_capability>true</option_winphone_record_audio_capability>
+    <option_winphone_record_audio_capability>-1</option_winphone_record_audio_capability>
     <option_winphone_revision_version>0</option_winphone_revision_version>
     <option_winphone_scale>-1</option_winphone_scale>
     <option_winphone_supports_720p>-1</option_winphone_supports_720p>
@@ -440,7 +440,7 @@
     <option_xbone_events_manifest_index>-1</option_xbone_events_manifest_index>
     <option_xbone_foreground_text>light</option_xbone_foreground_text>
     <option_xbone_interpolation>-1</option_xbone_interpolation>
-    <option_xbone_languages>"&lt;!-- Add languages you support here --&gt;","&lt;!-- os_get_language will only return languages listed --&gt;","&lt;!-- ""en"" is supported by default --&gt;","&lt;!-- See ""NLS APIs and Localization"" white paper --&gt;","&lt;!-- from developer.xboxlive.com for info --&gt;"</option_xbone_languages>
+    <option_xbone_languages>"&lt;!-- Insert the languages your title supports here --&gt;","&lt;!-- os_get_language will only return languages that are listed --&gt;","&lt;!-- ""en"" is supported by default --&gt;","&lt;!-- Resource Language=""en-us""/ --&gt;"</option_xbone_languages>
     <option_xbone_major_version>0</option_xbone_major_version>
     <option_xbone_minor_version>0</option_xbone_minor_version>
     <option_xbone_network_manifest_file></option_xbone_network_manifest_file>
@@ -448,9 +448,9 @@
     <option_xbone_publisher></option_xbone_publisher>
     <option_xbone_publisher_display_name></option_xbone_publisher_display_name>
     <option_xbone_ratings>"&lt;mx:Ratings Category=""game""&gt;","&lt;!-- Insert your title ratings here --&gt;","&lt;!-- See ""Title Ratings for Xbox One"" white paper --&gt;","&lt;!-- from developer.xboxlive.com for details --&gt;","&lt;/mx:Ratings&gt;"</option_xbone_ratings>
-    <option_xbone_require_audio_recording>false</option_xbone_require_audio_recording>
-    <option_xbone_require_game_chat>false</option_xbone_require_game_chat>
-    <option_xbone_require_xbox_live>0</option_xbone_require_xbox_live>
+    <option_xbone_require_audio_recording>False</option_xbone_require_audio_recording>
+    <option_xbone_require_game_chat>False</option_xbone_require_game_chat>
+    <option_xbone_require_xbox_live>True</option_xbone_require_xbox_live>
     <option_xbone_revision_version>0</option_xbone_revision_version>
     <option_xbone_scale>-1</option_xbone_scale>
     <option_xbone_service_config_id></option_xbone_service_config_id>

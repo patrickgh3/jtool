@@ -44,8 +44,8 @@ xsnapped = 0
 ysnapped = 0
 cursor_in_area = false
 undo_objectstring = ''
-undo_rightpressedinedit=false
-undo_leftpressedinedit=false
+undo_rightpressedinedit = false
+undo_leftpressedinedit = false
 </string>
           </argument>
         </arguments>
@@ -147,6 +147,10 @@ if cursor_in_area and global.state == globalstate_idle {
             }
         }
     }
+}
+else {
+    cursor_sprite = -1
+    window_set_cursor(cr_default)
 }
 
 // undo
