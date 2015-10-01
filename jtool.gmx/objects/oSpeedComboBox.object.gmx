@@ -51,8 +51,7 @@
             <string>var w = 112
 var h = 32
 var droph = 100
-
-comboBoxButton(x,y,w,h,droph,'Grid snap: '+string(oEdit.snap))
+comboBoxButton(x,y,w,h,droph,'Frame rate: '+string(room_speed))
 
 if selected {
     drawButton(x,y+h-1,w,droph,false)
@@ -61,16 +60,14 @@ if selected {
     var bw = 28
     var bh = 28
     var dx = 35
-    comboBoxOptionButton(bx,by,bw,bh,buttonCallback_GridPreset,'32',32)
+    comboBoxOptionButton(bx,by,bw,bh,buttonCallback_SpeedPreset,'50',50)
     bx += dx
-    comboBoxOptionButton(bx,by,bw,bh,buttonCallback_GridPreset,'16',16)
+    comboBoxOptionButton(bx,by,bw,bh,buttonCallback_SpeedPreset,'25',25)
     bx += dx
-    comboBoxOptionButton(bx,by,bw,bh,buttonCallback_GridPreset,'8',8)
+    comboBoxOptionButton(bx,by,bw,bh,buttonCallback_SpeedPreset,'100',100)
     by += dx
     bx -= dx*2
-    comboBoxOptionButton(bx,by,bw,bh,buttonCallback_GridPreset,'1',1)
-    bx += dx
-    comboBoxOptionButton(bx,by,50,bh,buttonCallback_GridCustom,'other',false)
+    comboBoxOptionButton(bx,by,50,bh,buttonCallback_SpeedCustom,'other',false)
 }
 </string>
           </argument>

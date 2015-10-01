@@ -166,6 +166,8 @@
       <script>scripts\comboBoxOptionButton.gml</script>
       <script>scripts\buttonCallback_GridPreset.gml</script>
       <script>scripts\buttonCallback_GridCustom.gml</script>
+      <script>scripts\buttonCallback_SpeedPreset.gml</script>
+      <script>scripts\buttonCallback_SpeedCustom.gml</script>
     </scripts>
     <scripts name="saveload">
       <script>scripts\saveGame.gml</script>
@@ -227,6 +229,7 @@
       <object>objects\oKeyDisplay</object>
       <object>objects\oOptionsButton</object>
       <object>objects\oGridComboBox</object>
+      <object>objects\oSpeedComboBox</object>
       <objects name="jump analysis">
         <object>objects\oToggleAnalysis</object>
         <object>objects\oJumpDurations</object>

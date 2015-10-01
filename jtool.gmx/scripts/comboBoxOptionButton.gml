@@ -1,11 +1,11 @@
-// comboBoxOptionButton(x,y,w,h,text,callback,cb_arg1)
+// comboBoxOptionButton(x,y,w,h,callback,text,cb_arg1)
 
 var xx = argument0
 var yy = argument1
 var w = argument2
 var h = argument3
-var text = argument4
-var callback = argument5
+var callback = argument4
+var text = argument5
 var cb_arg1 = argument6
 
 var mouse_hover = point_in_rect(mouse_x,mouse_y,xx,yy,xx+w,yy+h)
