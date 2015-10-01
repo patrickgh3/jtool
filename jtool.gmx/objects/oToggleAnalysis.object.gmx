@@ -27,10 +27,8 @@
             <kind>1</kind>
             <string>var str = 'Hide Analysis'
 if not global.showanalysis str = 'Show Analysis'
-
-menuButton(x,y,112,32,str
-,false,false,buttonCallback_ToggleAnalysis,
-global.state == globalstate_idle,false,false)
+var enabled = global.state == globalstate_idle
+menuButton(x,y,112,32,str,buttonCallback_ToggleAnalysis,enabled)
 </string>
           </argument>
         </arguments>

@@ -151,7 +151,6 @@
     <scripts name="menu buttons">
       <script>scripts\menuButton.gml</script>
       <script>scripts\drawButton.gml</script>
-      <script>scripts\buttonCallback_RoomSpeed.gml</script>
       <script>scripts\buttonCallback_KillPlayer.gml</script>
       <script>scripts\buttonCallback_CancelHint.gml</script>
       <script>scripts\buttonCallback_Skin.gml</script>
@@ -160,6 +159,7 @@
       <script>scripts\buttonCallback_Fullscreen.gml</script>
       <script>scripts\buttonCallback_ToggleAnalysis.gml</script>
       <script>scripts\buttonCallback_LoadRMJMap.gml</script>
+      <script>scripts\buttonCallback_OpenMenu.gml</script>
     </scripts>
     <scripts name="combo boxes">
       <script>scripts\comboBoxButton.gml</script>

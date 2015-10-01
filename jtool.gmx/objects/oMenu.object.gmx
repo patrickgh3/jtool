@@ -30,7 +30,8 @@ menu_height = 160
 
 x = 0
 y = -menu_height
-steps_in_menu=0
+steps_in_menu = 0
+steps_out_of_menu = 0
 yspeed = 0
 </string>
           </argument>
@@ -54,10 +55,12 @@ yspeed = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if keyboard_check_pressed(vk_escape)
+            <string>steps_out_of_menu += 1
+if keyboard_check_pressed(vk_escape)
 and global.state == globalstate_menu
 and steps_in_menu &gt; 0 {
     global.state = globalstate_idle
+    steps_out_of_menu = 0
 }
 
 if global.state == globalstate_menu {
@@ -94,59 +97,34 @@ else if global.state == globalstate_idle {
             <kind>1</kind>
             <string>draw_sprite(sMenu,0,0,y-(sprite_get_height(sMenu)-menu_height))
 
-var xo = 10
-var dx = 55
-var w = 45
-
-var yo = 10
-var dy = 55
-var h = 45
-
-var ok_to_click_button = global.state == globalstate_menu and steps_in_menu &gt; 0
+var buttons_enabled = global.state == globalstate_menu and steps_in_menu &gt; 0
 
 // option buttons
 
-// room speed
-menuButton(x+10,y+120,100,32,'(F) FPS: '+string(room_speed)
-,ord('F'),false,buttonCallback_RoomSpeed,
-ok_to_click_button,true,false)
+var xx = x+20
+var yy = y+20
+var w = 100
+var h = 32
+var dx = 110
 
-// kill player
 var str = 'On'
 if not global.deathEnabled str = 'Off'
-menuButton(x+230,y+120,100,32,'Death: '+str
-,false,false,buttonCallback_KillPlayer,
-ok_to_click_button,false,false)
+menuButton(xx,yy,w,h,'Death: '+str,buttonCallback_KillPlayer,buttons_enabled)
 
-// change skin
-menuButton(x+340,y+120,100,32,'Change Skin'
-,false,false,buttonCallback_Skin,
-ok_to_click_button,false,false)
+xx += dx
+menuButton(xx,yy,w,h,'Change Skin',buttonCallback_Skin,buttons_enabled)
 
-// save map
-menuButton(x+450,y+120,100,32,'Save Map'
-,ord('S'),true,buttonCallback_SaveMap,
-ok_to_click_button,false,false)
+xx += dx
+menuButton(xx,yy,w,h,'Save Map',buttonCallback_SaveMap,buttons_enabled)
 
-// load map
-menuButton(x+560,y+120,100,32,'Open Map'
-,ord('O'),true,buttonCallback_LoadMap,
-ok_to_click_button,false,false)
+xx += dx
+menuButton(xx,yy,w,h,'Open Map',buttonCallback_LoadMap,buttons_enabled)
 
-// fullscreen
-menuButton(x+670,y+120,100,32,'Fullscreen'
-,false,false,buttonCallback_Fullscreen,
-ok_to_click_button,false,false)
+xx += dx
+menuButton(xx,yy,w,h,'Fullscreen',buttonCallback_Fullscreen,buttons_enabled)
 
-// load RMJ map
-menuButton(x+50,y+60,100,32,'Load RMJ map'
-,false,false,buttonCallback_LoadRMJMap,
-ok_to_click_button,false,false)
-
-// cancel hint cutoff
-/*menuButton(x+340,y+120,128,32,'Hint cutoff: '+string(oDisplay.jc_cutoff)
-,false,buttonCallback_CancelHint,
-ok_to_click_button,false)*/
+xx += dx
+menuButton(xx,yy,w,h,'Import RMJ Map',buttonCallback_LoadRMJMap,buttons_enabled)
 
 </string>
           </argument>
