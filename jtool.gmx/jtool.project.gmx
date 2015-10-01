@@ -160,6 +160,7 @@
       <script>scripts\buttonCallback_ToggleAnalysis.gml</script>
       <script>scripts\buttonCallback_LoadRMJMap.gml</script>
       <script>scripts\buttonCallback_OpenMenu.gml</script>
+      <script>scripts\buttonCallback_ClearMap.gml</script>
     </scripts>
     <scripts name="combo boxes">
       <script>scripts\comboBoxButton.gml</script>
