@@ -16,6 +16,9 @@ var version1 = 0
 var version2 = 0
 var version3 = 0
 
+global.infinitejump = false
+global.dotkid = false
+
 while index <= string_length(content) {
     var nextchar = string_char_at(content,index);
     if nextchar != delim {
@@ -36,7 +39,8 @@ while index <= string_length(content) {
         }
         // everything else
         else if section_number > 1 {
-            if string_split(currentstring,0,':') == 'objects' {
+            var prefix = string_split(currentstring,0,':')
+            if prefix == 'objects' {
                 // parse objects aaaaa
                 oEdit.undo_objectstring = ''
                 with all if object_is_edit(object_index) instance_destroy()
@@ -51,6 +55,12 @@ while index <= string_length(content) {
                 global.savePlayerY = oPlayerStart.y+23
                 global.savePlayerXScale = 1
                 loadGame()
+            }
+            else if prefix == 'dot' {
+                global.dotkid = real(string_split(currentstring,1,':'))
+            }
+            else if prefix == 'inf' {
+                global.infjump = real(string_split(currentstring,1,':'))
             }
         }
         section_number += 1

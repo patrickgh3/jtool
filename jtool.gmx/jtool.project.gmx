@@ -77,6 +77,8 @@
       <sprite>sprites\sPlayerMaskFlip</sprite>
       <sprite>sprites\sPlayerBullet</sprite>
       <sprite>sprites\sPlayerBlood</sprite>
+      <sprite>sprites\sDotkid</sprite>
+      <sprite>sprites\sDotkidOutline</sprite>
     </sprites>
     <sprites name="engine misc">
       <sprite>sprites\sPlatformMask</sprite>
@@ -161,6 +163,9 @@
       <script>scripts\buttonCallback_LoadRMJMap.gml</script>
       <script>scripts\buttonCallback_OpenMenu.gml</script>
       <script>scripts\buttonCallback_ClearMap.gml</script>
+      <script>scripts\buttonCallback_Dotkid.gml</script>
+      <script>scripts\buttonCallback_InfiniteJump.gml</script>
+      <script>scripts\buttonCallback_DotkidOutline.gml</script>
     </scripts>
     <scripts name="combo boxes">
       <script>scripts\comboBoxButton.gml</script>

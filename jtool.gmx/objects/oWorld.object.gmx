@@ -158,6 +158,10 @@ global.frameaction_jumpslow = false
 
 global.comboboxselected = false
 
+global.infinitejump = false
+global.dotkid = false
+global.dotkidoutline = false
+
 loadConfig()
 </string>
           </argument>

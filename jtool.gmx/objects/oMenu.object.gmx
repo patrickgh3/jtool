@@ -138,6 +138,21 @@ if keyboard_check_pressed(vk_f2) {
     buttonCallback_ClearMap()
 }
 
+xx += dx
+var str = 'On'
+if not global.dotkid str = 'Off'
+menuButton(xx,yy,w,h,'Dotkid: '+str,buttonCallback_Dotkid,buttons_enabled)
+
+xx += dx
+var str = 'On'
+if not global.infinitejump str = 'Off'
+menuButton(xx,yy,w,h,'Inf Jump: '+str,buttonCallback_InfiniteJump,buttons_enabled)
+
+xx += dx
+var str = 'On'
+if not global.infinitejump str = 'Off'
+menuButton(xx,yy,w,h,'Dot Outline: '+str,buttonCallback_DotkidOutline,buttons_enabled)
+
 </string>
           </argument>
         </arguments>

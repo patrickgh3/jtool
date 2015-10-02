@@ -7,7 +7,8 @@ or place_meeting(x,y+global.grav,oWater) {
     global.frameaction_jump = true
 }
 else if djump
-or place_meeting(x,y+global.grav,oWater2) {
+or place_meeting(x,y+global.grav,oWater2)
+or global.infinitejump {
     vspeed = -jump2
     sprite_index = sPlayerJump
     audio_play_sound(sndDJump,0,0)

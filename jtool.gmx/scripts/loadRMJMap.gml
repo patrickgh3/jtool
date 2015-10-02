@@ -22,6 +22,9 @@ while not file_text_eoln(f) {
 }
 file_text_close(f)
 
+global.infinitejump = false
+global.dotkid = false
+
 global.savePlayerX = oPlayerStart.x+17
 global.savePlayerY = oPlayerStart.y+23
 global.savePlayerXScale = 1

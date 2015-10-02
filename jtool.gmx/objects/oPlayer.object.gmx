@@ -36,14 +36,23 @@ djump = true
 onPlatform = false
 image_speed = 0.2
 
-if global.grav == 1 {
+/*if global.grav == 1 {
     mask_index = sPlayerMask
 }
 else {
     mask_index = sPlayerMaskFlip
+}*/
+
+if not global.dotkid {
+    mask_index = sPlayerMask
+    sprite_index = sPlayerIdle
+}
+else {
+    mask_index = sDotkid
+    sprite_index = sDotkid
 }
 
-sprite_index = sPlayerIdle
+
 </string>
           </argument>
         </arguments>
@@ -66,7 +75,9 @@ sprite_index = sPlayerIdle
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if x &lt; 0 {
+            <string>/// Edge of screen death
+
+if x &lt; 0 {
     if global.edgeDeath killPlayer()
     with oBorderDeath if type == 'left' highlight_count = 0
 }
@@ -113,6 +124,36 @@ global.frameaction_jumpslow = false
       </action>
     </event>
     <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// dotkid / regular kid
+
+if global.dotkid and mask_index != sDotkid {
+    mask_index = sDotkid
+    sprite_index = sDotkid
+}
+else if not global.dotkid and mask_index == sDotkid {
+    mask_index = sPlayerMask
+    sprite_index = sPlayerIdle
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -388,6 +429,7 @@ with other {
         djump = true
     }
 }
+/*
 else {
     // touching platform
     if y-vspeed/2 &gt;= other.y+other.sprite_height-1 {
@@ -400,7 +442,7 @@ else {
         onPlatform = true
         djump = true
     }
-}
+}*/
 </string>
           </argument>
         </arguments>
@@ -423,7 +465,7 @@ else {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.grav == 1) {
+            <string>/*if (global.grav == 1) {
     draw_sprite_ext(sprite_index,image_index,round(x),round(y),
     global.player_xscale,1,image_angle,image_blend,image_alpha)
 }
@@ -431,7 +473,19 @@ else {
     //need to draw the player a pixel off when flipped for some reason
     draw_sprite_ext(sprite_index,image_index,round(x),round(y+1),
     global.player_xscale,-1,image_angle,image_blend,image_alpha)
+}*/
+
+if mask_index != sDotkid {
+    draw_sprite_ext(sprite_index,image_index,round(x),round(y),
+    global.player_xscale,1,image_angle,image_blend,image_alpha)
 }
+else {
+    draw_sprite(sDotkid,0,round(x),round(y))
+    if global.dotkidoutline {
+        draw_sprite(sDotkidOutline,0,round(x),round(y)+8)
+    }
+}
+
 //draw_sprite(mask_index,0,x,y)
 </string>
           </argument>

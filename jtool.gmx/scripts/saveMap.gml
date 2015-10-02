@@ -12,6 +12,10 @@ file_text_write_string(f,'jtool')
 file_text_write_string(f,delim)
 file_text_write_string(f,version)
 file_text_write_string(f,delim)
+file_text_write_string(f,'inf:'+string(global.infinitejump))
+file_text_write_string(f,delim)
+file_text_write_string(f,'dot:'+string(global.dotkid))
+file_text_write_string(f,delim)
 file_text_write_string(f,'objects:')
 
 var objects_out_of_range = false
