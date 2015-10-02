@@ -232,15 +232,16 @@
       <object>objects\oKiller</object>
       <object>objects\oKillerTrigger</object>
       <object>objects\oBlock</object>
+      <object>objects\oKeySaveParticle</object>
     </objects>
     <objects name="sidebar">
       <object>objects\oSidebar</object>
       <object>objects\oOptionsButton</object>
       <object>objects\oHideSidebar</object>
       <object>objects\oPalatte</object>
-      <object>objects\oKeyDisplay</object>
       <object>objects\oGridComboBox</object>
       <object>objects\oSpeedComboBox</object>
+      <object>objects\oKeyDisplay</object>
       <objects name="jump analysis">
         <object>objects\oToggleAnalysis</object>
         <object>objects\oJumpDurations</object>

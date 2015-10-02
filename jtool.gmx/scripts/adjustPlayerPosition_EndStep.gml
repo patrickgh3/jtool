@@ -1,5 +1,6 @@
 // Moves the player 1px horizontally using A / D, and 0.01 px vertically using W / S.
 // Also jump to mouse position using space.
+// Also save using S.
 // To be called by an object every End Step.
 
 with oPlayer {
@@ -34,4 +35,10 @@ and mouse_x >= 0 and mouse_x < 800 and mouse_y >= 0 and mouse_y < 608 {
         vspeed = 0
         djump = true
     }
+}
+
+if keyboard_check_pressed(ord('S')) and instance_exists(oPlayer) {
+    saveGame()
+    audio_play_sound(sndShoot,0,false)
+    with oPlayer instance_create(x-17,y-23,oKeySaveParticle)
 }

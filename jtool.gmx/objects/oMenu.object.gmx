@@ -153,7 +153,7 @@ menuButton(xx,yy,w,h,'Change Skin',buttonCallback_Skin,buttons_enabled)
 
 yy += dy
 menuButtonToggle(xx,yy,w,h,buttonCallback_HideSidebar,buttons_enabled,
-'Hide Sidebar','Show Sidebar',global.hidesidebar)
+'Show Sidebar','Hide Sidebar',global.hidesidebar)
 
 yy += dy
 menuButton(xx,yy,w,h,'Fullscreen',buttonCallback_Fullscreen,buttons_enabled)

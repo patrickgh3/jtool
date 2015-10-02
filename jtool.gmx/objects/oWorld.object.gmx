@@ -32,7 +32,7 @@ texture_set_interpolation(window_get_fullscreen());
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="3" enumb="2">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -56,6 +56,8 @@ texture_set_interpolation(window_get_fullscreen());
 if keyboard_check(vk_alt) and keyboard_check_pressed(vk_f4) {
     game_end()
 }
+
+adjustPlayerPosition_EndStep()
 
 global.count += 1
 
