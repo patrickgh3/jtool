@@ -152,7 +152,9 @@
     </scripts>
     <scripts name="menu buttons">
       <script>scripts\menuButton.gml</script>
+      <script>scripts\menuButtonToggle.gml</script>
       <script>scripts\drawButton.gml</script>
+      <script>scripts\menuSection.gml</script>
       <script>scripts\buttonCallback_KillPlayer.gml</script>
       <script>scripts\buttonCallback_CancelHint.gml</script>
       <script>scripts\buttonCallback_Skin.gml</script>
@@ -166,6 +168,7 @@
       <script>scripts\buttonCallback_Dotkid.gml</script>
       <script>scripts\buttonCallback_InfiniteJump.gml</script>
       <script>scripts\buttonCallback_DotkidOutline.gml</script>
+      <script>scripts\buttonCallback_HideSidebar.gml</script>
     </scripts>
     <scripts name="combo boxes">
       <script>scripts\comboBoxButton.gml</script>
@@ -188,6 +191,7 @@
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_small</font>
+    <font>fonts\font_big</font>
   </fonts>
   <objects name="objects">
     <objects name="palatte">
@@ -231,9 +235,10 @@
     </objects>
     <objects name="sidebar">
       <object>objects\oSidebar</object>
+      <object>objects\oOptionsButton</object>
+      <object>objects\oHideSidebar</object>
       <object>objects\oPalatte</object>
       <object>objects\oKeyDisplay</object>
-      <object>objects\oOptionsButton</object>
       <object>objects\oGridComboBox</object>
       <object>objects\oSpeedComboBox</object>
       <objects name="jump analysis">

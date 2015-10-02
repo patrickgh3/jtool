@@ -74,7 +74,7 @@ ypos = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not global.showanalysis exit
+            <string>if not global.showanalysis or global.hidesidebar exit
 
 drawButton(x,y,128,32,false)
 fontSetup(font_small,c_black,fa_left,fa_top,1)

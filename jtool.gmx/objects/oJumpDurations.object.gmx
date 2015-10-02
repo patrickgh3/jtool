@@ -71,7 +71,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.showanalysis {
+            <string>if global.showanalysis and not global.hidesidebar {
     var xo = 8
     var yo = 5
     var dy = 20

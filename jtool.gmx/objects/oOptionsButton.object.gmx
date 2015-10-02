@@ -25,8 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>menuButton(x,y,96,32,'(Esc) Options',buttonCallback_OpenMenu,
-global.state == globalstate_idle)
+            <string>if not global.hidesidebar {
+    menuButton(x,y,96,32,'(Esc) Options',buttonCallback_OpenMenu,
+    global.state == globalstate_idle)
+}
 
 if global.state == globalstate_idle and keyboard_check_pressed(vk_escape) 
 and oMenu.steps_out_of_menu &gt; 0 {

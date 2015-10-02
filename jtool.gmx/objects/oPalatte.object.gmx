@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var xo = 10
+            <string>if global.hidesidebar exit
+
+var xo = 10
 var dx = 55
 var w = 44
 

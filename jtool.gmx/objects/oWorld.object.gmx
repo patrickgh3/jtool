@@ -160,7 +160,9 @@ global.comboboxselected = false
 
 global.infinitejump = false
 global.dotkid = false
+
 global.dotkidoutline = false
+global.hidesidebar = false
 
 loadConfig()
 </string>

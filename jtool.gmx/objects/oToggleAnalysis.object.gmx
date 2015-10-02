@@ -25,7 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var str = 'Hide Analysis'
+            <string>if global.hidesidebar exit
+
+var str = 'Hide Analysis'
 if not global.showanalysis str = 'Show Analysis'
 var enabled = global.state == globalstate_idle
 menuButton(x,y,112,32,str,buttonCallback_ToggleAnalysis,enabled)

@@ -3,7 +3,7 @@
   <spriteName>sEditorMenu</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-110</depth>
+  <depth>-150</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,9 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>color_background = make_color_hsv(0,0,230)
-menu_height = 160
-
+            <string>menu_height = 200
 x = 0
 y = -menu_height
 steps_in_menu = 0
@@ -98,60 +96,79 @@ else if global.state == globalstate_idle {
             <string>draw_sprite(sMenu,0,0,y-(sprite_get_height(sMenu)-menu_height))
 
 var buttons_enabled = global.state == globalstate_menu and steps_in_menu &gt; 0
-var xx = x+20
-var yy = y+20
-var w = 100
+var w = 120
 var h = 32
-var dx = 110
+var dx = 130
+var dy = 45
+var dx2 = 40
+var xo = 20
+var yo = 60
 
-var str = 'On'
-if not global.deathEnabled str = 'Off'
-menuButton(xx,yy,w,h,'Death: '+str,buttonCallback_KillPlayer,buttons_enabled)
+var xx = x+xo
+var yy = y+yo
 
-xx += dx
-menuButton(xx,yy,w,h,'Change Skin',buttonCallback_Skin,buttons_enabled)
+// file
+menuSection(xx,yy,'File',false)
 
-xx += dx
-menuButton(xx,yy,w,h,'Save Map',buttonCallback_SaveMap,buttons_enabled)
-if keyboard_check(vk_control) and keyboard_check_pressed(ord('S')) {
-    buttonCallback_SaveMap()
-}
-
-xx += dx
 menuButton(xx,yy,w,h,'Open Map',buttonCallback_LoadMap,buttons_enabled)
 if keyboard_check(vk_control) and keyboard_check_pressed(ord('O')) {
     buttonCallback_LoadMap()
 }
 
-xx += dx
+yy += dy
+menuButton(xx,yy,w,h,'Save Map',buttonCallback_SaveMap,buttons_enabled)
+if keyboard_check(vk_control) and keyboard_check_pressed(ord('S')) {
+    buttonCallback_SaveMap()
+}
+
+yy += dy
+menuButton(xx,yy,w,h,'Import RMJ Map',buttonCallback_LoadRMJMap,buttons_enabled)
+
+
+// map properties
+xx += dx+dx2
+yy = y+yo
+menuSection(xx,yy,'Map',true)
+
+menuButtonToggle(xx,yy,w,h,buttonCallback_Dotkid,buttons_enabled,
+'[ Dotkid ]','Dotkid',global.dotkid)
+
+yy += dy
+menuButtonToggle(xx,yy,w,h,buttonCallback_InfiniteJump,buttons_enabled,
+'[ Inf Jump ]','Inf Jump',global.infinitejump)
+
+yy += dy
+menuButton(xx,yy,w,h,'Clear Map (F2)',buttonCallback_ClearMap,buttons_enabled)
+if keyboard_check_pressed(vk_f2) {
+    buttonCallback_ClearMap()
+}
+
+
+// preferences
+xx += dx+dx2
+yy = y+yo
+menuSection(xx,yy,'Preferences',true)
+
+menuButton(xx,yy,w,h,'Change Skin',buttonCallback_Skin,buttons_enabled)
+
+yy += dy
+menuButtonToggle(xx,yy,w,h,buttonCallback_HideSidebar,buttons_enabled,
+'Hide Sidebar','Show Sidebar',global.hidesidebar)
+
+yy += dy
 menuButton(xx,yy,w,h,'Fullscreen',buttonCallback_Fullscreen,buttons_enabled)
 if keyboard_check_pressed(vk_f4) {
     buttonCallback_Fullscreen()
 }
 
 xx += dx
-menuButton(xx,yy,w,h,'Import RMJ Map',buttonCallback_LoadRMJMap,buttons_enabled)
+yy = y+yo
+menuButtonToggle(xx,yy,w,h,buttonCallback_DotkidOutline,buttons_enabled,
+'[ Dot Outline ]','Dot Outline',global.dotkidoutline)
 
-xx += dx
-menuButton(xx,yy,w,h,'Clear Map (F2)',buttonCallback_ClearMap,buttons_enabled)
-if keyboard_check_pressed(vk_f2) {
-    buttonCallback_ClearMap()
-}
-
-xx += dx
-var str = 'On'
-if not global.dotkid str = 'Off'
-menuButton(xx,yy,w,h,'Dotkid: '+str,buttonCallback_Dotkid,buttons_enabled)
-
-xx += dx
-var str = 'On'
-if not global.infinitejump str = 'Off'
-menuButton(xx,yy,w,h,'Inf Jump: '+str,buttonCallback_InfiniteJump,buttons_enabled)
-
-xx += dx
-var str = 'On'
-if not global.infinitejump str = 'Off'
-menuButton(xx,yy,w,h,'Dot Outline: '+str,buttonCallback_DotkidOutline,buttons_enabled)
+yy += dy
+menuButtonToggle(xx,yy,w,h,buttonCallback_KillPlayer,buttons_enabled,
+'[ Death ]','Death',global.deathEnabled)
 
 </string>
           </argument>
