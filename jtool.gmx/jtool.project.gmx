@@ -134,6 +134,7 @@
       <script>scripts\object_is_edit.gml</script>
       <script>scripts\rmjobject_to_object.gml</script>
       <script>scripts\colorFromHsvDelimString.gml</script>
+      <script>scripts\stringIsInt.gml</script>
     </scripts>
     <scripts name="jump analysis">
       <script>scripts\jumpDurations_Create.gml</script>
@@ -186,6 +187,10 @@
       <script>scripts\loadSkin.gml</script>
       <script>scripts\loadRMJMap.gml</script>
     </scripts>
+    <script>scripts\inputOverlay.gml</script>
+    <script>scripts\inputCallback_GridCustom.gml</script>
+    <script>scripts\inputOverlaySubmit.gml</script>
+    <script>scripts\inputCallback_SpeedCustom.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_small</font>
@@ -254,6 +259,7 @@
     <object>objects\oMenu</object>
     <object>objects\oEdit</object>
     <object>objects\oBorderDeath</object>
+    <object>objects\oInputOverlay</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rMain</room>
