@@ -91,6 +91,7 @@
       <sprite>sprites\sSlideBlockR</sprite>
       <sprite>sprites\sGravityArrowUp</sprite>
       <sprite>sprites\sGravityArrowDown</sprite>
+      <sprite>sprites\sWaterNekoron</sprite>
     </sprites>
     <sprites name="editor">
       <sprite>sprites\sEditorKiller</sprite>
@@ -241,6 +242,7 @@
     <objects name="other elements">
       <object>objects\oSlipBlock</object>
       <object>objects\oWater3</object>
+      <object>objects\oWaterNekoron</object>
       <object>objects\oSlideBlock</object>
       <object>objects\oSlideBlockR</object>
       <object>objects\oGravityArrowUp</object>
