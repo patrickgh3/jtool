@@ -121,10 +121,6 @@
       <script>scripts\killPlayer.gml</script>
       <script>scripts\flipGravity.gml</script>
     </scripts>
-    <scripts name="yoyo">
-      <script>scripts\initializeVariables.gml</script>
-      <script>scripts\defaultConfig.gml</script>
-    </scripts>
     <scripts name="util">
       <script>scripts\fontSetup.gml</script>
       <script>scripts\point_in_rect.gml</script>
@@ -181,8 +177,8 @@
       <script>scripts\buttonCallback_SpeedCustom.gml</script>
     </scripts>
     <scripts name="saveload">
-      <script>scripts\saveGame.gml</script>
-      <script>scripts\loadGame.gml</script>
+      <script>scripts\savePlayer.gml</script>
+      <script>scripts\loadPlayer.gml</script>
       <script>scripts\saveConfig.gml</script>
       <script>scripts\loadConfig.gml</script>
       <script>scripts\saveMap.gml</script>

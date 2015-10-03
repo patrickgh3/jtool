@@ -12,4 +12,4 @@ instance_create(384,384,oPlayerStart)
 global.savePlayerX = oPlayerStart.x+17
 global.savePlayerY = oPlayerStart.y+23
 global.savePlayerXScale = 1
-loadGame()
+loadPlayer()

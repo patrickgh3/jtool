@@ -8,6 +8,72 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// global state
+global.state = globalstate_idle
+global.comboboxselected = false
+global.count = 0
+global.frameaction_jump = false
+global.frameaction_djump = false
+global.frameaction_jumpslow = false
+global.player_xscale = 1 // todo: get rid of this? did yoyo change in new engine version?
+
+loadConfig()
+
+// might load from config
+global.killer_holdduration = 12
+global.killer_fadeduration = 4
+
+// set by map in future?
+global.savePlayerX = 100
+global.savePlayerY = 100
+global.saveGrav = 1
+global.savePlayerXScale = 1
+global.grav = 1
+
+// might eliminate when doing default map load on startup
+global.infinitejump = false
+global.dotkid = false
+global.firstRoomStart = true // uh, yeah. uh
+
+// misc
+randomize()
+display_set_gui_size(view_wview[0],view_hview[0])
+window_set_caption('jtool')
+// load keys from file sometime? idk
+global.key_left = vk_left
+global.key_right = vk_right
+global.key_up = vk_up
+global.key_down = vk_down
+global.key_jump = vk_shift
+global.key_shoot = ord('Z')
+global.key_restart = ord('R')
+global.key_suicide = ord('Q')
+global.key_pause = vk_escape
+/*global.muteMusic = false
+global.volumeLevel = 100
+audio_master_gain(global.volumeLevel/100)*/
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
@@ -50,7 +116,7 @@ texture_set_interpolation(window_get_fullscreen());
           <argument>
             <kind>1</kind>
             <string>if keyboard_check_pressed(global.key_restart) and global.gameStarted {
-    loadGame()
+    loadPlayer()
 }
 
 if keyboard_check(vk_alt) and keyboard_check_pressed(vk_f4) {
@@ -91,7 +157,7 @@ global.count += 1
 
 if global.firstRoomStart {
     global.firstRoomStart = false
-    saveGame()
+    savePlayer()
 }
 </string>
           </argument>
@@ -120,78 +186,6 @@ if global.firstRoomStart {
     +'##(Note: GMStudio forces game to exit at this point)'
     if show_question(prompt) saveMap()
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>initializeVariables()
-defaultConfig()
-
-global.gameStarted = true
-
-global.state = globalstate_idle
-global.count = 0
-global.firstRoomStart = true
-
-global.killer_holdduration = 12
-global.killer_fadeduration = 4
-
-global.frameaction_jump = false
-global.frameaction_djump = false
-global.frameaction_jumpslow = false
-
-global.comboboxselected = false
-
-global.infinitejump = false
-global.dotkid = false
-
-global.dotkidoutline = false
-global.hidesidebar = false
-global.editorinstructions = false
-
-loadConfig()
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="64">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>fontSetup(font12,c_black,fa_left,fa_top,1)
-draw_text(0,0,'global.gameStarted: '+string(global.gameStarted))
 </string>
           </argument>
         </arguments>

@@ -28,4 +28,4 @@ global.dotkid = false
 global.savePlayerX = oPlayerStart.x+17
 global.savePlayerY = oPlayerStart.y+23
 global.savePlayerXScale = 1
-loadGame()
+loadPlayer()

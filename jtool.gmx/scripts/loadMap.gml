@@ -54,7 +54,7 @@ while index <= string_length(content) {
                 global.savePlayerX = oPlayerStart.x+17
                 global.savePlayerY = oPlayerStart.y+23
                 global.savePlayerXScale = 1
-                loadGame()
+                loadPlayer()
             }
             else if prefix == 'dot' {
                 global.dotkid = real(string_split(currentstring,1,':'))

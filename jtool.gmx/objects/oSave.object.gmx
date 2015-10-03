@@ -100,7 +100,7 @@ grav = 1
            or (place_meeting(x,y,oPlayer) and keyboard_check_pressed(global.key_shoot))
 
 if shot and can_save and instance_exists(oPlayer) and grav == global.grav {
-    saveGame()
+    savePlayer()
     can_save=false
     alarm[0]=30
     alarm[1]=59
