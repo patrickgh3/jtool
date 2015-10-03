@@ -25,11 +25,13 @@ global.color_killerhue = real(string_split(colorstring,0,','))
 global.color_killersat = real(string_split(colorstring,1,','))
 global.color_killerval = real(string_split(colorstring,2,','))
 global.color_killer = colorFromHsvDelimString(colorstring,',')
-var colorstring = ini_read_string('objects','killer_active_color','0,255,255')
+var colorstring = ini_read_string('objects','killer_active_color','0,128,255')
 global.color_killer2hue = real(string_split(colorstring,0,','))
 global.color_killer2sat = real(string_split(colorstring,1,','))
 global.color_killer2val = real(string_split(colorstring,2,','))
 global.color_killer2 = colorFromHsvDelimString(colorstring,',')
+global.color_warp = colorFromHsvDelimString(
+    ini_read_string('objects','warp_color','67,196,239'),',')
 global.bulletblockeralpha = ini_read_real('objects','bulletblocker_alpha',0.3)
 global.spikeframes = ini_read_real('objects','spike_frames',1)
 global.spikeanimspeed = ini_read_real('objects','spike_animspeed',1)
@@ -68,6 +70,7 @@ for (var i=0; i<30; i+=1) {
         case 19: spr_index=sMenu spr_default=sMenuDefault file='menu.png' xo=0 yo=0 frames=1 break
         case 20: spr_index=sBulletBlocker spr_default=sBulletBlockerDefault file='bulletblocker.png' xo=0 yo=0 frames=1 break
         case 21: spr_index=sPlayerStart spr_default=sPlayerStartDefault file='playerstart.png' xo=0 yo=0 frames=1 break
+        case 22: spr_index=sWarp spr_default=sWarpDefault file='warp.png' xo=0 yo=0 frames=1 break
         default: continue
     }
     

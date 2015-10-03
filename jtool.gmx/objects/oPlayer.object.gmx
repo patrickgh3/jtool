@@ -78,19 +78,19 @@ else {
             <string>/// Edge of screen death
 
 if x &lt; 0 {
-    if global.edgeDeath killPlayer()
+    if global.deathEnabled killPlayer()
     with oBorderDeath if type == 'left' highlight_count = 0
 }
 if x &gt; 800 {
-    if global.edgeDeath killPlayer()
+    if global.deathEnabled killPlayer()
     with oBorderDeath if type == 'right' highlight_count = 0
 }
 if y &lt; 0 {
-    if global.edgeDeath killPlayer()
+    if global.deathEnabled killPlayer()
     with oBorderDeath if type == 'top' highlight_count = 0
 }
 if y &gt; 608 {
-    if global.edgeDeath killPlayer()
+    if global.deathEnabled killPlayer()
     with oBorderDeath if type == 'bottom' highlight_count = 0
 }
 </string>

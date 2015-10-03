@@ -40,6 +40,7 @@
       <sprite>sprites\sWalljumpR</sprite>
       <sprite>sprites\sBulletBlocker</sprite>
       <sprite>sprites\sPlayerStart</sprite>
+      <sprite>sprites\sWarp</sprite>
       <sprite>sprites\sSidebar</sprite>
       <sprite>sprites\sMenu</sprite>
     </sprites>
@@ -64,6 +65,7 @@
       <sprite>sprites\sWalljumpRDefault</sprite>
       <sprite>sprites\sBulletBlockerDefault</sprite>
       <sprite>sprites\sPlayerStartDefault</sprite>
+      <sprite>sprites\sWarpDefault</sprite>
       <sprite>sprites\sSidebarDefault</sprite>
       <sprite>sprites\sMenuDefault</sprite>
     </sprites>
@@ -92,6 +94,7 @@
       <sprite>sprites\sGravityArrowUp</sprite>
       <sprite>sprites\sGravityArrowDown</sprite>
       <sprite>sprites\sWaterNekoron</sprite>
+      <sprite>sprites\sWater3</sprite>
     </sprites>
     <sprites name="editor">
       <sprite>sprites\sEditorKiller</sprite>
@@ -238,6 +241,7 @@
       <object>objects\oWalljumpL</object>
       <object>objects\oWalljumpR</object>
       <object>objects\oSave</object>
+      <object>objects\oWarp</object>
     </objects>
     <objects name="other elements">
       <object>objects\oSlipBlock</object>
@@ -259,6 +263,7 @@
       <object>objects\oKeySaveParticle</object>
       <object>objects\oBorderDeath</object>
       <object>objects\oEditGrid</object>
+      <object>objects\oPlayerVictory</object>
     </objects>
     <objects name="sidebar">
       <object>objects\oSidebar</object>
