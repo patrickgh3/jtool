@@ -10,6 +10,7 @@ oWorld.alarm[0]=1
 global.showanalysis = ini_read_real('prefs','showanalysis',true)
 global.dotkidoutline = ini_read_real('prefs','dotkidoutline',true)
 global.hidesidebar = ini_read_real('prefs','hidesidebar',false)
+global.editorinstructions = ini_read_real('prefs','editorinstructions',true)
 ini_close()
 
 loadSkin(global.skinName)

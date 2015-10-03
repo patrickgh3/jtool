@@ -165,6 +165,7 @@ global.dotkid = false
 
 global.dotkidoutline = false
 global.hidesidebar = false
+global.editorinstructions = false
 
 loadConfig()
 </string>

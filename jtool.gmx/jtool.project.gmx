@@ -169,6 +169,7 @@
       <script>scripts\buttonCallback_InfiniteJump.gml</script>
       <script>scripts\buttonCallback_DotkidOutline.gml</script>
       <script>scripts\buttonCallback_HideSidebar.gml</script>
+      <script>scripts\buttonCallback_EditorInstructions.gml</script>
     </scripts>
     <scripts name="combo boxes">
       <script>scripts\comboBoxButton.gml</script>
@@ -242,6 +243,7 @@
       <object>objects\oGridComboBox</object>
       <object>objects\oSpeedComboBox</object>
       <object>objects\oKeyDisplay</object>
+      <object>objects\oEditorInstructions</object>
       <objects name="jump analysis">
         <object>objects\oToggleAnalysis</object>
         <object>objects\oJumpDurations</object>
