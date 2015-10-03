@@ -103,10 +103,6 @@
       <sprite>sprites\sEditorKid</sprite>
       <sprite>sprites\sEditorInputOverlay</sprite>
     </sprites>
-    <sprite>sprites\sEditCursor</sprite>
-    <sprite>sprites\sHintCursor</sprite>
-    <sprite>sprites\sBorderDeath</sprite>
-    <sprite>sprites\sCursorDropper</sprite>
     <sprites name="menu buttons">
       <sprite>sprites\sMenuSave</sprite>
       <sprite>sprites\sMenuOpen</sprite>
@@ -115,7 +111,13 @@
       <sprite>sprites\sMenuFullscreen</sprite>
       <sprite>sprites\sMenuDeath</sprite>
       <sprite>sprites\sMenuDotOutline</sprite>
+      <sprite>sprites\sMenuHitbox</sprite>
+      <sprite>sprites\sMenuGrid</sprite>
     </sprites>
+    <sprite>sprites\sEditCursor</sprite>
+    <sprite>sprites\sHintCursor</sprite>
+    <sprite>sprites\sBorderDeath</sprite>
+    <sprite>sprites\sCursorDropper</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bgBackground</background>
@@ -177,6 +179,8 @@
       <script>scripts\buttonCallback_DotkidOutline.gml</script>
       <script>scripts\buttonCallback_HideSidebar.gml</script>
       <script>scripts\buttonCallback_EditorInstructions.gml</script>
+      <script>scripts\buttonCallback_ShowHitbox.gml</script>
+      <script>scripts\buttonCallback_ShowGrid.gml</script>
     </scripts>
     <scripts name="combo boxes">
       <script>scripts\comboBoxButton.gml</script>
@@ -245,6 +249,8 @@
       <object>objects\oKillerTrigger</object>
       <object>objects\oBlock</object>
       <object>objects\oKeySaveParticle</object>
+      <object>objects\oBorderDeath</object>
+      <object>objects\oEditGrid</object>
     </objects>
     <objects name="sidebar">
       <object>objects\oSidebar</object>
@@ -267,7 +273,6 @@
     <object>objects\oPlayer</object>
     <object>objects\oMenu</object>
     <object>objects\oEdit</object>
-    <object>objects\oBorderDeath</object>
     <object>objects\oInputOverlay</object>
   </objects>
   <rooms name="rooms">

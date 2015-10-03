@@ -170,6 +170,15 @@ yy += dy
 menuButtonToggle(xx,yy,w,h,buttonCallback_KillPlayer,buttons_enabled,sMenuDeath,
 '[ Death ]','Death',global.deathEnabled)
 
+yy += dy
+menuButtonToggle(xx,yy,w,h,buttonCallback_ShowHitbox,buttons_enabled,sMenuHitbox,
+'[ Hitbox ]','Hitbox',global.showhitbox)
+
+xx += dx
+yy = y+yo
+menuButtonToggle(xx,yy,w,h,buttonCallback_ShowGrid,buttons_enabled,sMenuGrid,
+'[ Grid ]','Grid',global.showgrid)
+
 </string>
           </argument>
         </arguments>

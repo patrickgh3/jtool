@@ -11,6 +11,8 @@ global.showanalysis = ini_read_real('prefs','showanalysis',true)
 global.dotkidoutline = ini_read_real('prefs','dotkidoutline',true)
 global.hidesidebar = ini_read_real('prefs','hidesidebar',false)
 global.editorinstructions = ini_read_real('prefs','editorinstructions',true)
+global.showhitbox = ini_read_real('prefs','showhitbox',0)
+global.showgrid = ini_read_real('prefs','showgrid',false)
 ini_close()
 
 loadSkin(global.skinName)

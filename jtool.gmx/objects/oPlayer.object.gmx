@@ -476,8 +476,16 @@ else {
 }*/
 
 if mask_index != sDotkid {
-    draw_sprite_ext(sprite_index,image_index,round(x),round(y),
-    global.player_xscale,1,image_angle,image_blend,image_alpha)
+    if global.showhitbox != 2 {
+        draw_sprite_ext(sprite_index,image_index,round(x),round(y),
+        global.player_xscale,1,image_angle,image_blend,image_alpha)
+    }
+    if global.showhitbox == 1 {
+        draw_sprite_ext(mask_index,0,x,y,global.player_xscale,1,image_angle,c_white,0.5)
+    }
+    else if global.showhitbox == 2 {
+        draw_sprite(mask_index,0,x,y)
+    }
 }
 else {
     draw_sprite(sDotkid,0,round(x),round(y))
@@ -486,7 +494,6 @@ else {
     }
 }
 
-//draw_sprite(mask_index,0,x,y)
 </string>
           </argument>
         </arguments>
