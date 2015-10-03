@@ -98,13 +98,28 @@ if cursor_in_area and global.state == globalstate_idle {
             undo_leftpressedinedit = true
         }
         if left and not right and undo_leftpressedinedit {
-            var object_at_position = false
-            with selected_object {
-                if x == other.xsnapped and y == other.ysnapped {
-                    object_at_position = true
+            var ok_to_create = false
+            
+            if leftpressed {
+                var object_at_position = false
+                with selected_object {
+                    if x == other.xsnapped and y == other.ysnapped {
+                        object_at_position = true
+                    }
                 }
+                ok_to_create = not object_at_position
             }
-            if not object_at_position {
+            else {
+                var inst = instance_create(xsnapped,ysnapped,selected_object)
+                var collision = false
+                with inst {
+                    collision = collision_rectangle(
+                        bbox_left,bbox_top,bbox_right,bbox_bottom,object_index,true,true)
+                    instance_destroy()
+                }
+                ok_to_create = not collision
+            }
+            if ok_to_create {
                 if selected_object == oPlayerStart {
                     with oPlayerStart instance_destroy()
                     global.savePlayerX = xsnapped+17
