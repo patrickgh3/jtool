@@ -118,6 +118,7 @@ if cursor_in_area and global.state == globalstate_idle {
                     instance_destroy()
                 }
                 ok_to_create = not collision
+                if snap == 1 ok_to_create = true
             }
             if ok_to_create {
                 if selected_object == oPlayerStart {

@@ -8,29 +8,6 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>keyboard_string = ''
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="8" enumb="0">
       <action>
         <libid>1</libid>
@@ -52,44 +29,67 @@
 draw_set_alpha(0.5)
 draw_rectangle(0,0,1055,607,false)
 
-var w = 40
-var h = 32
-var xx = 400-w/2
-var yy = 304-h/2
-var xo = 4
-var cursorh = 20
-
-var buttonw = 80
-var buttonh = 32
-
-var backw = 150
-var backh = 130
-
-// back
-drawButton(400-backw/2,304-backh/2+10,backw,backh,false)
-fontSetup(font_small,c_black,fa_center,fa_center,1)
-draw_text(400,304-32,label)
-
-// textbox
-drawButton(xx,yy,w,h,true)
-fontSetup(font_small,c_black,fa_left,fa_center,1)
-draw_text(xx+xo,304,keyboard_string)
-
-// cursor
-var width = string_width(keyboard_string)
-if floor(global.count/20) mod 2 == 0 {
-    draw_line(xx+xo+width+1,304-cursorh/2,xx+xo+width+1,304+cursorh/2)
+// backing and label
+if mode == input_textbox {
+    var back_w = 150
+    var back_h = 130
+    var label_yo = -40
 }
+else if mode == input_yesno {
+    var back_w = 250
+    var back_h = 120
+    var label_yo = -30
+}
+drawButton(400-back_w/2,304-back_h/2,back_w,back_h,false)
+fontSetup(font_small,c_black,fa_center,fa_center,1)
+draw_text(400,304+label_yo,label)
 
-// logic
-menuButton(400-buttonw/2,304+25,buttonw,buttonh,'Ok',inputOverlaySubmit,true,false)
-if keyboard_check_pressed(vk_enter) {
-    inputOverlaySubmit()
+// contents
+if mode == input_textbox {
+    // textbox
+    var textbox_yo = -20
+    var textbox_w = 40
+    var textbox_h = 32
+    var cursor_h = 20
+    var xx = 400-textbox_w/2
+    var yy = 304+textbox_yo
+    var ycenter = yy+textbox_h/2
+    drawButton(xx,yy,textbox_w,textbox_h,true)
+    fontSetup(font_small,c_black,fa_left,fa_center,1)
+    draw_text(xx+6,ycenter,keyboard_string)
+    if floor(global.count/20) mod 2 == 0 {
+        var xxx = xx+string_width(keyboard_string)+8
+        draw_line(xxx,ycenter-cursor_h/2,xxx,ycenter+cursor_h/2)
+    }
+    
+    // button
+    var button_yo = 20
+    var button_w = 80
+    var button_h = 32
+    menuButton(400-button_w/2,304+button_yo,button_w,button_h,'Ok',inputOverlayStringSubmit,true,false)
+    if keyboard_check_pressed(vk_enter) {
+        inputOverlayStringSubmit()
+    }
+}
+else if mode == input_yesno {
+    // buttons
+    var button_yo = 15
+    var button_w = 70
+    var button_h = 32
+    var button_space = 10
+    
+    var xx1 = 400-button_space-button_w
+    var xx2 = 400+button_space
+    var yy = 304+button_yo
+    menuButton(xx1,yy,button_w,button_h,'No',inputOverlayNo,true,false)
+    menuButton(xx2,yy,button_w,button_h,'Yes',inputOverlayYes,true,false)
+    if keyboard_check_pressed(vk_enter) {
+        inputOverlayYes()
+    }
 }
 
 if keyboard_check_pressed(vk_escape) {
-    global.state = previous_state
-    instance_destroy()
+    inputOverlayNo()
 }
 </string>
           </argument>

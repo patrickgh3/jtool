@@ -1,14 +1,18 @@
-// inputOverlay(callback,label)
+// inputOverlay(mode,callback,label)
 
-var callback = argument0
-var label = argument1
+var mode = argument0
+var callback = argument1
+var label = argument2
 
 if global.state == globalstate_input {
     show_message('inputOverlay called when state was already input')
     exit
 }
+
 instance_create(0,0,oInputOverlay)
+oInputOverlay.mode = mode
 oInputOverlay.callback = callback
 oInputOverlay.previous_state = global.state
 oInputOverlay.label = label
 global.state = globalstate_input
+keyboard_string = ''

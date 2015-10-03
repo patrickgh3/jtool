@@ -200,10 +200,16 @@
       <script>scripts\loadSkin.gml</script>
       <script>scripts\loadRMJMap.gml</script>
     </scripts>
-    <script>scripts\inputOverlay.gml</script>
-    <script>scripts\inputCallback_GridCustom.gml</script>
-    <script>scripts\inputOverlaySubmit.gml</script>
-    <script>scripts\inputCallback_SpeedCustom.gml</script>
+    <scripts name="input overlay">
+      <script>scripts\inputOverlay.gml</script>
+      <script>scripts\inputOverlayFinish.gml</script>
+      <script>scripts\inputOverlayStringSubmit.gml</script>
+      <script>scripts\inputOverlayYes.gml</script>
+      <script>scripts\inputOverlayNo.gml</script>
+      <script>scripts\inputCallback_GridCustom.gml</script>
+      <script>scripts\inputCallback_SpeedCustom.gml</script>
+      <script>scripts\inputCallback_ClearMap.gml</script>
+    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_small</font>
@@ -278,7 +284,7 @@
   <rooms name="rooms">
     <room>rooms\rMain</room>
   </rooms>
-  <constants number="8">
+  <constants number="10">
     <constant name="globalstate_idle">1</constant>
     <constant name="globalstate_menu">2</constant>
     <constant name="globalstate_input">3</constant>
@@ -287,6 +293,8 @@
     <constant name="jstate_2hold">3</constant>
     <constant name="jstate_2wait">4</constant>
     <constant name="jstate_done">5</constant>
+    <constant name="input_textbox">1</constant>
+    <constant name="input_yesno">2</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
