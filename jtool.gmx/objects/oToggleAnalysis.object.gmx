@@ -30,7 +30,7 @@
 var str = 'Hide Analysis'
 if not global.showanalysis str = 'Show Analysis'
 var enabled = global.state == globalstate_idle
-menuButton(x,y,112,32,str,buttonCallback_ToggleAnalysis,enabled)
+menuButton(x,y,112,32,str,buttonCallback_ToggleAnalysis,enabled,false)
 </string>
           </argument>
         </arguments>

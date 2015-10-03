@@ -28,7 +28,7 @@
             <string>if global.hidesidebar exit
 
 menuButtonToggle(x,y,96,32,buttonCallback_EditorInstructions,
-global.state == globalstate_idle,
+global.state == globalstate_idle,false,
 'Hide','Instructions',global.editorinstructions)
 
 if global.editorinstructions {

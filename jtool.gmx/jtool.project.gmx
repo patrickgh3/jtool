@@ -107,6 +107,15 @@
     <sprite>sprites\sHintCursor</sprite>
     <sprite>sprites\sBorderDeath</sprite>
     <sprite>sprites\sCursorDropper</sprite>
+    <sprites name="menu buttons">
+      <sprite>sprites\sMenuSave</sprite>
+      <sprite>sprites\sMenuOpen</sprite>
+      <sprite>sprites\sMenuDotkid</sprite>
+      <sprite>sprites\sMenuInfJump</sprite>
+      <sprite>sprites\sMenuFullscreen</sprite>
+      <sprite>sprites\sMenuDeath</sprite>
+      <sprite>sprites\sMenuDotOutline</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bgBackground</background>

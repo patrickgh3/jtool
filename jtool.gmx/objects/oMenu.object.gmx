@@ -87,7 +87,7 @@ else if global.state == globalstate_idle {
         <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
-        <whoName>self</whoName>
+        <whoName>other</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
@@ -96,9 +96,9 @@ else if global.state == globalstate_idle {
             <string>draw_sprite(sMenu,0,0,y-(sprite_get_height(sMenu)-menu_height))
 
 var buttons_enabled = global.state == globalstate_menu and steps_in_menu &gt; 0
-var w = 120
+var w = 130
 var h = 32
-var dx = 130
+var dx = 140
 var dy = 45
 var dx2 = 40
 var xo = 20
@@ -110,19 +110,19 @@ var yy = y+yo
 // file
 menuSection(xx,yy,'File',false)
 
-menuButton(xx,yy,w,h,'Open Map',buttonCallback_LoadMap,buttons_enabled)
+menuButton(xx,yy,w,h,'Open Map',buttonCallback_LoadMap,buttons_enabled,sMenuOpen)
 if keyboard_check(vk_control) and keyboard_check_pressed(ord('O')) {
     buttonCallback_LoadMap()
 }
 
 yy += dy
-menuButton(xx,yy,w,h,'Save Map',buttonCallback_SaveMap,buttons_enabled)
+menuButton(xx,yy,w,h,'Save Map',buttonCallback_SaveMap,buttons_enabled,sMenuSave)
 if keyboard_check(vk_control) and keyboard_check_pressed(ord('S')) {
     buttonCallback_SaveMap()
 }
 
 yy += dy
-menuButton(xx,yy,w,h,'Import RMJ Map',buttonCallback_LoadRMJMap,buttons_enabled)
+menuButton(xx,yy,w,h,'Import RMJ Map',buttonCallback_LoadRMJMap,buttons_enabled,false)
 
 
 // map properties
@@ -130,15 +130,15 @@ xx += dx+dx2
 yy = y+yo
 menuSection(xx,yy,'Map',true)
 
-menuButtonToggle(xx,yy,w,h,buttonCallback_Dotkid,buttons_enabled,
+menuButtonToggle(xx,yy,w,h,buttonCallback_Dotkid,buttons_enabled,sMenuDotkid,
 '[ Dotkid ]','Dotkid',global.dotkid)
 
 yy += dy
-menuButtonToggle(xx,yy,w,h,buttonCallback_InfiniteJump,buttons_enabled,
+menuButtonToggle(xx,yy,w,h,buttonCallback_InfiniteJump,buttons_enabled,sMenuInfJump,
 '[ Inf Jump ]','Inf Jump',global.infinitejump)
 
 yy += dy
-menuButton(xx,yy,w,h,'Clear Map (F2)',buttonCallback_ClearMap,buttons_enabled)
+menuButton(xx,yy,w,h,'Clear Map (F2)',buttonCallback_ClearMap,buttons_enabled,false)
 if keyboard_check_pressed(vk_f2) {
     buttonCallback_ClearMap()
 }
@@ -149,25 +149,25 @@ xx += dx+dx2
 yy = y+yo
 menuSection(xx,yy,'Preferences',true)
 
-menuButton(xx,yy,w,h,'Change Skin',buttonCallback_Skin,buttons_enabled)
+menuButton(xx,yy,w,h,'Change Skin',buttonCallback_Skin,buttons_enabled,false)
 
 yy += dy
-menuButtonToggle(xx,yy,w,h,buttonCallback_HideSidebar,buttons_enabled,
+menuButtonToggle(xx,yy,w,h,buttonCallback_HideSidebar,buttons_enabled,false,
 'Show Sidebar','Hide Sidebar',global.hidesidebar)
 
 yy += dy
-menuButton(xx,yy,w,h,'Fullscreen',buttonCallback_Fullscreen,buttons_enabled)
+menuButton(xx,yy,w,h,'Fullscreen',buttonCallback_Fullscreen,buttons_enabled,sMenuFullscreen)
 if keyboard_check_pressed(vk_f4) {
     buttonCallback_Fullscreen()
 }
 
 xx += dx
 yy = y+yo
-menuButtonToggle(xx,yy,w,h,buttonCallback_DotkidOutline,buttons_enabled,
+menuButtonToggle(xx,yy,w,h,buttonCallback_DotkidOutline,buttons_enabled,sMenuDotOutline,
 '[ Dot Outline ]','Dot Outline',global.dotkidoutline)
 
 yy += dy
-menuButtonToggle(xx,yy,w,h,buttonCallback_KillPlayer,buttons_enabled,
+menuButtonToggle(xx,yy,w,h,buttonCallback_KillPlayer,buttons_enabled,sMenuDeath,
 '[ Death ]','Death',global.deathEnabled)
 
 </string>

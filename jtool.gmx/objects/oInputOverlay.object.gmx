@@ -82,7 +82,7 @@ if floor(global.count/20) mod 2 == 0 {
 }
 
 // logic
-menuButton(400-buttonw/2,304+25,buttonw,buttonh,'Ok',inputOverlaySubmit,true)
+menuButton(400-buttonw/2,304+25,buttonw,buttonh,'Ok',inputOverlaySubmit,true,false)
 if keyboard_check_pressed(vk_enter) {
     inputOverlaySubmit()
 }

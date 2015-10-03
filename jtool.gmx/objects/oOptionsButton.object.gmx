@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>if not global.hidesidebar {
     menuButton(x,y,96,32,'(Esc) Options',buttonCallback_OpenMenu,
-    global.state == globalstate_idle)
+    global.state == globalstate_idle,false)
 }
 
 if global.state == globalstate_idle and keyboard_check_pressed(vk_escape) 
