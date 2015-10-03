@@ -137,6 +137,7 @@
       <script>scripts\create_from_serialization.gml</script>
       <script>scripts\object_is_edit.gml</script>
       <script>scripts\rmjobject_to_object.gml</script>
+      <script>scripts\colorFromHsvDelimString.gml</script>
     </scripts>
     <scripts name="jump analysis">
       <script>scripts\jumpDurations_Create.gml</script>

@@ -13,7 +13,7 @@ draw_set_color(global.color_button)
 draw_rectangle(xx,yy,xx+w-1,yy+h-1,false)
 
 if active {
-    draw_set_alpha(global.color_buttonhoveralpha)
+    draw_set_alpha(global.buttonhoveralpha)
     draw_set_color(global.color_buttonhover)
     draw_rectangle(xx,yy,xx+w-1,yy+h-1,false)
     if global.buttonhoverborder {

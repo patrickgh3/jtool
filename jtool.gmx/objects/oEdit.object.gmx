@@ -110,6 +110,7 @@ if cursor_in_area and global.state == globalstate_idle {
                     global.savePlayerX = xsnapped+17
                     global.savePlayerY = ysnapped+23
                     global.savePlayerXScale = 1
+                    loadGame()
                 }
                 var i = instance_create(xsnapped,ysnapped,selected_object);
                 i.undo_recent = true

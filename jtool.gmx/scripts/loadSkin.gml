@@ -10,32 +10,37 @@ if not file_exists(ini_filename) {
 }
 
 ini_open(ini_filename)
-global.color_killerhue = ini_read_real('config','killerhue',0)
-global.color_killersat = ini_read_real('config','killersat',0)
-global.color_killerval = ini_read_real('config','killerval',0)
-global.color_killer = make_color_hsv(global.color_killerhue,global.color_killersat,global.color_killerval)
-global.color_killer2hue = ini_read_real('config','killer2hue',0)
-global.color_killer2sat = ini_read_real('config','killer2sat',0)
-global.color_killer2val = ini_read_real('config','killer2val',0)
-global.color_killer2 = make_color_hsv(global.color_killer2hue,global.color_killer2sat,global.color_killer2val)
-var buttonhue = ini_read_real('config','buttonhue',0)
-var buttonsat = ini_read_real('config','buttonsat',0)
-var buttonval = ini_read_real('config','buttonval',175)
-global.color_button = make_color_hsv(buttonhue,buttonsat,buttonval)
-var buttonhoverhue = ini_read_real('config','buttonhoverhue',0)
-var buttonhoversat = ini_read_real('config','buttonhoversat',0)
-var buttonhoverval = ini_read_real('config','buttonhoverval',255)
-global.color_buttonhover = make_color_hsv(buttonhoverhue,buttonhoversat,buttonhoverval)
-global.color_buttonhoveralpha = ini_read_real('config','buttonhoveralpha',0.5)
-global.buttonhoverborder = ini_read_real('config','buttonhoverborder',false)
-global.spikeframes = ini_read_real('config','spikeframes',1)
-global.spikeanimspeed = ini_read_real('config','spikeanimspeed',1)
-global.minispikeframes = ini_read_real('config','minispikeframes',1)
-global.minispikeanimspeed = ini_read_real('config','minispikeanimspeed',1)
-global.bulletblockeralpha = ini_read_real('config','bulletblockeralpha',0.3)
-var bg_type = ini_read_string('config','bg_type','stretch')
-var bg_hspeed = ini_read_real('config','bg_hspeed',0)
-var bg_vspeed = ini_read_real('config','bg_vspeed',0)
+
+// ui
+global.color_button = colorFromHsvDelimString(
+    ini_read_string('ui','button_idle_color','0,0,175'),',')
+global.color_buttonhover = colorFromHsvDelimString(
+    ini_read_string('ui','button_active_color','0,0,175'),',')
+global.buttonhoveralpha = ini_read_real('ui','button_active_alpha',0.5)
+global.buttonhoverborder = ini_read_real('ui','button_active_border',false)
+
+// objects
+var colorstring = ini_read_string('objects','killer_idle_color','0,0,255')
+global.color_killerhue = real(string_split(colorstring,0,','))
+global.color_killersat = real(string_split(colorstring,1,','))
+global.color_killerval = real(string_split(colorstring,2,','))
+global.color_killer = colorFromHsvDelimString(colorstring,',')
+var colorstring = ini_read_string('objects','killer_active_color','0,255,255')
+global.color_killer2hue = real(string_split(colorstring,0,','))
+global.color_killer2sat = real(string_split(colorstring,1,','))
+global.color_killer2val = real(string_split(colorstring,2,','))
+global.color_killer2 = colorFromHsvDelimString(colorstring,',')
+global.bulletblockeralpha = ini_read_real('objects','bulletblocker_alpha',0.3)
+global.spikeframes = ini_read_real('objects','spike_frames',1)
+global.spikeanimspeed = ini_read_real('objects','spike_animspeed',1)
+global.minispikeframes = ini_read_real('objects','minispike_frames',1)
+global.minispikeanimspeed = ini_read_real('objects','minispike_animspeed',1)
+
+// bg
+var bg_type = ini_read_string('bg','type','stretch')
+var bg_hspeed = ini_read_real('bg','hspeed',0)
+var bg_vspeed = ini_read_real('bg','vspeed',0)
+
 ini_close()
 
 for (var i=0; i<30; i+=1) {
