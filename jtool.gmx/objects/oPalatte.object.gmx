@@ -35,36 +35,45 @@ var yo = 10
 var dy = 55
 var h = 44
 
-for (i = 0; i &lt; 30; i += 1) {
+for (i = 0; i &lt; 100; i += 1) {
     var xx,yy,spr,obj,off,killer
+    /*
+        xx - x coordinate of the button location
+        yy - y coordinate of the button location
+        spr - sprite to draw
+        obj - object to select if clicked
+        off - offset to draw sprite at if origin is not centered
+        killer - whether or not to draw the object with the killer tint.
+    */
     switch i {
         case 0:  xx=0 yy=0 spr=sSpikeUp obj=oSpikeUp off=16 killer=true break
         case 1:  xx=1 yy=0 spr=sSpikeDown obj=oSpikeDown off=16 killer=true break
         case 2:  xx=2 yy=0 spr=sSpikeLeft obj=oSpikeLeft off=16 killer=true break
         case 3:  xx=3 yy=0 spr=sSpikeRight obj=oSpikeRight off=16 killer=true break
         
-        case 4:  xx=0 yy=1 spr=sMiniSpikeUp obj=oMiniSpikeUp off = 8 killer=true break
-        case 5:  xx=1 yy=1 spr=sMiniSpikeDown obj=oMiniSpikeDown off = 8 killer=true break
-        case 6:  xx=2 yy=1 spr=sMiniSpikeLeft obj=oMiniSpikeLeft off = 8 killer=true break
-        case 7:  xx=3 yy=1 spr=sMiniSpikeRight obj=oMiniSpikeRight off = 8 killer=true break
+        case 4:  xx=0 yy=1 spr=sMiniSpikeUp obj=oMiniSpikeUp off=8 killer=true break
+        case 5:  xx=1 yy=1 spr=sMiniSpikeDown obj=oMiniSpikeDown off=8 killer=true break
+        case 6:  xx=2 yy=1 spr=sMiniSpikeLeft obj=oMiniSpikeLeft off=8 killer=true break
+        case 7:  xx=3 yy=1 spr=sMiniSpikeRight obj=oMiniSpikeRight off=8 killer=true break
         
         case 9:  xx=0 yy=2 spr=sEditBlock obj=oEditBlock off = 16 killer=false break
-        case 10: xx=1 yy=2 spr=sEditMiniBlock obj=oEditMiniBlock off = 8 killer=false break
-        case 12: xx=2 yy=2 spr=sPlatform obj=oPlatform off=16 killer=false break
-        case 13: xx=3 yy=2 spr=sSave obj=oSave off=16 killer=false break
-        
-        case 14: xx=0 yy=3 spr=sWater1 obj=oWater off = 16 killer=false break
-        case 15: xx=1 yy=3 spr=sWater2 obj=oWater2 off = 16 killer=false break
+        case 10: xx=1 yy=2 spr=sEditMiniBlock obj=oEditMiniBlock off=8 killer=false break
+        case 18: xx=2 yy=2 spr=sApple obj=oApple off = 0 killer=true break
+        case 19: xx=3 yy=2 spr=sKillerBlock obj=oKillerBlock off=16 killer=true break
+         
+        case 12: xx=0 yy=3 spr=sPlatform obj=oPlatform off=16 killer=false break
+        case 13: xx=1 yy=3 spr=sSave obj=oSave off=16 killer=false break
         case 16: xx=2 yy=3 spr=sWalljumpR obj=oWalljumpR off = 16 killer=false break
         case 17: xx=3 yy=3 spr=sWalljumpL obj=oWalljumpL off = 16 killer=false break
         
-        case 18: xx=0 yy=4 spr=sApple obj=oApple off = 0 killer=true break
-        case 19: xx=1 yy=4 spr=sKillerBlock obj=oKillerBlock off = 16 killer=true break
-        case 20: xx=2 yy=4 spr=sBulletBlocker obj=oBulletBlocker off = 16 killer=false break
-        case 21: xx=3 yy=4 spr=sPlayerStart obj=oPlayerStart off = 16 killer=false break
+        case 14: xx=0 yy=4 spr=sWater1 obj=oWater off=16 killer=false break
+        case 15: xx=1 yy=4 spr=sWater2 obj=oWater2 off=16 killer=false break
+        case 24: xx=2 yy=4 spr=sWater3 obj=oWater3 off=16 killre=false break
+        case 20: xx=3 yy=4 spr=sBulletBlocker obj=oBulletBlocker off=16 killer=false break
         
-        case 22: xx=0 yy=5 spr=sWarp obj=oWarp off = 16 killer=false break
-        case 23: xx=1 yy=5 spr=sJumpRefresher obj=oJumpRefresher off = 0 killer=false break
+        case 23: xx=0 yy=5 spr=sJumpRefresher obj=oJumpRefresher off=0 killer=false break 
+        case 22: xx=1 yy=5 spr=sWarp obj=oWarp off=16 killer=false break 
+        case 21: xx=2 yy=5 spr=sPlayerStart obj=oPlayerStart off=16 killer=false break
         default: continue
     }
     

@@ -45,8 +45,16 @@ var bg_vspeed = ini_read_real('bg','vspeed',0)
 
 ini_close()
 
-for (var i=0; i<30; i+=1) {
+for (var i=0; i<100; i+=1) {
     var spr_index,spr_default,file,xo,yo,frames
+    /*
+        spr_index - sprite index to replace
+        spr_default - default sprite to use if png not found
+        file - name of png file
+        xo - sprite x origin to set
+        yo - sprite y origin to set
+        frames - number of frames the sprite png has (set below switch statement)
+    */
     switch i {
         case 0:  spr_index=sSpikeUp spr_default=sSpikeUpDefault file='spikeup.png' xo=0 yo=0 break
         case 1:  spr_index=sSpikeRight spr_default=sSpikeRightDefault file='spikeright.png' xo=0 yo=0 break
@@ -56,30 +64,37 @@ for (var i=0; i<30; i+=1) {
         case 5:  spr_index=sMiniSpikeRight spr_default=sMiniSpikeRightDefault file='miniright.png' xo=0 yo=0 break
         case 6:  spr_index=sMiniSpikeLeft spr_default=sMiniSpikeLeftDefault file='minileft.png' xo=0 yo=0 break
         case 7:  spr_index=sMiniSpikeDown spr_default=sMiniSpikeDownDefault file='minidown.png' xo=0 yo=0 break
-        case 8:  spr_index=sEditBlock spr_default=sEditBlockDefault file='block.png' xo=0 yo=0 frames=1 break
-        case 9:  spr_index=sEditMiniBlock spr_default=sEditMiniBlockDefault file='miniblock.png' xo=0 yo=0 frames=1 break
-        case 10: spr_index=sPlatform spr_default=sPlatformDefault file='platform.png' xo=0 yo=0 frames=1 break
-        case 11: spr_index=sSave spr_default=sSaveDefault file='save.png' xo=0 yo=0 frames=2 break
-        case 12: spr_index=sApple spr_default=sAppleDefault file='apple.png' xo=10 yo=12 frames=2 break
-        case 13: spr_index=sWater1 spr_default=sWater1Default file='water1.png' xo=0 yo=0 frames=1 break
-        case 14: spr_index=sWater2 spr_default=sWater2Default file='water2.png' xo=0 yo=0 frames=1 break
-        case 15: spr_index=sWalljumpL spr_default=sWalljumpLDefault file='walljumpL.png' xo=0 yo=0 frames=1 break
-        case 16: spr_index=sWalljumpR spr_default=sWalljumpRDefault file='walljumpR.png' xo=0 yo=0 frames=1 break
-        case 17: spr_index=sKillerBlock spr_default=sKillerBlockDefault file='killerblock.png' xo=0 yo=0 frames=1 break
-        case 18: spr_index=sSidebar spr_default=sSidebarDefault file='sidebar.png' xo=0 yo=0 frames=1 break
-        case 19: spr_index=sMenu spr_default=sMenuDefault file='menu.png' xo=0 yo=0 frames=1 break
-        case 20: spr_index=sBulletBlocker spr_default=sBulletBlockerDefault file='bulletblocker.png' xo=0 yo=0 frames=1 break
-        case 21: spr_index=sPlayerStart spr_default=sPlayerStartDefault file='playerstart.png' xo=0 yo=0 frames=1 break
-        case 22: spr_index=sWarp spr_default=sWarpDefault file='warp.png' xo=0 yo=0 frames=1 break
-        case 23: spr_index=sJumpRefresher spr_default=sJumpRefresherDefault file='jumprefresher.png' xo=15 yo=15 frames=1 break
+        case 8:  spr_index=sEditBlock spr_default=sEditBlockDefault file='block.png' xo=0 yo=0 break
+        case 9:  spr_index=sEditMiniBlock spr_default=sEditMiniBlockDefault file='miniblock.png' xo=0 yo=0 break
+        case 10: spr_index=sPlatform spr_default=sPlatformDefault file='platform.png' xo=0 yo=0 break
+        case 11: spr_index=sSave spr_default=sSaveDefault file='save.png' xo=0 yo=0 break
+        case 12: spr_index=sApple spr_default=sAppleDefault file='apple.png' xo=10 yo=12 break
+        case 13: spr_index=sWater1 spr_default=sWater1Default file='water1.png' xo=0 yo=0 break
+        case 14: spr_index=sWater2 spr_default=sWater2Default file='water2.png' xo=0 yo=0 break
+        case 15: spr_index=sWalljumpL spr_default=sWalljumpLDefault file='walljumpL.png' xo=0 yo=0 break
+        case 16: spr_index=sWalljumpR spr_default=sWalljumpRDefault file='walljumpR.png' xo=0 yo=0 break
+        case 17: spr_index=sKillerBlock spr_default=sKillerBlockDefault file='killerblock.png' xo=0 yo=0 break
+        case 18: spr_index=sSidebar spr_default=sSidebarDefault file='sidebar.png' xo=0 yo=0 break
+        case 19: spr_index=sMenu spr_default=sMenuDefault file='menu.png' xo=0 yo=0 break
+        case 20: spr_index=sBulletBlocker spr_default=sBulletBlockerDefault file='bulletblocker.png' xo=0 yo=0 break
+        case 21: spr_index=sPlayerStart spr_default=sPlayerStartDefault file='playerstart.png' xo=0 yo=0 break
+        case 22: spr_index=sWarp spr_default=sWarpDefault file='warp.png' xo=0 yo=0 break
+        case 23: spr_index=sJumpRefresher spr_default=sJumpRefresherDefault file='jumprefresher.png' xo=15 yo=15 break
+        case 24: spr_index=sWater3 spr_default=sWater3Default file='water3.png' xo=0 yo=0 break
         default: continue
     }
     
     if spr_index == sSpikeUp or spr_index == sSpikeRight or spr_index == sSpikeLeft or spr_index == sSpikeDown {
         frames = global.spikeframes
     }
-    if spr_index == sMiniSpikeUp or spr_index == sMiniSpikeRight or spr_index == sMiniSpikeLeft or spr_index == sMiniSpikeDown {
+    else if spr_index == sMiniSpikeUp or spr_index == sMiniSpikeRight or spr_index == sMiniSpikeLeft or spr_index == sMiniSpikeDown {
         frames = global.minispikeframes
+    }
+    else if spr_index == sApple or spr_index == sSave {
+        frames = 2
+    }
+    else {
+        frames = 1
     }
     
     if not file_exists(folder+file) {

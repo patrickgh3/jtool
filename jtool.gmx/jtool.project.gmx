@@ -33,8 +33,9 @@
       <sprite>sprites\sApple</sprite>
       <sprite>sprites\sSave</sprite>
       <sprite>sprites\sPlatform</sprite>
-      <sprite>sprites\sWater2</sprite>
       <sprite>sprites\sWater1</sprite>
+      <sprite>sprites\sWater2</sprite>
+      <sprite>sprites\sWater3</sprite>
       <sprite>sprites\sKillerBlock</sprite>
       <sprite>sprites\sWalljumpL</sprite>
       <sprite>sprites\sWalljumpR</sprite>
@@ -59,8 +60,9 @@
       <sprite>sprites\sAppleDefault</sprite>
       <sprite>sprites\sSaveDefault</sprite>
       <sprite>sprites\sPlatformDefault</sprite>
-      <sprite>sprites\sWater2Default</sprite>
       <sprite>sprites\sWater1Default</sprite>
+      <sprite>sprites\sWater2Default</sprite>
+      <sprite>sprites\sWater3Default</sprite>
       <sprite>sprites\sKillerBlockDefault</sprite>
       <sprite>sprites\sWalljumpLDefault</sprite>
       <sprite>sprites\sWalljumpRDefault</sprite>
@@ -96,7 +98,6 @@
       <sprite>sprites\sGravityArrowUp</sprite>
       <sprite>sprites\sGravityArrowDown</sprite>
       <sprite>sprites\sWaterNekoron</sprite>
-      <sprite>sprites\sWater3</sprite>
     </sprites>
     <sprites name="editor">
       <sprite>sprites\sEditorKiller</sprite>
@@ -248,6 +249,7 @@
       <object>objects\oKillerBlock</object>
       <object>objects\oWater</object>
       <object>objects\oWater2</object>
+      <object>objects\oWater3</object>
       <object>objects\oPlatform</object>
       <object>objects\oWalljumpL</object>
       <object>objects\oWalljumpR</object>
@@ -257,7 +259,6 @@
     </objects>
     <objects name="other elements">
       <object>objects\oSlipBlock</object>
-      <object>objects\oWater3</object>
       <object>objects\oWaterNekoron</object>
       <object>objects\oSlideBlock</object>
       <object>objects\oSlideBlockR</object>

@@ -24,6 +24,7 @@ switch obj.object_index {
     case oPlayerStart: sid=20 break
     case oWarp: sid=21 break
     case oJumpRefresher: sid=22 break
+    case oWater3: sid=23 break
     default: show_message('tried to serialize a non-edit object! should have check object_is_edit first.') exit
 }
 
