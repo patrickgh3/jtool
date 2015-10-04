@@ -3,6 +3,8 @@
 window_set_fullscreen(false)
 filename = get_save_filename_ext('jtool map|*.jmap','','','Save Map')
 if filename == '' exit
+
+oEdit.undo_objectstring = ''
 var f = file_text_open_write(filename)
 
 var delim = '|'

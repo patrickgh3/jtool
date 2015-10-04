@@ -100,7 +100,7 @@ if cursor_in_area and global.state == globalstate_idle {
         if left and not right and undo_leftpressedinedit {
             var ok_to_create = false
             
-            if leftpressed {
+            if leftpressed or selected_object == oPlayerStart {
                 var object_at_position = false
                 with selected_object {
                     if x == other.xsnapped and y == other.ysnapped {

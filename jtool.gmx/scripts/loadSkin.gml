@@ -71,6 +71,7 @@ for (var i=0; i<30; i+=1) {
         case 20: spr_index=sBulletBlocker spr_default=sBulletBlockerDefault file='bulletblocker.png' xo=0 yo=0 frames=1 break
         case 21: spr_index=sPlayerStart spr_default=sPlayerStartDefault file='playerstart.png' xo=0 yo=0 frames=1 break
         case 22: spr_index=sWarp spr_default=sWarpDefault file='warp.png' xo=0 yo=0 frames=1 break
+        case 23: spr_index=sJumpRefresher spr_default=sJumpRefresherDefault file='jumprefresher.png' xo=15 yo=15 frames=1 break
         default: continue
     }
     

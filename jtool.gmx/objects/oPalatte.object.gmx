@@ -64,6 +64,7 @@ for (i = 0; i &lt; 30; i += 1) {
         case 21: xx=3 yy=4 spr=sPlayerStart obj=oPlayerStart off = 16 killer=false break
         
         case 22: xx=0 yy=5 spr=sWarp obj=oWarp off = 16 killer=false break
+        case 23: xx=1 yy=5 spr=sJumpRefresher obj=oJumpRefresher off = 0 killer=false break
         default: continue
     }
     

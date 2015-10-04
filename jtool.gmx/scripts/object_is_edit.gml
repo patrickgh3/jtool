@@ -10,6 +10,7 @@ switch objectindex {
     case oBulletBlocker:
     case oPlayerStart:
     case oWarp:
+    case oJumpRefresher:
         return true
     default:
         return false
