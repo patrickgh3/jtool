@@ -1,6 +1,5 @@
 // Deletes all edit objects and loads a map from file.
 
-window_set_fullscreen(false)
 filename = get_open_filename_ext('jtool map|*.jmap','','','Open Map')
 if filename == '' exit
 var f = file_text_open_read(filename)
@@ -43,6 +42,7 @@ while index <= string_length(content) {
             if prefix == 'objects' {
                 // parse objects aaaaa
                 oEdit.undo_objectstring = ''
+                oEdit.undo_nochanges = true
                 with all if object_is_edit(object_index) instance_destroy()
                 var objectstring = string_split(currentstring,1,':')
                 var i = 1

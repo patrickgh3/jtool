@@ -2,6 +2,7 @@ if not global.input_bool exit
 
 with all if object_is_edit(object_index) instance_destroy()
 oEdit.undo_objectstring = ''
+oEdit.undo_nochanges = true
 instance_create(352,416,oEditBlock)
 instance_create(384,416,oEditBlock)
 instance_create(416,416,oEditBlock)

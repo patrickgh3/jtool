@@ -46,6 +46,7 @@ cursor_in_area = false
 undo_objectstring = ''
 undo_rightpressedinedit = false
 undo_leftpressedinedit = false
+undo_nochanges = true
 </string>
           </argument>
         </arguments>
@@ -71,31 +72,34 @@ undo_leftpressedinedit = false
             <string>cursor_in_area = point_in_rect(mouse_x,mouse_y,xmin,ymin,xmax,ymax)
 
 var left = mouse_check_button(mb_left)
-    var right = mouse_check_button(mb_right)
-    var shift = keyboard_check(vk_shift)
-    var leftpressed = mouse_check_button_pressed(mb_left)
-    var rightpressed = mouse_check_button_pressed(mb_right)
+var right = mouse_check_button(mb_right)
+var shift = keyboard_check(vk_shift)
+var leftpressed = mouse_check_button_pressed(mb_left)
+var rightpressed = mouse_check_button_pressed(mb_right)
 
 if not left undo_leftpressedinedit = false
 if not right undo_rightpressedinedit = false
+
+var xx = mouse_x+(snap-sprite_get_width(selected_sprite))/2
+var yy = mouse_y+(snap-sprite_get_height(selected_sprite))/2
+xsnapped = floor(xx/snap)*snap
+ysnapped = floor(yy/snap)*snap
+x = mouse_x
+y = mouse_y
 
 if cursor_in_area and global.state == globalstate_idle {
 
     if not keyboard_check(vk_control) {
         cursor_sprite = -1
         window_set_cursor(cr_default)
-        var xx = mouse_x+(snap-sprite_get_width(selected_sprite))/2
-        var yy = mouse_y+(snap-sprite_get_height(selected_sprite))/2
-        xsnapped = floor(xx/snap)*snap
-        ysnapped = floor(yy/snap)*snap
-        x = mouse_x
-        y = mouse_y
+        
         
         // creating
         if leftpressed and not right {
             with all if object_is_edit(object_index) undo_recent = false
             undo_objectstring = 'create'
             undo_leftpressedinedit = true
+            undo_nochanges = false
         }
         if left and not right and undo_leftpressedinedit {
             var ok_to_create = false
@@ -138,6 +142,7 @@ if cursor_in_area and global.state == globalstate_idle {
             with all if object_is_edit(object_index) undo_recent = false
             undo_objectstring = ''
             undo_rightpressedinedit = true
+            undo_nochanges = false
         }
         if right and not left and undo_rightpressedinedit {
             with all {
@@ -190,6 +195,7 @@ and global.state == globalstate_idle and not left and not right {
             i += 5
         }
     }
+    undo_nochanges = false
     undo_objectstring = ''
 }
 </string>

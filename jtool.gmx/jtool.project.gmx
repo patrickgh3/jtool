@@ -170,23 +170,30 @@
       <script>scripts\menuButtonToggle.gml</script>
       <script>scripts\drawButton.gml</script>
       <script>scripts\menuSection.gml</script>
-      <script>scripts\buttonCallback_KillPlayer.gml</script>
-      <script>scripts\buttonCallback_CancelHint.gml</script>
-      <script>scripts\buttonCallback_Skin.gml</script>
-      <script>scripts\buttonCallback_SaveMap.gml</script>
-      <script>scripts\buttonCallback_LoadMap.gml</script>
-      <script>scripts\buttonCallback_Fullscreen.gml</script>
-      <script>scripts\buttonCallback_ToggleAnalysis.gml</script>
-      <script>scripts\buttonCallback_LoadRMJMap.gml</script>
-      <script>scripts\buttonCallback_OpenMenu.gml</script>
-      <script>scripts\buttonCallback_ClearMap.gml</script>
-      <script>scripts\buttonCallback_Dotkid.gml</script>
-      <script>scripts\buttonCallback_InfiniteJump.gml</script>
-      <script>scripts\buttonCallback_DotkidOutline.gml</script>
-      <script>scripts\buttonCallback_HideSidebar.gml</script>
-      <script>scripts\buttonCallback_EditorInstructions.gml</script>
-      <script>scripts\buttonCallback_ShowHitbox.gml</script>
-      <script>scripts\buttonCallback_ShowGrid.gml</script>
+      <scripts name="menu file">
+        <script>scripts\buttonCallback_SaveMap.gml</script>
+        <script>scripts\buttonCallback_LoadMap.gml</script>
+        <script>scripts\buttonCallback_LoadRMJMap.gml</script>
+      </scripts>
+      <scripts name="menu map">
+        <script>scripts\buttonCallback_InfiniteJump.gml</script>
+        <script>scripts\buttonCallback_Dotkid.gml</script>
+        <script>scripts\buttonCallback_ClearMap.gml</script>
+      </scripts>
+      <scripts name="menu preferences">
+        <script>scripts\buttonCallback_Skin.gml</script>
+        <script>scripts\buttonCallback_KillPlayer.gml</script>
+        <script>scripts\buttonCallback_Fullscreen.gml</script>
+        <script>scripts\buttonCallback_ShowGrid.gml</script>
+        <script>scripts\buttonCallback_ShowHitbox.gml</script>
+        <script>scripts\buttonCallback_DotkidOutline.gml</script>
+        <script>scripts\buttonCallback_HideSidebar.gml</script>
+      </scripts>
+      <scripts name="sidebar">
+        <script>scripts\buttonCallback_OpenMenu.gml</script>
+        <script>scripts\buttonCallback_EditorInstructions.gml</script>
+        <script>scripts\buttonCallback_ToggleAnalysis.gml</script>
+      </scripts>
     </scripts>
     <scripts name="combo boxes">
       <script>scripts\comboBoxButton.gml</script>
@@ -215,6 +222,8 @@
       <script>scripts\inputCallback_GridCustom.gml</script>
       <script>scripts\inputCallback_SpeedCustom.gml</script>
       <script>scripts\inputCallback_ClearMap.gml</script>
+      <script>scripts\inputCallback_LoadMap.gml</script>
+      <script>scripts\inputCallback_LoadRMJMap.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">

@@ -36,13 +36,13 @@ if mode == input_textbox {
     var label_yo = -40
 }
 else if mode == input_yesno {
-    var back_w = 250
+    var back_w = 280
     var back_h = 120
     var label_yo = -30
 }
-drawButton(400-back_w/2,304-back_h/2,back_w,back_h,false)
+drawButton(528-back_w/2,304-back_h/2,back_w,back_h,false)
 fontSetup(font_small,c_black,fa_center,fa_center,1)
-draw_text(400,304+label_yo,label)
+draw_text(528,304+label_yo,label)
 
 // contents
 if mode == input_textbox {
@@ -51,7 +51,7 @@ if mode == input_textbox {
     var textbox_w = 40
     var textbox_h = 32
     var cursor_h = 20
-    var xx = 400-textbox_w/2
+    var xx = 528-textbox_w/2
     var yy = 304+textbox_yo
     var ycenter = yy+textbox_h/2
     drawButton(xx,yy,textbox_w,textbox_h,true)
@@ -66,7 +66,7 @@ if mode == input_textbox {
     var button_yo = 20
     var button_w = 80
     var button_h = 32
-    menuButton(400-button_w/2,304+button_yo,button_w,button_h,'Ok',inputOverlayStringSubmit,true,false)
+    menuButton(528-button_w/2,304+button_yo,button_w,button_h,'Ok',inputOverlayStringSubmit,true,false)
     if keyboard_check_pressed(vk_enter) {
         inputOverlayStringSubmit()
     }
@@ -78,8 +78,8 @@ else if mode == input_yesno {
     var button_h = 32
     var button_space = 10
     
-    var xx1 = 400-button_space-button_w
-    var xx2 = 400+button_space
+    var xx1 = 528-button_space-button_w
+    var xx2 = 528+button_space
     var yy = 304+button_yo
     menuButton(xx1,yy,button_w,button_h,'No',inputOverlayNo,true,false)
     menuButton(xx2,yy,button_w,button_h,'Yes',inputOverlayYes,true,false)

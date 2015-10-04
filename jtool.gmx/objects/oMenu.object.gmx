@@ -157,7 +157,7 @@ menuButtonToggle(xx,yy,w,h,buttonCallback_HideSidebar,buttons_enabled,false,
 
 yy += dy
 menuButton(xx,yy,w,h,'Fullscreen',buttonCallback_Fullscreen,buttons_enabled,sMenuFullscreen)
-if keyboard_check_pressed(vk_f4) {
+if keyboard_check_pressed(vk_f4) and not keyboard_check(vk_alt) {
     buttonCallback_Fullscreen()
 }
 

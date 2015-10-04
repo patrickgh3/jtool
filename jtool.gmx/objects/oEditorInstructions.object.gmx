@@ -37,7 +37,7 @@ if global.editorinstructions {
     var dy = 25
     var dx = 70
     var h = 180
-    draw_set_color(c_white)
+    draw_set_color(global.color_button)
     draw_set_alpha(0.9)
     draw_rectangle(xx-10,-1,800,h,false)
     fontSetup(font_small,c_black,fa_left,fa_top,1)

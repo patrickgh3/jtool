@@ -55,6 +55,7 @@ if global.deathEnabled {
     with oPlayer {
         var inst = instance_create(x,y,oPlayerVictory);
         inst.sprite_index = sprite_index
+        if global.dotkid inst.sprite_index = sDotkid
         inst.image_speed = image_speed
         inst.image_xscale = global.player_xscale
         instance_destroy()

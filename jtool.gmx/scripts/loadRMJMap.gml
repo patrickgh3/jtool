@@ -1,4 +1,5 @@
-window_set_fullscreen(false)
+// Deletes all edit objects and loads an RMJ map from file.
+
 filename = get_open_filename_ext('RMJ map|*.map','','','Open RMJ map')
 if filename == '' exit
 var f = file_text_open_read(filename)
@@ -12,6 +13,7 @@ file_text_readln(f)
 file_text_readln(f)
 file_text_readln(f)
 oEdit.undo_objectstring = ''
+oEdit.undo_nochanges = false
 with all if object_is_edit(object_index) instance_destroy()
 while not file_text_eoln(f) {
     var xx = file_text_read_real(f)
