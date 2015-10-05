@@ -102,13 +102,13 @@
     <sprites name="editor">
       <sprite>sprites\sEditorKiller</sprite>
       <sprite>sprites\sEditorWorld</sprite>
-      <sprite>sprites\sEditorTriggerKiller</sprite>
       <sprite>sprites\sEditorButton</sprite>
       <sprite>sprites\sEditorPencil</sprite>
       <sprite>sprites\sEditorBorderDeath</sprite>
       <sprite>sprites\sEditorMenu</sprite>
       <sprite>sprites\sEditorKid</sprite>
       <sprite>sprites\sEditorInputOverlay</sprite>
+      <sprite>sprites\sEditorZoom</sprite>
     </sprites>
     <sprites name="menu buttons">
       <sprite>sprites\sMenuSave</sprite>
@@ -262,44 +262,46 @@
       <object>objects\oWaterNekoron</object>
       <object>objects\oSlideBlock</object>
       <object>objects\oSlideBlockR</object>
+      <object>objects\oPlatform2</object>
       <object>objects\oGravityArrowUp</object>
       <object>objects\oGravityArrowDown</object>
-      <object>objects\oPlatform2</object>
       <object>objects\oSaveFlip</object>
-    </objects>
-    <objects name="misc">
-      <object>objects\oPlayerBlood</object>
-      <object>objects\oPlayerBullet</object>
-      <object>objects\oKiller</object>
-      <object>objects\oKillerTrigger</object>
-      <object>objects\oBlock</object>
-      <object>objects\oKeySaveParticle</object>
-      <object>objects\oBorderDeath</object>
-      <object>objects\oEditGrid</object>
-      <object>objects\oPlayerVictory</object>
     </objects>
     <objects name="sidebar">
       <object>objects\oSidebar</object>
-      <object>objects\oOptionsButton</object>
-      <object>objects\oHideSidebar</object>
       <object>objects\oPalatte</object>
+      <object>objects\oOptionsButton</object>
       <object>objects\oGridComboBox</object>
       <object>objects\oSpeedComboBox</object>
-      <object>objects\oKeyDisplay</object>
       <object>objects\oEditorInstructions</object>
+      <object>objects\oHideSidebar</object>
+      <object>objects\oKeyDisplay</object>
       <objects name="jump analysis">
-        <object>objects\oToggleAnalysis</object>
         <object>objects\oJumpDurations</object>
         <object>objects\oCancelHint</object>
         <object>objects\oBhopHint</object>
         <object>objects\oPlayerPosition</object>
+        <object>objects\oToggleAnalysis</object>
       </objects>
+    </objects>
+    <objects name="engine misc">
+      <object>objects\oPlayerBlood</object>
+      <object>objects\oPlayerBullet</object>
+      <object>objects\oBlock</object>
+      <object>objects\oKiller</object>
+    </objects>
+    <objects name="tool misc">
+      <object>objects\oBorderDeath</object>
+      <object>objects\oEditGrid</object>
+      <object>objects\oPlayerVictory</object>
+      <object>objects\oKeySaveParticle</object>
     </objects>
     <object>objects\oWorld</object>
     <object>objects\oPlayer</object>
     <object>objects\oMenu</object>
     <object>objects\oEdit</object>
     <object>objects\oInputOverlay</object>
+    <object>objects\oZoom</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rMain</room>

@@ -13,7 +13,7 @@ with oPlayer {
         }
         
         // not sure if there's a better way to do this
-        if keyboard_check_pressed(ord('W')) {
+        /*if keyboard_check_pressed(ord('W')) {
             instance_destroy()
             instance_create(x,y-0.01,oPlayer)
         }
@@ -22,7 +22,7 @@ with oPlayer {
             var yy = y
             if y mod 1 > 0.49 yy -= 0.4
             instance_create(x,yy+0.01,oPlayer)
-        }
+        }*/
     }
 }
 

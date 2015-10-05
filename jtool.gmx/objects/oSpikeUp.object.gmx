@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>oKillerTrigger</parentName>
+  <parentName>oKiller</parentName>
   <maskName>sSpikeUpDefault</maskName>
   <events/>
   <PhysicsObject>0</PhysicsObject>
