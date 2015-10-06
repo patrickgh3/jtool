@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <title>Dotkid</title>
+    <link rel="stylesheet" href="./docstyle.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <div class="content">
+      <h1>Dotkid</h1>
+      The dotkid sprite has its origin set 8 pixels above the center of the dot, as shown in the picture. The player's sprite and collision mask are replaced with this sprite. No other special behavior is coded for dotkid; it uses the same exact logic the player normally does.
+      <br><br>
+      Due to the very quirky implementation of platforms, the sprite origin matters a lot. Mimicking the origin of the kid's normal hitbox as I did here (9 pixels above the bottom of the sprite) makes dotkid platforms behave mostly how you would expect. You can check for yourself what happens if the origin is centered on the dot. (inconsistent falling through platforms, etc.) So, in summary, I chose this implementation of dotkid because it has enjoyable interaction with platforms, and is also faithful to the standard player physics.
+    </div>
+    <img class="sideimage" src="images/dotkid_origin.png">
+  </body>
+</html>
