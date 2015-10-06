@@ -5,7 +5,7 @@ var callback = argument1
 var label = argument2
 
 if global.state == globalstate_input {
-    show_message('inputOverlay called when state was already input')
+    show_debug_message('inputOverlay called when state was already input')
     exit
 }
 

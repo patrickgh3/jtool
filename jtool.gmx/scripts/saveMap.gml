@@ -20,6 +20,7 @@ file_text_write_string(f,delim)
 file_text_write_string(f,'objects:')
 
 var objects_out_of_range = false
+var objects_unrecognized = false
 
 with all {
     if not objectInPalette(object_index) continue
@@ -29,11 +30,25 @@ with all {
         objects_out_of_range = true
         continue
     }
-    file_text_write_string(f,mapSerializeObject(self))
+    var str = mapSerializeObject(self)
+    if str != '' {
+        file_text_write_string(f,str)
+    }
+    else {
+        objects_unrecognized = true
+    }
 }
 
 file_text_close(f)
 
+var warning_message = ''
+if objects_unrecognized {
+    warning_message += "Warning: Some objects were not official and weren't saved."
+}
 if objects_out_of_range {
-    show_message('Some objects were out of range. (x or y < '+string(minpos)+' or >= '+string(maxpos)+')')
+    warning_message = "Warning: Some objects were out of range and weren't saved."
+        +'#(x or y < '+string(minpos)+' or >= '+string(maxpos)+')'
+}
+if warning_message != '' {
+    inputOverlay(input_info,false,warning_message)
 }

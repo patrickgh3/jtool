@@ -1,4 +1,4 @@
-// Deletes all edit objects and loads a map from file.
+// Deletes all palette objects and loads a map from file.
 
 filename = get_open_filename_ext('jtool map|*.jmap','','','Open Map')
 if filename == '' exit
@@ -40,7 +40,7 @@ while index <= string_length(content) {
         else if section_number > 1 {
             var prefix = string_split(currentstring,0,':')
             if prefix == 'objects' {
-                // parse objects aaaaa
+                // parse objects
                 oEdit.undo_objectstring = ''
                 oEdit.undo_nochanges = true
                 with all if objectInPalette(object_index) instance_destroy()

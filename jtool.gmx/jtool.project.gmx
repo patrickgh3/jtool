@@ -227,14 +227,14 @@
     <scripts name="save map">
       <script>scripts\saveMap.gml</script>
       <script>scripts\mapSerializeObject.gml</script>
-      <script>scripts\intToBase64String.gml</script>
+      <script>scripts\intToBase32String.gml</script>
     </scripts>
     <scripts name="load map">
       <script>scripts\loadMap.gml</script>
       <script>scripts\mapDeserializeObject.gml</script>
+      <script>scripts\base32StringToInt.gml</script>
       <script>scripts\loadRMJMap.gml</script>
       <script>scripts\rmjCodeToObject.gml</script>
-      <script>scripts\base64StringToInt.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -317,7 +317,7 @@
   <rooms name="rooms">
     <room>rooms\rMain</room>
   </rooms>
-  <constants number="10">
+  <constants number="11">
     <constant name="globalstate_idle">1</constant>
     <constant name="globalstate_menu">2</constant>
     <constant name="globalstate_input">3</constant>
@@ -328,6 +328,7 @@
     <constant name="jstate_done">5</constant>
     <constant name="input_textbox">1</constant>
     <constant name="input_yesno">2</constant>
+    <constant name="input_info">3</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

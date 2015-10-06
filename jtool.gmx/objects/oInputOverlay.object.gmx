@@ -40,6 +40,11 @@ else if mode == input_yesno {
     var back_h = 120
     var label_yo = -30
 }
+else if mode == input_info {
+    var back_w = 280
+    var back_h = 120
+    var label_yo = -30
+}
 drawButton(528-back_w/2,304-back_h/2,back_w,back_h,false)
 fontSetup(font_small,c_black,fa_center,fa_center,1)
 draw_text(528,304+label_yo,label)
@@ -83,6 +88,16 @@ else if mode == input_yesno {
     var yy = 304+button_yo
     menuButton(xx1,yy,button_w,button_h,'No',inputOverlayNo,true,false)
     menuButton(xx2,yy,button_w,button_h,'Yes',inputOverlayYes,true,false)
+    if keyboard_check_pressed(vk_enter) {
+        inputOverlayYes()
+    }
+}
+else if mode == input_info {
+    var button_yo = 15
+    var button_w = 90
+    var button_h = 32
+    menuButton(528-button_w/2,304+button_yo,button_w,button_h,
+    'Ok',inputOverlayYes,true,false)
     if keyboard_check_pressed(vk_enter) {
         inputOverlayYes()
     }

@@ -1,10 +1,16 @@
-// Creates an object from a map serialized string
+/* Creates an object from a map serialized string.
+   See mapSerializeObject for the format of the string.
+   
+   If the object palette id wasn't recognized, no object
+   will be created and the script returns the constant noone.
+   Otherwise returns the index of the created object.
+*/
 
 var str = argument0
 
-var paletteid = base64StringToInt(string_copy(str,1,1))
-var xx = base64StringToInt(string_copy(str,2,2))
-var yy = base64StringToInt(string_copy(str,4,2))
+var paletteid = base32StringToInt(string_copy(str,1,1))
+var xx = base32StringToInt(string_copy(str,2,2))
+var yy = base32StringToInt(string_copy(str,4,2))
 var obj
 switch paletteid {
     case 1:  obj=oEditBlock break
@@ -30,8 +36,9 @@ switch paletteid {
     case 21: obj=oWarp break
     case 22: obj=oJumpRefresher break
     case 23: obj=oWater3 break
-    default: show_message('non-existent object code in deserialization: '+string(sid)) exit
+    default: return noone
 }
 
 var inst = instance_create(xx-128,yy-128,obj);
 inst.undo_recent = false
+return inst
