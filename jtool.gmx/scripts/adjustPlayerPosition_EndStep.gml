@@ -1,7 +1,10 @@
-// Moves the player 1px horizontally using A / D, and 0.01 px vertically using W / S.
-// Also jump to mouse position using space.
-// Also save using S.
-// To be called by an object every End Step.
+/* Shortcut keys to conveniently move the player.
+   To be called by an object every End Step.
+
+   Nudge 1px horizontally using A / D.
+   Jump to mouse position using W.
+   Save at current position using S.
+*/
 
 with oPlayer {
     if place_meeting(x,round(y+(global.grav)),oBlock) and not frozen {
@@ -11,22 +14,10 @@ with oPlayer {
         if keyboard_check_pressed(ord('D')) and not place_meeting(x+1,y,oBlock) {
             x += 1
         }
-        
-        // not sure if there's a better way to do this
-        /*if keyboard_check_pressed(ord('W')) {
-            instance_destroy()
-            instance_create(x,y-0.01,oPlayer)
-        }
-        if keyboard_check_pressed(ord('S')) {
-            instance_destroy()
-            var yy = y
-            if y mod 1 > 0.49 yy -= 0.4
-            instance_create(x,yy+0.01,oPlayer)
-        }*/
     }
 }
 
-if keyboard_check_pressed(vk_space)
+if keyboard_check_pressed(ord('W'))
 and mouse_x >= 0 and mouse_x < 800 and mouse_y >= 0 and mouse_y < 608 {
     if not instance_exists(oPlayer) loadPlayer()
     with oPlayer {

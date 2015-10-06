@@ -36,7 +36,7 @@ if global.editorinstructions {
     var yy = 5
     var dy = 25
     var dx = 70
-    var h = 180
+    var h = 260
     draw_set_color(global.color_button)
     draw_set_alpha(0.9)
     draw_rectangle(xx-10,-1,800,h,false)
@@ -57,11 +57,20 @@ if global.editorinstructions {
     draw_text(xx,yy,'S')
     draw_text(xx+dx,yy,'Save')
     yy += dy
-    draw_text(xx,yy,'Space')
+    draw_text(xx,yy,'W')
     draw_text(xx+dx,yy,'Move kid')
     yy += dy
     draw_text(xx,yy,'A,D')
     draw_text(xx+dx,yy,'Nudge kid x')
+    yy += dy
+    draw_text(xx,yy,'Mwheel')
+    draw_text(xx+dx,yy,'Zoom in/out')
+    yy += dy
+    draw_text(xx,yy,'X,C')
+    draw_text(xx+dx,yy,'Zoom in/out')
+    yy += dy
+    draw_text(xx,yy,'Space')
+    draw_text(xx+dx,yy,'Pan view')
 }
 </string>
           </argument>

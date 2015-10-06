@@ -76,7 +76,6 @@
     <instance objName="oEditorInstructions" x="816" y="16" name="inst_C6F3D08D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oEditGrid" x="168" y="72" name="inst_7CB1E00B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oZoom" x="192" y="64" name="inst_82440A97" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oCustomObjectTest" x="224" y="288" name="inst_5FD5B586" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

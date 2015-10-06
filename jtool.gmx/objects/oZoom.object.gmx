@@ -34,6 +34,8 @@ x1_target=x1
 y1_target=y1
 x2_target=x2
 y2_target=y2
+mouseview_xlast=0
+mouseview_ylast=0
 </string>
           </argument>
         </arguments>
@@ -56,23 +58,45 @@ y2_target=y2
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// changing zoom level
+            <string>// changing zoom level (change target)
 var zoomlast = zoom
-if mouse_wheel_up() or keyboard_check_pressed(187/* = */) {
-    zoom += 1
+if mouse_wheel_up() or keyboard_check_pressed(ord('X')) {
+    if zoom &lt; 2 zoom += 0.5
+    else zoom += 1
 }
-else if mouse_wheel_down() or keyboard_check_pressed(189/* - */) {
-    zoom -= 1
+else if mouse_wheel_down() or keyboard_check_pressed(ord('C')) {
+    if zoom &lt;= 2 zoom -= 0.5
+    else zoom -= 1
 }
 zoom = clamp(zoom,1,4)
+var endw = room_width/zoom
+var endh = room_height/zoom
 if zoom != zoomlast {
-    var endw = room_width/zoom
-    var endh = room_height/zoom
-    x1_target = clamp(mouse_x-endw/2,0,1056-endw)
-    y1_target = clamp(mouse_y-endh/2,0,608-endh)
-    x2_target = clamp(mouse_x+endw/2,endw,1056)
-    y2_target = clamp(mouse_y+endh/2,endh,608)
+    x1_target = mouse_x-endw/2
+    y1_target = mouse_y-endh/2
+    x2_target = mouse_x+endw/2
+    y2_target = mouse_y+endh/2
 }
+
+// panning view (change target)
+var mouseview_x = mouse_x-view_xview
+var mouseview_y = mouse_y-view_yview
+if keyboard_check(vk_space) {
+    var dx = mouseviewx_last - mouseview_x
+    var dy = mouseviewy_last - mouseview_y;
+    x1_target += dx
+    y1_target += dy
+    x2_target += dx
+    y2_target += dy
+}
+mouseviewx_last=mouseview_x
+mouseviewy_last=mouseview_y
+
+// clamp target
+x1_target = clamp(x1_target,0,1056-endw)
+y1_target = clamp(y1_target,0,608-endh)
+x2_target = clamp(x2_target,endw,1056)
+y2_target = clamp(y2_target,endh,608)
 
 // ease in view to target
 var ease = 0.3;
