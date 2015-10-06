@@ -10,6 +10,7 @@
       In order to simplify things, I did both the logic and drawing of UI buttons in Draw events. Really the logic should be in a Step event and the drawing in a Draw event. However, in this case, that would mean having a lot of repetition between the two places (where the button is located, collision with the mouse) for every single button. This would make the project a lot messier than it needs to be in my eyes.
       <br><br>
       However, having game logic in the Draw event means that using multiple views breaks things. Each view calls the draw event of every object, and so each button's logic gets executed twice or more during each frame, which screws things up (combo boxes close right after they open, etc). So, I traded the ability to use views (and manually calling draw events) for neatness, since there are so many buttons and UI elements scattered throughout the project. And that's the story of that!
+      <script src="write_footer.js"></script>
     </div>
     <img class="sideimage" src="images/klazen_keepo.png">
   </body>

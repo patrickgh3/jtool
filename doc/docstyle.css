@@ -33,6 +33,19 @@ body {
       color: #4D9DDD;
     }
     
+    .content a {
+      color: #4D9DDD;
+      text-decoration: none;
+    }
+    
+    .content a:hover {
+        color: white;
+    }
+    
+    .content .footer {
+      margin-top: 20px;
+    }
+    
     .content li {
       margin-left: 25px;
     }
