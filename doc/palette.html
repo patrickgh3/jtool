@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>Palette</title>
+    <link rel="stylesheet" href="./docstyle.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <div class="content">
+      <h1>Palette</h1>
+      The palette refers to the selction of placeable objects in the sidebar. The object "oPalette" controls the logic and drawing of the palette.
+      
+      <h2>How to add your own palette object</h2>
+      <ul>
+        <li><b>Create the object</b> - Should be in the "palette" folder. Set the sprite and mask index to the following two sprites.</li>
+        <li><b>Create the normal sprite</b> - Should be in the "skin" folder. This sprite will be replaced when loading skins, and should be the object's sprite index.</li>
+        <li><b>Create the default skin sprite</b> - Should be in the "skin defaults" folder. This sprite serves as a default if no relpacement sprite for the object is provided in a skin, and also serves as the mask for the object, which should never change. Don't forget to enable precise collisions if you wish.</li>
+        <li><b>Edit the script objectIsEdit</b> - Add your object to the switch statement, so various parts of the tool can tell that your new object should be erased when clearing the map, etc.</li>
+      </ul>
+      The following steps only apply if you want to fully integrate the palette object, meaning it's saved and loaded from map files and reskinned by skins. This is mainly here for Patrick to read if adding objects supported in a new official version.
+      <ul>
+        <li><b>TODO: Edit the script editObjectSerialize?</b></li>
+        <li><b>TODO: Edit the script createFromSerialization?</b></li>
+        <li>Add to script loadSkin</li>
+        <li><b>Add to palette</b> - In oPalette's draw event</li>
+      </ul>
+    </div>
+    <img class="sideimage" src="images/palette.png">
+  </body>
+</html>
