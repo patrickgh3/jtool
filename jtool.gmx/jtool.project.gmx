@@ -121,10 +121,13 @@
       <sprite>sprites\sMenuHitbox</sprite>
       <sprite>sprites\sMenuGrid</sprite>
     </sprites>
-    <sprite>sprites\sEditCursor</sprite>
-    <sprite>sprites\sHintCursor</sprite>
-    <sprite>sprites\sBorderDeath</sprite>
-    <sprite>sprites\sCursorDropper</sprite>
+    <sprites name="misc">
+      <sprite>sprites\sEditCursor</sprite>
+      <sprite>sprites\sHintCursor</sprite>
+      <sprite>sprites\sBorderDeath</sprite>
+      <sprite>sprites\sCursorDropper</sprite>
+      <sprite>sprites\sCustomObjectTest</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bgBackground</background>
@@ -142,15 +145,10 @@
     <scripts name="util">
       <script>scripts\fontSetup.gml</script>
       <script>scripts\point_in_rect.gml</script>
-      <script>scripts\number_to_frames_string.gml</script>
+      <script>scripts\padStringLeft.gml</script>
       <script>scripts\string_split.gml</script>
-      <script>scripts\base32string_to_real.gml</script>
-      <script>scripts\real_to_base32string.gml</script>
+      <script>scripts\number_to_frames_string.gml</script>
       <script>scripts\highlightGetFraction.gml</script>
-      <script>scripts\edit_object_serialize.gml</script>
-      <script>scripts\create_from_serialization.gml</script>
-      <script>scripts\object_is_edit.gml</script>
-      <script>scripts\rmjobject_to_object.gml</script>
       <script>scripts\colorFromHsvDelimString.gml</script>
       <script>scripts\stringIsInt.gml</script>
     </scripts>
@@ -204,16 +202,6 @@
       <script>scripts\buttonCallback_SpeedPreset.gml</script>
       <script>scripts\buttonCallback_SpeedCustom.gml</script>
     </scripts>
-    <scripts name="saveload">
-      <script>scripts\savePlayer.gml</script>
-      <script>scripts\loadPlayer.gml</script>
-      <script>scripts\saveConfig.gml</script>
-      <script>scripts\loadConfig.gml</script>
-      <script>scripts\saveMap.gml</script>
-      <script>scripts\loadMap.gml</script>
-      <script>scripts\loadSkin.gml</script>
-      <script>scripts\loadRMJMap.gml</script>
-    </scripts>
     <scripts name="input overlay">
       <script>scripts\inputOverlay.gml</script>
       <script>scripts\inputOverlayFinish.gml</script>
@@ -225,6 +213,28 @@
       <script>scripts\inputCallback_ClearMap.gml</script>
       <script>scripts\inputCallback_LoadMap.gml</script>
       <script>scripts\inputCallback_LoadRMJMap.gml</script>
+    </scripts>
+    <scripts name="saveload">
+      <script>scripts\savePlayer.gml</script>
+      <script>scripts\loadPlayer.gml</script>
+      <script>scripts\saveConfig.gml</script>
+      <script>scripts\loadConfig.gml</script>
+      <script>scripts\loadSkin.gml</script>
+    </scripts>
+    <script>scripts\undoSerializeObject.gml</script>
+    <script>scripts\undoDeserializeObject.gml</script>
+    <script>scripts\objectInPalette.gml</script>
+    <scripts name="save map">
+      <script>scripts\saveMap.gml</script>
+      <script>scripts\mapSerializeObject.gml</script>
+      <script>scripts\intToBase64String.gml</script>
+    </scripts>
+    <scripts name="load map">
+      <script>scripts\loadMap.gml</script>
+      <script>scripts\mapDeserializeObject.gml</script>
+      <script>scripts\loadRMJMap.gml</script>
+      <script>scripts\rmjCodeToObject.gml</script>
+      <script>scripts\base64StringToInt.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -269,7 +279,7 @@
     </objects>
     <objects name="sidebar">
       <object>objects\oSidebar</object>
-      <object>objects\oPalatte</object>
+      <object>objects\oPalette</object>
       <object>objects\oOptionsButton</object>
       <object>objects\oGridComboBox</object>
       <object>objects\oSpeedComboBox</object>
@@ -295,6 +305,7 @@
       <object>objects\oEditGrid</object>
       <object>objects\oPlayerVictory</object>
       <object>objects\oKeySaveParticle</object>
+      <object>objects\oCustomObjectTest</object>
     </objects>
     <object>objects\oWorld</object>
     <object>objects\oPlayer</object>

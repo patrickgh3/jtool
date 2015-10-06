@@ -1,3 +1,7 @@
+// Returns whether or not an object is a special palette object.
+// Mainly used in oEdit to differentiate objects placed by the user
+// from other misc objects.
+
 var objectindex = argument0
 
 switch objectindex {
@@ -24,7 +28,6 @@ switch objectindex {
     case oPlayerStart:
     case oWarp:
     case oJumpRefresher:
-        return true
-    default:
-        return false
+    return true
 }
+return false

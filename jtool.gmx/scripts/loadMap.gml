@@ -43,12 +43,12 @@ while index <= string_length(content) {
                 // parse objects aaaaa
                 oEdit.undo_objectstring = ''
                 oEdit.undo_nochanges = true
-                with all if object_is_edit(object_index) instance_destroy()
+                with all if objectInPalette(object_index) instance_destroy()
                 var objectstring = string_split(currentstring,1,':')
                 var i = 1
                 while i < string_length(objectstring) {
                     var s = string_copy(objectstring,i,5)
-                    create_from_serialization(s)
+                    mapDeserializeObject(s)
                     i += 5
                 }
                 global.savePlayerX = oPlayerStart.x+17

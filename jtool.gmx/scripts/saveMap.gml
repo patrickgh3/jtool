@@ -22,14 +22,14 @@ file_text_write_string(f,'objects:')
 var objects_out_of_range = false
 
 with all {
-    if not object_is_edit(object_index) continue
+    if not objectInPalette(object_index) continue
     var maxpos = 896
     var minpos = -128
     if x >= maxpos or y >= maxpos or x < minpos or y < minpos {
         objects_out_of_range = true
         continue
     }
-    file_text_write_string(f,edit_object_serialize(self))
+    file_text_write_string(f,mapSerializeObject(self))
 }
 
 file_text_close(f)

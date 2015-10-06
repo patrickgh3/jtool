@@ -96,7 +96,7 @@ if cursor_in_area and global.state == globalstate_idle {
         
         // creating
         if leftpressed and not right {
-            with all if object_is_edit(object_index) undo_recent = false
+            with all if objectInPalette(object_index) undo_recent = false
             undo_objectstring = 'create'
             undo_leftpressedinedit = true
             undo_nochanges = false
@@ -139,16 +139,16 @@ if cursor_in_area and global.state == globalstate_idle {
         
         // destroying
         if rightpressed and not left {
-            with all if object_is_edit(object_index) undo_recent = false
+            with all if objectInPalette(object_index) undo_recent = false
             undo_objectstring = ''
             undo_rightpressedinedit = true
             undo_nochanges = false
         }
         if right and not left and undo_rightpressedinedit {
             with all {
-                if object_is_edit(object_index) and place_meeting(x,y,oEdit) 
+                if objectInPalette(object_index) and place_meeting(x,y,oEdit) 
                 and object_index != oPlayerStart {
-                    other.undo_objectstring += edit_object_serialize(self)
+                    other.undo_objectstring += undoSerializeObject(self)
                     instance_destroy()
                 }
             }
@@ -180,7 +180,7 @@ if keyboard_check(vk_control) and keyboard_check_pressed(ord('Z'))
 and global.state == globalstate_idle and not left and not right {
     if undo_objectstring == 'create' {
         with all {
-            if object_is_edit(object_index)
+            if objectInPalette(object_index)
             and object_index != oPlayerStart
             and undo_recent {
                 instance_destroy()
@@ -188,11 +188,9 @@ and global.state == globalstate_idle and not left and not right {
         }
     }
     else if undo_objectstring != '' {
-        var i = 1
-        while i &lt; string_length(undo_objectstring) {
-            var s = string_copy(undo_objectstring,i,5)
-            create_from_serialization(s)
-            i += 5
+        for (var i=1; i&lt;string_length(undo_objectstring); i+=9) {
+            var s = string_copy(undo_objectstring,i,9)
+            undoDeserializeObject(s)
         }
     }
     undo_nochanges = false
@@ -221,7 +219,7 @@ and global.state == globalstate_idle and not left and not right {
           <argument>
             <kind>1</kind>
             <string>with all {
-    if object_is_edit(object_index) {
+    if objectInPalette(object_index) {
         undo_recent = false
     }
 }

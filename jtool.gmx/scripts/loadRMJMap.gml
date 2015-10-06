@@ -14,12 +14,12 @@ file_text_readln(f)
 file_text_readln(f)
 oEdit.undo_objectstring = ''
 oEdit.undo_nochanges = false
-with all if object_is_edit(object_index) instance_destroy()
+with all if objectInPalette(object_index) instance_destroy()
 while not file_text_eoln(f) {
     var xx = file_text_read_real(f)
     var yy = file_text_read_real(f)
     var type = file_text_read_real(f)
-    instance_create(xx,yy,rmjobject_to_object(type))
+    instance_create(xx,yy,rmjCodeToObject(type))
     if file_text_eoln(f) break
 }
 file_text_close(f)

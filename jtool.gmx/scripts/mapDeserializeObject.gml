@@ -1,10 +1,12 @@
+// Creates an object from a map serialized string
+
 var str = argument0
 
-var sid = base32string_to_real(string_copy(str,1,1))
-var xx = base32string_to_real(string_copy(str,2,2))
-var yy = base32string_to_real(string_copy(str,4,2))
+var paletteid = base64StringToInt(string_copy(str,1,1))
+var xx = base64StringToInt(string_copy(str,2,2))
+var yy = base64StringToInt(string_copy(str,4,2))
 var obj
-switch sid {
+switch paletteid {
     case 1:  obj=oEditBlock break
     case 2:  obj=oEditMiniBlock break
     case 3:  obj=oSpikeUp break
@@ -30,5 +32,6 @@ switch sid {
     case 23: obj=oWater3 break
     default: show_message('non-existent object code in deserialization: '+string(sid)) exit
 }
+
 var inst = instance_create(xx-128,yy-128,obj);
 inst.undo_recent = false
