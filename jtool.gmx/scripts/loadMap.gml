@@ -32,21 +32,21 @@ while index <= string_length(content) {
         // version
         else if section_number == 1 {
             versionstring = currentstring
-            version1 = string_split(versionstring,0,'.')
-            version2 = string_split(versionstring,1,'.')
-            version3 = string_split(versionstring,2,'.')
+            version1 = splitDelimString(versionstring,'.',0)
+            version2 = splitDelimString(versionstring,'.',1)
+            version3 = splitDelimString(versionstring,'.',2)
         }
         // everything else
         else if section_number > 1 {
-            var prefix = string_split(currentstring,0,':')
+            var prefix = splitDelimString(currentstring,':',0)
             if prefix == 'objects' {
                 oEdit.undo_objectstring = ''
                 oEdit.undo_nochanges = true
                 with all if objectInPalette(object_index) instance_destroy()
-                var objectstring = string_split(currentstring,1,':')
+                var objectstring = splitDelimString(currentstring,':',1)
                 var i = 1
                 var yy = 0
-                while i < string_length(objectstring) {
+                while i <= string_length(objectstring) {
                     if string_copy(objectstring,i,1) == '-' {
                         yy = base32StringToInt(string_copy(objectstring,i+1,2))
                         i += 3
@@ -65,10 +65,10 @@ while index <= string_length(content) {
                 loadPlayer()
             }
             else if prefix == 'dot' {
-                global.dotkid = real(string_split(currentstring,1,':'))
+                global.dotkid = real(splitDelimString(currentstring,':',1))
             }
             else if prefix == 'inf' {
-                global.infjump = real(string_split(currentstring,1,':'))
+                global.infjump = real(splitDelimString(currentstring,':',1))
             }
         }
         section_number += 1

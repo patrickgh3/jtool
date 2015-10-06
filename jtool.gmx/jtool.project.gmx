@@ -135,22 +135,13 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <scripts name="player">
-      <script>scripts\playerJump.gml</script>
-      <script>scripts\playerVJump.gml</script>
-      <script>scripts\playerShoot.gml</script>
-      <script>scripts\killPlayer.gml</script>
-      <script>scripts\flipGravity.gml</script>
-    </scripts>
     <scripts name="util">
       <script>scripts\fontSetup.gml</script>
       <script>scripts\point_in_rect.gml</script>
       <script>scripts\padStringLeft.gml</script>
-      <script>scripts\string_split.gml</script>
-      <script>scripts\number_to_frames_string.gml</script>
-      <script>scripts\highlightGetFraction.gml</script>
-      <script>scripts\colorFromHsvDelimString.gml</script>
+      <script>scripts\splitDelimString.gml</script>
       <script>scripts\stringIsInt.gml</script>
+      <script>scripts\colorFromHsvDelimString.gml</script>
     </scripts>
     <scripts name="jump analysis">
       <script>scripts\jumpDurations_Create.gml</script>
@@ -164,78 +155,91 @@
       <script>scripts\bhopHint_Draw.gml</script>
       <script>scripts\adjustPlayerPosition_EndStep.gml</script>
     </scripts>
-    <scripts name="menu buttons">
-      <script>scripts\menuButton.gml</script>
-      <script>scripts\menuButtonToggle.gml</script>
-      <script>scripts\drawButton.gml</script>
-      <script>scripts\menuSection.gml</script>
-      <scripts name="menu file">
-        <script>scripts\buttonCallback_SaveMap.gml</script>
-        <script>scripts\buttonCallback_LoadMap.gml</script>
-        <script>scripts\buttonCallback_LoadRMJMap.gml</script>
+    <scripts name="object-specific">
+      <scripts name="player">
+        <script>scripts\playerJump.gml</script>
+        <script>scripts\playerVJump.gml</script>
+        <script>scripts\playerShoot.gml</script>
+        <script>scripts\killPlayer.gml</script>
+        <script>scripts\flipGravity.gml</script>
       </scripts>
-      <scripts name="menu map">
-        <script>scripts\buttonCallback_InfiniteJump.gml</script>
-        <script>scripts\buttonCallback_Dotkid.gml</script>
-        <script>scripts\buttonCallback_ClearMap.gml</script>
-      </scripts>
-      <scripts name="menu preferences">
-        <script>scripts\buttonCallback_Skin.gml</script>
-        <script>scripts\buttonCallback_KillPlayer.gml</script>
-        <script>scripts\buttonCallback_Fullscreen.gml</script>
-        <script>scripts\buttonCallback_ShowGrid.gml</script>
-        <script>scripts\buttonCallback_ShowHitbox.gml</script>
-        <script>scripts\buttonCallback_DotkidOutline.gml</script>
-        <script>scripts\buttonCallback_HideSidebar.gml</script>
-      </scripts>
-      <scripts name="sidebar">
-        <script>scripts\buttonCallback_OpenMenu.gml</script>
-        <script>scripts\buttonCallback_EditorInstructions.gml</script>
-        <script>scripts\buttonCallback_ToggleAnalysis.gml</script>
-      </scripts>
+      <script>scripts\highlightGetFraction.gml</script>
+      <script>scripts\number_to_frames_string.gml</script>
+      <script>scripts\undoSerializeObject.gml</script>
+      <script>scripts\undoDeserializeObject.gml</script>
     </scripts>
-    <scripts name="combo boxes">
-      <script>scripts\comboBoxButton.gml</script>
-      <script>scripts\comboBoxOptionButton.gml</script>
-      <script>scripts\buttonCallback_GridPreset.gml</script>
-      <script>scripts\buttonCallback_GridCustom.gml</script>
-      <script>scripts\buttonCallback_SpeedPreset.gml</script>
-      <script>scripts\buttonCallback_SpeedCustom.gml</script>
-    </scripts>
-    <scripts name="input overlay">
-      <script>scripts\inputOverlay.gml</script>
-      <script>scripts\inputOverlayFinish.gml</script>
-      <script>scripts\inputOverlayStringSubmit.gml</script>
-      <script>scripts\inputOverlayYes.gml</script>
-      <script>scripts\inputOverlayNo.gml</script>
-      <script>scripts\inputCallback_GridCustom.gml</script>
-      <script>scripts\inputCallback_SpeedCustom.gml</script>
-      <script>scripts\inputCallback_ClearMap.gml</script>
-      <script>scripts\inputCallback_LoadMap.gml</script>
-      <script>scripts\inputCallback_LoadRMJMap.gml</script>
+    <scripts name="ui">
+      <scripts name="menu buttons">
+        <script>scripts\menuButton.gml</script>
+        <script>scripts\menuButtonToggle.gml</script>
+        <script>scripts\drawButton.gml</script>
+        <script>scripts\menuSection.gml</script>
+        <scripts name="menu file">
+          <script>scripts\buttonCallback_SaveMap.gml</script>
+          <script>scripts\buttonCallback_LoadMap.gml</script>
+          <script>scripts\buttonCallback_LoadRMJMap.gml</script>
+        </scripts>
+        <scripts name="menu map">
+          <script>scripts\buttonCallback_InfiniteJump.gml</script>
+          <script>scripts\buttonCallback_Dotkid.gml</script>
+          <script>scripts\buttonCallback_ClearMap.gml</script>
+        </scripts>
+        <scripts name="menu preferences">
+          <script>scripts\buttonCallback_Skin.gml</script>
+          <script>scripts\buttonCallback_KillPlayer.gml</script>
+          <script>scripts\buttonCallback_Fullscreen.gml</script>
+          <script>scripts\buttonCallback_ShowGrid.gml</script>
+          <script>scripts\buttonCallback_ShowHitbox.gml</script>
+          <script>scripts\buttonCallback_DotkidOutline.gml</script>
+          <script>scripts\buttonCallback_HideSidebar.gml</script>
+        </scripts>
+        <scripts name="sidebar">
+          <script>scripts\buttonCallback_OpenMenu.gml</script>
+          <script>scripts\buttonCallback_EditorInstructions.gml</script>
+          <script>scripts\buttonCallback_ToggleAnalysis.gml</script>
+        </scripts>
+      </scripts>
+      <scripts name="combo boxes">
+        <script>scripts\comboBoxButton.gml</script>
+        <script>scripts\comboBoxOptionButton.gml</script>
+        <script>scripts\buttonCallback_GridPreset.gml</script>
+        <script>scripts\buttonCallback_GridCustom.gml</script>
+        <script>scripts\buttonCallback_SpeedPreset.gml</script>
+        <script>scripts\buttonCallback_SpeedCustom.gml</script>
+      </scripts>
+      <scripts name="input overlay">
+        <script>scripts\inputOverlay.gml</script>
+        <script>scripts\inputOverlayFinish.gml</script>
+        <script>scripts\inputOverlayStringSubmit.gml</script>
+        <script>scripts\inputOverlayYes.gml</script>
+        <script>scripts\inputOverlayNo.gml</script>
+        <script>scripts\inputCallback_GridCustom.gml</script>
+        <script>scripts\inputCallback_SpeedCustom.gml</script>
+        <script>scripts\inputCallback_ClearMap.gml</script>
+        <script>scripts\inputCallback_LoadMap.gml</script>
+        <script>scripts\inputCallback_LoadRMJMap.gml</script>
+      </scripts>
     </scripts>
     <scripts name="saveload">
+      <scripts name="save map">
+        <script>scripts\saveMap.gml</script>
+        <script>scripts\intToBase32String.gml</script>
+        <script>scripts\objectToSaveID.gml</script>
+      </scripts>
+      <scripts name="load map">
+        <script>scripts\loadMap.gml</script>
+        <script>scripts\base32StringToInt.gml</script>
+        <script>scripts\loadRMJMap.gml</script>
+        <script>scripts\rmjCodeToObject.gml</script>
+        <script>scripts\saveIDToObject.gml</script>
+      </scripts>
       <script>scripts\savePlayer.gml</script>
       <script>scripts\loadPlayer.gml</script>
       <script>scripts\saveConfig.gml</script>
       <script>scripts\loadConfig.gml</script>
       <script>scripts\loadSkin.gml</script>
     </scripts>
-    <script>scripts\undoSerializeObject.gml</script>
-    <script>scripts\undoDeserializeObject.gml</script>
     <script>scripts\objectInPalette.gml</script>
-    <scripts name="save map">
-      <script>scripts\saveMap.gml</script>
-      <script>scripts\intToBase32String.gml</script>
-      <script>scripts\objectToSaveID.gml</script>
-    </scripts>
-    <scripts name="load map">
-      <script>scripts\loadMap.gml</script>
-      <script>scripts\base32StringToInt.gml</script>
-      <script>scripts\loadRMJMap.gml</script>
-      <script>scripts\rmjCodeToObject.gml</script>
-      <script>scripts\saveIDToObject.gml</script>
-    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_small</font>
