@@ -40,16 +40,24 @@ while index <= string_length(content) {
         else if section_number > 1 {
             var prefix = string_split(currentstring,0,':')
             if prefix == 'objects' {
-                // parse objects
                 oEdit.undo_objectstring = ''
                 oEdit.undo_nochanges = true
                 with all if objectInPalette(object_index) instance_destroy()
                 var objectstring = string_split(currentstring,1,':')
                 var i = 1
+                var yy = 0
                 while i < string_length(objectstring) {
-                    var s = string_copy(objectstring,i,5)
-                    mapDeserializeObject(s)
-                    i += 5
+                    if string_copy(objectstring,i,1) == '-' {
+                        yy = base32StringToInt(string_copy(objectstring,i+1,2))
+                        i += 3
+                    }
+                    else {
+                        var objectid = saveIDToObject(base32StringToInt(string_copy(objectstring,i,1)))
+                        var xx = base32StringToInt(string_copy(objectstring,i+1,2))
+                        var inst = instance_create(xx-128,yy-128,objectid);
+                        inst.undo_recent = false;
+                        i += 3
+                    }
                 }
                 global.savePlayerX = oPlayerStart.x+17
                 global.savePlayerY = oPlayerStart.y+23

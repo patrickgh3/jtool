@@ -77,7 +77,6 @@ if mode == input_textbox {
     }
 }
 else if mode == input_yesno {
-    // buttons
     var button_yo = 15
     var button_w = 70
     var button_h = 32
@@ -86,8 +85,8 @@ else if mode == input_yesno {
     var xx1 = 528-button_space-button_w
     var xx2 = 528+button_space
     var yy = 304+button_yo
-    menuButton(xx1,yy,button_w,button_h,'No',inputOverlayNo,true,false)
-    menuButton(xx2,yy,button_w,button_h,'Yes',inputOverlayYes,true,false)
+    menuButton(xx1,yy,button_w,button_h,'Yes',inputOverlayYes,true,false)
+    menuButton(xx2,yy,button_w,button_h,'No',inputOverlayNo,true,false)
     if keyboard_check_pressed(vk_enter) {
         inputOverlayYes()
     }

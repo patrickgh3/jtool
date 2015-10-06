@@ -226,15 +226,15 @@
     <script>scripts\objectInPalette.gml</script>
     <scripts name="save map">
       <script>scripts\saveMap.gml</script>
-      <script>scripts\mapSerializeObject.gml</script>
       <script>scripts\intToBase32String.gml</script>
+      <script>scripts\objectToSaveID.gml</script>
     </scripts>
     <scripts name="load map">
       <script>scripts\loadMap.gml</script>
-      <script>scripts\mapDeserializeObject.gml</script>
       <script>scripts\base32StringToInt.gml</script>
       <script>scripts\loadRMJMap.gml</script>
       <script>scripts\rmjCodeToObject.gml</script>
+      <script>scripts\saveIDToObject.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
