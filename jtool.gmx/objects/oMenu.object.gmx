@@ -179,6 +179,11 @@ yy = y+yo
 menuButtonToggle(xx,yy,w,h,buttonCallback_ShowGrid,buttons_enabled,sMenuGrid,
 '[ Grid ]','Grid',global.showgrid)
 
+// about
+xx += dx+dx2
+yy = y+yo
+menuButton(xx,yy,w,h,'About',buttonCallback_About,buttons_enabled,false)
+
 </string>
           </argument>
         </arguments>

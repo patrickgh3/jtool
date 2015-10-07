@@ -32,7 +32,8 @@ global.count = 0
 global.frameaction_jump = false
 global.frameaction_djump = false
 global.frameaction_jumpslow = false
-global.player_xscale = 1 // todo: get rid of this? did yoyo change in new engine version?
+global.player_xscale = 1
+global.joketitleindex = 0 // used in buttonCallback_JokeTitle
 
 loadConfig()
 

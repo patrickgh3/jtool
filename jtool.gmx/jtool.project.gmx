@@ -193,6 +193,10 @@
           <script>scripts\buttonCallback_DotkidOutline.gml</script>
           <script>scripts\buttonCallback_HideSidebar.gml</script>
         </scripts>
+        <scripts name="menu about">
+          <script>scripts\buttonCallback_About.gml</script>
+          <script>scripts\buttonCallback_JokeTitle.gml</script>
+        </scripts>
         <scripts name="sidebar">
           <script>scripts\buttonCallback_OpenMenu.gml</script>
           <script>scripts\buttonCallback_EditorInstructions.gml</script>
@@ -321,7 +325,7 @@
   <rooms name="rooms">
     <room>rooms\rMain</room>
   </rooms>
-  <constants number="11">
+  <constants number="12">
     <constant name="globalstate_idle">1</constant>
     <constant name="globalstate_menu">2</constant>
     <constant name="globalstate_input">3</constant>
@@ -333,6 +337,7 @@
     <constant name="input_textbox">1</constant>
     <constant name="input_yesno">2</constant>
     <constant name="input_info">3</constant>
+    <constant name="input_about">4</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>
