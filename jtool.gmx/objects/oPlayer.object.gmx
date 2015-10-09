@@ -245,7 +245,8 @@ if abs(vspeed) &gt; maxVspeed {
 
 // jump, shoot, suicide
 if not frozen {
-    if keyboard_check_pressed(global.key_shoot) playerShoot()
+    if keyboard_check_pressed(global.key_shoot)
+        and not keyboard_check(vk_control) playerShoot()
     if keyboard_check_pressed(global.key_jump) playerJump()
     if keyboard_check_released(global.key_jump) playerVJump()
     if keyboard_check_pressed(global.key_suicide) killPlayer()

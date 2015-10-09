@@ -33,8 +33,7 @@ ymin = 0
 xmax = 799
 ymax = 607
 
-// grid snap, selected object and sprite. set by the menu object.
-snap = 16
+// selected object and sprite. set by the menu object.
 selected_object = oEditBlock
 selected_sprite = sEditBlock
 selected_killer = false

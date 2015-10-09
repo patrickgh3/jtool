@@ -35,6 +35,16 @@ global.frameaction_jumpslow = false
 global.player_xscale = 1
 global.joketitleindex = 0 // used in buttonCallback_JokeTitle
 
+/* tell if we're running from the editor or from the compiled game,
+   since that function isn't built into gm.
+   the editor directory is similar to this:
+   C:\Users\User\AppData\Local\Temp\gm_ttt_881\gm_ttt_30167\
+   this assumes the user doesn't have their own folder containing "gm_ttt",
+   but I think that's a safe assumption.
+*/
+global.run_from_editor = string_pos('gm_ttt',working_directory) != 0
+global.editor_project_path = 'C:\Users\Traynor Traynor\Documents\GameMaker\jtool\'
+
 loadConfig()
 
 // might load from config
@@ -57,6 +67,7 @@ global.firstRoomStart = true // uh, yeah. uh
 randomize()
 display_set_gui_size(view_wview[0],view_hview[0])
 window_set_caption('jtool')
+
 // load keys from file sometime? idk
 global.key_left = vk_left
 global.key_right = vk_right

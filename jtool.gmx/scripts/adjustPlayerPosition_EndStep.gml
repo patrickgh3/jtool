@@ -28,7 +28,8 @@ and mouse_x >= 0 and mouse_x < 800 and mouse_y >= 0 and mouse_y < 608 {
     }
 }
 
-if keyboard_check_pressed(ord('S')) and instance_exists(oPlayer) {
+if (keyboard_check_pressed(ord('S')) and not keyboard_check(vk_control))
+and instance_exists(oPlayer) {
     savePlayer()
     audio_play_sound(sndShoot,0,false)
     with oPlayer instance_create(x-17,y-23,oKeySaveParticle)

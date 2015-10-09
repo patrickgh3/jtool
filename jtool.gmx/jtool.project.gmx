@@ -4,7 +4,9 @@
     <Config>Configs\Default</Config>
   </Configs>
   <datafiles number="2" name="datafiles"/>
-  <NewExtensions/>
+  <NewExtensions>
+    <extension index="0">extensions\GMFileSystem</extension>
+  </NewExtensions>
   <sounds name="sound">
     <sound>sound\sndBlockChange</sound>
     <sound>sound\sndBossHit</sound>
@@ -142,6 +144,7 @@
       <script>scripts\splitDelimString.gml</script>
       <script>scripts\stringIsInt.gml</script>
       <script>scripts\colorFromHsvDelimString.gml</script>
+      <script>scripts\prefix_project_path_if_needed.gml</script>
     </scripts>
     <scripts name="jump analysis">
       <script>scripts\jumpDurations_Create.gml</script>

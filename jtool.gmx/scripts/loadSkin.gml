@@ -1,60 +1,59 @@
 // Load the specified skin from file into the game.
 
 var skin_name = argument0
-var folder = 'skins\'+skin_name+'\'
 
-var ini_filename = folder+skin_name+'.ini'
-if not file_exists(ini_filename) {
+var skinfolder = prefix_project_path_if_needed('skins\'+skin_name+'\')
+var ini_filename = skinfolder+skin_name+'.ini'
+
+if not FS_file_exists(ini_filename) {
     show_message("File "+ini_filename+" doesn't exist.")
     exit
 }
-
-ini_open(ini_filename)
+FS_ini_open(ini_filename)
 
 // ui
 global.color_button = colorFromHsvDelimString(
-    ini_read_string('ui','button_idle_color','0,0,175'),',')
+    FS_ini_read_string('ui','button_idle_color','0,0,175'),',')
 global.color_buttonhover = colorFromHsvDelimString(
-    ini_read_string('ui','button_active_color','0,0,175'),',')
-global.buttonhoveralpha = ini_read_real('ui','button_active_alpha',0.5)
-global.buttonhoverborder = ini_read_real('ui','button_active_border',false)
+    FS_ini_read_string('ui','button_active_color','0,0,175'),',')
+global.buttonhoveralpha = FS_ini_read_real('ui','button_active_alpha',0.5)
+global.buttonhoverborder = FS_ini_read_real('ui','button_active_border',false)
 
 // objects
-var colorstring = ini_read_string('objects','killer_idle_color','0,0,255')
+var colorstring = FS_ini_read_string('objects','killer_idle_color','0,0,255')
 global.color_killerhue = real(splitDelimString(colorstring,',',0))
 global.color_killersat = real(splitDelimString(colorstring,',',1))
 global.color_killerval = real(splitDelimString(colorstring,',',2))
 global.color_killer = colorFromHsvDelimString(colorstring,',')
-var colorstring = ini_read_string('objects','killer_active_color','0,128,255')
+var colorstring = FS_ini_read_string('objects','killer_active_color','0,128,255')
 global.color_killer2hue = real(splitDelimString(colorstring,',',0))
 global.color_killer2sat = real(splitDelimString(colorstring,',',1))
 global.color_killer2val = real(splitDelimString(colorstring,',',2))
 global.color_killer2 = colorFromHsvDelimString(colorstring,',')
 global.color_warp = colorFromHsvDelimString(
-    ini_read_string('objects','warp_color','67,196,239'),',')
-global.bulletblockeralpha = ini_read_real('objects','bulletblocker_alpha',0.3)
-global.spikeframes = ini_read_real('objects','spike_frames',1)
-global.spikeanimspeed = ini_read_real('objects','spike_animspeed',1)
-global.minispikeframes = ini_read_real('objects','minispike_frames',1)
-global.minispikeanimspeed = ini_read_real('objects','minispike_animspeed',1)
+    FS_ini_read_string('objects','warp_color','67,196,239'),',')
+global.bulletblockeralpha = FS_ini_read_real('objects','bulletblocker_alpha',0.3)
+global.spikeframes = FS_ini_read_real('objects','spike_frames',1)
+global.spikeanimspeed = FS_ini_read_real('objects','spike_animspeed',1)
+global.minispikeframes = FS_ini_read_real('objects','minispike_frames',1)
+global.minispikeanimspeed = FS_ini_read_real('objects','minispike_animspeed',1)
 
 // bg
-var bg_type = ini_read_string('bg','type','stretch')
-var bg_hspeed = ini_read_real('bg','hspeed',0)
-var bg_vspeed = ini_read_real('bg','vspeed',0)
+var bg_type = FS_ini_read_string('bg','type','stretch')
+var bg_hspeed = FS_ini_read_real('bg','hspeed',0)
+var bg_vspeed = FS_ini_read_real('bg','vspeed',0)
+FS_ini_close()
 
-ini_close()
-
+// assign sprites from file
 for (var i=0; i<100; i+=1) {
-    var spr_index,spr_default,file,xo,yo,frames
-    /*
-        spr_index - sprite index to replace
-        spr_default - default sprite to use if png not found
-        file - name of png file
-        xo - sprite x origin to set
-        yo - sprite y origin to set
-        frames - number of frames the sprite png has (set below switch statement)
+    /* spr_index - sprite index to replace
+       spr_default - default sprite to use if png not found
+       file - name of png file
+       xo - sprite x origin to set
+       yo - sprite y origin to set
+       frames - number of frames the sprite png has (set below switch statement)
     */
+    var spr_index,spr_default,file,xo,yo,frames
     switch i {
         case 0:  spr_index=sSpikeUp spr_default=sSpikeUpDefault file='spikeup.png' xo=0 yo=0 break
         case 1:  spr_index=sSpikeRight spr_default=sSpikeRightDefault file='spikeright.png' xo=0 yo=0 break
@@ -97,35 +96,38 @@ for (var i=0; i<100; i+=1) {
         frames = 1
     }
     
-    if not file_exists(folder+file) {
-        sprite_assign(spr_index,spr_default)
-    }
-    else {
-        var spr = sprite_add(folder+file,frames,false,false,xo,yo)
-        if spr == -1 {
-            show_message("Error when adding sprite "+folder+file+". Try double checking everything.")
-            sprite_assign(spr_index,spr_default)
-        }
-        else {
+    if FS_file_exists(skinfolder+file) {
+        var spr = FS_sprite_add(skinfolder+file,frames,false,false,xo,yo)
+        if spr != -1 {
             sprite_assign(spr_index,spr)
             sprite_delete(spr)
         }
+        else {
+            show_message("Error when adding sprite "+skinfolder+file
+                +". Try double checking everything.")
+            sprite_assign(spr_index,spr_default)
+        }
+    }
+    else {
+        sprite_assign(spr_index,spr_default)
     }
 }
 
-if not file_exists(folder+'bg.png') {
-    background_assign(bgBackground,bgBackgroundDefault)
-}
-else {
-    var bg = background_add(folder+'bg.png',false,false)
-    if bg == -1 {
-        show_message("Error when adding sprite "+folder+file+". Try double checking everything.")
-        background_assign(bgBackground,bgBackgroundDefault)
-    }
-    else {
+// assign background from file
+if FS_file_exists(skinfolder+'bg.png') {
+    var bg = FS_background_add(skinfolder+'bg.png',false,false)
+    if bg != -1 {
         background_assign(bgBackground,bg)
         background_delete(bg)
     }
+    else {
+        show_message("Error when adding background "+skinfolder+file
+            +". Try double checking everything.")
+        background_assign(bgBackground,bgBackgroundDefault)
+    }
+}
+else {
+    background_assign(bgBackground,bgBackgroundDefault)
 }
 if bg_type == 'stretch' {
     background_xscale = room_width/background_width
