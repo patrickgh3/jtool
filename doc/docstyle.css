@@ -49,6 +49,23 @@ body {
     .content li {
       margin-left: 25px;
     }
+    
+    .content table {
+      border-collapse: collapse;
+      text-align: left;
+      margin: 10px;
+    }
+    
+    .content th, td {
+      padding: 3px;
+      padding-left: 10px;
+      padding-right: 10px;
+      border: 1px solid hsl(0,0%,40%);
+    }
+    
+    .content th {
+      border: 3px solid hsl(0,0%,40%);
+    }
 
     /* cut-off corner */
     .content:before {

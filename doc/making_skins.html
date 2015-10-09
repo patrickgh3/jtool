@@ -1,0 +1,74 @@
+<html>
+  <head>
+    <title>Making Skins</title>
+    <link rel="stylesheet" href="./docstyle.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <div class="content">
+      <h1>Making Skins</h1>
+      <h2>Structure</h2>
+      Make a folder with the name of your skin alongside the others in the skins folder. Your skin folder will contain a skin_config.ini file and a bunch of png files. Detail for images and the config file are listed below. You can also look at existing skins for examples.
+      <h2>PNG Images</h2>
+      Note: If you don't include an image for a sprite, a default one will be used.
+      <table>
+        <tr> <th>Name</th> <th>Notes</th> </tr>
+        <tr> <td>apple</td> <td>42 x 24 (2 frames)</td> </tr>
+        <tr> <td>bg</td> <td>whatever dimensions</td> </tr>
+        <tr> <td>block</td> <td>32 x 32</td> </tr>
+        <tr> <td>bulletblocker</td> <td>32 x 32</td> </tr>
+        <tr> <td>jumprefresher</td> <td>origin will be centered</td> </tr>
+        <tr> <td>killerblock</td> <td>32 x 32</td> </tr>
+        <tr> <td>menu</td> <td>1056 x 320 (some height unused)</td> </tr>
+        <tr> <td>miniblock</td> <td>16 x 16</td> </tr>
+        <tr> <td>minidown</td> <td>16 x 16 or wider for multiple frames</td> </tr>
+        <tr> <td>minileft</td> <td>. . .</td> </tr>
+        <tr> <td>miniright</td> <td>. . .</td> </tr>
+        <tr> <td>miniup</td> <td>. . .</td> </tr>
+        <tr> <td>platform</td> <td>32 x 16</td> </tr>
+        <tr> <td>playerstart</td> <td>32 x 16</td> </tr>
+        <tr> <td>save</td> <td>64 x 32 (2 frames)</td> </tr>
+        <tr> <td>sidebar</td> <td>256 x 608</td> </tr>
+        <tr> <td>spikedown</td> <td>32 x 32 or wider for multiple frames</td> </tr>
+        <tr> <td>spikeleft</td> <td>. . .</td> </tr>
+        <tr> <td>spikeright</td> <td>. . .</td> </tr>
+        <tr> <td>spikeup</td> <td>. . .</td> </tr>
+        <tr> <td>walljumpL</td> <td>32 x 32</td> </tr>
+        <tr> <td>walljumpR</td> <td>32 x 32</td> </tr>
+        <tr> <td>warp</td> <td>32 x 32</td> </tr>
+        <tr> <td>water1</td> <td>32 x 32 (bad singlejump water)</td> </tr>
+        <tr> <td>water2</td> <td>32 x 32 (doublejump water)</td> </tr>
+        <tr> <td>water3</td> <td>32 x 32 (doublejump refresh water)</td> </tr>
+      </table>
+      <h2>Config file</h2>
+      Note: "H,S,V color" means the hue, saturation, and value of a color, each ranging from 0-255 and separated by commas.
+      <br>
+      Note: No quotes are used for strings because GMFileSystem's ini functions don't use quotes.
+      <table>
+        <tr> <th>Name</th> <th>Notes</th> </tr>
+        <tr> <th colspan="2">meta</th> </tr>
+        <tr> <td>version</td> <td>The X.X.X jtool version</td> </tr>
+        <tr> <th colspan="2">ui</th> </tr>
+        <tr> <td>button_idle_color</td> <td>H,S,V color of buttons</td> </tr>
+        <tr> <td>button_active_color</td> <td>H,S,V color to overlay on buttons when hovering</td> </tr>
+        <tr> <td>button_active_alpha</td> <td>Alpha from 0-1 of button overlay when hovering</td> </tr>
+        <tr> <td>button_active_border</td> <td>0 or 1, whether or not buttons have thick borders when hovering (see RMJ skin)</td> </tr>
+        <tr> <th colspan="2">objects</th> </tr>
+        <tr> <td>killer_idle_color</td> <td>H,S,V color of killers (spikes, etc)</td> </tr>
+        <tr> <td>killer_active_color</td> <td>H,S,V color of killers (spikes, etc) when being touched</td> </tr>
+        <tr> <td>bulletblocker_alpha</td> <td>Alpha from 0-1 of bullet blockers</td> </tr>
+        <tr> <td>spike_frames</td> <td>Number of animation frames spikes have. Images should have this number of frames.</td> </tr>
+        <tr> <td>spike_animspeed</td> <td>Speed of spike animation from 0-1 (0.25 is every fourth frame</td> </tr>
+        <tr> <td>minispike_frames</td> <td>. . .</td> </tr>
+        <tr> <td>minispike_animspeed</td> <td>. . .</td> </tr>
+        <tr> <th colspan="2">bg</th> </tr>
+        <tr> <td>type</td> <td>"stretch" or "tile"</td> </tr>
+        <tr> <td>hspeed</td> <td>speed in pixels/frame that the bg scrolls horizontally</td> </tr>
+        <tr> <td>vspeed</td> <td>speed in pixels/frame that the bg scrolls vertically</td> </tr>
+      </table>
+      <h2>skins.ini</h2>
+      In the skins folder, skins.ini contains a list of all the present skins, so the game can cycle through them. Add your skin's name to this file to be able to use it.
+      <script src="write_footer.js"></script>
+    </div>
+  </body>
+</html>

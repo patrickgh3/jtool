@@ -3,7 +3,7 @@
 var skin_name = argument0
 
 var skinfolder = prefix_project_path_if_needed('skins\'+skin_name+'\')
-var ini_filename = skinfolder+skin_name+'.ini'
+var ini_filename = skinfolder+'skin_config.ini'
 
 if not FS_file_exists(ini_filename) {
     show_message("File "+ini_filename+" doesn't exist.")

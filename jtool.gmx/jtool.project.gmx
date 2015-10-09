@@ -247,6 +247,7 @@
       <script>scripts\loadSkin.gml</script>
     </scripts>
     <script>scripts\objectInPalette.gml</script>
+    <script>scripts\mainInit.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_small</font>
