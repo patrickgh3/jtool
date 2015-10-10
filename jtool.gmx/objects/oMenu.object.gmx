@@ -59,6 +59,7 @@ and global.state == globalstate_menu
 and steps_in_menu &gt; 0 {
     global.state = globalstate_idle
     steps_out_of_menu = 0
+    restoreZoom()
 }
 
 if global.state == globalstate_menu {

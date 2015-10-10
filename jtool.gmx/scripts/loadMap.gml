@@ -88,3 +88,4 @@ while index <= string_length(content) {
     index += 1
 }
 loadPlayer()
+completelyResetZoom()

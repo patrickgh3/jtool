@@ -36,6 +36,13 @@ x2_target=x2
 y2_target=y2
 mouseview_xlast=0
 mouseview_ylast=0
+
+x1_previous=x1
+y1_previous=y1
+x2_previous=x2
+y2_previous=y2
+zoom_previous=zoom
+has_previous = false
 </string>
           </argument>
         </arguments>
@@ -60,15 +67,18 @@ mouseview_ylast=0
             <kind>1</kind>
             <string>// changing zoom level (change target)
 var zoomlast = zoom
-if mouse_wheel_up() or keyboard_check_pressed(ord('X')) {
+if mouse_wheel_up() or keyboard_check_pressed(ord('C')) {
     if zoom &lt; 2 zoom += 0.5
     else zoom += 1
 }
-else if mouse_wheel_down() or keyboard_check_pressed(ord('C')) {
+else if mouse_wheel_down() or keyboard_check_pressed(ord('X')) {
     if zoom &lt;= 2 zoom -= 0.5
     else zoom -= 1
 }
 zoom = clamp(zoom,1,4)
+if global.state != globalstate_idle {
+    zoom = zoomlast
+}
 var endw = room_width/zoom
 var endh = room_height/zoom
 if zoom != zoomlast {

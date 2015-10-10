@@ -31,3 +31,4 @@ global.savePlayerX = oPlayerStart.x+17
 global.savePlayerY = oPlayerStart.y+23
 global.savePlayerXScale = 1
 loadPlayer()
+completelyResetZoom()

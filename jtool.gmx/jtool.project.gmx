@@ -168,6 +168,9 @@
       <script>scripts\number_to_frames_string.gml</script>
       <script>scripts\undoSerializeObject.gml</script>
       <script>scripts\undoDeserializeObject.gml</script>
+      <script>scripts\restoreZoom.gml</script>
+      <script>scripts\saveAndResetZoom.gml</script>
+      <script>scripts\completelyResetZoom.gml</script>
     </scripts>
     <scripts name="ui">
       <scripts name="menu buttons">
