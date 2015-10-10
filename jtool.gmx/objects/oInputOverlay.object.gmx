@@ -71,6 +71,8 @@ if mode == input_textbox {
         var xxx = xx+string_width(keyboard_string)+8
         draw_line(xxx,ycenter-cursor_h/2,xxx,ycenter+cursor_h/2)
     }
+    fontSetup(font_small,c_black,fa_right,fa_center,1)
+    draw_text(xx-3,ycenter,textbox_label)
     
     // button
     var button_yo = 20

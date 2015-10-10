@@ -226,6 +226,7 @@
         <script>scripts\inputCallback_ClearMap.gml</script>
         <script>scripts\inputCallback_LoadMap.gml</script>
         <script>scripts\inputCallback_LoadRMJMap.gml</script>
+        <script>scripts\inputCallback_VAlign.gml</script>
       </scripts>
     </scripts>
     <scripts name="saveload">

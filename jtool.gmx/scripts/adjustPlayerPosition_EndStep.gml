@@ -34,3 +34,13 @@ and instance_exists(oPlayer) {
     audio_play_sound(sndShoot,0,false)
     with oPlayer instance_create(x-17,y-23,oKeySaveParticle)
 }
+
+if keyboard_check_pressed(ord('V')) and instance_exists(oPlayer) {
+    var onblock;
+    with oPlayer onblock = place_meeting(x,y+global.grav,oBlock)
+    if onblock {
+        inputOverlay(input_textbox,inputCallback_VAlign,
+            'Valign (was '+string(oPlayer.y-floor(oPlayer.y))+')')
+        oInputOverlay.textbox_label = '0.'
+    }
+}

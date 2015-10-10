@@ -27,11 +27,11 @@
             <kind>1</kind>
             <string>if global.hidesidebar exit
 
-var xo = 10
+var xo = 0
 var dx = 55
 var w = 44
 
-var yo = 10
+var yo = 0
 var dy = 55
 var h = 44
 

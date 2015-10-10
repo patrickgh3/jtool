@@ -15,6 +15,7 @@ oInputOverlay.callback = callback
 oInputOverlay.previous_state = global.state
 oInputOverlay.previous_zoom = oZoom.zoom
 oInputOverlay.label = label
+oInputOverlay.textbox_label = ''
 global.state = globalstate_input
 keyboard_string = ''
 saveAndResetZoom()
