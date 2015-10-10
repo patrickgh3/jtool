@@ -7,7 +7,7 @@ global.count = 0
 global.frameaction_jump = false
 global.frameaction_djump = false
 global.frameaction_jumpslow = false
-global.player_xscale = 1
+global.player_xscale = 1 // setting the player's xscale causes physics issues
 global.joketitleindex = 0 // used in buttonCallback_JokeTitle
 
 /* tell if we're running from the editor or from the compiled game,

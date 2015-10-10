@@ -139,6 +139,10 @@
       <script>scripts\stringIsInt.gml</script>
       <script>scripts\colorFromHsvDelimString.gml</script>
       <script>scripts\prefix_project_path_if_needed.gml</script>
+      <script>scripts\decode_real_double.gml</script>
+      <script>scripts\encode_real_double.gml</script>
+      <script>scripts\bin_to_dec.gml</script>
+      <script>scripts\dec_to_bin.gml</script>
     </scripts>
     <scripts name="jump analysis">
       <script>scripts\jumpDurations_Create.gml</script>

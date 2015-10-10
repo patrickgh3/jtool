@@ -39,11 +39,12 @@ while index <= string_length(content) {
         // everything else
         else if section_number > 1 {
             var prefix = splitDelimString(currentstring,':',0)
+            var suffix = splitDelimString(currentstring,':',1)
             if prefix == 'objects' {
                 oEdit.undo_objectstring = ''
                 oEdit.undo_nochanges = true
                 with all if objectInPalette(object_index) instance_destroy()
-                var objectstring = splitDelimString(currentstring,':',1)
+                var objectstring = suffix
                 var i = 1
                 var yy = 0
                 while i <= string_length(objectstring) {
@@ -59,16 +60,26 @@ while index <= string_length(content) {
                         i += 3
                     }
                 }
-                global.savePlayerX = oPlayerStart.x+17
+                /*global.savePlayerX = oPlayerStart.x+17
                 global.savePlayerY = oPlayerStart.y+23
                 global.savePlayerXScale = 1
-                loadPlayer()
+                loadPlayer()*/
             }
             else if prefix == 'dot' {
-                global.dotkid = real(splitDelimString(currentstring,':',1))
+                global.dotkid = real(suffix)
             }
             else if prefix == 'inf' {
-                global.infjump = real(splitDelimString(currentstring,':',1))
+                global.infjump = real(suffix)
+            }
+            else if prefix == 'px' {
+                global.savePlayerX = base32StringToInt(suffix)
+            }
+            else if prefix == 'py' {
+                global.savePlayerY =
+                    decode_real_double(padStringLeft(dec_to_bin(base32StringToInt(suffix)),64,'0'))
+            }
+            else if prefix == 'ps' {
+                global.savePlayerXScale = real(suffix)
             }
         }
         section_number += 1
@@ -76,3 +87,4 @@ while index <= string_length(content) {
     }
     index += 1
 }
+loadPlayer()

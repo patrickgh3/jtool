@@ -47,7 +47,7 @@ else if mode == input_info {
 }
 else if mode == input_about {
     var back_w = 270
-    var back_h = 320
+    var back_h = 360
     var label_yo = 0
 }
 drawButton(528-back_w/2,304-back_h/2,back_w,back_h,false)
@@ -110,11 +110,15 @@ else if mode == input_about {
     var button_w = 90
     var button_h = 32
     fontSetup(font_small,c_black,fa_center,fa_top,1)
-    draw_text(528,304-110,'jtool version 1.0.0##Patrickgh3##'
-    +'Special thanks#YoYoYoDude1 for his studio engine#'
-    +'TheNewGeezer for the original RMJ')
+    draw_text(528,304-150,'jtool version 1.0.0##Patrickgh3##'
+    +'Special thanks:#'
+    +'YoYoYoDude1 for his studio engine#'
+    +'TheNewGeezer for the original RMJ#'
+    +'development stream supporters#'
+    +'testers listed in the readme'
+    +'##Please see the readme for more info!')
     
-    menuButton(528-button_w/2,304+100,button_w,button_h,
+    menuButton(528-button_w/2,304+130,button_w,button_h,
     'Ok',inputOverlayYes,true,false)
     
     var bw = 20
