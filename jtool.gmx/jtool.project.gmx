@@ -8,17 +8,11 @@
     <extension index="0">extensions\GMFileSystem</extension>
   </NewExtensions>
   <sounds name="sound">
-    <sound>sound\sndBlockChange</sound>
-    <sound>sound\sndBossHit</sound>
-    <sound>sound\sndCherry</sound>
-    <sound>sound\sndDeath</sound>
-    <sound>sound\sndDJump</sound>
-    <sound>sound\sndGlass</sound>
-    <sound>sound\sndItem</sound>
     <sound>sound\sndJump</sound>
+    <sound>sound\sndDJump</sound>
     <sound>sound\sndShoot</sound>
-    <sound>sound\sndSpikeTrap</sound>
     <sound>sound\sndWallJump</sound>
+    <sound>sound\sndDeath</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="skin">
