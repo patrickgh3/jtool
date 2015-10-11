@@ -72,11 +72,10 @@ while index <= string_length(content) {
                 global.infjump = real(suffix)
             }
             else if prefix == 'px' {
-                global.savePlayerX = base32StringToInt(suffix)
+                global.savePlayerX = base32StringToFloat(suffix)
             }
             else if prefix == 'py' {
-                global.savePlayerY =
-                    decode_real_double(padStringLeft(dec_to_bin(base32StringToInt(suffix)),64,'0'))
+                global.savePlayerY = base32StringToFloat(suffix)
             }
             else if prefix == 'ps' {
                 global.savePlayerXScale = real(suffix)

@@ -74,14 +74,24 @@ var ystr = string(ypos)
 if global.playery_extended ystr = string_format(ypos,3,16)
 draw_text(xx,yy,'Y pos   '+ystr)
 
+var buttons_active = global.state == globalstate_idle
 var buttonx = x+105
-var buttony = yy-15
+var buttony = y+8
 var buttonw = 24
 var buttonh = 12
 menuButton(buttonx,buttony,buttonw,buttonh,'',buttonCallback_YFormat,
-global.state == globalstate_idle,false)
+buttons_active,false)
 fontSetup(font_small,c_black,fa_center,fa_center,1)
 draw_text(buttonx+buttonw/2,buttony+buttonh/2-4,'. . .')
+
+if global.playery_extended {
+    var bx = x+140
+    var by = y+22
+    var bw = 32
+    var bh = 24
+    menuButton(bx,by,bw,bh,'- .5',buttonCallback_NudgeHalfLeft,buttons_active,false)
+    menuButton(bx+bw+8,by,bw,bh,'+ .5',buttonCallback_NudgeHalfRight,buttons_active,false)
+}
 </string>
           </argument>
         </arguments>

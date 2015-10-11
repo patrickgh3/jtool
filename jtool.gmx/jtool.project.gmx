@@ -172,6 +172,7 @@
       <script>scripts\restoreZoom.gml</script>
       <script>scripts\saveAndResetZoom.gml</script>
       <script>scripts\completelyResetZoom.gml</script>
+      <script>scripts\nudgePlayerHalf.gml</script>
     </scripts>
     <scripts name="ui">
       <scripts name="menu buttons">
@@ -207,6 +208,8 @@
           <script>scripts\buttonCallback_EditorInstructions.gml</script>
           <script>scripts\buttonCallback_ToggleAnalysis.gml</script>
           <script>scripts\buttonCallback_YFormat.gml</script>
+          <script>scripts\buttonCallback_NudgeHalfRight.gml</script>
+          <script>scripts\buttonCallback_NudgeHalfLeft.gml</script>
         </scripts>
       </scripts>
       <scripts name="combo boxes">
@@ -235,14 +238,16 @@
       <scripts name="save map">
         <script>scripts\saveMap.gml</script>
         <script>scripts\intToBase32String.gml</script>
+        <script>scripts\floatToBase32String.gml</script>
         <script>scripts\objectToSaveID.gml</script>
       </scripts>
       <scripts name="load map">
         <script>scripts\loadMap.gml</script>
         <script>scripts\base32StringToInt.gml</script>
+        <script>scripts\base32StringToFloat.gml</script>
+        <script>scripts\saveIDToObject.gml</script>
         <script>scripts\loadRMJMap.gml</script>
         <script>scripts\rmjCodeToObject.gml</script>
-        <script>scripts\saveIDToObject.gml</script>
       </scripts>
       <script>scripts\savePlayer.gml</script>
       <script>scripts\loadPlayer.gml</script>
