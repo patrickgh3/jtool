@@ -151,11 +151,10 @@
       <script>scripts\jumpDurations_Draw.gml</script>
       <script>scripts\cancelHints_Create.gml</script>
       <script>scripts\cancelHints_EndStep.gml</script>
-      <script>scripts\cancelHints_Draw.gml</script>
       <script>scripts\bhopHint_Create.gml</script>
       <script>scripts\bhopHint_EndStep.gml</script>
-      <script>scripts\bhopHint_Draw.gml</script>
       <script>scripts\adjustPlayerPosition_EndStep.gml</script>
+      <script>scripts\drawHint.gml</script>
     </scripts>
     <scripts name="object-specific">
       <scripts name="player">

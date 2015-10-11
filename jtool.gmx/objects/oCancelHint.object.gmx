@@ -72,7 +72,8 @@
           <argument>
             <kind>1</kind>
             <string>if global.showanalysis and not global.hidesidebar {
-    cancelHints_Draw()
+    drawButton(x,y,96,64,false)
+    drawHint(x,y,96,'Cancel',jc_duration,jc_show)
 }
 </string>
           </argument>

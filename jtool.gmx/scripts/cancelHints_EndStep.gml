@@ -33,11 +33,11 @@ if jc_latewaiting {
 // (too early)
 if (leftshift and jc_leftshiftlast and rightshiftpressed) {
     jc_earlywaiting = 1
-    jc_count = 0
+    jc_count = 1
 }
 if (rightshift and jc_rightshiftlast and leftshiftpressed) {
     jc_earlywaiting = 2
-    jc_count = 0
+    jc_count = 1
 }
 if jc_earlywaiting {
     if jc_count > jc_cutoff {
@@ -48,6 +48,12 @@ if jc_earlywaiting {
         jc_duration = jc_count
         jc_show = true
     }
+}
+// too early special case: release one shift and press the other on the same frame
+if (leftshiftreleased and rightshiftpressed) or (rightshiftreleased and leftshiftpressed) {
+    jc_earlywaiting = false
+    jc_duration = 1
+    jc_show = true
 }
 
 var eitherjump = global.frameaction_jump or global.frameaction_djump

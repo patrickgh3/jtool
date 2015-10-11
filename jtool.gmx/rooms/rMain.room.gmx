@@ -3,8 +3,8 @@
   <caption></caption>
   <width>1056</width>
   <height>608</height>
-  <vsnap>16</vsnap>
-  <hsnap>16</hsnap>
+  <vsnap>8</vsnap>
+  <hsnap>8</hsnap>
   <isometric>0</isometric>
   <speed>50</speed>
   <persistent>0</persistent>
@@ -68,13 +68,14 @@
     <instance objName="oToggleAnalysis" x="952" y="576" name="inst_4B3797F4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oPalette" x="824" y="88" name="inst_EB4E417D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oJumpDurations" x="808" y="504" name="inst_16F7AC30" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oCancelHint" x="952" y="504" name="inst_234D0133" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oCancelHint" x="952" y="416" name="inst_234D0133" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oGridComboBox" x="816" y="48" name="inst_4537BA94" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSpeedComboBox" x="936" y="48" name="inst_606182F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oEditorInstructions" x="816" y="8" name="inst_C6F3D08D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oEditGrid" x="168" y="72" name="inst_7CB1E00B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oZoom" x="192" y="64" name="inst_82440A97" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oHideSidebar" x="752" y="32" name="inst_54C9CF7A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oBhopHint" x="952" y="504" name="inst_0596D43E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="" x="816" y="0" w="16" h="16" xo="0" yo="0" id="10000001" name="inst_F258A754" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

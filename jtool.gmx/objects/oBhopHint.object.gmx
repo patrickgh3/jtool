@@ -72,13 +72,8 @@
           <argument>
             <kind>1</kind>
             <string>if global.showanalysis and not global.hidesidebar {
-    var xo = 8
-    var yo = 5
-    var dy = 20
-    var w = 128
-    var h = 32
-    drawButton(x,y,w,h,false)
-    bhopHint_Draw(x+xo,y+yo,dy)
+    drawButton(x,y,96,64,false)
+    drawHint(x,y,96,'Bhop',bhop_offset,bhop_show)
 }
 </string>
           </argument>
