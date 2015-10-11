@@ -72,13 +72,7 @@
           <argument>
             <kind>1</kind>
             <string>if global.showanalysis and not global.hidesidebar {
-    var xo = 8
-    var yo = 5
-    var dy = 20
-    var w = 128
-    var h = 32
-    drawButton(x,y,w,h,false)
-    cancelHints_Draw(x+xo,y+yo,dy)
+    cancelHints_Draw()
 }
 </string>
           </argument>

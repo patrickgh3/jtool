@@ -10,6 +10,8 @@
       Many UI elements, like buttons, are scattered throughout the project. The 'right' way to do things is to put the game/logic code (e.g. clicking a button) in Step events, and drawing code in the Draw event (e.g. drawing the button). However, doing it this way scatters UI code even further accross the project, and would cause some repetition. For example, both the logic and drawing of a button need to access whether the mouse is hovering over the button.
       <br><br>
       I chose to put both the logic and drawing code for UI elements in Draw events to consolidate and simplify the code. However, since I didn't do things the 'right' way as described above, some behaviors are broken, manily multiple views. Each view calls the draw event of every object, so objects with logic in their draw event would have that logic executed twice every step, which essentially breaks them (e.g. combo boxes opening right after they close). So in the end, it was a tradeoff: I traded the ability to use views for neatness.
+      <br><br>
+      Another negative side effect is that the effects of buttons usually take 1 frame to take effect.
       <script src="write_footer.js"></script>
     </div>
     <img class="sideimage" src="images/klazen_keepo.png">

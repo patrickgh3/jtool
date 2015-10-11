@@ -75,7 +75,7 @@
     var xo = 8
     var yo = 5
     var dy = 20
-    var w = 128
+    var w = 136
     var h = 96
     drawButton(x,y,w,h,false)
     jumpDurations_Draw(x+xo,y+yo,dy)

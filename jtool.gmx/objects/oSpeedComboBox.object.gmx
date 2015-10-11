@@ -54,7 +54,8 @@ var w = 112
 var h = 32
 var droph = 77
 
-comboBoxButton(x,y,w,h,droph,'Frame rate: '+string(room_speed))
+comboBoxButton(x,y,w,h,droph,'      Speed: '+string(room_speed))
+draw_sprite(sMenuSpeed,0,x+18,y+16)
 
 if keyboard_check_pressed(ord('F')) and global.state != globalstate_input {
     buttonCallback_SpeedCustom()

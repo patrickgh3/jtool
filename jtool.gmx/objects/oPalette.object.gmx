@@ -80,6 +80,7 @@ for (i = 0; i &lt; 100; i += 1) {
     var xxx = x+xo+xx*dx
     var yyy = y+yo+yy*dy
     var mouse_hover = point_in_rect(mouse_x,mouse_y,xxx,yyy,xxx+w,yyy+h)
+        and not global.comboboxselected
     
     // draw button
     var button_active = mouse_hover and global.state == globalstate_idle

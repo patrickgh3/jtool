@@ -116,6 +116,7 @@
       <sprite>sprites\sMenuDotOutline</sprite>
       <sprite>sprites\sMenuHitbox</sprite>
       <sprite>sprites\sMenuGrid</sprite>
+      <sprite>sprites\sMenuSpeed</sprite>
     </sprites>
     <sprites name="misc">
       <sprite>sprites\sEditCursor</sprite>
@@ -205,6 +206,7 @@
           <script>scripts\buttonCallback_OpenMenu.gml</script>
           <script>scripts\buttonCallback_EditorInstructions.gml</script>
           <script>scripts\buttonCallback_ToggleAnalysis.gml</script>
+          <script>scripts\buttonCallback_YFormat.gml</script>
         </scripts>
       </scripts>
       <scripts name="combo boxes">

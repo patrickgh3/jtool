@@ -5,7 +5,7 @@ jc_duration=0
 jc_leftshiftlast=false
 jc_rightshiftlast=false
 jc_show=false
-jc_cutoff = 4
+jc_cutoff = 3
 
 jc_successwaitingforrelease=false
 jc_successduration=0

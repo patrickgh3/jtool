@@ -54,7 +54,8 @@ var w = 112
 var h = 32
 var droph = 77
 
-comboBoxButton(x,y,w,h,droph,'Grid snap: '+string(oEdit.snap))
+comboBoxButton(x,y,w,h,droph,'      Snap: '+string(oEdit.snap))
+draw_sprite(sMenuGrid,0,x+18,y+16)
 
 if keyboard_check_pressed(ord('G')) and global.state != globalstate_input {
     buttonCallback_GridCustom()
