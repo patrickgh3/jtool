@@ -75,7 +75,7 @@ alarm[0] = 1
           <argument>
             <kind>1</kind>
             <string>/// Load map then go back to fullscreen.
-loadMap()
+loadMapAskName()
 window_set_fullscreen(true)
 alarm[0] = 1
 </string>
@@ -172,38 +172,6 @@ global.count += 1
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="4">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>with oPlayerStart {
-    if not instance_exists(oPlayer) {
-        instance_create(x+17,y+23,oPlayer)
-    }
-}
-
-if global.firstRoomStart {
-    global.firstRoomStart = false
-    savePlayer()
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="7" enumb="3">
       <action>
         <libid>1</libid>
@@ -221,7 +189,7 @@ if global.firstRoomStart {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if oEdit.undo_objectstring != '' {
+            <string>if not oEdit.undo_nochanges {
     var prompt = 'Unsaved changes detected. Would you like to save your map?'
     +'##(Note: GMStudio forces game to exit at this point)'
     if show_question(prompt) saveMap()

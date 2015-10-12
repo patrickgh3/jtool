@@ -172,6 +172,8 @@
       <script>scripts\saveAndResetZoom.gml</script>
       <script>scripts\completelyResetZoom.gml</script>
       <script>scripts\nudgePlayerHalf.gml</script>
+      <script>scripts\objectInPalette.gml</script>
+      <script>scripts\mainInit.gml</script>
     </scripts>
     <scripts name="ui">
       <scripts name="menu buttons">
@@ -227,10 +229,10 @@
         <script>scripts\inputOverlayNo.gml</script>
         <script>scripts\inputCallback_GridCustom.gml</script>
         <script>scripts\inputCallback_SpeedCustom.gml</script>
-        <script>scripts\inputCallback_ClearMap.gml</script>
         <script>scripts\inputCallback_LoadMap.gml</script>
         <script>scripts\inputCallback_LoadRMJMap.gml</script>
         <script>scripts\inputCallback_VAlign.gml</script>
+        <script>scripts\inputCallback_ClearMap.gml</script>
       </scripts>
     </scripts>
     <scripts name="saveload">
@@ -242,6 +244,8 @@
       </scripts>
       <scripts name="load map">
         <script>scripts\loadMap.gml</script>
+        <script>scripts\loadMapAskName.gml</script>
+        <script>scripts\loadStartupMap.gml</script>
         <script>scripts\base32StringToInt.gml</script>
         <script>scripts\base32StringToFloat.gml</script>
         <script>scripts\saveIDToObject.gml</script>
@@ -254,8 +258,6 @@
       <script>scripts\loadConfig.gml</script>
       <script>scripts\loadSkin.gml</script>
     </scripts>
-    <script>scripts\objectInPalette.gml</script>
-    <script>scripts\mainInit.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_small</font>

@@ -1,6 +1,8 @@
 // Saves the current zoom target and zooms all the way out.
 // Zoom can be restored using restoreZoom().
 
+if global.count == 0 exit
+
 with oZoom {
     if has_previous exit
     has_previous = true

@@ -5,4 +5,4 @@ if window_get_fullscreen() {
     oWorld.alarm[0] = 1
     oWorld.alarm[2] = 2
 }
-else loadMap()
+else loadMapAskName()
