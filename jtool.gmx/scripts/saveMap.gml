@@ -6,24 +6,24 @@ if filename == '' exit
 oEdit.undo_nochanges = true
 
 // header and info
-var f = file_text_open_write(filename)
+var f = FS_file_text_open_write(filename)
 var delim = '|'
 var version = '1.0.1'
-file_text_write_string(f,'jtool')
-file_text_write_string(f,delim)
-file_text_write_string(f,version)
-file_text_write_string(f,delim)
-file_text_write_string(f,'inf:'+string(global.infinitejump))
-file_text_write_string(f,delim)
-file_text_write_string(f,'dot:'+string(global.dotkid))
-file_text_write_string(f,delim)
-file_text_write_string(f,'px:'+floatToBase32String(global.savePlayerX))
-file_text_write_string(f,delim)
-file_text_write_string(f,'py:'+floatToBase32String(global.savePlayerY))
-file_text_write_string(f,delim)
-file_text_write_string(f,'ps:'+string(global.savePlayerXScale))
-file_text_write_string(f,delim)
-file_text_write_string(f,'objects:')
+FS_file_text_write_string(f,'jtool')
+FS_file_text_write_string(f,delim)
+FS_file_text_write_string(f,version)
+FS_file_text_write_string(f,delim)
+FS_file_text_write_string(f,'inf:'+string(global.infinitejump))
+FS_file_text_write_string(f,delim)
+FS_file_text_write_string(f,'dot:'+string(global.dotkid))
+FS_file_text_write_string(f,delim)
+FS_file_text_write_string(f,'px:'+floatToBase32String(global.savePlayerX))
+FS_file_text_write_string(f,delim)
+FS_file_text_write_string(f,'py:'+floatToBase32String(global.savePlayerY))
+FS_file_text_write_string(f,delim)
+FS_file_text_write_string(f,'ps:'+string(global.savePlayerXScale))
+FS_file_text_write_string(f,delim)
+FS_file_text_write_string(f,'objects:')
 
 // objects
 var objects_out_of_range = false
@@ -43,12 +43,12 @@ with all {
     }
     
     var yy = y
-    file_text_write_string(f,'-'+padStringLeft(intToBase32String(y+128),2,'0'))
+    FS_file_text_write_string(f,'-'+padStringLeft(intToBase32String(y+128),2,'0'))
     with all {
         if not objectInPalette(object_index) or y != yy or saved continue
         var saveid = objectToSaveID(object_index)
         if saveid != -1 {
-            file_text_write_string(f,intToBase32String(saveid)
+            FS_file_text_write_string(f,intToBase32String(saveid)
                 +padStringLeft(intToBase32String(x+128),2,'0'))
             saved = true
         }
@@ -57,7 +57,7 @@ with all {
         }
     }
 }
-file_text_close(f)
+FS_file_text_close(f)
 
 // warning messages for oob or unrecognized objects
 var warning_message = ''
