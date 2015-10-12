@@ -5,8 +5,8 @@ if filename == '' exit
 var f = file_text_open_read(filename)
 var firstline = file_text_read_string(f)
 if firstline != ' 1.030000' {
-    show_message('Invalid RMJ map.')
     file_text_close(f)
+    inputOverlay(input_info,false,'Not a valid RMJ map.')
     exit
 }
 file_text_readln(f)

@@ -6,7 +6,7 @@
   <depth>10</depth>
   <persistent>0</persistent>
   <parentName>oBlock</parentName>
-  <maskName>sPlatformMask</maskName>
+  <maskName>sPlatformDefault</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>

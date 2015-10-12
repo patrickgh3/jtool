@@ -3,7 +3,7 @@
 global.joketitleindex += 1 
 
 var title
-switch global.joketitleindex mod 19 {
+switch global.joketitleindex mod 20 {
     case 0: title='jtool' break
     case 1: title='I wanna record my hops' break
     case 2: title='I wanna Bravely Behold Frames (I wanna BBF)'break 
@@ -23,6 +23,7 @@ switch global.joketitleindex mod 19 {
     case 16: title='I have a whimsical desire to construct acrobatic maneuvers' break
     case 17: title='I wanna Jump the Jump Jump' break
     case 18: title='Jump Foreman' break
+    case 19: title='cool guy RMJ' break
 }
 
 window_set_caption(title)

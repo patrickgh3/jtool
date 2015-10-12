@@ -26,7 +26,7 @@ while index <= string_length(content) {
     if nextchar == delim or index == string_length(content) {
         // jtool
         if section_number == 0 and currentstring != 'jtool'{
-            show_message('Not a jtool file.')
+            inputOverlay(input_info,false,'Not a valid jtool map.')
             exit
         }
         // version
