@@ -3,7 +3,6 @@
 var filename = prefix_project_path_if_needed('config.ini')
 FS_ini_open(filename)
 FS_ini_write_real('prefs','death',global.deathEnabled)
-FS_ini_write_real('prefs','speed',room_speed)
 FS_ini_write_real('prefs','gridsnap',oEdit.snap)
 FS_ini_write_string('prefs','skin',global.skinName)
 FS_ini_write_real('prefs','fullscreen',window_get_fullscreen())
