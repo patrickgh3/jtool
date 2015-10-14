@@ -206,6 +206,8 @@
         <scripts name="menu about">
           <script>scripts\buttonCallback_About.gml</script>
           <script>scripts\buttonCallback_JokeTitle.gml</script>
+          <script>scripts\buttonCallback_CloseMenu.gml</script>
+          <script>scripts\buttonCallback_GameEnd.gml</script>
         </scripts>
         <scripts name="sidebar">
           <script>scripts\buttonCallback_OpenMenu.gml</script>

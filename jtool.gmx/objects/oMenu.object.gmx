@@ -31,6 +31,7 @@ y = -menu_height
 steps_in_menu = 0
 steps_out_of_menu = 0
 yspeed = 0
+escape_button_just_clicked = false
 </string>
           </argument>
         </arguments>
@@ -54,7 +55,7 @@ yspeed = 0
           <argument>
             <kind>1</kind>
             <string>steps_out_of_menu += 1
-if keyboard_check_pressed(vk_escape)
+if (keyboard_check_pressed(vk_escape) or escape_button_just_clicked)
 and global.state == globalstate_menu
 and steps_in_menu &gt; 0 {
     global.state = globalstate_idle
@@ -72,6 +73,8 @@ else if global.state == globalstate_idle {
     if y &lt; -menu_height y = -menu_height
     steps_in_menu = -1
 }
+
+escape_button_just_clicked = false
 </string>
           </argument>
         </arguments>
@@ -181,11 +184,16 @@ yy += dy
 menuButtonToggle(xx,yy,w,h,buttonCallback_ShowGrid,buttons_enabled,sMenuGrid,
 '[ Grid ]','Grid',global.showgrid)
 
-// about
-xx += dx+dx2
-yy = y+yo
+// close menu, about, exit
+xx = 1056-w-8
+yy = y+12
+menuButton(xx,yy,w,h,'(Esc) Close Menu',buttonCallback_CloseMenu,buttons_enabled,false)
+
+yy += dy
 menuButton(xx,yy,w,h,'About',buttonCallback_About,buttons_enabled,false)
 
+yy += dy
+menuButton(xx,yy,w,h,'Quit',buttonCallback_GameEnd,buttons_enabled,false)
 </string>
           </argument>
         </arguments>

@@ -75,7 +75,7 @@ if selected {
     comboBoxOptionButton(bx,by,bw,bh,buttonCallback_GridPreset,'8',8)
     by += dx
     bx -= dx*2
-    comboBoxOptionButton(bx,by,bw,bh,buttonCallback_GridPreset,'4',4)
+    comboBoxOptionButton(bx,by,bw,bh,buttonCallback_GridPreset,'1',1)
     bx += dx
     comboBoxOptionButton(bx,by,67,bh,buttonCallback_GridCustom,'other (G)',false)
 }

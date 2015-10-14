@@ -66,14 +66,15 @@ for (i = 0; i &lt; 100; i += 1) {
         case 16: xx=2 yy=3 spr=sWalljumpR obj=oWalljumpR off = 16 killer=false break
         case 17: xx=3 yy=3 spr=sWalljumpL obj=oWalljumpL off = 16 killer=false break
         
-        case 14: xx=0 yy=4 spr=sWater1 obj=oWater off=16 killer=false break
-        case 15: xx=1 yy=4 spr=sWater2 obj=oWater2 off=16 killer=false break
-        case 24: xx=2 yy=4 spr=sWater3 obj=oWater3 off=16 killre=false break
-        case 20: xx=3 yy=4 spr=sBulletBlocker obj=oBulletBlocker off=16 killer=false break
+        case 23: xx=0 yy=4 spr=sJumpRefresher obj=oJumpRefresher off=0 killer=false break 
+        case 24: xx=1 yy=4 spr=sWater3 obj=oWater3 off=16 killre=false break
+        case 15: xx=2 yy=4 spr=sWater2 obj=oWater2 off=16 killer=false break
+        case 14: xx=3 yy=4 spr=sWater1 obj=oWater off=16 killer=false break
         
-        case 23: xx=0 yy=5 spr=sJumpRefresher obj=oJumpRefresher off=0 killer=false break 
+        case 21: xx=0 yy=5 spr=sPlayerStart obj=oPlayerStart off=16 killer=false break
+        case 20: xx=1 yy=5 spr=sBulletBlocker obj=oBulletBlocker off=16 killer=false break
         case 22: xx=1 yy=5 spr=sWarp obj=oWarp off=16 killer=false break 
-        case 21: xx=2 yy=5 spr=sPlayerStart obj=oPlayerStart off=16 killer=false break
+        
         default: continue
     }
     

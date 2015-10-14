@@ -72,9 +72,11 @@ if selected {
     bx += dx
     comboBoxOptionButton(bx,by,bw,bh,buttonCallback_SpeedPreset,'25',25)
     bx += dx
-    comboBoxOptionButton(bx,by,bw,bh,buttonCallback_SpeedPreset,'100',100)
+    comboBoxOptionButton(bx,by,bw,bh,buttonCallback_SpeedPreset,'10',10)
     by += dx
     bx -= dx*2
+    comboBoxOptionButton(bx,by,bw,bh,buttonCallback_SpeedPreset,'100',100)
+    bx += dx
     comboBoxOptionButton(bx,by,67,bh,buttonCallback_SpeedCustom,'other (F)',false)
 }
 </string>
