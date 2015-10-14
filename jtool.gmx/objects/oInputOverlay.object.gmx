@@ -50,8 +50,12 @@ else if mode == input_about {
     var back_h = 360
     var label_yo = 0
 }
-drawButton(528-back_w/2,304-back_h/2,back_w,back_h,false)
+var xx = 528-back_w/2
+var yy = 304-back_h/2
+draw_sprite_ext(sPopup,0,xx,yy,
+    back_w/sprite_get_width(sPopup),back_h/sprite_get_height(sPopup),0,c_white,1)
 fontSetup(font_small,c_black,fa_center,fa_center,1)
+draw_rectangle(xx,yy,xx+back_w-1,yy+back_h-1,true)
 draw_text(528,304+label_yo,label)
 
 // contents

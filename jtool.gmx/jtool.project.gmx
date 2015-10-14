@@ -41,6 +41,7 @@
       <sprite>sprites\sJumpRefresher</sprite>
       <sprite>sprites\sSidebar</sprite>
       <sprite>sprites\sMenu</sprite>
+      <sprite>sprites\sPopup</sprite>
     </sprites>
     <sprites name="skin defaults">
       <sprite>sprites\sEditBlockDefault</sprite>
@@ -68,6 +69,7 @@
       <sprite>sprites\sJumpRefresherDefault</sprite>
       <sprite>sprites\sSidebarDefault</sprite>
       <sprite>sprites\sMenuDefault</sprite>
+      <sprite>sprites\sPopupDefault</sprite>
     </sprites>
     <sprites name="player">
       <sprite>sprites\sPlayerFall</sprite>

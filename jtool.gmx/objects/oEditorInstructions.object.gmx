@@ -37,11 +37,11 @@ if global.editorinstructions {
     var dy = 25
     var dx = 70
     var h = 285
-    draw_set_color(global.color_button)
-    draw_set_alpha(0.9)
-    draw_rectangle(xx-10,-1,800,h,false)
+    
+    draw_sprite_ext(sPopup,0,xx-10,0,(800-(xx-10))/sprite_get_width(sPopup),(h-0)/sprite_get_height(sPopup),0,c_white,0.9)
     fontSetup(font_small,c_black,fa_left,fa_top,1)
     draw_rectangle(xx-10,-1,800,h,true)
+    
     draw_text(xx,yy,'L click')
     draw_text(xx+dx,yy,'Place object')
     yy += dy

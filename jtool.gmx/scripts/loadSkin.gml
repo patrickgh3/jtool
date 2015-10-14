@@ -67,9 +67,9 @@ for (var i=0; i<100; i+=1) {
     /* spr_index - sprite index to replace
        spr_default - default sprite to use if png not found
        file - name of png file
-       xo - sprite x origin to set (set below switch statement)
-       yo - sprite y origin to set (set below switch statement)
-       frames - number of frames the sprite png has (set below switch statement)
+       xo - sprite x origin to set (default 0)
+       yo - sprite y origin to set (default 0)
+       frames - number of frames the sprite png has (default 1)
     */
     var spr_index,spr_default,file,xo,yo,frames
     xo = 0
@@ -101,6 +101,7 @@ for (var i=0; i<100; i+=1) {
         case 22: spr_index=sWarp spr_default=sWarpDefault file='warp.png' break
         case 23: spr_index=sJumpRefresher spr_default=sJumpRefresherDefault file='jumprefresher.png' xo=15 yo=15 break
         case 24: spr_index=sWater3 spr_default=sWater3Default file='water3.png' break
+        case 25: spr_index=sPopup spr_default=sPopupDefault file='popup.png' break
         default: continue
     }
     
