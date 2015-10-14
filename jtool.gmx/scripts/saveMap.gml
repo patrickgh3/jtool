@@ -8,10 +8,9 @@ oEdit.undo_nochanges = true
 // header and info
 var f = FS_file_text_open_write(filename)
 var delim = '|'
-var version = '1.0.1'
 FS_file_text_write_string(f,'jtool')
 FS_file_text_write_string(f,delim)
-FS_file_text_write_string(f,version)
+FS_file_text_write_string(f,global.version_string)
 FS_file_text_write_string(f,delim)
 FS_file_text_write_string(f,'inf:'+string(global.infinitejump))
 FS_file_text_write_string(f,delim)

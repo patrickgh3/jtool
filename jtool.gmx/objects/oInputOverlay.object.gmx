@@ -112,7 +112,7 @@ else if mode == input_about {
     var button_w = 90
     var button_h = 32
     fontSetup(font_small,c_black,fa_center,fa_top,1)
-    draw_text(528,304-150,'jtool version 1.0.0##Patrickgh3##'
+    draw_text(528,304-150,'jtool version '+global.version_string+'##Patrickgh3##'
     +'Special thanks:#'
     +'YoYoYoDude1 for his studio engine#'
     +'TheNewGeezer for the original RMJ#'

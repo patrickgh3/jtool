@@ -11,9 +11,7 @@ var currentstring = ''
 var section_number = 0
 var delim = '|'
 var versionstring = ''
-var version1 = 0
-var version2 = 0
-var version3 = 0
+var mapver_major = 0
 
 global.infinitejump = false
 global.dotkid = false
@@ -31,10 +29,10 @@ while index <= string_length(content) {
         }
         // version
         else if section_number == 1 {
-            versionstring = currentstring
-            version1 = splitDelimString(versionstring,'.',0)
-            version2 = splitDelimString(versionstring,'.',1)
-            version3 = splitDelimString(versionstring,'.',2)
+            var mapver_major = real(splitDelimString(currentstring,'.',0))
+            if mapver_major > global.version_major {
+                inputOverlay(input_info,false,'Warning: may not be compatible with map;#it has a new major version.')
+            }
         }
         // everything else
         else if section_number > 1 {
@@ -54,16 +52,14 @@ while index <= string_length(content) {
                     }
                     else {
                         var objectid = saveIDToObject(base32StringToInt(string_copy(objectstring,i,1)))
-                        var xx = base32StringToInt(string_copy(objectstring,i+1,2))
-                        var inst = instance_create(xx-128,yy-128,objectid);
-                        inst.undo_recent = false;
+                        if objectid != noone {
+                            var xx = base32StringToInt(string_copy(objectstring,i+1,2))
+                            var inst = instance_create(xx-128,yy-128,objectid);
+                            inst.undo_recent = false;
+                        }
                         i += 3
                     }
                 }
-                /*global.savePlayerX = oPlayerStart.x+17
-                global.savePlayerY = oPlayerStart.y+23
-                global.savePlayerXScale = 1
-                loadPlayer()*/
             }
             else if prefix == 'dot' {
                 global.dotkid = real(suffix)

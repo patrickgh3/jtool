@@ -15,6 +15,18 @@ else if not FS_file_exists(ini_filename) {
 }
 FS_ini_open(ini_filename)
 
+// meta
+var skinver_string = FS_ini_read_string('meta','version','')
+if skinver_string == '' {
+    inputOverlay(input_info,false,'Warning: no version provided in skin.')
+}
+else {
+    var skinver_major = real(splitDelimString(skinver_string,'.',0))
+    if skinver_major > global.version_major {
+        inputOverlay(input_info,false,'Warning: may not be not compatible with skin;#it has a new major version.')
+    }
+}
+
 // ui
 global.color_button = colorFromHsvDelimString(
     FS_ini_read_string('ui','button_idle_color','0,0,175'),',')

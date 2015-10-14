@@ -7,7 +7,7 @@ if filename == '' exit
 var f = FS_file_text_open_write(filename)
 FS_file_text_write_string(f,' 1.030000')
 FS_file_text_writeln(f)
-FS_file_text_write_string(f,'Imported from jtool 1.0.0')
+FS_file_text_write_string(f,'Imported from jtool '+global.version_string)
 FS_file_text_writeln(f)
 FS_file_text_write_string(f,'someone')
 FS_file_text_writeln(f)
