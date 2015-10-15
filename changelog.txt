@@ -8,3 +8,6 @@ Remove round()s when drawing player
 
 --- 1.0.2   10/14/15 ---
 Remove more unnecessary rounding
+
+--- 1.0.3   10/14/15 ---
+Bundle two required dlls. Not sure how legal this is.
