@@ -1,5 +1,5 @@
 document.write('\
 \
-<div class="footer">Back: <a href="../documentation_index.html">Doc index</a></div>\
+<div class="footer">Back: <a href="../readme.html">Doc index</a></div>\
 \
 ');

@@ -123,7 +123,7 @@ else if mode == input_about {
     +'#YoYoYoDude1 for his studio engine'
     +'#TheNewGeezer for the original RMJ'
     +'#people who gave feedback and feature ideas'
-    +'##Please read documentation_index.html!')
+    +'##Please read readme.html for more info!')
     
     menuButton(528-button_w/2,304+130,button_w,button_h,
     'Ok',inputOverlayYes,true,false)

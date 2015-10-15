@@ -84,14 +84,14 @@ buttons_active,false)
 fontSetup(font_small,c_black,fa_center,fa_center,1)
 draw_text(buttonx+buttonw/2,buttony+buttonh/2-4,'. . .')
 
-if global.playery_extended {
+/*if global.playery_extended {
     var bx = x+140
     var by = y+22
     var bw = 32
     var bh = 24
     menuButton(bx,by,bw,bh,'- .5',buttonCallback_NudgeHalfLeft,buttons_active,false)
     menuButton(bx+bw+8,by,bw,bh,'+ .5',buttonCallback_NudgeHalfRight,buttons_active,false)
-}
+}*/
 </string>
           </argument>
         </arguments>
