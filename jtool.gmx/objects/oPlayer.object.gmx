@@ -489,9 +489,9 @@ if mask_index != sDotkid {
     }
 }
 else {
-    draw_sprite(sDotkid,0,round(x),round(y))
+    draw_sprite(sDotkid,0,x,y)
     if global.dotkidoutline {
-        draw_sprite(sDotkidOutline,0,round(x),round(y)+8)
+        draw_sprite(sDotkidOutline,0,x,y+8)
     }
 }
 

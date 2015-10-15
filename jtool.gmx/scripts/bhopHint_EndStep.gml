@@ -4,8 +4,8 @@ bhcount += 1
 
 var player_on_ground = false
 with oPlayer {
-    player_on_ground = (place_meeting(floor(x),round(y+(global.grav)),oBlock)
-    and place_meeting(ceil(x),round(y+(global.grav)),oBlock))
+    player_on_ground = (place_meeting(x,y+global.grav,oBlock)
+    and place_meeting(x,y+global.grav,oBlock))
 }
 
 if global.frameaction_jump {

@@ -7,7 +7,7 @@
 */
 
 with oPlayer {
-    if place_meeting(x,round(y+(global.grav)),oBlock) and not frozen {
+    if place_meeting(x,y+global.grav,oBlock) and not frozen {
         if keyboard_check_pressed(ord('A')) and not place_meeting(x-1,y,oBlock) {
             x -= 1
         }
