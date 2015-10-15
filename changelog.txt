@@ -1,4 +1,4 @@
 jtool changelog
 
---- 1.0.0 10/X/15 ---
+--- 1.0.0 10/14/15 ---
 Initial release!
