@@ -73,7 +73,7 @@ for (i = 0; i &lt; 100; i += 1) {
         
         case 21: xx=0 yy=5 spr=sPlayerStart obj=oPlayerStart off=16 killer=false break
         case 20: xx=1 yy=5 spr=sBulletBlocker obj=oBulletBlocker off=16 killer=false break
-        case 22: xx=1 yy=5 spr=sWarp obj=oWarp off=16 killer=false break 
+        case 22: xx=2 yy=5 spr=sWarp obj=oWarp off=16 killer=false break 
         
         default: continue
     }
