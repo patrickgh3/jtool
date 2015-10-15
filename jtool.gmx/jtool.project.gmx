@@ -276,6 +276,7 @@
     <objects name="palatte">
       <object>objects\oEditBlock</object>
       <object>objects\oEditMiniBlock</object>
+      <object>objects\oPlatform</object>
       <object>objects\oPlayerStart</object>
       <object>objects\oBulletBlocker</object>
       <object>objects\oSpikeUp</object>
@@ -291,7 +292,6 @@
       <object>objects\oWater</object>
       <object>objects\oWater2</object>
       <object>objects\oWater3</object>
-      <object>objects\oPlatform</object>
       <object>objects\oWalljumpL</object>
       <object>objects\oWalljumpR</object>
       <object>objects\oSave</object>
