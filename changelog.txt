@@ -1,4 +1,7 @@
 jtool changelog
 
---- 1.0.0 10/14/15 ---
+--- 1.0.0   10/14/15 ---
 Initial release!
+
+--- 1.0.1   10/14/15 ---
+Remove round()s when drawing player
