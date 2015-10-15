@@ -14,3 +14,6 @@ Bundle two required dlls. Not sure how legal this is.
 
 --- 1.0.4   10/14/15 ---
 Fix platform and spike collision order
+
+--- 1.0.5   10/14/15 ---
+Update in-game version number from 1.0.0 to 1.0.5

@@ -11,7 +11,7 @@ global.player_xscale = 1 // setting the player's xscale causes physics issues
 global.joketitleindex = 0 // used in buttonCallback_JokeTitle
 global.version_major = 1
 global.version_minor = 0
-global.version_patch = 0
+global.version_patch = 5
 global.version_string = string(global.version_major)+'.'+string(global.version_minor)+'.'+string(global.version_patch)
 
 // maybe later load from map
