@@ -1,6 +1,6 @@
-// Simulates a button with callback script.
+// Draws a button and returns whether or not it was clicked.
 
-// menuButton(x,y,w,h,text,callback,enabled,icon)
+// menuButton(x, y, w, h, text, enabled, icon)
 
 var xx = argument0
 var yy = argument1
@@ -11,10 +11,7 @@ var callback = argument5
 var enabled = argument6
 var icon = argument7
 
-if global.comboboxselected {
-    enabled = false
-}
-
+if global.comboboxselected enabled = false
 var mouse_hover = point_in_rect(mouse_x,mouse_y,xx,yy,xx+w,yy+h) and enabled
 
 drawButton(xx,yy,w,h,mouse_hover)
@@ -27,6 +24,4 @@ else {
     draw_text(xx+w/2,yy+h/2,text)
 }
 
-if mouse_hover and mouse_check_button_pressed(mb_left) {
-    script_execute(callback)
-}
+return mouse_hover and mouse_check_button_pressed(mb_left)

@@ -111,25 +111,58 @@ var yo = 50
 var xx = x+xo
 var yy = y+yo
 
-// file
 menuSection(xx,yy,'File',false)
 
-menuButton(xx,yy,w,h,'Open Map',buttonCallback_LoadMap,buttons_enabled,sMenuOpen)
-if keyboard_check(vk_control) and keyboard_check_pressed(ord('O')) {
-    buttonCallback_LoadMap()
+// open map
+var clicked = menuButton(xx,yy,w,h,'Open Map',-100,buttons_enabled,sMenuOpen)
+var shortcut = keyboard_check(vk_control) and keyboard_check_pressed(ord('O'))
+if clicked or shortcut {
+    if not oEdit.undo_nochanges {
+        inputOverlay(input_yesno,inputCallback_LoadMap,
+        'Unsaved changes detected.#Sure you want to load a map?')
+    }
+    else {
+        global.input_bool = true
+        inputCallback_LoadMap()
+    }
 }
 
+// save map
 yy += dy
-menuButton(xx,yy,w,h,'Save Map',buttonCallback_SaveMap,buttons_enabled,sMenuSave)
-if keyboard_check(vk_control) and keyboard_check_pressed(ord('S')) {
-    buttonCallback_SaveMap()
+var clicked = menuButton(xx,yy,w,h,'Save Map',-100,buttons_enabled,sMenuSave)
+var shortcut = keyboard_check(vk_control) and keyboard_check_pressed(ord('S'))
+if clicked or shortcut {
+    if window_get_fullscreen() {
+        window_set_fullscreen(false)
+        oWorld.alarm[0] = 1
+        oWorld.alarm[1] = 2
+    }
+    else saveMap()
 }
 
+// open RMJ
 yy += dy
-menuButton(xx,yy,w,h,'Import RMJ Map',buttonCallback_LoadRMJMap,buttons_enabled,false)
+if menuButton(xx,yy,w,h,'Import RMJ Map',-100,buttons_enabled,false) {
+    if not oEdit.undo_nochanges {
+        inputOverlay(input_yesno,inputCallback_LoadRMJMap,
+        'Unsaved changes detected.#Sure you want to import an RMJ map?')
+    }
+    else {
+        global.input_bool = true
+        inputCallback_LoadRMJMap()
+    }
+}
 
+//save RMJ
 yy += dy
-menuButton(xx,yy,w,h,'Export RMJ Map',buttonCallback_SaveRMJMap,buttons_enabled,false)
+if menuButton(xx,yy,w,h,'Export RMJ Map',-100,buttons_enabled,false) {
+    if window_get_fullscreen() {
+        window_set_fullscreen(false)
+        oWorld.alarm[0] = 1
+        oWorld.alarm[4] = 2
+    }
+    else saveRMJMap()
+}
 
 // map properties
 xx += dx+dx2
