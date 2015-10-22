@@ -17,4 +17,7 @@ or global.infinitejump {
     if not place_meeting(x,y+global.grav,oWater3) {
         djump = false
     }
+    else {
+        djump = true
+    }
 }

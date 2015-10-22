@@ -273,6 +273,12 @@
     <font>fonts\font_big</font>
   </fonts>
   <objects name="objects">
+    <object>objects\oPlayer</object>
+    <object>objects\oWorld</object>
+    <object>objects\oMenu</object>
+    <object>objects\oEdit</object>
+    <object>objects\oInputOverlay</object>
+    <object>objects\oZoom</object>
     <objects name="palatte">
       <object>objects\oEditBlock</object>
       <object>objects\oEditMiniBlock</object>
@@ -303,7 +309,6 @@
       <object>objects\oWaterNekoron</object>
       <object>objects\oSlideBlock</object>
       <object>objects\oSlideBlockR</object>
-      <object>objects\oPlatform2</object>
       <object>objects\oGravityArrowUp</object>
       <object>objects\oGravityArrowDown</object>
       <object>objects\oSaveFlip</object>
@@ -338,12 +343,6 @@
       <object>objects\oKeySaveParticle</object>
       <object>objects\oCustomObjectTest</object>
     </objects>
-    <object>objects\oWorld</object>
-    <object>objects\oPlayer</object>
-    <object>objects\oMenu</object>
-    <object>objects\oEdit</object>
-    <object>objects\oInputOverlay</object>
-    <object>objects\oZoom</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rMain</room>

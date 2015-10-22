@@ -29,8 +29,8 @@ if keyboard_check_pressed(vk_shift) and not global.frameaction_jump and instance
             y += vspeed
             vspeed += gravity
             if vspeed > maxVspeed vspeed = maxVspeed
-            on_ground = (place_meeting(floor(x),round(y+(global.grav)),oBlock)
-            and place_meeting(ceil(x),round(y+(global.grav)),oBlock))
+            on_ground = (place_meeting(x,y+global.grav,oBlock)
+            and place_meeting(x,y+global.grav,oBlock))
         }
         instance_destroy()
     }

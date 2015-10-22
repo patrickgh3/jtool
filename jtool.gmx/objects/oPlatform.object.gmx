@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>yspeed = 0;
+            <string>yspeed = 0
+bounce = false
 </string>
           </argument>
         </arguments>
@@ -48,58 +49,47 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (speed != 0 || yspeed != 0)  //make sure the platform is moving before doing collision checks
-{
-    if (!place_free(x+hspeed,y)) {hspeed = -hspeed;}
-    
-    if (!place_free(x,y+vspeed+yspeed)) 
-    {
-        if (vspeed != 0) 
-        {
-            yspeed = -vspeed;
-            vspeed = 0;
+            <string>if hspeed != 0 or vspeed != 0 or yspeed != 0 {
+
+    if bounce {
+        if not place_free(x+hspeed,y) {
+            hspeed = -hspeed
         }
-        else 
-        {
-            vspeed = -yspeed;
-            yspeed = 0;
-        }
-    }
-    
-    y += yspeed;
-    
-    if (global.grav == 1)   //normal
-    {
-        var a = instance_place(x,y-2,objPlayer);
         
-        if (a != noone) 
-        {
-            a.y += vspeed + yspeed;
-            
-            with (a) {if (place_free(x+other.hspeed,y)) x += other.hspeed;}
-        }
-    }
-    else    //flipped
-    {
-        var a = instance_place(x,y+sprite_height+1,objPlayer);
-        
-        if (a != noone)
-        {
-            a.y += vspeed + yspeed;
-            
-            with (a) {if (place_free(x+other.hspeed,y)) x += other.hspeed;}
+        if not place_free(x,y+vspeed+yspeed)  {
+            if vspeed != 0 {
+                yspeed = -vspeed
+                vspeed = 0
+            }
+            else {
+                vspeed = -yspeed
+                yspeed = 0
+            }
         }
     }
     
-    if (vspeed &lt; 0)
-    {
-        yspeed = vspeed;
-        vspeed = 0;
+    y += yspeed
+    
+    if global.grav == 1 {
+        with instance_place(x,y-2,oPlayer) {
+            y += other.vspeed + other.yspeed
+            if place_free(x+other.hspeed,y) x += other.hspeed
+        }
     }
-    if (yspeed &gt; 0) 
-    {
-        vspeed = yspeed;
-        yspeed = 0;
+    else {
+        with instance_place(x,y+2,oPlayer) {
+            y += other.vspeed + other.yspeed
+            if place_free(x+other.hspeed,y) x += other.hspeed
+        }
+    }
+    
+    if vspeed &lt; 0 {
+        yspeed = vspeed
+        vspeed = 0
+    }
+    if yspeed &gt; 0 {
+        vspeed = yspeed
+        yspeed = 0
     }
 }
 </string>

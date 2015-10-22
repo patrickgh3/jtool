@@ -11,5 +11,5 @@ with oPlayer {
     else {
         mask_index = sPlayerMaskFlip
     }
-    y += 5*global.grav // used to be 4, but got stuck in ground???
+    y += 4*global.grav
 }
