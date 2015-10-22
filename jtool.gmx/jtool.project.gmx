@@ -125,7 +125,7 @@
       <sprite>sprites\sHintCursor</sprite>
       <sprite>sprites\sBorderDeath</sprite>
       <sprite>sprites\sCursorDropper</sprite>
-      <sprite>sprites\sCustomObjectTest</sprite>
+      <sprite>sprites\sPatBall</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -312,6 +312,7 @@
       <object>objects\oGravityArrowUp</object>
       <object>objects\oGravityArrowDown</object>
       <object>objects\oSaveFlip</object>
+      <object>objects\oPatBall</object>
     </objects>
     <objects name="sidebar">
       <object>objects\oSidebar</object>
@@ -341,7 +342,6 @@
       <object>objects\oEditGrid</object>
       <object>objects\oPlayerVictory</object>
       <object>objects\oKeySaveParticle</object>
-      <object>objects\oCustomObjectTest</object>
     </objects>
   </objects>
   <rooms name="rooms">

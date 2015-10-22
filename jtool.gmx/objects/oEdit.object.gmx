@@ -161,7 +161,7 @@ if cursor_in_area and global.state == globalstate_idle {
             x = -1000
             y = -1000
             var inst = instance_position(mouse_x,mouse_y,all)
-            if inst != noone {
+            if inst != noone and objectInPalette(inst.object_index) {
                 selected_object = inst.object_index
                 selected_sprite = inst.sprite_index
                 selected_killer = object_is_ancestor(inst.object_index, oKiller)

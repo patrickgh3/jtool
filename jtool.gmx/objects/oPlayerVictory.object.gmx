@@ -25,10 +25,25 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_self()
-if sprite_index == sDotkid and global.dotkidoutline {
-    draw_sprite(sDotkidOutline,0,x,y+8)
+            <string>if sprite_index != sDotkid {
+    if global.showhitbox != 2 {
+        draw_sprite_ext(sprite_index,image_index,x,y,
+        global.player_xscale,1,image_angle,image_blend,image_alpha)
+    }
+    if global.showhitbox == 1 {
+        draw_sprite_ext(sPlayerMask,0,x,y,global.player_xscale,1,image_angle,c_white,0.5)
+    }
+    else if global.showhitbox == 2 {
+        draw_sprite(sPlayerMask,0,x,y)
+    }
 }
+else {
+    draw_sprite(sDotkid,0,x,y)
+    if global.dotkidoutline {
+        draw_sprite(sDotkidOutline,0,x,y+8)
+    }
+}
+
 
 if instance_exists(oPlayer) instance_destroy()
 </string>
