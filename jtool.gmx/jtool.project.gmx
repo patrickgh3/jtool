@@ -183,11 +183,6 @@
         <script>scripts\menuButtonToggle.gml</script>
         <script>scripts\drawButton.gml</script>
         <script>scripts\menuSection.gml</script>
-        <scripts name="menu map">
-          <script>scripts\buttonCallback_InfiniteJump.gml</script>
-          <script>scripts\buttonCallback_Dotkid.gml</script>
-          <script>scripts\buttonCallback_ClearMap.gml</script>
-        </scripts>
         <scripts name="menu preferences">
           <script>scripts\buttonCallback_Skin.gml</script>
           <script>scripts\buttonCallback_KillPlayer.gml</script>

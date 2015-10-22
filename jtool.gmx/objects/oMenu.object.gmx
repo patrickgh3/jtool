@@ -164,26 +164,37 @@ if menuButton(xx,yy,w,h,'Export RMJ Map',-100,buttons_enabled,false) {
     else saveRMJMap()
 }
 
-// map properties
 xx += dx+dx2
 yy = y+yo
 menuSection(xx,yy,'Map',true)
 
-menuButtonToggle(xx,yy,w,h,buttonCallback_Dotkid,buttons_enabled,sMenuDotkid,
-'[ Dotkid ]','Dotkid',global.dotkid)
-
-yy += dy
-menuButtonToggle(xx,yy,w,h,buttonCallback_InfiniteJump,buttons_enabled,sMenuInfJump,
-'[ Inf Jump ]','Inf Jump',global.infinitejump)
-
-yy += dy
-menuButton(xx,yy,w,h,'Clear Map (F2)',buttonCallback_ClearMap,buttons_enabled,false)
-if keyboard_check_pressed(vk_f2) {
-    buttonCallback_ClearMap()
+// dotkid
+if menuButtonToggle(xx,yy,w,h,-100,buttons_enabled,sMenuDotkid,
+'[ Dotkid ]','Dotkid',global.dotkid) {
+    global.dotkid = not global.dotkid
 }
 
+// inf jump
+yy += dy
+if menuButtonToggle(xx,yy,w,h,-100,buttons_enabled,sMenuInfJump,
+'[ Inf Jump ]','Inf Jump',global.infinitejump) {
+    global.infinitejump = not global.infinitejump
+}
 
-// preferences
+// clear map
+yy += dy
+if menuButton(xx,yy,w,h,'Clear Map (F2)',-100,buttons_enabled,false)
+or keyboard_check_pressed(vk_f2) {
+    if not oEdit.undo_nochanges {
+        inputOverlay(input_yesno,inputCallback_ClearMap,
+        'Unsaved changes detected.#Sure you want to clear the map?')
+    }
+    else {
+        global.input_bool = true
+        inputCallback_ClearMap()
+    }
+}
+
 xx += dx+dx2
 yy = y+yo
 menuSection(xx,yy,'Preferences',true)
