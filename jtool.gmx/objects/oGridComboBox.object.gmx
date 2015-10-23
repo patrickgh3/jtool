@@ -54,30 +54,56 @@ var w = 112
 var h = 32
 var droph = 77
 
-comboBoxButton(x,y,w,h,droph,'      Snap: '+string(oEdit.snap))
-draw_sprite(sMenuGrid,0,x+18,y+16)
-
-if keyboard_check_pressed(ord('G')) and global.state != globalstate_input {
-    buttonCallback_GridCustom()
-}
+comboBoxButton(x,y,w,h,droph,'Snap: '+string(oEdit.snap),sMenuGrid)
 
 if selected {
     drawButton(x,y+h-1,w,droph,false)
-    var bx = x+5
-    var by = y+h+4
-    var bw = 32
-    var bh = 32
-    var dx = 35
-    comboBoxOptionButton(bx,by,bw,bh,buttonCallback_GridPreset,'32',32)
-    bx += dx
-    comboBoxOptionButton(bx,by,bw,bh,buttonCallback_GridPreset,'16',16)
-    bx += dx
-    comboBoxOptionButton(bx,by,bw,bh,buttonCallback_GridPreset,'8',8)
-    by += dx
-    bx -= dx*2
-    comboBoxOptionButton(bx,by,bw,bh,buttonCallback_GridPreset,'1',1)
-    bx += dx
-    comboBoxOptionButton(bx,by,67,bh,buttonCallback_GridCustom,'other (G)',false)
+    draw_set_color(global.color_button)
+    draw_line(x,y+h-1,x+w-1,y+h-1)
+}
+
+var bx = x+5
+var by = y+h+4
+var bw = 32
+var bh = 32
+var dx = 35
+
+if selected and menuButton(bx,by,bw,bh,'32',-100,true,false) {
+    oEdit.snap = 32
+    saveConfig()
+    selected = false
+    global.comboboxselected = false
+}
+
+bx += dx
+if selected and menuButton(bx,by,bw,bh,'16',-100,true,false) {
+    oEdit.snap = 16
+    saveConfig()
+    selected = false
+    global.comboboxselected = false
+}
+
+bx += dx
+if selected and menuButton(bx,by,bw,bh,'8',-100,true,false) {
+    oEdit.snap = 8
+    saveConfig()
+    selected = false
+    global.comboboxselected = false
+}
+
+by += dx
+bx -= dx*2
+if selected and menuButton(bx,by,bw,bh,'1',-100,true,false) {
+    oEdit.snap = 1
+    saveConfig()
+    selected = false
+    global.comboboxselected = false
+}
+
+bx += dx
+if (selected and menuButton(bx,by,67,bh,'other (G)',-100,true,false))
+or (keyboard_check_pressed(ord('G')) and global.state != globalstate_input) {
+    inputOverlay(input_textbox,inputCallback_GridCustom,'Grid snap (was '+string(oEdit.snap)+')')
 }
 </string>
           </argument>

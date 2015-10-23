@@ -11,7 +11,6 @@ var callback = argument5
 var enabled = argument6
 var icon = argument7
 
-if global.comboboxselected enabled = false
 var mouse_hover = point_in_rect(mouse_x,mouse_y,xx,yy,xx+w,yy+h) and enabled
 
 drawButton(xx,yy,w,h,mouse_hover)

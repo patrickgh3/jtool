@@ -27,8 +27,8 @@
             <kind>1</kind>
             <string>if global.hidesidebar exit
 
-if menuButtonToggle(x,y,96,24,-100,global.state == globalstate_idle,false,
-'Hide','Analysis',global.showanalysis) {
+var enabled = global.state == globalstate_idle and not global.comboboxselected
+if menuButtonToggle(x,y,96,24,-100,enabled,false,'Hide','Analysis',global.showanalysis) {
     global.showanalysis = not global.showanalysis
     saveConfig()
 }

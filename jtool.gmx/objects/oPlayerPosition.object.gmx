@@ -74,7 +74,7 @@ var ystr = string(ypos)
 if global.playery_extended ystr = string_format(ypos,3,16)
 draw_text(xx,yy,'Y pos   '+ystr)
 
-var buttons_active = global.state == globalstate_idle
+var buttons_active = global.state == globalstate_idle and not global.comboboxselected
 var buttonx = x+105
 var buttony = y+8
 var buttonw = 24

@@ -180,19 +180,12 @@
       <script>scripts\cycleTitleJoke.gml</script>
     </scripts>
     <scripts name="ui">
-      <scripts name="menu buttons">
+      <scripts name="buttons">
         <script>scripts\menuButton.gml</script>
         <script>scripts\menuButtonToggle.gml</script>
         <script>scripts\drawButton.gml</script>
         <script>scripts\menuSection.gml</script>
-      </scripts>
-      <scripts name="combo boxes">
         <script>scripts\comboBoxButton.gml</script>
-        <script>scripts\comboBoxOptionButton.gml</script>
-        <script>scripts\buttonCallback_GridPreset.gml</script>
-        <script>scripts\buttonCallback_GridCustom.gml</script>
-        <script>scripts\buttonCallback_SpeedPreset.gml</script>
-        <script>scripts\buttonCallback_SpeedCustom.gml</script>
       </scripts>
       <scripts name="input overlay">
         <script>scripts\inputOverlay.gml</script>

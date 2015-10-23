@@ -84,11 +84,10 @@ for (i = 0; i &lt; 100; i += 1) {
         and not global.comboboxselected
     
     // draw button
-    var button_active = mouse_hover and global.state == globalstate_idle
+    var button_active = mouse_hover and global.state == globalstate_idle and not global.comboboxselected
     var spike = obj == oSpikeUp or obj == oSpikeRight or obj == oSpikeLeft or obj == oSpikeDown
     var minispike = obj == oMiniSpikeUp or obj == oMiniSpikeRight or obj == oMiniSpikeLeft or obj == oMiniSpikeDown
     drawButton(xxx,yyy,w,h,false)
-    fontSetup(font_small,c_black,fa_left,fa_top,1)
     var color = c_white
     if killer color = global.color_killer
     var frame = 0
