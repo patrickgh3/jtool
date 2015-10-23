@@ -114,7 +114,7 @@ var yy = y+yo
 menuSection(xx,yy,'File',false)
 
 // open map
-var clicked = menuButton(xx,yy,w,h,'Open Map',-100,buttons_enabled,sMenuOpen)
+var clicked = menuButton(xx,yy,w,h,'Open Map',buttons_enabled,sMenuOpen)
 var shortcut = keyboard_check(vk_control) and keyboard_check_pressed(ord('O'))
 if clicked or shortcut {
     if not oEdit.undo_nochanges {
@@ -129,7 +129,7 @@ if clicked or shortcut {
 
 // save map
 yy += dy
-var clicked = menuButton(xx,yy,w,h,'Save Map',-100,buttons_enabled,sMenuSave)
+var clicked = menuButton(xx,yy,w,h,'Save Map',buttons_enabled,sMenuSave)
 var shortcut = keyboard_check(vk_control) and keyboard_check_pressed(ord('S'))
 if clicked or shortcut {
     if window_get_fullscreen() {
@@ -142,7 +142,7 @@ if clicked or shortcut {
 
 // open RMJ
 yy += dy
-if menuButton(xx,yy,w,h,'Import RMJ Map',-100,buttons_enabled,false) {
+if menuButton(xx,yy,w,h,'Import RMJ Map',buttons_enabled,false) {
     if not oEdit.undo_nochanges {
         inputOverlay(input_yesno,inputCallback_LoadRMJMap,
         'Unsaved changes detected.#Sure you want to import an RMJ map?')
@@ -155,7 +155,7 @@ if menuButton(xx,yy,w,h,'Import RMJ Map',-100,buttons_enabled,false) {
 
 //save RMJ
 yy += dy
-if menuButton(xx,yy,w,h,'Export RMJ Map',-100,buttons_enabled,false) {
+if menuButton(xx,yy,w,h,'Export RMJ Map',buttons_enabled,false) {
     if window_get_fullscreen() {
         window_set_fullscreen(false)
         oWorld.alarm[0] = 1
@@ -169,21 +169,21 @@ yy = y+yo
 menuSection(xx,yy,'Map',true)
 
 // dotkid
-if menuButtonToggle(xx,yy,w,h,-100,buttons_enabled,sMenuDotkid,
+if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuDotkid,
 '[ Dotkid ]','Dotkid',global.dotkid) {
     global.dotkid = not global.dotkid
 }
 
 // inf jump
 yy += dy
-if menuButtonToggle(xx,yy,w,h,-100,buttons_enabled,sMenuInfJump,
+if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuInfJump,
 '[ Inf Jump ]','Inf Jump',global.infinitejump) {
     global.infinitejump = not global.infinitejump
 }
 
 // clear map
 yy += dy
-if menuButton(xx,yy,w,h,'Clear Map (F2)',-100,buttons_enabled,false)
+if menuButton(xx,yy,w,h,'Clear Map (F2)',buttons_enabled,false)
 or keyboard_check_pressed(vk_f2) {
     if not oEdit.undo_nochanges {
         inputOverlay(input_yesno,inputCallback_ClearMap,
@@ -200,13 +200,13 @@ yy = y+yo
 menuSection(xx,yy,'Preferences',true)
 
 // change skin
-if menuButton(xx,yy,w,h,'Change Skin',-100,buttons_enabled,false) {
+if menuButton(xx,yy,w,h,'Change Skin',buttons_enabled,false) {
     cycleSkin()
 }
 
 // hide sidebar
 yy += dy
-if menuButtonToggle(xx,yy,w,h,-100,buttons_enabled,false,
+if menuButtonToggle(xx,yy,w,h,buttons_enabled,false,
 'Show Sidebar','Hide Sidebar',global.hidesidebar) {
     global.hidesidebar = not global.hidesidebar
     saveConfig()
@@ -214,7 +214,7 @@ if menuButtonToggle(xx,yy,w,h,-100,buttons_enabled,false,
 
 // fullscreen
 yy += dy
-if menuButton(xx,yy,w,h,'Fullscreen',-100,buttons_enabled,sMenuFullscreen)
+if menuButton(xx,yy,w,h,'Fullscreen',buttons_enabled,sMenuFullscreen)
 or (keyboard_check_pressed(vk_f4) and not keyboard_check(vk_alt)) {
     window_set_fullscreen(not window_get_fullscreen())
     oWorld.alarm[0]=1
@@ -223,7 +223,7 @@ or (keyboard_check_pressed(vk_f4) and not keyboard_check(vk_alt)) {
 
 // outline
 yy += dy
-if menuButtonToggle(xx,yy,w,h,-100,buttons_enabled,sMenuDotOutline,
+if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuDotOutline,
 '[ Dot Outline ]','Dot Outline',global.dotkidoutline) {
     global.dotkidoutline = not global.dotkidoutline
     saveConfig()
@@ -232,7 +232,7 @@ if menuButtonToggle(xx,yy,w,h,-100,buttons_enabled,sMenuDotOutline,
 // kill player
 xx += dx
 yy = y+yo
-if menuButtonToggle(xx,yy,w,h,-100,buttons_enabled,sMenuDeath,
+if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuDeath,
 '[ Death ]','Death',global.deathEnabled) {
     global.deathEnabled = not global.deathEnabled
     saveConfig()
@@ -240,7 +240,7 @@ if menuButtonToggle(xx,yy,w,h,-100,buttons_enabled,sMenuDeath,
 
 // show hitbox
 yy += dy
-if menuButtonToggle(xx,yy,w,h,-100,buttons_enabled,sMenuHitbox,
+if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuHitbox,
 '[ Hitbox ]','Hitbox',global.showhitbox) {
     global.showhitbox += 1
     if global.showhitbox &gt; 2 global.showhitbox = 0
@@ -249,7 +249,7 @@ if menuButtonToggle(xx,yy,w,h,-100,buttons_enabled,sMenuHitbox,
 
 // show grid
 yy += dy
-if menuButtonToggle(xx,yy,w,h,-100,buttons_enabled,sMenuGrid,
+if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuGrid,
 '[ Grid ]','Grid',global.showgrid) {
     global.showgrid = not global.showgrid
     saveConfig()
@@ -258,19 +258,19 @@ if menuButtonToggle(xx,yy,w,h,-100,buttons_enabled,sMenuGrid,
 // close menu
 xx = 1056-w-8
 yy = y+12
-if menuButton(xx,yy,w,h,'(Esc) Close Menu',-100,buttons_enabled,false) {
+if menuButton(xx,yy,w,h,'(Esc) Close Menu',buttons_enabled,false) {
     escape_button_just_clicked = true
 }
 
 // about
 yy += dy
-if menuButton(xx,yy,w,h,'About',-100,buttons_enabled,false) {
+if menuButton(xx,yy,w,h,'About',buttons_enabled,false) {
     inputOverlay(input_about,false,'')
 }
 
 // game end
 yy += dy
-if menuButton(xx,yy,w,h,'Quit',-100,buttons_enabled,false) {
+if menuButton(xx,yy,w,h,'Quit',buttons_enabled,false) {
     game_end()
 }
 </string>

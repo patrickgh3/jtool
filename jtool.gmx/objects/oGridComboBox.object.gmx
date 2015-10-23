@@ -66,7 +66,7 @@ var bw = 32
 var bh = 32
 var dx = 35
 
-if selected and menuButton(bx,by,bw,bh,'32',-100,true,false) {
+if selected and menuButton(bx,by,bw,bh,'32',true,false) {
     oEdit.snap = 32
     saveConfig()
     selected = false
@@ -74,7 +74,7 @@ if selected and menuButton(bx,by,bw,bh,'32',-100,true,false) {
 }
 
 bx += dx
-if selected and menuButton(bx,by,bw,bh,'16',-100,true,false) {
+if selected and menuButton(bx,by,bw,bh,'16',true,false) {
     oEdit.snap = 16
     saveConfig()
     selected = false
@@ -82,7 +82,7 @@ if selected and menuButton(bx,by,bw,bh,'16',-100,true,false) {
 }
 
 bx += dx
-if selected and menuButton(bx,by,bw,bh,'8',-100,true,false) {
+if selected and menuButton(bx,by,bw,bh,'8',true,false) {
     oEdit.snap = 8
     saveConfig()
     selected = false
@@ -91,7 +91,7 @@ if selected and menuButton(bx,by,bw,bh,'8',-100,true,false) {
 
 by += dx
 bx -= dx*2
-if selected and menuButton(bx,by,bw,bh,'1',-100,true,false) {
+if selected and menuButton(bx,by,bw,bh,'1',true,false) {
     oEdit.snap = 1
     saveConfig()
     selected = false
@@ -99,7 +99,7 @@ if selected and menuButton(bx,by,bw,bh,'1',-100,true,false) {
 }
 
 bx += dx
-if (selected and menuButton(bx,by,67,bh,'other (G)',-100,true,false))
+if (selected and menuButton(bx,by,67,bh,'other (G)',true,false))
 or (keyboard_check_pressed(ord('G')) and global.state != globalstate_input) {
     inputOverlay(input_textbox,inputCallback_GridCustom,'Grid snap (was '+string(oEdit.snap)+')')
 }

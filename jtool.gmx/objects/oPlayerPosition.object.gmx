@@ -79,7 +79,7 @@ var buttonx = x+105
 var buttony = y+8
 var buttonw = 24
 var buttonh = 12
-if menuButton(buttonx,buttony,buttonw,buttonh,'',-100,buttons_active,false) {
+if menuButton(buttonx,buttony,buttonw,buttonh,'',buttons_active,false) {
     global.playery_extended = not global.playery_extended
     saveConfig()
 }

@@ -28,7 +28,7 @@
             <string>if global.hidesidebar exit
 
 var enabled = global.state == globalstate_idle and not global.comboboxselected
-if menuButtonToggle(x,y,96,32,-100,enabled,false,
+if menuButtonToggle(x,y,96,32,enabled,false,
 'Hide','Instructions',global.editorinstructions) {
     global.editorinstructions = not global.editorinstructions
     saveConfig()

@@ -84,7 +84,7 @@ if mode == input_textbox {
     var button_yo = 20
     var button_w = 80
     var button_h = 32
-    if menuButton(528-button_w/2,304+button_yo,button_w,button_h,'Ok',-100,true,false)
+    if menuButton(528-button_w/2,304+button_yo,button_w,button_h,'Ok',true,false)
     or keyboard_check_pressed(vk_enter) {
         inputOverlayStringSubmit()
     }
@@ -98,10 +98,10 @@ else if mode == input_yesno {
     var xx1 = 528-button_space-button_w
     var xx2 = 528+button_space
     var yy = 304+button_yo
-    if menuButton(xx2,yy,button_w,button_h,'No',-100,true,false) {
+    if menuButton(xx2,yy,button_w,button_h,'No',true,false) {
         inputOverlayNo()
     }
-    if menuButton(xx1,yy,button_w,button_h,'Yes',-100,true,false)
+    if menuButton(xx1,yy,button_w,button_h,'Yes',true,false)
     or keyboard_check_pressed(vk_enter) {
         inputOverlayYes()
     }
@@ -110,7 +110,7 @@ else if mode == input_info {
     var button_yo = 15
     var button_w = 90
     var button_h = 32
-    if menuButton(528-button_w/2,304+button_yo,button_w,button_h,'Ok',-100,true,false)
+    if menuButton(528-button_w/2,304+button_yo,button_w,button_h,'Ok',true,false)
     or keyboard_check_pressed(vk_enter) {
         inputOverlayYes()
     }
@@ -126,13 +126,13 @@ else if mode == input_about {
     +'#people who gave feedback and feature ideas'
     +'##Please read readme.html for more info!')
     
-    if menuButton(528-button_w/2,304+130,button_w,button_h,'Ok',-100,true,false) {
+    if menuButton(528-button_w/2,304+130,button_w,button_h,'Ok',true,false) {
         inputOverlayYes()
     }
     
     var bw = 20
     var bh = 20
-    if menuButton(528+back_w/2-bw,304+back_h/2-bh,bw,bh,'',-100,true,false) {
+    if menuButton(528+back_w/2-bw,304+back_h/2-bh,bw,bh,'',true,false) {
         cycleTitleJoke()
     }
 }

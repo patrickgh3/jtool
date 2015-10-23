@@ -65,21 +65,21 @@ var bw = 32
 var bh = 32
 var dx = 35
 
-if selected and menuButton(bx,by,bw,bh,'50',-100,true,false) {
+if selected and menuButton(bx,by,bw,bh,'50',true,false) {
     room_speed = 50
     selected = false
     global.comboboxselected = false
 }
 
 bx += dx
-if selected and menuButton(bx,by,bw,bh,'25',-100,true,false) {
+if selected and menuButton(bx,by,bw,bh,'25',true,false) {
     room_speed = 25
     selected = false
     global.comboboxselected = false
 }
 
 bx += dx
-if selected and menuButton(bx,by,bw,bh,'10',-100,true,false) {
+if selected and menuButton(bx,by,bw,bh,'10',true,false) {
     room_speed = 10
     selected = false
     global.comboboxselected = false
@@ -87,14 +87,14 @@ if selected and menuButton(bx,by,bw,bh,'10',-100,true,false) {
 
 by += dx
 bx -= dx*2
-if selected and menuButton(bx,by,bw,bh,'100',-100,true,false) {
+if selected and menuButton(bx,by,bw,bh,'100',true,false) {
     room_speed = 100
     selected = false
     global.comboboxselected = false
 }
 
 bx += dx
-if (selected and menuButton(bx,by,67,bh,'other (F)',-100,true,false))
+if (selected and menuButton(bx,by,67,bh,'other (F)',true,false))
 or (keyboard_check_pressed(ord('F')) and global.state != globalstate_input) {
     inputOverlay(input_textbox,inputCallback_SpeedCustom,'Room speed (was '+string(room_speed)+')')
 }

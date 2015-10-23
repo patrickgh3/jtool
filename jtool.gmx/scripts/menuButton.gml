@@ -7,9 +7,8 @@ var yy = argument1
 var w = argument2
 var h = argument3
 var text = argument4
-var callback = argument5
-var enabled = argument6
-var icon = argument7
+var enabled = argument5
+var icon = argument6
 
 var mouse_hover = point_in_rect(mouse_x,mouse_y,xx,yy,xx+w,yy+h) and enabled
 

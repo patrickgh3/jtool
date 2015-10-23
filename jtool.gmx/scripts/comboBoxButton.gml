@@ -9,7 +9,7 @@ var text = argument5
 var icon = argument6
 
 var enabled = global.state == globalstate_idle and not global.comboboxselected
-if menuButton(xx,yy,w,h,text,-100,enabled,icon) {
+if menuButton(xx,yy,w,h,text,enabled,icon) {
     selected = not selected
     global.comboboxselected = selected
 }
