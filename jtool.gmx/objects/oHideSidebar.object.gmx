@@ -32,6 +32,7 @@
     completelyResetZoom()
     saveAndResetZoom()
     if not window_get_fullscreen() oZoom.x2 = 800
+    display_set_gui_size(view_wport,view_hport)
 }
 else if not global.hidesidebar and window_get_width() != 1056 {
     window_set_size(1056,608)
@@ -40,6 +41,7 @@ else if not global.hidesidebar and window_get_width() != 1056 {
     completelyResetZoom()
     saveAndResetZoom()
     if not window_get_fullscreen() oZoom.x2 = 1056
+    display_set_gui_size(view_wport,view_hport)
 }
 </string>
           </argument>

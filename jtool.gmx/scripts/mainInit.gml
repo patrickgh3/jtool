@@ -38,7 +38,7 @@ loadStartupMap()
 
 // misc
 randomize()
-display_set_gui_size(view_wview,view_hview)
+display_set_gui_size(view_wport,view_hport)
 window_set_caption('jtool')
 // load keys from file sometime? idk
 global.key_left = vk_left
