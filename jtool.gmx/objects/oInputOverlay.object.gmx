@@ -133,9 +133,8 @@ else if mode == input_about {
     var bw = 20
     var bh = 20
     if menuButton(528+back_w/2-bw,304+back_h/2-bh,bw,bh,'',-100,true,false) {
-        buttonCallback_JokeTitle()
+        cycleTitleJoke()
     }
-    
 }
 
 if keyboard_check_pressed(vk_escape) {

@@ -135,6 +135,7 @@
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\cycleSkin.gml</script>
+    <script>scripts\cycleTitleJoke.gml</script>
     <scripts name="util">
       <script>scripts\fontSetup.gml</script>
       <script>scripts\point_in_rect.gml</script>
@@ -184,12 +185,6 @@
         <script>scripts\menuButtonToggle.gml</script>
         <script>scripts\drawButton.gml</script>
         <script>scripts\menuSection.gml</script>
-        <scripts name="menu about">
-          <script>scripts\buttonCallback_About.gml</script>
-          <script>scripts\buttonCallback_JokeTitle.gml</script>
-          <script>scripts\buttonCallback_CloseMenu.gml</script>
-          <script>scripts\buttonCallback_GameEnd.gml</script>
-        </scripts>
         <scripts name="sidebar">
           <script>scripts\buttonCallback_OpenMenu.gml</script>
           <script>scripts\buttonCallback_EditorInstructions.gml</script>

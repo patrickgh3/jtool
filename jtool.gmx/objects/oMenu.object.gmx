@@ -214,7 +214,7 @@ if menuButtonToggle(xx,yy,w,h,-100,buttons_enabled,false,
 
 // fullscreen
 yy += dy
-if menuButton(xx,yy,w,h,'Fullscreen',buttonCallback_Fullscreen,buttons_enabled,sMenuFullscreen)
+if menuButton(xx,yy,w,h,'Fullscreen',-100,buttons_enabled,sMenuFullscreen)
 or (keyboard_check_pressed(vk_f4) and not keyboard_check(vk_alt)) {
     window_set_fullscreen(not window_get_fullscreen())
     oWorld.alarm[0]=1
@@ -255,16 +255,24 @@ if menuButtonToggle(xx,yy,w,h,-100,buttons_enabled,sMenuGrid,
     saveConfig()
 }
 
-// close menu, about, exit
+// close menu
 xx = 1056-w-8
 yy = y+12
-menuButton(xx,yy,w,h,'(Esc) Close Menu',buttonCallback_CloseMenu,buttons_enabled,false)
+if menuButton(xx,yy,w,h,'(Esc) Close Menu',-100,buttons_enabled,false) {
+    escape_button_just_clicked = true
+}
 
+// about
 yy += dy
-menuButton(xx,yy,w,h,'About',buttonCallback_About,buttons_enabled,false)
+if menuButton(xx,yy,w,h,'About',-100,buttons_enabled,false) {
+    inputOverlay(input_about,false,'')
+}
 
+// game end
 yy += dy
-menuButton(xx,yy,w,h,'Quit',buttonCallback_GameEnd,buttons_enabled,false)
+if menuButton(xx,yy,w,h,'Quit',-100,buttons_enabled,false) {
+    game_end()
+}
 </string>
           </argument>
         </arguments>
