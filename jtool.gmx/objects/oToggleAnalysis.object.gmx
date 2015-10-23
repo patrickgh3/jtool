@@ -27,10 +27,11 @@
             <kind>1</kind>
             <string>if global.hidesidebar exit
 
-var str = 'Hide'
-if not global.showanalysis str = 'Analysis'
-var enabled = global.state == globalstate_idle
-menuButton(x,y,96,24,str,buttonCallback_ToggleAnalysis,enabled,false)
+if menuButtonToggle(x,y,96,24,-100,global.state == globalstate_idle,false,
+'Hide','Analysis',global.showanalysis) {
+    global.showanalysis = not global.showanalysis
+    saveConfig()
+}
 </string>
           </argument>
         </arguments>

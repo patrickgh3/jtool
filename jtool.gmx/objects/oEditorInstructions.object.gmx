@@ -27,9 +27,11 @@
             <kind>1</kind>
             <string>if global.hidesidebar exit
 
-menuButtonToggle(x,y,96,32,buttonCallback_EditorInstructions,
-global.state == globalstate_idle,false,
-'Hide','Instructions',global.editorinstructions)
+if menuButtonToggle(x,y,96,32,-100,global.state == globalstate_idle,false,
+'Hide','Instructions',global.editorinstructions) {
+    global.editorinstructions = not global.editorinstructions
+    saveConfig()
+}
 
 if global.editorinstructions {
     var xx = 620

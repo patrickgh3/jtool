@@ -79,8 +79,10 @@ var buttonx = x+105
 var buttony = y+8
 var buttonw = 24
 var buttonh = 12
-menuButton(buttonx,buttony,buttonw,buttonh,'',buttonCallback_YFormat,
-buttons_active,false)
+if menuButton(buttonx,buttony,buttonw,buttonh,'',-100,buttons_active,false) {
+    global.playery_extended = not global.playery_extended
+    saveConfig()
+}
 fontSetup(font_small,c_black,fa_center,fa_center,1)
 draw_text(buttonx+buttonw/2,buttony+buttonh/2-4,'. . .')
 
@@ -89,8 +91,12 @@ draw_text(buttonx+buttonw/2,buttony+buttonh/2-4,'. . .')
     var by = y+22
     var bw = 32
     var bh = 24
-    menuButton(bx,by,bw,bh,'- .5',buttonCallback_NudgeHalfLeft,buttons_active,false)
-    menuButton(bx+bw+8,by,bw,bh,'+ .5',buttonCallback_NudgeHalfRight,buttons_active,false)
+    if menuButton(bx,by,bw,bh,'- .5',-100,buttons_active,false) {
+        nudgePlayerHalf(-1)
+    }
+    if menuButton(bx+bw+8,by,bw,bh,'+ .5',-100,buttons_active,false) {
+        nudgePlayerHalf(1)
+    }
 }*/
 </string>
           </argument>

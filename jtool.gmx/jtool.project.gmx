@@ -134,8 +134,6 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\cycleSkin.gml</script>
-    <script>scripts\cycleTitleJoke.gml</script>
     <scripts name="util">
       <script>scripts\fontSetup.gml</script>
       <script>scripts\point_in_rect.gml</script>
@@ -178,6 +176,8 @@
       <script>scripts\nudgePlayerHalf.gml</script>
       <script>scripts\objectInPalette.gml</script>
       <script>scripts\mainInit.gml</script>
+      <script>scripts\cycleSkin.gml</script>
+      <script>scripts\cycleTitleJoke.gml</script>
     </scripts>
     <scripts name="ui">
       <scripts name="menu buttons">
@@ -185,14 +185,6 @@
         <script>scripts\menuButtonToggle.gml</script>
         <script>scripts\drawButton.gml</script>
         <script>scripts\menuSection.gml</script>
-        <scripts name="sidebar">
-          <script>scripts\buttonCallback_OpenMenu.gml</script>
-          <script>scripts\buttonCallback_EditorInstructions.gml</script>
-          <script>scripts\buttonCallback_ToggleAnalysis.gml</script>
-          <script>scripts\buttonCallback_YFormat.gml</script>
-          <script>scripts\buttonCallback_NudgeHalfRight.gml</script>
-          <script>scripts\buttonCallback_NudgeHalfLeft.gml</script>
-        </scripts>
       </scripts>
       <scripts name="combo boxes">
         <script>scripts\comboBoxButton.gml</script>
