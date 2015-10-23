@@ -134,6 +134,7 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
+    <script>scripts\cycleSkin.gml</script>
     <scripts name="util">
       <script>scripts\fontSetup.gml</script>
       <script>scripts\point_in_rect.gml</script>
@@ -183,15 +184,6 @@
         <script>scripts\menuButtonToggle.gml</script>
         <script>scripts\drawButton.gml</script>
         <script>scripts\menuSection.gml</script>
-        <scripts name="menu preferences">
-          <script>scripts\buttonCallback_Skin.gml</script>
-          <script>scripts\buttonCallback_KillPlayer.gml</script>
-          <script>scripts\buttonCallback_Fullscreen.gml</script>
-          <script>scripts\buttonCallback_ShowGrid.gml</script>
-          <script>scripts\buttonCallback_ShowHitbox.gml</script>
-          <script>scripts\buttonCallback_DotkidOutline.gml</script>
-          <script>scripts\buttonCallback_HideSidebar.gml</script>
-        </scripts>
         <scripts name="menu about">
           <script>scripts\buttonCallback_About.gml</script>
           <script>scripts\buttonCallback_JokeTitle.gml</script>

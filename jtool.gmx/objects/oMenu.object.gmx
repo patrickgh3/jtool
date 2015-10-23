@@ -199,34 +199,61 @@ xx += dx+dx2
 yy = y+yo
 menuSection(xx,yy,'Preferences',true)
 
-menuButton(xx,yy,w,h,'Change Skin',buttonCallback_Skin,buttons_enabled,false)
-
-yy += dy
-menuButtonToggle(xx,yy,w,h,buttonCallback_HideSidebar,buttons_enabled,false,
-'Show Sidebar','Hide Sidebar',global.hidesidebar)
-
-yy += dy
-menuButton(xx,yy,w,h,'Fullscreen',buttonCallback_Fullscreen,buttons_enabled,sMenuFullscreen)
-if keyboard_check_pressed(vk_f4) and not keyboard_check(vk_alt) {
-    buttonCallback_Fullscreen()
+// change skin
+if menuButton(xx,yy,w,h,'Change Skin',-100,buttons_enabled,false) {
+    cycleSkin()
 }
 
+// hide sidebar
 yy += dy
-menuButtonToggle(xx,yy,w,h,buttonCallback_DotkidOutline,buttons_enabled,sMenuDotOutline,
-'[ Dot Outline ]','Dot Outline',global.dotkidoutline)
+if menuButtonToggle(xx,yy,w,h,-100,buttons_enabled,false,
+'Show Sidebar','Hide Sidebar',global.hidesidebar) {
+    global.hidesidebar = not global.hidesidebar
+    saveConfig()
+}
 
+// fullscreen
+yy += dy
+if menuButton(xx,yy,w,h,'Fullscreen',buttonCallback_Fullscreen,buttons_enabled,sMenuFullscreen)
+or (keyboard_check_pressed(vk_f4) and not keyboard_check(vk_alt)) {
+    window_set_fullscreen(not window_get_fullscreen())
+    oWorld.alarm[0]=1
+    saveConfig()
+}
+
+// outline
+yy += dy
+if menuButtonToggle(xx,yy,w,h,-100,buttons_enabled,sMenuDotOutline,
+'[ Dot Outline ]','Dot Outline',global.dotkidoutline) {
+    global.dotkidoutline = not global.dotkidoutline
+    saveConfig()
+}
+
+// kill player
 xx += dx
 yy = y+yo
-menuButtonToggle(xx,yy,w,h,buttonCallback_KillPlayer,buttons_enabled,sMenuDeath,
-'[ Death ]','Death',global.deathEnabled)
+if menuButtonToggle(xx,yy,w,h,-100,buttons_enabled,sMenuDeath,
+'[ Death ]','Death',global.deathEnabled) {
+    global.deathEnabled = not global.deathEnabled
+    saveConfig()
+}
 
+// show hitbox
 yy += dy
-menuButtonToggle(xx,yy,w,h,buttonCallback_ShowHitbox,buttons_enabled,sMenuHitbox,
-'[ Hitbox ]','Hitbox',global.showhitbox)
+if menuButtonToggle(xx,yy,w,h,-100,buttons_enabled,sMenuHitbox,
+'[ Hitbox ]','Hitbox',global.showhitbox) {
+    global.showhitbox += 1
+    if global.showhitbox &gt; 2 global.showhitbox = 0
+    saveConfig()
+}
 
+// show grid
 yy += dy
-menuButtonToggle(xx,yy,w,h,buttonCallback_ShowGrid,buttons_enabled,sMenuGrid,
-'[ Grid ]','Grid',global.showgrid)
+if menuButtonToggle(xx,yy,w,h,-100,buttons_enabled,sMenuGrid,
+'[ Grid ]','Grid',global.showgrid) {
+    global.showgrid = not global.showgrid
+    saveConfig()
+}
 
 // close menu, about, exit
 xx = 1056-w-8
