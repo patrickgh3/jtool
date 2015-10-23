@@ -79,8 +79,8 @@ zoom = clamp(zoom,1,4)
 if global.state != globalstate_idle {
     zoom = zoomlast
 }
-var endw = room_width/zoom
-var endh = room_height/zoom
+var endw = view_wport/zoom
+var endh = view_hport/zoom
 if zoom != zoomlast {
     x1_target = mouse_x-endw/2
     y1_target = mouse_y-endh/2
@@ -103,10 +103,10 @@ mouseviewx_last=mouseview_x
 mouseviewy_last=mouseview_y
 
 // clamp target
-x1_target = clamp(x1_target,0,1056-endw)
-y1_target = clamp(y1_target,0,608-endh)
-x2_target = clamp(x2_target,endw,1056)
-y2_target = clamp(y2_target,endh,608)
+x1_target = clamp(x1_target,0,view_wport-endw)
+y1_target = clamp(y1_target,0,view_hport-endh)
+x2_target = clamp(x2_target,endw,view_wport)
+y2_target = clamp(y2_target,endh,view_hport)
 
 // ease in view to target
 var ease = 0.3;

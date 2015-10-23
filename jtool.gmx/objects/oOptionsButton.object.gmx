@@ -25,9 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.hidesidebar exit
-
-var enabled = global.state == globalstate_idle and not global.comboboxselected
+            <string>var enabled = global.state == globalstate_idle and not global.comboboxselected and not global.hidesidebar
 var clicked = menuButton(x,y,96,32,'(Esc) Options',-100,enabled,false)
 
 var escpressed = keyboard_check_pressed(vk_escape) and oMenu.steps_out_of_menu &gt; 0

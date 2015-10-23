@@ -52,7 +52,7 @@ align = 0
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if not global.showanalysis or global.hidesidebar exit
+            <string>if not global.showanalysis exit
 
 var w = 136
 if global.playery_extended w = 240

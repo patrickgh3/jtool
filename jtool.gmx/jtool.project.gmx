@@ -276,19 +276,18 @@
       <object>objects\oPatBall</object>
     </objects>
     <objects name="sidebar">
-      <object>objects\oSidebar</object>
-      <object>objects\oPalette</object>
+      <object>objects\oEditorInstructions</object>
       <object>objects\oOptionsButton</object>
+      <object>objects\oPalette</object>
       <object>objects\oGridComboBox</object>
       <object>objects\oSpeedComboBox</object>
-      <object>objects\oEditorInstructions</object>
       <object>objects\oHideSidebar</object>
-      <object>objects\oKeyDisplay</object>
+      <object>objects\oSidebar</object>
       <objects name="jump analysis">
         <object>objects\oJumpDurations</object>
-        <object>objects\oCancelHint</object>
-        <object>objects\oBhopHint</object>
         <object>objects\oPlayerPosition</object>
+        <object>objects\oBhopHint</object>
+        <object>objects\oCancelHint</object>
         <object>objects\oToggleAnalysis</object>
       </objects>
     </objects>

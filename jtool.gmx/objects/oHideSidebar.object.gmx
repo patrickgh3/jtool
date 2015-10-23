@@ -25,10 +25,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.hidesidebar {
-    draw_set_color(c_black)
-    draw_set_alpha(1)
-    draw_rectangle(800,0,1055,607,false)
+            <string>if global.hidesidebar and window_get_width() != 800 {
+    window_set_size(800,608)
+    view_wport = 800
+    view_wview = 800
+    completelyResetZoom()
+    saveAndResetZoom()
+    if not window_get_fullscreen() oZoom.x2 = 800
+}
+else if not global.hidesidebar and window_get_width() != 1056 {
+    window_set_size(1056,608)
+    view_wport = 1056
+    view_wview = 1056
+    completelyResetZoom()
+    saveAndResetZoom()
+    if not window_get_fullscreen() oZoom.x2 = 1056
 }
 </string>
           </argument>
