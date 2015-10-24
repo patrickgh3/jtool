@@ -247,11 +247,16 @@ if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuHitbox,
     saveConfig()
 }
 
-// show grid
+// grid draw
 yy += dy
 if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuGrid,
-'[ Grid ]','Grid',global.showgrid) {
-    global.showgrid = not global.showgrid
+'Grid: '+string(global.grid_draw),'Grid: off',global.grid_draw != 0) {
+    switch global.grid_draw {
+        case 0: global.grid_draw = 32 break
+        case 32: global.grid_draw = 16 break
+        case 16: global.grid_draw = 8 break
+        case 8: global.grid_draw = 0 break
+    }
     saveConfig()
 }
 

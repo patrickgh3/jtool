@@ -12,7 +12,7 @@ global.dotkidoutline = FS_ini_read_real('prefs','dotkidoutline',true)
 global.hidesidebar = FS_ini_read_real('prefs','hidesidebar',false)
 global.editorinstructions = FS_ini_read_real('prefs','editorinstructions',true)
 global.showhitbox = FS_ini_read_real('prefs','showhitbox',0)
-global.showgrid = FS_ini_read_real('prefs','showgrid',false)
+global.grid_draw = FS_ini_read_real('prefs','grid_draw',false)
 global.playery_extended = FS_ini_read_real('prefs','playery_extended',false)
 FS_ini_close()
 

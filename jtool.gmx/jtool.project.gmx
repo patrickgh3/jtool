@@ -300,7 +300,7 @@
     </objects>
     <objects name="tool misc">
       <object>objects\oBorderDeath</object>
-      <object>objects\oEditGrid</object>
+      <object>objects\oDrawGrid</object>
       <object>objects\oPlayerVictory</object>
       <object>objects\oKeySaveParticle</object>
     </objects>
