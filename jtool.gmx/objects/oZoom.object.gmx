@@ -110,15 +110,16 @@ y2_target = clamp(y2_target,endh,view_hport)
 
 // ease in view to target
 var ease = 0.3;
+if abs(x1 - x1_target) &lt; 1.5 and abs(x2 - x2_target) &lt; 1.5 ease = 1
 x1 += (x1_target-x1)*ease
 y1 += (y1_target-y1)*ease
 x2 += (x2_target-x2)*ease
 y2 += (y2_target-y2)*ease
 
-view_xview = x1
-view_yview = y1
-view_wview = x2-x1
-view_hview = y2-y1
+view_xview = floor(x1)
+view_yview = floor(y1)
+view_wview = floor(x2)-floor(x1)
+view_hview = floor(y2)-floor(y1)
 </string>
           </argument>
         </arguments>
