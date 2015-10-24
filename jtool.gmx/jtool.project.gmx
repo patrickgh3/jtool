@@ -142,10 +142,26 @@
       <script>scripts\stringIsInt.gml</script>
       <script>scripts\colorFromHsvDelimString.gml</script>
       <script>scripts\prefix_project_path_if_needed.gml</script>
-      <script>scripts\decode_real_double.gml</script>
-      <script>scripts\encode_real_double.gml</script>
-      <script>scripts\bin_to_dec.gml</script>
-      <script>scripts\dec_to_bin.gml</script>
+    </scripts>
+    <scripts name="input overlay">
+      <script>scripts\inputOverlay.gml</script>
+      <script>scripts\inputOverlayFinish.gml</script>
+      <script>scripts\inputOverlayStringSubmit.gml</script>
+      <script>scripts\inputOverlayYes.gml</script>
+      <script>scripts\inputOverlayNo.gml</script>
+      <script>scripts\inputCallback_GridCustom.gml</script>
+      <script>scripts\inputCallback_SpeedCustom.gml</script>
+      <script>scripts\inputCallback_LoadMap.gml</script>
+      <script>scripts\inputCallback_LoadRMJMap.gml</script>
+      <script>scripts\inputCallback_VAlign.gml</script>
+      <script>scripts\inputCallback_ClearMap.gml</script>
+    </scripts>
+    <scripts name="buttons">
+      <script>scripts\menuButton.gml</script>
+      <script>scripts\menuButtonToggle.gml</script>
+      <script>scripts\drawButton.gml</script>
+      <script>scripts\menuSection.gml</script>
+      <script>scripts\comboBoxButton.gml</script>
     </scripts>
     <scripts name="jump analysis">
       <script>scripts\jumpDurations_Create.gml</script>
@@ -158,14 +174,47 @@
       <script>scripts\adjustPlayerPosition_EndStep.gml</script>
       <script>scripts\drawHint.gml</script>
     </scripts>
-    <scripts name="object-specific">
-      <scripts name="player">
-        <script>scripts\playerJump.gml</script>
-        <script>scripts\playerVJump.gml</script>
-        <script>scripts\playerShoot.gml</script>
-        <script>scripts\killPlayer.gml</script>
-        <script>scripts\flipGravity.gml</script>
+    <scripts name="player">
+      <script>scripts\playerJump.gml</script>
+      <script>scripts\playerVJump.gml</script>
+      <script>scripts\playerShoot.gml</script>
+      <script>scripts\killPlayer.gml</script>
+      <script>scripts\flipGravity.gml</script>
+    </scripts>
+    <scripts name="saveload">
+      <scripts name="save map">
+        <script>scripts\saveMap.gml</script>
+        <script>scripts\intToBase32String.gml</script>
+        <script>scripts\floatToBase32String.gml</script>
+        <script>scripts\objectToSaveID.gml</script>
+        <script>scripts\bin_to_dec.gml</script>
+        <script>scripts\encode_real_double.gml</script>
       </scripts>
+      <scripts name="load map">
+        <script>scripts\loadMap.gml</script>
+        <script>scripts\loadMapAskName.gml</script>
+        <script>scripts\loadStartupMap.gml</script>
+        <script>scripts\base32StringToInt.gml</script>
+        <script>scripts\base32StringToFloat.gml</script>
+        <script>scripts\saveIDToObject.gml</script>
+        <script>scripts\dec_to_bin.gml</script>
+        <script>scripts\decode_real_double.gml</script>
+      </scripts>
+      <scripts name="rmj">
+        <script>scripts\loadRMJMap.gml</script>
+        <script>scripts\rmjCodeToObject.gml</script>
+        <script>scripts\saveRMJMap.gml</script>
+        <script>scripts\objectToRmjCode.gml</script>
+      </scripts>
+      <scripts name="other">
+        <script>scripts\savePlayer.gml</script>
+        <script>scripts\loadPlayer.gml</script>
+        <script>scripts\saveConfig.gml</script>
+        <script>scripts\loadConfig.gml</script>
+        <script>scripts\loadSkin.gml</script>
+      </scripts>
+    </scripts>
+    <scripts name="misc">
       <script>scripts\highlightGetFraction.gml</script>
       <script>scripts\number_to_frames_string.gml</script>
       <script>scripts\undoSerializeObject.gml</script>
@@ -178,55 +227,6 @@
       <script>scripts\mainInit.gml</script>
       <script>scripts\cycleSkin.gml</script>
       <script>scripts\cycleTitleJoke.gml</script>
-    </scripts>
-    <scripts name="ui">
-      <scripts name="buttons">
-        <script>scripts\menuButton.gml</script>
-        <script>scripts\menuButtonToggle.gml</script>
-        <script>scripts\drawButton.gml</script>
-        <script>scripts\menuSection.gml</script>
-        <script>scripts\comboBoxButton.gml</script>
-      </scripts>
-      <scripts name="input overlay">
-        <script>scripts\inputOverlay.gml</script>
-        <script>scripts\inputOverlayFinish.gml</script>
-        <script>scripts\inputOverlayStringSubmit.gml</script>
-        <script>scripts\inputOverlayYes.gml</script>
-        <script>scripts\inputOverlayNo.gml</script>
-        <script>scripts\inputCallback_GridCustom.gml</script>
-        <script>scripts\inputCallback_SpeedCustom.gml</script>
-        <script>scripts\inputCallback_LoadMap.gml</script>
-        <script>scripts\inputCallback_LoadRMJMap.gml</script>
-        <script>scripts\inputCallback_VAlign.gml</script>
-        <script>scripts\inputCallback_ClearMap.gml</script>
-      </scripts>
-    </scripts>
-    <scripts name="saveload">
-      <scripts name="save map">
-        <script>scripts\saveMap.gml</script>
-        <script>scripts\intToBase32String.gml</script>
-        <script>scripts\floatToBase32String.gml</script>
-        <script>scripts\objectToSaveID.gml</script>
-      </scripts>
-      <scripts name="load map">
-        <script>scripts\loadMap.gml</script>
-        <script>scripts\loadMapAskName.gml</script>
-        <script>scripts\loadStartupMap.gml</script>
-        <script>scripts\base32StringToInt.gml</script>
-        <script>scripts\base32StringToFloat.gml</script>
-        <script>scripts\saveIDToObject.gml</script>
-      </scripts>
-      <scripts name="rmj">
-        <script>scripts\loadRMJMap.gml</script>
-        <script>scripts\rmjCodeToObject.gml</script>
-        <script>scripts\saveRMJMap.gml</script>
-        <script>scripts\objectToRmjCode.gml</script>
-      </scripts>
-      <script>scripts\savePlayer.gml</script>
-      <script>scripts\loadPlayer.gml</script>
-      <script>scripts\saveConfig.gml</script>
-      <script>scripts\loadConfig.gml</script>
-      <script>scripts\loadSkin.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
