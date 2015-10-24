@@ -57,7 +57,7 @@ comboBoxButton(x,y,w,h,droph,'Speed: '+string(room_speed),sMenuSpeed)
 if selected {
     drawButton(x,y+h-1,w,droph,false)
     draw_set_color(global.color_button)
-    draw_line(x,y+h-1,x+w-1,y+h-1)
+    draw_line(x,y+h-1,x+w-2,y+h-1)
 }
 var bx = x+5
 var by = y+h+4

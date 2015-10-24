@@ -3,7 +3,7 @@
   <spriteName>sEditorButton</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-100</depth>
+  <depth>-120</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -56,12 +56,12 @@ if combobox_selected and global.state != globalstate_idle {
 }
 
 var xo = 0
-var dx = 55
-var w = 44
+var w = 50
+dx = w+8
 
 var yo = 0
-var dy = 55
-var h = 44
+var h = 50
+dy = h+8
 
 for (i = 0; i &lt; 100; i += 1) {
     /*
@@ -162,10 +162,10 @@ for (i = 0; i &lt; 100; i += 1) {
     
     // draw combo box back and detect mouse leave
     if is_comboboxtoggle and combobox_selected {
-        var combo_x = x+xo-5
-        var combo_y = y+yo+5*dy-5
-        var combo_w = dx*4
-        var combo_h = dy
+        var combo_x = x+xo-8
+        var combo_y = y+yo+5*dy-9
+        var combo_w = dx*4+8
+        var combo_h = dy+9
         
         drawButton(combo_x,combo_y,combo_w,combo_h,false)
         drawButton(xxx,yyy,w,combo_y-yyy+1,false)

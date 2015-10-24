@@ -258,7 +258,7 @@ if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuGrid,
 // close menu
 xx = 1056-w-8
 yy = y+12
-if menuButton(xx,yy,w,h,'(Esc) Close Menu',buttons_enabled,false) {
+if menuButton(xx,yy,w,h,'Close Menu (Esc)',buttons_enabled,false) {
     escape_button_just_clicked = true
 }
 
