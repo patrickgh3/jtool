@@ -126,6 +126,7 @@
       <sprite>sprites\sBorderDeath</sprite>
       <sprite>sprites\sCursorDropper</sprite>
       <sprite>sprites\sPatBall</sprite>
+      <sprite>sprites\sEllipsis</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -240,7 +241,7 @@
     <object>objects\oEdit</object>
     <object>objects\oInputOverlay</object>
     <object>objects\oZoom</object>
-    <objects name="palatte">
+    <objects name="palette">
       <object>objects\oEditBlock</object>
       <object>objects\oEditMiniBlock</object>
       <object>objects\oPlatform</object>
