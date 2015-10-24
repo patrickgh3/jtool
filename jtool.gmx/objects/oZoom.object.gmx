@@ -91,7 +91,7 @@ if zoom != zoomlast {
 // panning view (change target)
 var mouseview_x = mouse_x-view_xview
 var mouseview_y = mouse_y-view_yview
-if keyboard_check(vk_space) {
+if keyboard_check(vk_space) or mouse_check_button(mb_middle) {
     var dx = mouseviewx_last - mouseview_x
     var dy = mouseviewy_last - mouseview_y;
     x1_target += dx

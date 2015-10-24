@@ -119,6 +119,8 @@
       <sprite>sprites\sMenuHitbox</sprite>
       <sprite>sprites\sMenuGrid</sprite>
       <sprite>sprites\sMenuSpeed</sprite>
+      <sprite>sprites\sMenuSidebar</sprite>
+      <sprite>sprites\sMenuSkin</sprite>
     </sprites>
     <sprites name="misc">
       <sprite>sprites\sEditCursor</sprite>

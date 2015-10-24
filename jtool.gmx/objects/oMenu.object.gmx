@@ -200,24 +200,29 @@ yy = y+yo
 menuSection(xx,yy,'Preferences',true)
 
 // change skin
-if menuButton(xx,yy,w,h,'Change Skin',buttons_enabled,false) {
+if menuButton(xx,yy,w,h,'Change Skin',buttons_enabled,sMenuSkin) {
     cycleSkin()
 }
 
-// hide sidebar
+// grid draw
 yy += dy
-if menuButtonToggle(xx,yy,w,h,buttons_enabled,false,
-'Show Sidebar','Hide Sidebar',global.hidesidebar) {
-    global.hidesidebar = not global.hidesidebar
+if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuGrid,
+'Grid: '+string(global.grid_draw),'Grid: off',global.grid_draw != 0) {
+    switch global.grid_draw {
+        case 0: global.grid_draw = 32 break
+        case 32: global.grid_draw = 16 break
+        case 16: global.grid_draw = 8 break
+        case 8: global.grid_draw = 0 break
+    }
     saveConfig()
 }
 
-// fullscreen
+// show hitbox
 yy += dy
-if menuButton(xx,yy,w,h,'Fullscreen',buttons_enabled,sMenuFullscreen)
-or (keyboard_check_pressed(vk_f4) and not keyboard_check(vk_alt)) {
-    window_set_fullscreen(not window_get_fullscreen())
-    oWorld.alarm[0]=1
+if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuHitbox,
+'[ Hitbox ]','Hitbox',global.showhitbox) {
+    global.showhitbox += 1
+    if global.showhitbox &gt; 2 global.showhitbox = 0
     saveConfig()
 }
 
@@ -238,25 +243,20 @@ if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuDeath,
     saveConfig()
 }
 
-// show hitbox
+// fullscreen
 yy += dy
-if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuHitbox,
-'[ Hitbox ]','Hitbox',global.showhitbox) {
-    global.showhitbox += 1
-    if global.showhitbox &gt; 2 global.showhitbox = 0
+if menuButton(xx,yy,w,h,'Fullscreen',buttons_enabled,sMenuFullscreen)
+or (keyboard_check_pressed(vk_f4) and not keyboard_check(vk_alt)) {
+    window_set_fullscreen(not window_get_fullscreen())
+    oWorld.alarm[0]=1
     saveConfig()
 }
 
-// grid draw
+// hide sidebar
 yy += dy
-if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuGrid,
-'Grid: '+string(global.grid_draw),'Grid: off',global.grid_draw != 0) {
-    switch global.grid_draw {
-        case 0: global.grid_draw = 32 break
-        case 32: global.grid_draw = 16 break
-        case 16: global.grid_draw = 8 break
-        case 8: global.grid_draw = 0 break
-    }
+if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuSidebar,
+'Show Sidebar','Hide Sidebar',global.hidesidebar) {
+    global.hidesidebar = not global.hidesidebar
     saveConfig()
 }
 
