@@ -6,7 +6,7 @@
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
-  <maskName>sSaveDefault</maskName>
+  <maskName>sBlockMask</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -96,8 +96,11 @@ grav = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var shot = place_meeting(x,y,oPlayerBullet)
-           or (place_meeting(x,y,oPlayer) and keyboard_check_pressed(global.key_shoot))
+            <string>var shot = place_meeting(x,y,oPlayer) and keyboard_check_pressed(global.key_shoot)
+
+if global.savetype == savetype_shoot {
+    shot = shot or place_meeting(x,y,oPlayerBullet)
+}
 
 if shot and can_save and instance_exists(oPlayer) and grav == global.grav {
     savePlayer()
