@@ -172,8 +172,7 @@ for (i = 0; i &lt; 100; i += 1) {
         draw_set_color(global.color_button)
         draw_line(xxx,combo_y,xxx+w-2,combo_y)
         
-        if not point_in_rect(mouse_x,mouse_y,combo_x,combo_y,combo_x+combo_w,combo_y+combo_h)
-        and not point_in_rect(mouse_x,mouse_y,xxx,yyy,xxx+w,combo_y+1) {
+        if not point_in_rect(mouse_x,mouse_y,combo_x,yyy,combo_x+combo_w,combo_y+combo_h) {
             combobox_selected = false
             global.comboboxselected = false
         }
