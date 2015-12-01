@@ -9,5 +9,9 @@ with oZoom {
     x2_target=1056
     y2_target=608
     zoom = 1
+    x1_previous=x1_target
+    y1_previous=y1_target
+    x2_previous=x2_target
+    y2_previous=y2_target
+    zoom_previous=zoom
 }
-saveAndResetZoom()

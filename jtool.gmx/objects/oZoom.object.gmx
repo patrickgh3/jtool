@@ -76,7 +76,7 @@ else if mouse_wheel_down() or keyboard_check_pressed(ord('X')) {
     else zoom -= 1
 }
 zoom = clamp(zoom,1,4)
-if global.state != globalstate_idle {
+if global.state != globalstate_idle or window_get_fullscreen() {
     zoom = zoomlast
 }
 var endw = view_wport/zoom

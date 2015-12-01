@@ -121,6 +121,7 @@
       <sprite>sprites\sMenuGrid</sprite>
       <sprite>sprites\sMenuSpeed</sprite>
       <sprite>sprites\sMenuSidebar</sprite>
+      <sprite>sprites\sMenuSidebar2</sprite>
       <sprite>sprites\sMenuSkin</sprite>
       <sprite>sprites\sMenuSavePoint</sprite>
     </sprites>
@@ -224,8 +225,8 @@
       <script>scripts\number_to_frames_string.gml</script>
       <script>scripts\undoSerializeObject.gml</script>
       <script>scripts\undoDeserializeObject.gml</script>
-      <script>scripts\restoreZoom.gml</script>
       <script>scripts\saveAndResetZoom.gml</script>
+      <script>scripts\restoreZoom.gml</script>
       <script>scripts\completelyResetZoom.gml</script>
       <script>scripts\nudgePlayerHalf.gml</script>
       <script>scripts\objectInPalette.gml</script>

@@ -207,9 +207,11 @@ xx += dx+dx2
 yy = y+yo
 menuSection(xx,yy,'Preferences',true)
 
-// change skin
-if menuButton(xx,yy,w,h,'Change Skin',buttons_enabled,sMenuSkin) {
-    cycleSkin()
+// death enabled
+if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuDeath,
+'[ Death ]','Death',global.deathEnabled) {
+    global.deathEnabled = not global.deathEnabled
+    saveConfig()
 }
 
 // grid draw
@@ -243,27 +245,28 @@ if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuDotOutline,
     saveConfig()
 }
 
-// kill player
+// change skin
 xx += dx
 yy = y+yo
-if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuDeath,
-'[ Death ]','Death',global.deathEnabled) {
-    global.deathEnabled = not global.deathEnabled
-    saveConfig()
+if menuButton(xx,yy,w,h,'Change Skin',buttons_enabled,sMenuSkin) {
+    cycleSkin()
 }
 
 // fullscreen
 yy += dy
 if menuButton(xx,yy,w,h,'Fullscreen',buttons_enabled,sMenuFullscreen)
-or (keyboard_check_pressed(vk_f4) and not keyboard_check(vk_alt)) {
+or (keyboard_check_pressed(vk_f4) and not keyboard_check_direct(vk_alt)) {
     window_set_fullscreen(not window_get_fullscreen())
     oWorld.alarm[0]=1
+    completelyResetZoom()
     saveConfig()
 }
 
 // hide sidebar
 yy += dy
-if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuSidebar,
+var sidebar_spr = sMenuSidebar
+if global.hidesidebar sidebar_spr = sMenuSidebar2
+if menuButtonToggle(xx,yy,w,h,buttons_enabled,sidebar_spr,
 'Show Sidebar','Hide Sidebar',global.hidesidebar) {
     global.hidesidebar = not global.hidesidebar
     saveConfig()
