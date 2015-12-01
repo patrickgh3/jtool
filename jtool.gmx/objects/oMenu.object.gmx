@@ -186,6 +186,7 @@ yy += dy
 if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuInfJump,
 '[ Inf Jump ]','Inf Jump',global.infinitejump) {
     global.infinitejump = not global.infinitejump
+    if global.infinitejump oJumpManyTimes.image_alpha = 2
 }
 
 // clear map

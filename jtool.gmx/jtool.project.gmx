@@ -132,6 +132,7 @@
       <sprite>sprites\sCursorDropper</sprite>
       <sprite>sprites\sPatBall</sprite>
       <sprite>sprites\sEllipsis</sprite>
+      <sprite>sprites\sJumpManyTimes</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -309,6 +310,7 @@
       <object>objects\oDrawGrid</object>
       <object>objects\oPlayerVictory</object>
       <object>objects\oKeySaveParticle</object>
+      <object>objects\oJumpManyTimes</object>
     </objects>
   </objects>
   <rooms name="rooms">
