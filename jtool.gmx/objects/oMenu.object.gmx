@@ -110,7 +110,6 @@ var yo = 50
 
 var xx = x+xo
 var yy = y+yo
-
 menuSection(xx,yy,'File',false)
 
 // open map
@@ -275,7 +274,8 @@ if menuButtonToggle(xx,yy,w,h,buttons_enabled,sidebar_spr,
 // close menu
 xx = 1056-w-8
 yy = y+12
-if menuButton(xx,yy,w,h,'Close Menu (Esc)',buttons_enabled,false) {
+if menuButton(xx,yy,w,h,'Close Menu (Esc)',buttons_enabled,false) 
+or (buttons_enabled and mouse_y &gt; y+menu_height and mouse_check_button_pressed(mb_left)) {
     escape_button_just_clicked = true
 }
 

@@ -87,5 +87,6 @@ while index <= string_length(content) {
     index += 1
 }
 room_speed = 50
+oDeathDisplay.death_count = 0
 loadPlayer()
 completelyResetZoom()

@@ -31,5 +31,7 @@ global.savetype = savetype_shoot
 global.savePlayerX = oPlayerStart.x+17
 global.savePlayerY = oPlayerStart.y+23
 global.savePlayerXScale = 1
+room_speed = 50
+oDeathDisplay.death_count = 0
 loadPlayer()
 completelyResetZoom()

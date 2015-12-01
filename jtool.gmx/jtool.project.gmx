@@ -290,6 +290,7 @@
       <object>objects\oHideSidebar</object>
       <object>objects\oSidebar</object>
       <objects name="jump analysis">
+        <object>objects\oDeathDisplay</object>
         <object>objects\oJumpDurations</object>
         <object>objects\oPlayerPosition</object>
         <object>objects\oBhopHint</object>

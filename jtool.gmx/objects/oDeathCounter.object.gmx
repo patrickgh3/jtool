@@ -3,7 +3,7 @@
   <spriteName>sEditorButton</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-95</depth>
+  <depth>-100</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,13 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.hidesidebar exit
+            <string>if not global.showanalysis exit
 
-var enabled = global.state == globalstate_idle and not global.comboboxselected
-if menuButtonToggle(x,y,96,24,enabled,false,'Hide','Analysis',global.showanalysis) {
-    global.showanalysis = not global.showanalysis
-    saveConfig()
-}
+var xo = 8
+var yo = 5
+var dy = 20
+var w = 200
+var h = 32
+drawButton(x,y,w,h,false)
+fontSetup(font_small, c_black, fa_left, fa_top, 1)
 </string>
           </argument>
         </arguments>
