@@ -107,6 +107,7 @@
       <sprite>sprites\sEditorKid</sprite>
       <sprite>sprites\sEditorInputOverlay</sprite>
       <sprite>sprites\sEditorZoom</sprite>
+      <sprite>sprites\sEditorPalette</sprite>
     </sprites>
     <sprites name="menu buttons">
       <sprite>sprites\sMenuSave</sprite>
@@ -244,6 +245,7 @@
     <object>objects\oEdit</object>
     <object>objects\oInputOverlay</object>
     <object>objects\oZoom</object>
+    <object>objects\oPalette</object>
     <objects name="palette">
       <object>objects\oEditBlock</object>
       <object>objects\oEditMiniBlock</object>
@@ -282,7 +284,6 @@
     <objects name="sidebar">
       <object>objects\oEditorInstructions</object>
       <object>objects\oOptionsButton</object>
-      <object>objects\oPalette</object>
       <object>objects\oGridComboBox</object>
       <object>objects\oSpeedComboBox</object>
       <object>objects\oHideSidebar</object>

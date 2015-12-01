@@ -177,7 +177,7 @@ if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuDotkid,
 // save type
 yy += dy
 if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuSavePoint,
-'Touch Saves','Shoot Saves',global.savetype) {
+'Z Saves','Shoot Saves',global.savetype) {
     global.savetype = not global.savetype
     saveConfig()
 }
@@ -221,6 +221,7 @@ if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuGrid,
         case 32: global.grid_draw = 16 break
         case 16: global.grid_draw = 8 break
         case 8: global.grid_draw = 0 break
+        default: global.grid_draw = 0 break
     }
     saveConfig()
 }
