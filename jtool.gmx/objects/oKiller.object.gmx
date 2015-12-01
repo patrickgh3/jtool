@@ -55,6 +55,17 @@ var hue = lerp(global.color_killerhue,global.color_killer2hue,fraction)
 var sat = lerp(global.color_killersat,global.color_killer2sat,fraction)
 var val = lerp(global.color_killerval,global.color_killer2val,fraction)
 image_blend = make_color_hsv(hue,sat,val)
+
+if object_index == oSpikeUp or object_index == oSpikeRight
+or object_index == oSpikeLeft or object_index == oSpikeDown {
+    image_index = floor((global.count mod (global.spikeframes/global.spikeanimspeed))*global.spikeanimspeed)
+}
+
+if object_index == oMiniSpikeUp or object_index == oMiniSpikeRight
+or object_index == oMiniSpikeLeft or object_index == oMiniSpikeDown {
+    image_index = floor((global.count mod (global.minispikeframes/global.minispikeanimspeed))*global.minispikeanimspeed)
+}
+
 draw_self()
 </string>
           </argument>
