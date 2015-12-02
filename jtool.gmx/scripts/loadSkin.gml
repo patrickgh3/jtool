@@ -32,7 +32,10 @@ global.color_button = colorFromHsvDelimString(
     FS_ini_read_string('ui','button_idle_color','0,0,175'),',')
 global.color_buttonhover = colorFromHsvDelimString(
     FS_ini_read_string('ui','button_active_color','0,0,255'),',')
+global.color_palettepressed = colorFromHsvDelimString(
+    FS_ini_read_string('ui','button_palette_pressed_color','0,0,0'),',')
 global.buttonhoveralpha = FS_ini_read_real('ui','button_active_alpha',0.5)
+global.buttonpalettepressedalpha = FS_ini_read_real('ui','button_palette_pressed_alpha',0.5)
 global.buttonhoverborder = FS_ini_read_real('ui','button_active_border',false)
 
 // objects

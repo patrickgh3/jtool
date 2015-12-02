@@ -315,6 +315,7 @@
       <object>objects\oPlayerVictory</object>
       <object>objects\oKeySaveParticle</object>
       <object>objects\oJumpManyTimes</object>
+      <object>objects\oPaletteButtonFlash</object>
     </objects>
   </objects>
   <rooms name="rooms">

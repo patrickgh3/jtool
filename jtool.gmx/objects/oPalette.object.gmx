@@ -163,6 +163,9 @@ for (i = 0; i &lt; 100; i += 1) {
             combobox_selected = not combobox_selected
             global.comboboxselected = combobox_selected
         }
+        var flash = instance_create(xxx,yyy,oPaletteButtonFlash);
+        flash.w = w
+        flash.h = h
     }
     
     // draw combo box back and detect mouse leave
