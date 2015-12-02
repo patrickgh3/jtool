@@ -77,11 +77,19 @@
     surface_set_target(surf)
         draw_clear_alpha(c_black,0)
         draw_set_color(c_black)
-        for (var xx=0; xx&lt;800; xx+=global.grid_draw) {
-            draw_line(xx,0,xx,607)
+        if global.grid_draw != 2 {
+            for (var xx=0; xx&lt;800; xx+=global.grid_draw) {
+                draw_line(xx,0,xx,607)
+            }
+            for (var yy=0; yy&lt;608; yy+=global.grid_draw) {
+                draw_line(0,yy,799,yy)
+            }
         }
-        for (var yy=0; yy&lt;608; yy+=global.grid_draw) {
-            draw_line(0,yy,799,yy)
+        else {
+            for (var xx=-608; xx&lt;800; xx+=4) {
+                draw_line(xx,0,xx+608,608)
+                draw_line(800-xx,0,800-xx-608,608)
+            }
         }
     surface_reset_target()
     draw_surface_ext(surf,0,0,1,1,0,c_white,0.15)

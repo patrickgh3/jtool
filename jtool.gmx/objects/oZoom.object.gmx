@@ -69,13 +69,15 @@ has_previous = false
 var zoomlast = zoom
 if mouse_wheel_up() or keyboard_check_pressed(ord('C')) {
     if zoom &lt; 2 zoom += 0.5
+    else if zoom == 4 zoom = 8
     else zoom += 1
 }
 else if mouse_wheel_down() or keyboard_check_pressed(ord('X')) {
     if zoom &lt;= 2 zoom -= 0.5
+    else if zoom == 8 zoom = 4
     else zoom -= 1
 }
-zoom = clamp(zoom,1,4)
+zoom = clamp(zoom,1,8)
 if global.state != globalstate_idle or window_get_fullscreen() {
     zoom = zoomlast
 }

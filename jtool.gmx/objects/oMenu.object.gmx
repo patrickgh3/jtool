@@ -222,8 +222,8 @@ if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuGrid,
         case 0: global.grid_draw = 32 break
         case 32: global.grid_draw = 16 break
         case 16: global.grid_draw = 8 break
-        case 8: global.grid_draw = 0 break
-        default: global.grid_draw = 0 break
+        case 8: global.grid_draw = 2 break
+        case 2: global.grid_draw = 0 break
     }
     saveConfig()
 }
