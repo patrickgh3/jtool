@@ -142,7 +142,9 @@ if cursor_in_area and global.state == globalstate_idle {
         }
         if right and not left and undo_rightpressedinedit {
             with all {
-                if objectInPalette(object_index) and place_meeting(x,y,oEdit) 
+                if not objectInPalette(object_index) continue
+                if (place_meeting(x,y,oEdit)
+                or collision_line(other.xprevious, other.yprevious, other.x, other.y,id,true,false))
                 and object_index != oPlayerStart {
                     other.undo_objectstring += undoSerializeObject(self)
                     instance_destroy()
