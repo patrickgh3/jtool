@@ -252,6 +252,14 @@ if menuButton(xx,yy,w,h,'Change Skin',buttons_enabled,sMenuSkin) {
     cycleSkin()
 }
 
+// toggle mouse coords
+yy += dy
+if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuCoords,
+'[ Coordinates ]','Coordinates',global.mousecoords) {
+    global.mousecoords = not global.mousecoords
+    saveConfig()
+}
+
 // fullscreen
 yy += dy
 if menuButton(xx,yy,w,h,'Fullscreen',buttons_enabled,sMenuFullscreen)
