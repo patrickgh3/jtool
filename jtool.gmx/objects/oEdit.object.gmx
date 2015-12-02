@@ -46,6 +46,9 @@ undo_objectstring = ''
 undo_rightpressedinedit = false
 undo_leftpressedinedit = false
 undo_nochanges = true
+
+xsnapped_previous = 0
+ysnapped_previous = 0
 </string>
           </argument>
         </arguments>
@@ -92,55 +95,49 @@ if cursor_in_area and global.state == globalstate_idle {
         cursor_sprite = -1
         window_set_cursor(cr_default)
         
-        
         // creating
         if leftpressed and not right {
             with all if objectInPalette(object_index) undo_recent = false
-            undo_objectstring = 'create'
             undo_leftpressedinedit = true
+            undo_objectstring = 'create'
             undo_nochanges = false
         }
         if left and not right and undo_leftpressedinedit {
-            var ok_to_create = false
-            
+            // just clicked
             if leftpressed or selected_object == oPlayerStart {
-                var object_at_position = false
-                with selected_object {
-                    if x == other.xsnapped and y == other.ysnapped {
-                        object_at_position = true
+                editCreateObjectIfNotSamePos(xsnapped, ysnapped, selected_object)
+            }
+            // dragging
+            else {
+                var dx = xsnapped - xsnapped_previous
+                var dy = ysnapped - ysnapped_previous
+                if abs(dx) &gt;= abs(dy) and dx != 0 and snap != 1 {
+                    for (var ox = xsnapped_previous; ox*sign(dx) &lt;= xsnapped*sign(dx); ox += snap*sign(dx)) {
+                        var fract = (ox-xsnapped_previous) / dx
+                        var oy = ysnapped_previous + fract * dy
+                        oy = round(oy/snap)*snap
+                        editCreateObjectIfFree(ox, oy, selected_object)
                     }
                 }
-                ok_to_create = not object_at_position
-            }
-            else {
-                var inst = instance_create(xsnapped,ysnapped,selected_object)
-                var collision = false
-                with inst {
-                    collision = collision_rectangle(
-                        bbox_left,bbox_top,bbox_right,bbox_bottom,object_index,true,true)
-                    instance_destroy()
+                else if abs(dx) &lt; abs(dy) and dy != 0 and snap != 1 {
+                    for (var oy = ysnapped_previous; oy*sign(dy) &lt;= ysnapped*sign(dy); oy += snap*sign(dy)) {
+                        var fract = (oy-ysnapped_previous) / dy
+                        var ox = xsnapped_previous + fract * dx
+                        ox = round(ox/snap)*snap
+                        editCreateObjectIfFree(ox, oy, selected_object)
+                    }
                 }
-                ok_to_create = not collision
-                if snap == 1 ok_to_create = true
-            }
-            if ok_to_create {
-                if selected_object == oPlayerStart {
-                    with oPlayerStart instance_destroy()
-                    global.savePlayerX = xsnapped+17
-                    global.savePlayerY = ysnapped+23
-                    global.savePlayerXScale = 1
-                    loadPlayer()
+                else if snap == 1 and (dx != 0 or dy != 0) {
+                    editCreateObjectIfNotSamePos(xsnapped, ysnapped, selected_object)
                 }
-                var i = instance_create(xsnapped,ysnapped,selected_object);
-                i.undo_recent = true
             }
         }
         
         // destroying
         if rightpressed and not left {
             with all if objectInPalette(object_index) undo_recent = false
-            undo_objectstring = ''
             undo_rightpressedinedit = true
+            undo_objectstring = ''
             undo_nochanges = false
         }
         if right and not left and undo_rightpressedinedit {
@@ -195,6 +192,10 @@ and global.state == globalstate_idle and not left and not right {
     undo_nochanges = false
     undo_objectstring = ''
 }
+
+xsnapped_previous = xsnapped
+ysnapped_previous = ysnapped
+
 </string>
           </argument>
         </arguments>
