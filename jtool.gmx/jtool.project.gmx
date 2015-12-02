@@ -300,6 +300,7 @@
         <object>objects\oBhopHint</object>
         <object>objects\oCancelHint</object>
         <object>objects\oToggleAnalysis</object>
+        <object>objects\oFpsDisplay</object>
       </objects>
     </objects>
     <objects name="engine misc">
