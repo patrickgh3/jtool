@@ -32,13 +32,13 @@ draw_rectangle(0,0,1055,607,false)
 // backing and label
 if mode == input_textbox {
     var back_w = 150
-    var back_h = 130
-    var label_yo = -40
+    var back_h = 150
+    var label_yo = -30
 }
 else if mode == input_yesno {
     var back_w = 280
-    var back_h = 120
-    var label_yo = -30
+    var back_h = 130
+    var label_yo = -20
 }
 else if mode == input_info {
     var back_w = 280
@@ -60,10 +60,19 @@ draw_sprite_ext(sPopup,0,xx+1,yy,
 draw_rectangle(xx,yy,xx+back_w-1,yy+back_h-1,true)
 draw_text(528,304+label_yo,label)
 
+if mode == input_textbox or mode == input_yesno {
+    // X button
+    var xbutton_size = 25
+    if menuButton(528+back_w/2-xbutton_size, 304-back_h/2,
+    xbutton_size, xbutton_size, 'X', true, false) {
+        inputOverlayNo()
+    }
+}
+
 // contents
 if mode == input_textbox {
     // textbox
-    var textbox_yo = -20
+    var textbox_yo = -10
     var textbox_w = 40
     var textbox_h = 32
     var cursor_h = 20
@@ -81,7 +90,7 @@ if mode == input_textbox {
     draw_text(xx-3,ycenter,textbox_label)
     
     // button
-    var button_yo = 20
+    var button_yo = 30
     var button_w = 80
     var button_h = 32
     if menuButton(528-button_w/2,304+button_yo,button_w,button_h,'Ok',true,false)
