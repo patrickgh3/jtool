@@ -47,7 +47,7 @@ else if mode == input_info {
 }
 else if mode == input_about {
     var back_w = 320
-    var back_h = 380
+    var back_h = 440
     var label_yo = 0
 }
 
@@ -62,21 +62,19 @@ draw_rectangle(xx,yy,xx+back_w-1,yy+back_h-1,true)
 draw_text(528,304+label_yo,label)
 
 // X button
-if mode == input_textbox or mode == input_yesno {
-    var xbutton_height = 25
-    var xbutton_width = 41
-    var bx = 528+back_w/2-xbutton_width
-    var by = 304-back_h/2
-    if menuButton(bx, by, xbutton_width, xbutton_height, '', true, false) {
-        inputOverlayCancel()
-    }
-    var lsy = 4
-    var lsx = 12
-    draw_line(bx+lsx,by+lsy,bx+xbutton_width-lsx-2,by+xbutton_height-lsy-2)
-    draw_line(bx+lsx,by+lsy+1,bx+xbutton_width-lsx-2,by+xbutton_height-lsy-2+1)
-    draw_line(bx+lsx,by+xbutton_height-lsy-2,bx+xbutton_width-lsx-2,by+lsy)
-    draw_line(bx+lsx,by+xbutton_height-lsy-2+1,bx+xbutton_width-lsx-2,by+lsy+1)
+var xbutton_height = 25
+var xbutton_width = 41
+var bx = 528+back_w/2-xbutton_width
+var by = 304-back_h/2
+if menuButton(bx, by, xbutton_width, xbutton_height, '', true, false) {
+    inputOverlayCancel()
 }
+var lsy = 4
+var lsx = 12
+draw_line(bx+lsx,by+lsy,bx+xbutton_width-lsx-2,by+xbutton_height-lsy-2)
+draw_line(bx+lsx,by+lsy+1,bx+xbutton_width-lsx-2,by+xbutton_height-lsy-2+1)
+draw_line(bx+lsx,by+xbutton_height-lsy-2,bx+xbutton_width-lsx-2,by+lsy)
+draw_line(bx+lsx,by+xbutton_height-lsy-2+1,bx+xbutton_width-lsx-2,by+lsy+1)
 
 // contents
 if mode == input_textbox {
@@ -138,17 +136,28 @@ else if mode == input_info {
     }
 }
 else if mode == input_about {
-    var button_w = 90
-    var button_h = 32
     fontSetup(font_small,c_black,fa_center,fa_top,1)
-    draw_text(528,304-160,'jtool version '+global.version_string+'##made by Patrickgh3##'
+    draw_text(528,304-190,'jtool version '+global.version_string+'##made by Patrickgh3##'
     +'#Special thanks:'
     +'#YoYoYoDude1 for his studio engine'
     +'#TheNewGeezer for the original RMJ'
     +'#people who gave feedback and feature ideas'
     +'##Please read readme.html for more info!')
     
-    if menuButton(528-button_w/2,304+130,button_w,button_h,'Ok',true,false) {
+    draw_sprite(sIcon32, 0, 528-105, 304-193)
+    
+    var button_w = 130
+    var button_h = 32
+    if menuButton(528-button_w/2,304+60,button_w,button_h,'Forum thread',true,false) {
+        url_open_full('http://www.iwannacommunity.com/forum/index.php?topic=1964.0','_blank', '')
+    }
+    
+    if menuButton(528-button_w/2,304+100,button_w,button_h,'More of my tools',true,false) {
+        url_open_full('http://cwpat.me/iwanna-tools/','_blank', '')
+    }
+    
+    var button_w = 90
+    if menuButton(528-button_w/2,304+160,button_w,button_h,'Ok',true,false) {
         inputOverlayYes()
     }
     
