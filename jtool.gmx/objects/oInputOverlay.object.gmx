@@ -36,7 +36,7 @@ if mode == input_textbox {
     var label_yo = -30
 }
 else if mode == input_yesno {
-    var back_w = 280
+    var back_w = 320
     var back_h = 130
     var label_yo = -20
 }
@@ -53,6 +53,7 @@ else if mode == input_about {
 
 fontSetup(font_small,c_black,fa_center,fa_center,1)
 back_w = floor(max(back_w,string_width(label)+30))
+if back_w mod 2 == 1 back_w += 1
 var xx = 528-back_w/2
 var yy = 304-back_h/2
 draw_sprite_ext(sPopup,0,xx+1,yy,
@@ -60,13 +61,21 @@ draw_sprite_ext(sPopup,0,xx+1,yy,
 draw_rectangle(xx,yy,xx+back_w-1,yy+back_h-1,true)
 draw_text(528,304+label_yo,label)
 
+// X button
 if mode == input_textbox or mode == input_yesno {
-    // X button
-    var xbutton_size = 25
-    if menuButton(528+back_w/2-xbutton_size, 304-back_h/2,
-    xbutton_size, xbutton_size, 'X', true, false) {
-        inputOverlayNo()
+    var xbutton_height = 25
+    var xbutton_width = 41
+    var bx = 528+back_w/2-xbutton_width
+    var by = 304-back_h/2
+    if menuButton(bx, by, xbutton_width, xbutton_height, '', true, false) {
+        inputOverlayCancel()
     }
+    var lsy = 4
+    var lsx = 12
+    draw_line(bx+lsx,by+lsy,bx+xbutton_width-lsx-2,by+xbutton_height-lsy-2)
+    draw_line(bx+lsx,by+lsy+1,bx+xbutton_width-lsx-2,by+xbutton_height-lsy-2+1)
+    draw_line(bx+lsx,by+xbutton_height-lsy-2,bx+xbutton_width-lsx-2,by+lsy)
+    draw_line(bx+lsx,by+xbutton_height-lsy-2+1,bx+xbutton_width-lsx-2,by+lsy+1)
 }
 
 // contents
@@ -100,19 +109,23 @@ if mode == input_textbox {
 }
 else if mode == input_yesno {
     var button_yo = 15
-    var button_w = 70
+    var button_w = 80
     var button_h = 32
-    var button_space = 10
+    var button_space = 12
     
-    var xx1 = 528-button_space-button_w
-    var xx2 = 528+button_space
+    var xx1 = 528-(button_w*1.5+button_space)
+    var xx2 = 528-button_w/2
+    var xx3 = 528+button_w/2+button_space
     var yy = 304+button_yo
-    if menuButton(xx2,yy,button_w,button_h,'No',true,false) {
-        inputOverlayNo()
-    }
     if menuButton(xx1,yy,button_w,button_h,'Yes',true,false)
     or keyboard_check_pressed(vk_enter) {
         inputOverlayYes()
+    }
+    if menuButton(xx2,yy,button_w,button_h,'No',true,false) {
+        inputOverlayNo()
+    }
+    if menuButton(xx3,yy,button_w,button_h,'Cancel',true,false) {
+        inputOverlayCancel()
     }
 }
 else if mode == input_info {
@@ -147,7 +160,7 @@ else if mode == input_about {
 }
 
 if keyboard_check_pressed(vk_escape) {
-    inputOverlayNo()
+    inputOverlayCancel()
 }
 </string>
           </argument>

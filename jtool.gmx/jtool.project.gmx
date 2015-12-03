@@ -157,12 +157,13 @@
       <script>scripts\inputOverlayStringSubmit.gml</script>
       <script>scripts\inputOverlayYes.gml</script>
       <script>scripts\inputOverlayNo.gml</script>
+      <script>scripts\inputOverlayCancel.gml</script>
       <script>scripts\inputCallback_GridCustom.gml</script>
       <script>scripts\inputCallback_SpeedCustom.gml</script>
       <script>scripts\inputCallback_LoadMap.gml</script>
       <script>scripts\inputCallback_LoadRMJMap.gml</script>
-      <script>scripts\inputCallback_VAlign.gml</script>
       <script>scripts\inputCallback_ClearMap.gml</script>
+      <script>scripts\inputCallback_VAlign.gml</script>
     </scripts>
     <scripts name="buttons">
       <script>scripts\menuButton.gml</script>

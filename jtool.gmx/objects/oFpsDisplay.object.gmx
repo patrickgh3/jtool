@@ -31,7 +31,7 @@ var w = 96
 var h = 32
 drawButton(x,y,w,h,false)
 fontSetup(font_small, c_black, fa_left, fa_center, 1)
-draw_text(x+8, y+16, 'FPS: '+string(fps))
+draw_text(x+12, y+16, 'FPS: '+string(fps))
 </string>
           </argument>
         </arguments>

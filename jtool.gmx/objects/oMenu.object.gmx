@@ -118,7 +118,7 @@ var shortcut = keyboard_check(vk_control) and keyboard_check_pressed(ord('O'))
 if clicked or shortcut {
     if not oEdit.undo_nochanges {
         inputOverlay(input_yesno,inputCallback_LoadMap,
-        'Unsaved changes detected.#Sure you want to load a map?')
+        'Map has been modified. Save changes?')
     }
     else {
         global.input_bool = true
@@ -144,7 +144,7 @@ yy += dy
 if menuButton(xx,yy,w,h,'Import RMJ Map',buttons_enabled,false) {
     if not oEdit.undo_nochanges {
         inputOverlay(input_yesno,inputCallback_LoadRMJMap,
-        'Unsaved changes detected.#Sure you want to import an RMJ map?')
+        'Map has been modified. Save changes?')
     }
     else {
         global.input_bool = true
@@ -195,7 +195,7 @@ if menuButton(xx,yy,w,h,'Clear Map (F2)',buttons_enabled,false)
 or keyboard_check_pressed(vk_f2) {
     if not oEdit.undo_nochanges {
         inputOverlay(input_yesno,inputCallback_ClearMap,
-        'Unsaved changes detected.#Sure you want to clear the map?')
+        'Map has been modified. Save changes?')
     }
     else {
         global.input_bool = true

@@ -1,3 +1,10 @@
-if not global.input_bool exit
+if global.input_cancel exit
 
-loadStartupMap()
+var should_load = true
+if global.input_bool {
+    should_load = saveMap()
+}
+
+if should_load {
+    loadStartupMap()
+}

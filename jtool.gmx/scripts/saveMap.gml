@@ -1,7 +1,7 @@
 // Saves all the present palette objects to file.
 
 filename = get_save_filename_ext('jtool map|*.jmap','','','Save Map')
-if filename == '' exit
+if filename == '' return false
 
 oEdit.undo_nochanges = true
 
@@ -72,3 +72,5 @@ if objects_out_of_range {
 if warning_message != '' {
     inputOverlay(input_info,false,warning_message)
 }
+
+return true
