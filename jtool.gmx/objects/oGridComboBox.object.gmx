@@ -50,7 +50,7 @@
             <kind>1</kind>
             <string>var w = 112
 var h = 32
-var droph = 77
+var droph = 75
 
 comboBoxButton(x,y,w,h,droph,'Snap: '+string(oEdit.snap),sMenuGrid)
 
@@ -60,11 +60,11 @@ if selected {
     draw_line(x,y+h-1,x+w-2,y+h-1)
 }
 
-var bx = x+5
-var by = y+h+4
-var bw = 32
-var bh = 32
-var dx = 35
+var bx = x
+var by = y+h-1
+var bw = 38
+var bh = 38
+var dx = 37
 
 if selected and menuButton(bx,by,bw,bh,'32',true,false) {
     oEdit.snap = 32
@@ -99,7 +99,7 @@ if selected and menuButton(bx,by,bw,bh,'1',true,false) {
 }
 
 bx += dx
-if (selected and menuButton(bx,by,67,bh,'other (G)',true,false))
+if (selected and menuButton(bx,by,bw*2-1,bh,'other (G)',true,false))
 or (keyboard_check_pressed(ord('G')) and global.state != globalstate_input) {
     inputOverlay(input_textbox,inputCallback_GridCustom,'Grid snap (was '+string(oEdit.snap)+')')
 }

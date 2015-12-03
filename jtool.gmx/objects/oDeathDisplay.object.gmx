@@ -57,7 +57,8 @@ fontSetup(font_small, c_black, fa_left, fa_center, 1)
 draw_text(x+5, y+16, 'Deaths: '+string(death_count))
 
 var buttons_active = global.state == globalstate_idle and not global.comboboxselected
-if menuButton(x+87,y+4,45,32-8,'Reset',buttons_active,false) {
+var xo = 92
+if menuButton(x+xo,y,w-xo,32,'Reset',buttons_active,false) {
     death_count = 0
 }
 </string>

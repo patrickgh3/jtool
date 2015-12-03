@@ -10,7 +10,7 @@ var text = argument4
 var enabled = argument5
 var icon = argument6
 
-var mouse_hover = point_in_rect(mouse_x,mouse_y,xx,yy,xx+w,yy+h) and enabled
+var mouse_hover = point_in_rect(mouse_x,mouse_y,xx,yy,xx+w-1,yy+h-1) and enabled
 
 drawButton(xx,yy,w,h,mouse_hover)
 fontSetup(font_small,c_black,fa_center,fa_center,1)

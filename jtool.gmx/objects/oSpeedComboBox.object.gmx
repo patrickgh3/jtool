@@ -50,7 +50,7 @@
             <kind>1</kind>
             <string>var w = 112
 var h = 32
-var droph = 77
+var droph = 75
 
 comboBoxButton(x,y,w,h,droph,'Speed: '+string(room_speed),sMenuSpeed)
 
@@ -59,11 +59,12 @@ if selected {
     draw_set_color(global.color_button)
     draw_line(x,y+h-1,x+w-2,y+h-1)
 }
-var bx = x+5
-var by = y+h+4
-var bw = 32
-var bh = 32
-var dx = 35
+
+var bx = x
+var by = y+h-1
+var bw = 38
+var bh = 38
+var dx = 37
 
 if selected and menuButton(bx,by,bw,bh,'50',true,false) {
     room_speed = 50
@@ -94,7 +95,7 @@ if selected and menuButton(bx,by,bw,bh,'100',true,false) {
 }
 
 bx += dx
-if (selected and menuButton(bx,by,67,bh,'other (F)',true,false))
+if (selected and menuButton(bx,by,bw*2-1,bh,'other (F)',true,false))
 or (keyboard_check_pressed(ord('F')) and global.state != globalstate_input) {
     inputOverlay(input_textbox,inputCallback_SpeedCustom,'Room speed (was '+string(room_speed)+')')
 }
