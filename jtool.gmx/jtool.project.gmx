@@ -319,6 +319,7 @@
       <object>objects\oJumpManyTimes</object>
       <object>objects\oPaletteButtonFlash</object>
       <object>objects\oDrawCursorCoords</object>
+      <object>objects\oCreateBalls</object>
     </objects>
   </objects>
   <rooms name="rooms">

@@ -43,6 +43,7 @@ while index <= string_length(content) {
                 oEdit.undo_objectstring = ''
                 oEdit.undo_nochanges = true
                 with all if objectInPalette(object_index) instance_destroy()
+                with oPatBall instance_destroy()
                 var objectstring = suffix
                 var i = 1
                 var yy = 0

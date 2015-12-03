@@ -39,7 +39,7 @@ if global.editorinstructions {
     var yy = 5
     var dy = 25
     var dx = 70
-    var h = 285
+    var h = 307
     
     draw_sprite_ext(sPopup,0,xx-12,0,(800-(xx-12))/sprite_get_width(sPopup),(h-0)/sprite_get_height(sPopup),0,c_white,0.9)
     fontSetup(font_small,c_black,fa_left,fa_top,1)
@@ -77,6 +77,9 @@ if global.editorinstructions {
     yy += dy
     draw_text(xx,yy,'Space')
     draw_text(xx+dx,yy,'Pan view')
+    yy += dy
+    draw_text(xx,yy,'B')
+    draw_text(xx+dx,yy,'Ball')
 }
 </string>
           </argument>

@@ -150,6 +150,11 @@ if cursor_in_area and global.state == globalstate_idle {
                     instance_destroy()
                 }
             }
+            with oPatBall {
+                if collision_line(other.xprevious, other.yprevious, other.x, other.y,id,true,false) {
+                    instance_destroy()
+                }
+            }
         }
     }
     // dropper
