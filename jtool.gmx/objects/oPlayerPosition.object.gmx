@@ -75,16 +75,17 @@ if global.playery_extended ystr = string_format(ypos,3,16)
 draw_text(xx,yy,'Y pos   '+ystr)
 
 var buttons_active = global.state == globalstate_idle and not global.comboboxselected
-var buttonx = x+105
-var buttony = y+8
 var buttonw = 24
 var buttonh = 12
+var buttonx = x+136-buttonw
+var buttony = y
 if menuButton(buttonx,buttony,buttonw,buttonh,'',buttons_active,false) {
     global.playery_extended = not global.playery_extended
     saveConfig()
 }
 fontSetup(font_small,c_black,fa_center,fa_center,1)
-draw_text(buttonx+buttonw/2,buttony+buttonh/2-4,'. . .')
+draw_text(buttonx+buttonw/2,buttony+buttonh/2-5,'. . .')
+draw_text(buttonx+buttonw/2-1,buttony+buttonh/2-5,'. . .')
 
 /*if global.playery_extended {
     var bx = x+140
