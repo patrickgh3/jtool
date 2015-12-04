@@ -225,6 +225,7 @@
       </scripts>
     </scripts>
     <scripts name="misc">
+      <script>scripts\mainInit.gml</script>
       <script>scripts\highlightGetFraction.gml</script>
       <script>scripts\number_to_frames_string.gml</script>
       <script>scripts\undoSerializeObject.gml</script>
@@ -234,7 +235,6 @@
       <script>scripts\completelyResetZoom.gml</script>
       <script>scripts\nudgePlayerHalf.gml</script>
       <script>scripts\objectInPalette.gml</script>
-      <script>scripts\mainInit.gml</script>
       <script>scripts\cycleSkin.gml</script>
       <script>scripts\cycleTitleJoke.gml</script>
       <script>scripts\editCreateObject.gml</script>

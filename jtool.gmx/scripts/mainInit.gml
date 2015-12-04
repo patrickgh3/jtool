@@ -13,6 +13,9 @@ global.version_major = 1
 global.version_minor = 1
 global.version_patch = 0
 global.version_string = string(global.version_major)+'.'+string(global.version_minor)+'.'+string(global.version_patch)
+global.input_string = ''
+global.input_bool = false
+global.input_cancel = false
 
 // maybe later load from map
 global.grav = 1

@@ -122,6 +122,7 @@ if clicked or shortcut {
     }
     else {
         global.input_bool = true
+        global.input_cancel = false
         inputCallback_LoadMap()
     }
 }
@@ -148,6 +149,7 @@ if menuButton(xx,yy,w,h,'Import RMJ Map',buttons_enabled,false) {
     }
     else {
         global.input_bool = true
+        global.input_cancel = false
         inputCallback_LoadRMJMap()
     }
 }
@@ -199,6 +201,7 @@ or keyboard_check_pressed(vk_f2) {
     }
     else {
         global.input_bool = true
+        global.input_cancel = false
         inputCallback_ClearMap()
     }
 }
