@@ -17,3 +17,18 @@ Fix platform and spike collision order
 
 --- 1.0.5   10/14/15 ---
 Update in-game version number from 1.0.0 to 1.0.5
+
+--- 1.1.0   12/4/15 ---
+
+LOTS of small UI tweaks
+Shoot / Z Saves map property
+No longer skip positions if moving mouse quickly when placing or removing objects
+Death counter and FPS displays
+Seperate grid overlay size from grid snap size
+Palette: bigger buttons, feedback when selecting, hide rarely used objects in combobox, tooltips
+Menu: reorder buttons, add more icons
+"Hide Sidebar" now resizes window
+Button to toggle mouse coordinates
+New icon
+Refactor of button code
+Two new easter eggs
