@@ -12,6 +12,6 @@ if should_load {
     else {
         window_set_fullscreen(false)
         oWorld.alarm[0] = 1
-        oWorld.alarm[2] = 2
+        oWorld.alarm[3] = 2
     }
 }

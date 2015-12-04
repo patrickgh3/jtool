@@ -121,7 +121,7 @@ if clicked or shortcut {
         'Map has been modified. Save changes?')
     }
     else {
-        global.input_bool = true
+        global.input_bool = false
         global.input_cancel = false
         inputCallback_LoadMap()
     }
@@ -148,7 +148,7 @@ if menuButton(xx,yy,w,h,'Import RMJ Map',buttons_enabled,false) {
         'Map has been modified. Save changes?')
     }
     else {
-        global.input_bool = true
+        global.input_bool = false
         global.input_cancel = false
         inputCallback_LoadRMJMap()
     }
@@ -200,7 +200,7 @@ or keyboard_check_pressed(vk_f2) {
         'Map has been modified. Save changes?')
     }
     else {
-        global.input_bool = true
+        global.input_bool = false
         global.input_cancel = false
         inputCallback_ClearMap()
     }
