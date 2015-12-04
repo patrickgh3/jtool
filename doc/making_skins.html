@@ -9,6 +9,8 @@
       <h1>Making Skins</h1>
       <h2>Structure</h2>
       Make a folder with the name of your skin alongside the others in the skins folder. Your skin folder will contain a skin_config.ini file and a bunch of png files. Detail for images and the config file are listed below. You can also look at existing skins for examples.
+      <br><br>
+      You can look at the script saveload/other/loadSkin in the source to see how config files are read, and the default values. You can also look at the "skin defaults" sprites folder in the source to see default object sprites. It's possible that this documentation is out of date or incorrect, so if there's an issue, look at the source.
       <h2>PNG Images</h2>
       Note: If you don't include an image for a sprite, a default one will be used.
       <table>
@@ -43,7 +45,7 @@
       <h2>Config file</h2>
       Note: "H,S,V color" means the hue, saturation, and value of a color, each ranging from 0-255 and separated by commas.
       <br>
-      Note: No quotes are used for strings because GMFileSystem's ini functions don't use quotes.
+      Note: No quotes are used for strings because Gmfilesystem's ini functions don't use quotes.
       <table>
         <tr> <th>Name</th> <th>Notes</th> </tr>
         <tr> <th colspan="2">meta</th> </tr>
@@ -60,7 +62,7 @@
         <tr> <td>killer_active_color</td> <td>H,S,V color of killers (spikes, etc) when being touched</td> </tr>
         <tr> <td>bulletblocker_alpha</td> <td>Alpha from 0-1 of bullet blockers</td> </tr>
         <tr> <td>spike_frames</td> <td>Number of animation frames spikes have. Images should have this number of frames.</td> </tr>
-        <tr> <td>spike_animspeed</td> <td>Speed of spike animation from 0-1 (0.25 is every fourth frame</td> </tr>
+        <tr> <td>spike_animspeed</td> <td>Speed of spike animation (1 is the same as game fps, 0.25 is every fourth frame)</td> </tr>
         <tr> <td>minispike_frames</td> <td>. . .</td> </tr>
         <tr> <td>minispike_animspeed</td> <td>. . .</td> </tr>
         <tr> <th colspan="2">bg</th> </tr>

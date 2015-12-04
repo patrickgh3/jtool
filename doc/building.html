@@ -6,20 +6,15 @@
   </head>
   <body>
     <div class="content">
-      <h1>Building</h1>
-      Here's the steps to follow if you want to build the game from source yourself, so you can make tweaks, browse the code, etc. If you're making customized UI or similar tweaks, please let me know so that I might add them to the official version.
-      <h2>1. Get GameMaker: Studio</h2>
-      jtool doesn't use any Pro features other than changing the window caption and removing the splash screen, as far as I'm aware of, so the free version should work just fine. For reference, this project was made in version 1.4.1657.
-      <h2>2. Get the source</h2>
-      Download the source from <a href="https://github.com/patrickgh3/jtool">its Github repo</a>. You can click the "Download Zip" button on the right of the page.
-      <h2>3. Download and import GMFileSystem</h2>
-      <a href="http://gmc.yoyogames.com/index.php?showtopic=567528">Link here.</a> In GameMaker, Right click on the Extensions folder and click Import Extension. Select the *.gex file extension in the dialog, and open the extension file.
-      <h2>4. Set up project path</h2>
-      In the script mainInit, set global.editor_project_path to be the folder which contains the "skins" folder. This is used for saving and loading skins and the config file when running the game from GM.
-      <h2>5. Have fun!</h2>
-      If you're having trouble building from source, and you've double-checked and troubleshooted stuff, feel free to contact me and I'll try to help you out.
+      <h1>Using the source code</h1>
+      I've included the source for jtool so that people are free to see how things are done, and make their own personal modifications if they wish. I do ask however that you do not publicly distribute your own modified version of jtool. Also, if you have any questions about the source or getting it to work, I'd love to help, so feel free to contact me.
+      <br><br>
+      1. The file "source.gmx" is the source. This should be identical to the Github repository; I've included it here for convenience. Be sure that the .gmx folder is in the same directory as the skins folder. Also, the Gmfilesystem extension should be included, but if it's not, then download and import it.
+      <br><br>
+      2. In the script misc/mainInit, you'll need to change the variable global.editor_project_path to be the folder which contains your "skins" folder. This is used to make skins and the config file work when running the game from GM (as opposed to from the exported .exe).
+      <br><br>
+      3. If you want to export the project as an .exe, you have to select the ZIP export option, otherwise Gmfilesystem won't work.
       <script src="write_footer.js"></script>
     </div>
-    <img class="sideimage" src="images/octocat.png">
   </body>
 </html>

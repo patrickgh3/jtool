@@ -30,5 +30,6 @@ Menu: reorder buttons, add more icons
 "Hide Sidebar" now resizes window
 Button to toggle mouse coordinates
 New icon
+Clean up readme / documentation pages
 Refactor of button code
 Two new easter eggs
