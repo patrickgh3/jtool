@@ -101,7 +101,7 @@ for (i = 0; i &lt; 100; i += 1) {
         case 18: xx=2 yy=4 spr=sPlayerStart obj=oPlayerStart off=16 killer=false break
         case 19: xx=3 yy=4 spr=sEllipsis obj=noone off=0 killer=false tooltip='More objects' break
         
-        case 20: xx=0 yy=5 spr=sWarp obj=oWarp off=16 killer=false break
+        case 20: xx=0 yy=5 spr=sWarp obj=oWarp off=16 killer=false tooltip='Goal' break
         case 21: xx=1 yy=5 spr=sKillerBlock obj=oKillerBlock off=16 killer=true tooltip='Killer block' break
         case 22: xx=2 yy=5 spr=sWater1 obj=oWater off=16 killer=false tooltip='Water 1' break
         case 23: xx=3 yy=5 spr=sBulletBlocker obj=oBulletBlocker off=16 killer=false tooltip='Bullet blocker' break
