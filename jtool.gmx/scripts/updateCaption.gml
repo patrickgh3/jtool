@@ -25,7 +25,7 @@ switch global.joketitleindex mod 22 {
 }
 
 if global.lastloadedmapname != '' {
-    window_set_caption(global.lastloadedmapname+' - '+title)
+    window_set_caption(title+' - '+global.lastloadedmapname)
 }
 else {
     window_set_caption(title)
