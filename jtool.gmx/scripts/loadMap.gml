@@ -16,6 +16,7 @@ var mapver_major = 0
 global.infinitejump = false
 global.dotkid = false
 global.savetype = savetype_shoot
+global.bordertype = bordertype_death
 
 while index <= string_length(content) {
     var nextchar = string_char_at(content,index);
@@ -71,6 +72,9 @@ while index <= string_length(content) {
             }
             else if prefix == 'sav' {
                 global.savetype = real(suffix)
+            }
+            else if prefix == 'bor' {
+                global.bordertype = real(suffix)
             }
             else if prefix == 'px' {
                 global.savePlayerX = base32StringToFloat(suffix)

@@ -125,6 +125,7 @@
       <sprite>sprites\sMenuSkin</sprite>
       <sprite>sprites\sMenuSavePoint</sprite>
       <sprite>sprites\sMenuCoords</sprite>
+      <sprite>sprites\sMenuBorderType</sprite>
     </sprites>
     <sprites name="misc">
       <sprite>sprites\sEditCursor</sprite>
@@ -321,12 +322,14 @@
       <object>objects\oPaletteButtonFlash</object>
       <object>objects\oDrawCursorCoords</object>
       <object>objects\oCreateBalls</object>
+      <object>objects\oBorderBlock</object>
+      <object>objects\oBorderTypeController</object>
     </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rMain</room>
   </rooms>
-  <constants number="14">
+  <constants number="16">
     <constant name="globalstate_idle">1</constant>
     <constant name="globalstate_menu">2</constant>
     <constant name="globalstate_input">3</constant>
@@ -341,6 +344,8 @@
     <constant name="input_about">4</constant>
     <constant name="savetype_shoot">0</constant>
     <constant name="savetype_touch">1</constant>
+    <constant name="bordertype_death">0</constant>
+    <constant name="bordertype_solid">1</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

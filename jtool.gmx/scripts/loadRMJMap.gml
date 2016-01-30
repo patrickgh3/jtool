@@ -28,6 +28,7 @@ file_text_close(f)
 global.infinitejump = false
 global.dotkid = false
 global.savetype = savetype_shoot
+global.bordertype = bordertype_death
 
 global.savePlayerX = oPlayerStart.x+17
 global.savePlayerY = oPlayerStart.y+23

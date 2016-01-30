@@ -191,19 +191,11 @@ if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuInfJump,
     if global.infinitejump oJumpManyTimes.image_alpha = 2
 }
 
-// clear map
+// border type
 yy += dy
-if menuButton(xx,yy,w,h,'Clear Map (F2)',buttons_enabled,false)
-or keyboard_check_pressed(vk_f2) {
-    if not oEdit.undo_nochanges {
-        inputOverlay(input_yesno,inputCallback_ClearMap,
-        'Map has been modified. Save changes?')
-    }
-    else {
-        global.input_bool = false
-        global.input_cancel = false
-        inputCallback_ClearMap()
-    }
+if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuBorderType,
+'Solid Border','Death Border',global.bordertype) {
+    global.bordertype = not global.bordertype
 }
 
 xx += dx+dx2
@@ -281,6 +273,22 @@ if menuButtonToggle(xx,yy,w,h,buttons_enabled,sidebar_spr,
 'Show Sidebar','Hide Sidebar',global.hidesidebar) {
     global.hidesidebar = not global.hidesidebar
     saveConfig()
+}
+
+// clear map
+xx += dx
+yy = y+yo
+if menuButton(xx,yy,w,h,'Clear Map (F2)',buttons_enabled,false)
+or keyboard_check_pressed(vk_f2) {
+    if not oEdit.undo_nochanges {
+        inputOverlay(input_yesno,inputCallback_ClearMap,
+        'Map has been modified. Save changes?')
+    }
+    else {
+        global.input_bool = false
+        global.input_cancel = false
+        inputCallback_ClearMap()
+    }
 }
 
 // close menu
