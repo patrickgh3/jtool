@@ -52,15 +52,15 @@
   </views>
   <instances>
     <instance objName="oSidebar" x="800" y="0" name="inst_F1401864" locked="-1" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oWorld" x="64" y="64" name="inst_2E47D279" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oWorld" x="64" y="-80" name="inst_2E47D279" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oOptionsButton" x="952" y="8" name="inst_2C3731AE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oEdit" x="96" y="64" name="inst_12095817" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oMenu" x="128" y="64" name="inst_AF137121" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oEdit" x="96" y="-80" name="inst_12095817" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oMenu" x="128" y="-80" name="inst_AF137121" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oPlayerPosition" x="808" y="416" name="inst_B367C74C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oBorderDeath" x="64" y="160" name="inst_54B35928" locked="0" code="type='top'&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oBorderDeath" x="96" y="160" name="inst_B6A669A0" locked="0" code="type='bottom'&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oBorderDeath" x="128" y="160" name="inst_7F1970D0" locked="0" code="type='left'&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oBorderDeath" x="160" y="160" name="inst_004A1208" locked="0" code="type='right'&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oBorderDeath" x="64" y="-32" name="inst_54B35928" locked="0" code="type='top'&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oBorderDeath" x="96" y="-32" name="inst_B6A669A0" locked="0" code="type='bottom'&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oBorderDeath" x="128" y="-32" name="inst_7F1970D0" locked="0" code="type='left'&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oBorderDeath" x="160" y="-32" name="inst_004A1208" locked="0" code="type='right'&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oToggleAnalysis" x="952" y="576" name="inst_4B3797F4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oPalette" x="816" y="48" name="inst_EB4E417D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oJumpDurations" x="808" y="504" name="inst_16F7AC30" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -68,15 +68,15 @@
     <instance objName="oGridComboBox" x="808" y="336" name="inst_4537BA94" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSpeedComboBox" x="936" y="336" name="inst_606182F9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oEditorInstructions" x="808" y="8" name="inst_C6F3D08D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oDrawGrid" x="168" y="72" name="inst_7CB1E00B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oZoom" x="192" y="64" name="inst_82440A97" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oHideSidebar" x="752" y="32" name="inst_54C9CF7A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oDrawGrid" x="168" y="-72" name="inst_7CB1E00B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oZoom" x="192" y="-80" name="inst_82440A97" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oHideSidebar" x="768" y="-48" name="inst_54C9CF7A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oBhopHint" x="952" y="504" name="inst_0596D43E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oDeathDisplay" x="808" y="376" name="inst_19B83BE8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oJumpManyTimes" x="536" y="520" name="inst_D0CA7CE3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oFpsDisplay" x="952" y="376" name="inst_2A71E8D0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oDrawCursorCoords" x="192" y="128" name="inst_3B1651AE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oCreateBalls" x="224" y="128" name="inst_FA657817" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oDrawCursorCoords" x="224" y="-48" name="inst_3B1651AE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oCreateBalls" x="256" y="-48" name="inst_FA657817" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="" x="816" y="0" w="16" h="16" xo="0" yo="0" id="10000001" name="inst_F258A754" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
