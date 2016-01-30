@@ -47,6 +47,10 @@ with all {
     FS_file_text_write_string(f,'-'+padStringLeft(intToBase32String(y+128),2,'0'))
     with all {
         if not objectInPalette(object_index) or y != yy or saved continue
+        if x >= maxpos or y >= maxpos or x < minpos or y < minpos {
+            objects_out_of_range = true
+            continue
+        }
         var saveid = objectToSaveID(object_index)
         if saveid != -1 {
             FS_file_text_write_string(f,intToBase32String(saveid)
