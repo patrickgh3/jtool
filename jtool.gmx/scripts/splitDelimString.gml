@@ -1,6 +1,6 @@
-// Gets a particular substring in a delimited string.
+/// splitDelimString(str,delim,num)
 
-// splitDelimString(str,delim,num)
+// Gets a particular substring in a delimited string.
 
 var str = argument0
 var delim = argument1

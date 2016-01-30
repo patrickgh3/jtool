@@ -164,13 +164,37 @@ else if mode == input_about {
     var bw = 20
     var bh = 20
     if menuButton(528+back_w/2-bw,304+back_h/2-bh,bw,bh,'',true,false) {
-        cycleTitleJoke()
+        global.joketitleindex += 1
+        updateCaption()
     }
 }
 
 if keyboard_check_pressed(vk_escape) {
     inputOverlayCancel()
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// don't draw sprite
 </string>
           </argument>
         </arguments>

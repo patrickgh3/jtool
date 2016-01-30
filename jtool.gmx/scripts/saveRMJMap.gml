@@ -27,3 +27,6 @@ FS_file_text_close(f)
 if non_rmj_object {
     inputOverlay(input_info,false,"Warning: Some objects aren't supported by RMJ and weren't saved.")
 }
+
+global.lastloadedmapname = splitDelimString(filename, '\', string_count('\', filename))
+updateCaption()

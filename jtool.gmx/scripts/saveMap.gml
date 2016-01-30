@@ -79,4 +79,7 @@ if warning_message != '' {
     inputOverlay(input_info,false,warning_message)
 }
 
+global.lastloadedmapname = splitDelimString(filename, '\', string_count('\', filename))
+updateCaption()
+
 return true

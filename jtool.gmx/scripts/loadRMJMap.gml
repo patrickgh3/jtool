@@ -37,3 +37,5 @@ room_speed = 50
 oDeathDisplay.death_count = 0
 loadPlayer()
 completelyResetZoom()
+global.lastloadedmapname = splitDelimString(filename, '\', string_count('\', filename))
+updateCaption()

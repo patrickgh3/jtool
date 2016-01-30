@@ -95,3 +95,12 @@ room_speed = 50
 oDeathDisplay.death_count = 0
 loadPlayer()
 completelyResetZoom()
+if global.shouldresetloadedmapname {
+    global.shouldresetloadedmapname = false
+    global.lastloadedmapname = ''
+    updateCaption()
+}
+else {
+    global.lastloadedmapname = splitDelimString(filename, '\', string_count('\', filename))
+    updateCaption()
+}
