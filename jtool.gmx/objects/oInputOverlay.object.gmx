@@ -140,7 +140,7 @@ else if mode == input_about {
     draw_text(528,304-190,'jtool version '+global.version_string+'##made by Patrickgh3##'
     +'#Special thanks:'
     +'#YoYoYoDude1 for his studio engine'
-    +'#TheNewGeezer for the original RMJ'
+    +'#Thenewgeezer for the original RMJ'
     +'#people who gave feedback and feature ideas'
     +'##Please read readme.html for more info!')
     
