@@ -64,6 +64,42 @@ with all {
         }
     }
 }
+
+// secondary data
+FS_file_text_writeln(f)
+FS_file_text_writeln(f)
+FS_file_text_write_string(f,'data repeated below for easy parsing by other tools')
+FS_file_text_writeln(f)
+FS_file_text_write_string(f,'objects: (x, y, type)')
+FS_file_text_writeln(f)
+with all {
+    if not objectInPalette(object_index) continue
+    var maxpos = 896
+    var minpos = -128
+    if x >= maxpos or y >= maxpos or x < minpos or y < minpos {
+        objects_out_of_range = true
+        continue
+    }
+    FS_file_text_write_string(f,string(x)+' '+string(y)+' '+string(objectToSaveID(object_index))+' ')
+}
+FS_file_text_writeln(f)
+FS_file_text_write_string(f, 'version:'+global.version_string)
+FS_file_text_writeln(f)
+FS_file_text_write_string(f, 'infinitejump:'+string(global.infinitejump))
+FS_file_text_writeln(f)
+FS_file_text_write_string(f, 'dotkid:'+string(global.dotkid))
+FS_file_text_writeln(f)
+FS_file_text_write_string(f, 'savetype:'+string(global.savetype))
+FS_file_text_writeln(f)
+FS_file_text_write_string(f, 'bordertype:'+string(global.bordertype))
+FS_file_text_writeln(f)
+FS_file_text_write_string(f, 'playersavex:'+string(global.savePlayerX))
+FS_file_text_writeln(f)
+FS_file_text_write_string(f, 'playersavey:'+string_format(global.savePlayerY,3,16))
+FS_file_text_writeln(f)
+FS_file_text_write_string(f, 'playersavexscale:'+string(global.savePlayerXScale))
+FS_file_text_writeln(f)
+
 FS_file_text_close(f)
 
 // warning messages for oob or unrecognized objects
