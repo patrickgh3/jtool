@@ -143,6 +143,11 @@ if cursor_in_area and global.state == globalstate_idle {
         if right and not left and undo_rightpressedinedit {
             with all {
                 if not objectInPalette(object_index) continue
+                if global.waterlocked and
+                    (object_index == oWater
+                    or object_index == oWater2
+                    or object_index == oWater3) continue
+                
                 if (place_meeting(x,y,oEdit)
                 or collision_line(other.xprevious, other.yprevious, other.x, other.y,id,true,false))
                 and object_index != oPlayerStart {

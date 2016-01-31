@@ -128,6 +128,8 @@
       <sprite>sprites\sMenuBorderType</sprite>
       <sprite>sprites\sMenuDepth</sprite>
       <sprite>sprites\sMenuClearMap</sprite>
+      <sprite>sprites\sMenuWaterLock</sprite>
+      <sprite>sprites\sMenuWaterLock2</sprite>
     </sprites>
     <sprites name="misc">
       <sprite>sprites\sEditCursor</sprite>

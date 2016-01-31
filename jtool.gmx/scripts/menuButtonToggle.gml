@@ -1,3 +1,5 @@
+/// menuButtonToggle(x, y, w, h, enabled, icon, truetext, falsetext, condition)
+
 // Wrapper for menuButton with "on" and "off" text.
 
 var text_true = argument6
