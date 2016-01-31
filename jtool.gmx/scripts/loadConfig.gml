@@ -15,6 +15,14 @@ global.showhitbox = FS_ini_read_real('prefs','showhitbox',0)
 global.grid_draw = FS_ini_read_real('prefs','grid_draw',false)
 global.mousecoords = FS_ini_read_real('prefs','mousecoords',false)
 global.playery_extended = FS_ini_read_real('prefs','playery_extended',false)
+var depthstring = FS_ini_read_string('prefs','depthorder','0,1,2,3')
 FS_ini_close()
+
+if string_count(',',depthstring) != 3 depthstring = '0,1,2,3'
+ds_list_clear(global.depthList)
+for (var i=0; i<4; i++) {
+    ds_list_add(global.depthList, real(splitDelimString(depthstring, ',', i)))
+}
+updatePaletteDepths()
 
 loadSkin(global.skinName)

@@ -1,5 +1,11 @@
 // Save the currently set options to an ini file.
 
+var depthstring = ''
+for (var i=0; i<ds_list_size(global.depthList); i++) {
+    depthstring += string(ds_list_find_value(global.depthList,i))
+    if i != ds_list_size(global.depthList) - 1 depthstring += ','
+}
+
 var filename = prefix_project_path_if_needed('config.ini')
 FS_ini_open(filename)
 FS_ini_write_real('prefs','death',global.deathEnabled)
@@ -14,4 +20,5 @@ FS_ini_write_real('prefs','showhitbox',global.showhitbox)
 FS_ini_write_real('prefs','grid_draw',global.grid_draw)
 FS_ini_write_real('prefs','mousecoords',global.mousecoords)
 FS_ini_write_real('prefs','playery_extended',global.playery_extended)
+FS_ini_write_string('prefs','depthorder',depthstring)
 FS_ini_close()

@@ -1,4 +1,4 @@
-// fontSetup(font, color, halign, valign, alpha)
+/// fontSetup(font, color, halign, valign, alpha)
 
 var font = argument0
 var color = argument1

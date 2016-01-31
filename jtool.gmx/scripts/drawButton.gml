@@ -1,6 +1,6 @@
-// Draws a button
+/// drawButton(x,y,w,h,active)
 
-// drawButton(x,y,w,h,active)
+// Draws a button
 
 var xx = argument0
 var yy = argument1

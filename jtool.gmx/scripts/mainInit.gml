@@ -16,6 +16,7 @@ global.version_string = string(global.version_major)+'.'+string(global.version_m
 global.input_string = ''
 global.input_bool = false
 global.input_cancel = false
+global.depthList = ds_list_create()
 
 // maybe later load from map
 global.grav = 1

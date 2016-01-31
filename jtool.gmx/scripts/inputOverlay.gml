@@ -1,4 +1,4 @@
-// inputOverlay(mode,callback,label)
+/// inputOverlay(mode,callback,label)
 
 var mode = argument0
 var callback = argument1

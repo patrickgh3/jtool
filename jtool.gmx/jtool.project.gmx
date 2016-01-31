@@ -126,6 +126,8 @@
       <sprite>sprites\sMenuSavePoint</sprite>
       <sprite>sprites\sMenuCoords</sprite>
       <sprite>sprites\sMenuBorderType</sprite>
+      <sprite>sprites\sMenuDepth</sprite>
+      <sprite>sprites\sMenuClearMap</sprite>
     </sprites>
     <sprites name="misc">
       <sprite>sprites\sEditCursor</sprite>
@@ -136,6 +138,8 @@
       <sprite>sprites\sEllipsis</sprite>
       <sprite>sprites\sJumpManyTimes</sprite>
       <sprite>sprites\sIcon32</sprite>
+      <sprite>sprites\sDepthArrowUp</sprite>
+      <sprite>sprites\sDepthPlayerHint</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -241,6 +245,7 @@
       <script>scripts\editCreateObject.gml</script>
       <script>scripts\editCreateObjectIfFree.gml</script>
       <script>scripts\editCreateObjectIfNotSamePos.gml</script>
+      <script>scripts\updatePaletteDepths.gml</script>
     </scripts>
   </scripts>
   <fonts name="fonts">
@@ -324,12 +329,13 @@
       <object>objects\oCreateBalls</object>
       <object>objects\oBorderBlock</object>
       <object>objects\oBorderTypeController</object>
+      <object>objects\oDepthOrderPlayerHint</object>
     </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rMain</room>
   </rooms>
-  <constants number="16">
+  <constants number="21">
     <constant name="globalstate_idle">1</constant>
     <constant name="globalstate_menu">2</constant>
     <constant name="globalstate_input">3</constant>
@@ -342,10 +348,15 @@
     <constant name="input_yesno">2</constant>
     <constant name="input_info">3</constant>
     <constant name="input_about">4</constant>
+    <constant name="input_depth">5</constant>
     <constant name="savetype_shoot">0</constant>
     <constant name="savetype_touch">1</constant>
     <constant name="bordertype_death">0</constant>
     <constant name="bordertype_solid">1</constant>
+    <constant name="depthorder_water">0</constant>
+    <constant name="depthorder_player">1</constant>
+    <constant name="depthorder_spike">2</constant>
+    <constant name="depthorder_block">3</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

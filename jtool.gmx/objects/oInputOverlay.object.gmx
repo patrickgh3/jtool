@@ -50,6 +50,11 @@ else if mode == input_about {
     var back_h = 440
     var label_yo = 0
 }
+else if mode == input_depth {
+    var back_w = 280
+    var back_h = 380
+    var label_yo = 0
+}
 
 fontSetup(font_small,c_black,fa_center,fa_center,1)
 back_w = floor(max(back_w,string_width(label)+30))
@@ -77,8 +82,106 @@ draw_line(bx+lsx,by+xbutton_height-lsy-2,bx+xbutton_width-lsx-2,by+lsy)
 draw_line(bx+lsx,by+xbutton_height-lsy-2+1,bx+xbutton_width-lsx-2,by+lsy+1)
 
 // contents
-if mode == input_textbox {
-    // textbox
+if mode == input_depth {
+    fontSetup(font_small, c_black, fa_center, fa_top, 1)
+    draw_text(528, 304-back_h/2+7,'Set Depth Order')
+    draw_text(528, 304-back_h/2+50,'Front')
+    draw_text(528, 304+back_h/2-87,'Back')
+    
+    var labelX = 528-100
+    var spritesX = 528-40
+    var buttonX = 528+85
+    
+    var orderChanged = false
+    var h = 50
+    for (var i=0; i&lt;ds_list_size(global.depthList); i++) {
+        var yy = 304-back_h/2+70+i*(h+10)
+        //drawButton(528-w/2,yy,w,h,false)
+        var text;
+        var spritesY = yy+7
+        switch ds_list_find_value(global.depthList, i){
+            case depthorder_block:
+               text = 'blocks'
+               draw_sprite(sEditBlock, 0, spritesX, spritesY)
+               draw_sprite(sWalljumpR, 0, spritesX+64-24+4, spritesY)
+               break
+            case depthorder_spike:
+               text = 'spikes'
+               draw_sprite_ext(sSpikeUp, 0, spritesX, spritesY, 1, 1, 0, global.color_killer, 1)
+               draw_sprite_ext(sApple, 0, spritesX+52, spritesY+16, 1, 1, 0, global.color_killer, 1)
+               break
+            case depthorder_water:
+               text = 'water'
+               draw_sprite(sWater2, 0, spritesX, spritesY)
+               draw_sprite(sWater3, 0, spritesX+40, spritesY)
+               break
+            case depthorder_player:
+               text = 'player'
+               draw_sprite(sPlayerIdle, 0, spritesX+16, spritesY+20)
+               draw_sprite(sSave, 0, spritesX+32, spritesY)
+               draw_sprite(sJumpRefresher, 0, spritesX+80, spritesY+16)
+               break
+        }
+        fontSetup(font_small, c_black, fa_left, fa_top, 1)
+        draw_text(labelX,yy+10,text)
+        
+        if i != 0 {
+            var bx = buttonX
+            var by = yy
+            var bw = 30
+            var bh = 20
+            if menuButton(bx,by,bw,bh,'',true,false) {
+                if ds_list_find_value(global.depthList, i-1) == depthorder_player
+                    and (ds_list_find_value(global.depthList, i) == depthorder_spike
+                    or ds_list_find_value(global.depthList, i) == depthorder_block) {
+                    instance_create(528+back_w/2+16,304-50,oDepthOrderPlayerHint)
+                }
+                else {
+                    var val = ds_list_find_value(global.depthList, i)
+                    ds_list_delete(global.depthList, i)
+                    ds_list_insert(global.depthList, i-1, val)
+                    orderChanged = true
+                }
+            }
+            draw_sprite(sDepthArrowUp,0,bx+bw/2,by+bh/2)
+        }
+        
+        if i != ds_list_size(global.depthList)-1 {
+            var bx = buttonX
+            var by = yy+19
+            var bw = 30
+            var bh = 20
+            if menuButton(bx,by,bw,bh,'',true,false) {
+                if ds_list_find_value(global.depthList, i) == depthorder_player
+                    and (ds_list_find_value(global.depthList, i+1) == depthorder_spike
+                    or ds_list_find_value(global.depthList, i+1) == depthorder_block) {
+                    instance_create(528+back_w/2+16,304-50,oDepthOrderPlayerHint)
+                }
+                else {
+                    var val = ds_list_find_value(global.depthList, i)
+                    ds_list_delete(global.depthList, i)
+                    ds_list_insert(global.depthList, i+1, val)
+                    orderChanged = true
+                }
+            }
+            draw_sprite_ext(sDepthArrowUp,0,bx+bw/2,by+bh/2,1,-1,0,c_white,1)
+        }
+    }
+    
+    if orderChanged {
+        saveConfig()
+        updatePaletteDepths()
+    }
+    
+    var button_yo = 145
+    var button_w = 90
+    var button_h = 32
+    if menuButton(528-button_w/2,304+button_yo,button_w,button_h,'Ok',true,false)
+    or keyboard_check_pressed(vk_enter) {
+        inputOverlayYes()
+    }
+}
+else if mode == input_textbox {
     var textbox_yo = -10
     var textbox_w = 40
     var textbox_h = 32
@@ -96,7 +199,6 @@ if mode == input_textbox {
     fontSetup(font_small,c_black,fa_right,fa_center,1)
     draw_text(xx-3,ycenter,textbox_label)
     
-    // button
     var button_yo = 30
     var button_w = 80
     var button_h = 32
@@ -194,7 +296,7 @@ if keyboard_check_pressed(vk_escape) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// don't draw sprite
+            <string>/// don't draw sprite
 </string>
           </argument>
         </arguments>

@@ -1,6 +1,6 @@
-// Draws a button and returns whether or not it was clicked.
+/// menuButton(x, y, w, h, text, enabled, icon)
 
-// menuButton(x, y, w, h, text, enabled, icon)
+// Draws a button and returns whether or not it was clicked.
 
 var xx = argument0
 var yy = argument1
