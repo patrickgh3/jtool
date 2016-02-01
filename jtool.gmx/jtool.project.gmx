@@ -172,6 +172,7 @@
       <script>scripts\inputCallback_LoadRMJMap.gml</script>
       <script>scripts\inputCallback_ClearMap.gml</script>
       <script>scripts\inputCallback_VAlign.gml</script>
+      <script>scripts\inputCallback_NewVersionOpenThread.gml</script>
     </scripts>
     <scripts name="buttons">
       <script>scripts\menuButton.gml</script>
@@ -337,7 +338,7 @@
   <rooms name="rooms">
     <room>rooms\rMain</room>
   </rooms>
-  <constants number="21">
+  <constants number="22">
     <constant name="globalstate_idle">1</constant>
     <constant name="globalstate_menu">2</constant>
     <constant name="globalstate_input">3</constant>
@@ -351,6 +352,7 @@
     <constant name="input_info">3</constant>
     <constant name="input_about">4</constant>
     <constant name="input_depth">5</constant>
+    <constant name="input_newversion">6</constant>
     <constant name="savetype_shoot">0</constant>
     <constant name="savetype_touch">1</constant>
     <constant name="bordertype_death">0</constant>

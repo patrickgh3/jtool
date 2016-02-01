@@ -40,6 +40,8 @@ loadConfig()
 
 loadStartupMap()
 
+versionRequestId = http_get('http://cwpat.me/jtool-version')
+
 // misc
 randomize()
 display_set_gui_size(view_wport,view_hport)

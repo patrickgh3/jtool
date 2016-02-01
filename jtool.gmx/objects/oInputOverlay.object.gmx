@@ -55,6 +55,11 @@ else if mode == input_depth {
     var back_h = 380
     var label_yo = 0
 }
+else if mode == input_newversion {
+    var back_w = 280
+    var back_h = 150
+    var label_yo = -20
+}
 
 fontSetup(font_small,c_black,fa_center,fa_center,1)
 back_w = floor(max(back_w,string_width(label)+30))
@@ -82,6 +87,15 @@ draw_line(bx+lsx,by+xbutton_height-lsy-2,bx+xbutton_width-lsx-2,by+lsy)
 draw_line(bx+lsx,by+xbutton_height-lsy-2+1,bx+xbutton_width-lsx-2,by+lsy+1)
 
 // contents
+if mode == input_newversion {
+    var button_yo = 25
+    var button_w = 110
+    var button_h = 32
+    if menuButton(528-button_w/2,304+button_yo,button_w,button_h,'Forum thread',true,false)
+    or keyboard_check_pressed(vk_enter) {
+        inputOverlayYes()
+    }
+}
 if mode == input_depth {
     fontSetup(font_small, c_black, fa_center, fa_top, 1)
     draw_text(528, 304-back_h/2+7,'Set Depth Order')
