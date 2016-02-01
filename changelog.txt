@@ -1,25 +1,19 @@
-jtool changelog
+jtool change log
 
---- 1.0.0   10/14/15 ---
-Initial release!
-
---- 1.0.1   10/14/15 ---
-Remove round()s when drawing player
-
---- 1.0.2   10/14/15 ---
-Remove more unnecessary rounding
-
---- 1.0.3   10/14/15 ---
-Bundle two required dlls. Not sure how legal this is.
-
---- 1.0.4   10/14/15 ---
-Fix platform and spike collision order
-
---- 1.0.5   10/14/15 ---
-Update in-game version number from 1.0.0 to 1.0.5
+--- 1.2.0   2/1/16 ---
+Easier-to-parse map format
+Rearrange depth of blocks, spikes, water
+Easily erase objects beneath water
+Killer / solid border map property
+Check for new version on startup
+Show filename in window caption
+Include brown block skin
+Fix rare map corruption bug
+Lower death sound volume
+A few misc tweaks
+One new easter egg
 
 --- 1.1.0   12/4/15 ---
-
 LOTS of small UI tweaks
 Shoot / Z Saves map property
 No longer skip positions if moving mouse quickly when placing or removing objects
@@ -33,3 +27,13 @@ New icon
 Clean up readme / documentation pages
 Refactor of button code
 Two new easter eggs
+
+--- 1.0.1 to 1.0.5   10/14/15 ---
+Remove round()s when drawing player
+Remove more unnecessary rounding
+Bundle two required dlls. Not sure how legal this is.
+Fix platform and spike collision order
+Update in-game version number from 1.0.0 to 1.0.5
+
+--- 1.0.0   10/14/15 ---
+Initial release!
