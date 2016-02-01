@@ -7,15 +7,12 @@
   <body>
     <div class="content">
       <h1>Map file format</h1>
-      I designed the map file format to be small, version-friendly, and ascii-only so that maps could be shared via copy-pasting text. The overall format is shown in the example map in the picture. The format should be pretty straightforward, except for the objects section which is explained in the sections below.
-      <h2>Grouping by Y posiition</h2>
-      For each map object, we need to save a type, x-position, and y-position. Instead of just saving the type, x, and y of each object sequentially, I applied a slight optimization. Objects with the same y position are grouped together with a header telling what that y-position was, so that same y-position doesn't need to be repeated for every object.
-      <h2>How numbers are represented</h2>
-      A dash character signifies the start of one of these y-position groups. The two characters following the dash are the y position in base32. Since the y-position will have a range of less than 1024, we can store it in two base32 characters, which is 10 bits. The base32 characters used are "0123456789abcdefghijklmnopqrstuv". All sequences of 3 characters after this header and before the next dash are the object ids (1 character, 5 bits) and its x-positions (2 characters, 10 bits). I chose to group by y-position rather than x-position because there would be as fewer groups on the average map.
-      <h2>Offsetting for negative positions</h2>
-      In order to save objects with negative x or y positions, the x and y positions are incremented by 128 when saving (and of course decremented by 128 when loading). The screen width is 800 pixels, and we have 1024 possible values we can save, so this allows for more than enough leeway for objects to the left and right of the screen. I did this because it's nice to be able to save objects slightly off the edge of the screen, like the block shown in the picture.
+      In versions 1.2.0 and later, there is an extra copy of the data in map files that is much easier to write a parser for if you want to read jtool maps. Initially, making the map file format easy to parse didn't even cross my mind; I just compressed it for fun. I only realized my mistake when I had to make an additional parser myself.
+      <br><br>
+      Anyways, now it's easy enough to parse that it should be self-explanatory. And for old jtool maps, you can just open and re-save them to get that extra copy of the data.
+      <br><br>
+      For reference, Jtool only reads the top copy of the data when opening files, and it probably always will, for backwards compatibility.
       <script src="write_footer.js"></script>
     </div>
-    <img class="sideimage" src="images/simple_map_file.png">
   </body>
 </html>
