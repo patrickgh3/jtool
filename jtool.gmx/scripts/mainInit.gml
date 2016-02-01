@@ -17,6 +17,7 @@ global.input_string = ''
 global.input_bool = false
 global.input_cancel = false
 global.depthList = ds_list_create()
+global.waterlocked = false
 
 // maybe later load from map
 global.grav = 1

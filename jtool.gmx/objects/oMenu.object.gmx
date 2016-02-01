@@ -291,7 +291,6 @@ var waterlock_spr = sMenuWaterLock2
 if global.waterlocked waterlock_spr = sMenuWaterLock
 if menuButtonToggle(xx,yy,w,h,buttons_enabled,waterlock_spr,'[ Lock Water ]','Lock Water',global.waterlocked) {
     global.waterlocked = not global.waterlocked
-    saveConfig()
 }
 
 // clear map
