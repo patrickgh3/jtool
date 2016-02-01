@@ -260,7 +260,7 @@ if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuCoords,
 
 // fullscreen
 yy += dy
-if menuButton(xx,yy,w,h,'Fullscreen',buttons_enabled,sMenuFullscreen)
+if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuFullscreen,'[ Fullscreen ]','Fullscreen',window_get_fullscreen())
 or (keyboard_check_pressed(vk_f4) and not keyboard_check_direct(vk_alt)) {
     window_set_fullscreen(not window_get_fullscreen())
     oWorld.alarm[0]=1

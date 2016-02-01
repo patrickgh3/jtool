@@ -142,6 +142,7 @@
       <sprite>sprites\sIcon32</sprite>
       <sprite>sprites\sDepthArrowUp</sprite>
       <sprite>sprites\sDepthPlayerHint</sprite>
+      <sprite>sprites\sWakahaEasterEgg</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -333,6 +334,7 @@
       <object>objects\oBorderBlock</object>
       <object>objects\oBorderTypeController</object>
       <object>objects\oDepthOrderPlayerHint</object>
+      <object>objects\oWakahaEasterEgg</object>
     </objects>
   </objects>
   <rooms name="rooms">

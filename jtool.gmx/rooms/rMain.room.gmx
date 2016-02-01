@@ -78,6 +78,7 @@
     <instance objName="oDrawCursorCoords" x="224" y="-48" name="inst_3B1651AE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oCreateBalls" x="256" y="-48" name="inst_FA657817" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oBorderTypeController" x="288" y="-48" name="inst_2846D241" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oWakahaEasterEgg" x="320" y="-88" name="inst_51076564" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="" x="816" y="0" w="16" h="16" xo="0" yo="0" id="10000001" name="inst_F258A754" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

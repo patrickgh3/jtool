@@ -194,6 +194,12 @@ if mode == input_depth {
     or keyboard_check_pressed(vk_enter) {
         inputOverlayYes()
     }
+    
+    var bw = 20
+    var bh = 20
+    if menuButton(528-back_w/2,304-back_h/2,bw,bh,'',true,false) {
+        oWakahaEasterEgg.visible = not oWakahaEasterEgg.visible
+    }
 }
 else if mode == input_textbox {
     var textbox_yo = -10
