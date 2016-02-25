@@ -18,12 +18,12 @@ FS_ini_open(ini_filename)
 // meta
 var skinver_string = FS_ini_read_string('meta','version','')
 if skinver_string == '' {
-    inputOverlay(input_info,false,'Warning: no version provided in skin.')
+    //inputOverlay(input_info,false,'Warning: no version provided in skin.')
 }
 else {
     var skinver_major = real(splitDelimString(skinver_string,'.',0))
     if skinver_major > global.version_major {
-        inputOverlay(input_info,false,'Warning: may not be not compatible with skin;#it has a new major version.')
+        //inputOverlay(input_info,false,'Warning: may not be not compatible with skin;#it has a new major version.')
     }
 }
 
@@ -109,7 +109,10 @@ for (var i=0; i<100; i+=1) {
     }
     
     if FS_file_exists(skinfolder+file) {
-        var spr = FS_sprite_add(skinfolder+file,frames,false,false,xo,yo)
+        var copied_png = working_directory+'copied_skin_image.png'
+        FS_file_copy(skinfolder+file, copied_png)
+        var spr = sprite_add(copied_png,frames,false,false,xo,yo)
+        FS_file_delete(copied_png)
         if spr != -1 {
             sprite_assign(spr_index,spr)
             sprite_delete(spr)
@@ -125,8 +128,12 @@ for (var i=0; i<100; i+=1) {
 }
 
 // assign background from file
-if FS_file_exists(skinfolder+'bg.png') {
-    var bg = FS_background_add(skinfolder+'bg.png',false,false)
+file = 'bg.png'
+if FS_file_exists(skinfolder+file) {
+    var copied_png = working_directory+'copied_skin_image.png'
+    FS_file_copy(skinfolder+file, copied_png)
+    var bg = background_add(copied_png,false,false)
+    FS_file_delete(copied_png)
     if bg != -1 {
         background_assign(bgBackground,bg)
         background_delete(bg)

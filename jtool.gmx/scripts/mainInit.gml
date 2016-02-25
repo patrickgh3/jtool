@@ -31,7 +31,7 @@ global.saveGrav = 1
    but I think that's a safe assumption.
 */
 global.run_from_editor = string_pos('gm_ttt',working_directory) != 0
-global.editor_project_path = 'C:\Users\Traynor Traynor\Documents\GameMaker\jtool\'
+global.editor_project_path = 'C:\Patrick\Projects\GameMaker\jtool\'
 
 // might load from config later
 global.killer_holdduration = 12
