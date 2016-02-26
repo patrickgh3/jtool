@@ -218,12 +218,14 @@ global.count += 1
           <argument>
             <kind>1</kind>
             <string>var Id = ds_map_find_value(async_load, "id")
+var status = ds_map_find_value(async_load, "status")
 var str = ds_map_find_value(async_load, "result")
 
-map = json_decode(str)
-if map == -1 exit
-
 if Id == versionRequestId {
+    if status != 0 exit
+    map = json_decode(str)
+    if map == -1 exit
+    
     var newestVersionString = ds_map_find_value(map, 'jtool-version')
     if newestVersionString != global.version_string {
         inputOverlay(input_newversion, inputCallback_NewVersionOpenThread,
