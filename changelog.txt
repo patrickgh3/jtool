@@ -1,5 +1,11 @@
 jtool change log
 
+--- 1.2.1   2/26/16 ---
+Fix crash when no internet connection
+Windows 10-specific bugfixes
+Source gmz now works on Windows 10
+Bundle map2gm alongside jtool
+
 --- 1.2.0   2/1/16 ---
 Easier-to-parse map format
 Rearrange depth of blocks, spikes, water
