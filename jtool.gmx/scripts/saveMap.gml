@@ -26,6 +26,8 @@ FS_file_text_write_string(f,'py:'+floatToBase32String(global.savePlayerY))
 FS_file_text_write_string(f,delim)
 FS_file_text_write_string(f,'ps:'+string(global.savePlayerXScale))
 FS_file_text_write_string(f,delim)
+FS_file_text_write_string(f,'pg:'+string(global.saveGrav))
+FS_file_text_write_string(f,delim)
 FS_file_text_write_string(f,'objects:')
 
 // objects

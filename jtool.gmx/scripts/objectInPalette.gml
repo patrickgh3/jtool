@@ -28,6 +28,9 @@ switch objectindex {
     case oPlayerStart:
     case oWarp:
     case oJumpRefresher:
+    case oGravityArrowUp:
+    case oGravityArrowDown:
+    case oSaveFlip:
     return true
 }
 return false

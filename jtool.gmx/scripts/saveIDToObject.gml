@@ -24,5 +24,8 @@ switch saveid {
     case 21: return oWarp
     case 22: return oJumpRefresher
     case 23: return oWater3
+    case 24: return oGravityArrowDown
+    case 25: return oGravityArrowUp
+    case 26: return oSaveFlip
     default: return noone
 }

@@ -106,10 +106,14 @@ for (i = 0; i &lt; 100; i += 1) {
         case 22: xx=2 yy=5 spr=sWater1 obj=oWater off=16 killer=false tooltip='Water 1' break
         case 23: xx=3 yy=5 spr=sBulletBlocker obj=oBulletBlocker off=16 killer=false tooltip='Bullet blocker' break
         
+        case 24: xx=0 yy=6 spr=sGravityArrowUp obj=oGravityArrowUp off=16 killer=false break
+        case 25: xx=1 yy=6 spr=sGravityArrowDown obj=oGravityArrowDown off=16 killer=false break
+        case 26: xx=2 yy=6 spr=sSaveFlip obj=oSaveFlip off=16 killer=false break
+        
         default: continue
     }
     
-    var in_combobox = yy == 5
+    var in_combobox = yy == 5 or yy == 6
     if in_combobox and not combobox_selected continue
     
     // draw button backing and sprite
@@ -173,7 +177,7 @@ for (i = 0; i &lt; 100; i += 1) {
         var combo_x = x+xo-8
         var combo_y = y+yo+5*dy-9
         var combo_w = dx*4+8
-        var combo_h = dy+9
+        var combo_h = dy*2+9
         
         drawButton(combo_x,combo_y,combo_w,combo_h,false)
         drawButton(xxx,yyy,w,combo_y-yyy+1,false)

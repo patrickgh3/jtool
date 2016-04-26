@@ -24,5 +24,8 @@ switch objectindex {
     case oWarp:             return 21
     case oJumpRefresher:    return 22
     case oWater3:           return 23
+    case oGravityArrowUp:   return 24
+    case oGravityArrowDown: return 25
+    case oSaveFlip:         return 26
     default: return -1
 }
