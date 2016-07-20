@@ -17,6 +17,7 @@ global.infinitejump = false
 global.dotkid = false
 global.savetype = savetype_shoot
 global.bordertype = bordertype_death
+global.saveGrav = 1
 
 while index <= string_length(content) {
     var nextchar = string_char_at(content,index);
@@ -84,6 +85,9 @@ while index <= string_length(content) {
             }
             else if prefix == 'ps' {
                 global.savePlayerXScale = real(suffix)
+            }
+            else if prefix == 'pg' {
+                global.saveGrav = real(suffix)
             }
         }
         section_number += 1
