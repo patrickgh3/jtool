@@ -96,7 +96,9 @@ grav = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var shot = place_meeting(x,y,oPlayer) and keyboard_check_pressed(global.key_shoot)
+            <string>var shot = place_meeting(x,y,oPlayer)
+           and keyboard_check_pressed(global.key_shoot)
+           and not keyboard_check(vk_control)
 
 if global.savetype == savetype_shoot {
     shot = shot or place_meeting(x,y,oPlayerBullet)
