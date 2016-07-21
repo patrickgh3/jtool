@@ -99,12 +99,15 @@ room_speed = 50
 oDeathDisplay.death_count = 0
 loadPlayer()
 completelyResetZoom()
+global.lastMapNameOkayToQuickSave = false
 if global.shouldresetloadedmapname {
     global.shouldresetloadedmapname = false
     global.lastloadedmapname = ''
+    global.lastloadedmappath = ''
     updateCaption()
 }
 else {
+    global.lastloadedmappath = filename
     global.lastloadedmapname = splitDelimString(filename, '\', string_count('\', filename))
     updateCaption()
 }

@@ -126,8 +126,8 @@ alarm[0] = 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Save map then go back to fullscreen.
-saveMap()
+            <string>/// Save map as then go back to fullscreen.
+saveMapAs()
 window_set_fullscreen(true)
 alarm[0] = 1
 </string>

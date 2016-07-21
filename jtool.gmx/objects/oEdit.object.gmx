@@ -101,6 +101,7 @@ if cursor_in_area and global.state == globalstate_idle {
             undo_leftpressedinedit = true
             undo_objectstring = 'create'
             undo_nochanges = false
+            updateCaption()
         }
         if left and not right and undo_leftpressedinedit {
             // just clicked
@@ -139,6 +140,7 @@ if cursor_in_area and global.state == globalstate_idle {
             undo_rightpressedinedit = true
             undo_objectstring = ''
             undo_nochanges = false
+            updateCaption()
         }
         if right and not left and undo_rightpressedinedit {
             with all {
@@ -207,7 +209,6 @@ and global.state == globalstate_idle and not left and not right {
             undoDeserializeObject(s)
         }
     }
-    undo_nochanges = false
     undo_objectstring = ''
 }
 

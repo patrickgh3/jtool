@@ -220,6 +220,7 @@
     <scripts name="saveload">
       <scripts name="save map">
         <script>scripts\saveMap.gml</script>
+        <script>scripts\saveMapAs.gml</script>
         <script>scripts\intToBase32String.gml</script>
         <script>scripts\floatToBase32String.gml</script>
         <script>scripts\objectToSaveID.gml</script>

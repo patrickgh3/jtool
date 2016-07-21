@@ -28,5 +28,6 @@ if non_rmj_object {
     inputOverlay(input_info,false,"Warning: Some objects aren't supported by RMJ and weren't saved.")
 }
 
+global.lastloadedmappath = filename
 global.lastloadedmapname = splitDelimString(filename, '\', string_count('\', filename))
 updateCaption()

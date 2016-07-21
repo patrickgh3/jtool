@@ -18,6 +18,7 @@ global.input_bool = false
 global.input_cancel = false
 global.depthList = ds_list_create()
 global.waterlocked = false
+global.lastMapNameOkayToQuickSave = false
 
 // maybe later load from map
 global.grav = 1

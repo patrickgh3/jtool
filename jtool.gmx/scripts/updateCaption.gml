@@ -1,5 +1,5 @@
 var title
-switch global.joketitleindex mod 22 {
+switch global.joketitleindex mod 24 {
     case 0: title='jtool' break
     case 1: title='I wanna record my hops' break
     case 2: title='I wanna Bravely Behold Frames (I wanna BBF)'break 
@@ -22,10 +22,14 @@ switch global.joketitleindex mod 22 {
     case 19: title='cool guy RMJ' break
     case 20: title='jay toul' break
     case 21: title='JFool' break
+    case 22: title='RMJtool' break
+    case 23: title='I wanna Record my Jumps' break
 }
 
 if global.lastloadedmapname != '' {
-    window_set_caption(title+' - '+global.lastloadedmapname)
+    var starStr = ''
+    if not oEdit.undo_nochanges starStr = '*'
+    window_set_caption(starStr+title+' - '+global.lastloadedmapname)
 }
 else {
     window_set_caption(title)

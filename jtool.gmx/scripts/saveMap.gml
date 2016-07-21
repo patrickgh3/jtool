@@ -1,9 +1,6 @@
 // Saves all the present palette objects to file.
 
-filename = get_save_filename_ext('jtool map|*.jmap','','','Save Map')
-if filename == '' return false
-
-oEdit.undo_nochanges = true
+var filename = argument0
 
 // header and info
 var f = file_text_open_write(filename)
@@ -117,6 +114,8 @@ if warning_message != '' {
     inputOverlay(input_info,false,warning_message)
 }
 
+oEdit.undo_nochanges = true
+global.lastloadedmappath = filename
 global.lastloadedmapname = splitDelimString(filename, '\', string_count('\', filename))
 updateCaption()
 
