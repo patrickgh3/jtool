@@ -308,6 +308,15 @@ or keyboard_check_pressed(vk_f2) {
     }
 }
 
+// open game folder
+yy += dy
+if menuButton(xx,yy,w,h,'Open game folder',buttons_enabled,false) {
+    // sample operation to ensure 'jtool' folder exists
+    directory_create( 'tempdirtoensurejtoolfolderexists')
+    directory_destroy('tempdirtoensurejtoolfolderexists')
+    PatShowExplorer(environment_get_variable("localappdata")+'\jtool')
+}
+
 // close menu
 xx = 1056-w-8
 yy = y+12
@@ -326,13 +335,6 @@ if menuButton(xx,yy,w,h,'About',buttons_enabled,false) {
 yy += dy
 if menuButton(xx,yy,w,h,'Quit',buttons_enabled,false) {
     game_end()
-}
-
-if keyboard_check_pressed(vk_f8) {
-    // sample operation to ensure 'jtool' folder exists
-    directory_create( 'tempdirtoensurejtoolfolderexists')
-    directory_destroy('tempdirtoensurejtoolfolderexists')
-    PatShowExplorer(environment_get_variable("localappdata")+'\jtool')
 }
 </string>
           </argument>
