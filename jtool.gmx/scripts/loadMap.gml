@@ -2,9 +2,9 @@
 
 var filename = argument0
 
-var f = FS_file_text_open_read(filename)
-var content = FS_file_text_read_string(f)
-FS_file_text_close(f)
+var f = file_text_open_read(filename)
+var content = file_text_read_string(f)
+file_text_close(f)
 
 var index = 1
 var currentstring = ''

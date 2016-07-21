@@ -23,8 +23,7 @@
     </datafile>
   </datafiles>
   <NewExtensions>
-    <extension index="0">extensions\GMFileSystem</extension>
-    <extension index="1">extensions\PatFileStuff</extension>
+    <extension index="0">extensions\PatFileStuff</extension>
   </NewExtensions>
   <sounds name="sound">
     <sound>sound\sndJump</sound>
@@ -177,7 +176,6 @@
       <script>scripts\splitDelimString.gml</script>
       <script>scripts\stringIsInt.gml</script>
       <script>scripts\colorFromHsvDelimString.gml</script>
-      <script>scripts\prefix_project_path_if_needed.gml</script>
     </scripts>
     <scripts name="input overlay">
       <script>scripts\inputOverlay.gml</script>
