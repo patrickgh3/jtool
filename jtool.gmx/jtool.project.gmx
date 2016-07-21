@@ -6,6 +6,7 @@
   <datafiles number="2" name="datafiles"/>
   <NewExtensions>
     <extension index="0">extensions\GMFileSystem</extension>
+    <extension index="1">extensions\PatFileStuff</extension>
   </NewExtensions>
   <sounds name="sound">
     <sound>sound\sndJump</sound>
