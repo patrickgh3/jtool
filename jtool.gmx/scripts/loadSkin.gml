@@ -2,21 +2,28 @@
 
 var skin_name = argument0
 
-var skinfolder = prefix_project_path_if_needed('skins\'+skin_name+'\')
-var ini_filename = skinfolder+'skin_config.ini'
-var missing_ini_filename = prefix_project_path_if_needed('skin_config_missing.ini')
+if not directory_exists('skins') {
+    var num = zip_unzip('./stock_skins_zip_included.zip', './')
+    if num <= 0 {
+        show_message('Failed to unzip stock skins.')
+    }
+}
 
-if not FS_directory_exists(skinfolder) {
+var skinfolder = 'skins\'+skin_name+'\'
+var ini_filename = skinfolder+'skin_config.ini'
+var missing_ini_filename = 'skin_config_missing.ini'
+
+if not directory_exists(skinfolder) {
     inputOverlay(input_info,false,"Couldn't find skin folder#"+skinfolder)
     ini_filename = missing_ini_filename
 }
-else if not FS_file_exists(ini_filename) {
+else if not file_exists(ini_filename) {
     inputOverlay(input_info,false,'Warning: '+ini_filename+' does not exist.')
 }
-FS_ini_open(ini_filename)
+ini_open(ini_filename)
 
 // meta
-var skinver_string = FS_ini_read_string('meta','version','')
+var skinver_string = ini_read_string('meta','version','')
 if skinver_string == '' {
     //inputOverlay(input_info,false,'Warning: no version provided in skin.')
 }
@@ -29,40 +36,40 @@ else {
 
 // ui
 global.color_button = colorFromHsvDelimString(
-    FS_ini_read_string('ui','button_idle_color','0,0,175'),',')
+    ini_read_string('ui','button_idle_color','0,0,175'),',')
 global.color_buttonhover = colorFromHsvDelimString(
-    FS_ini_read_string('ui','button_active_color','0,0,255'),',')
+    ini_read_string('ui','button_active_color','0,0,255'),',')
 global.color_palettepressed = colorFromHsvDelimString(
-    FS_ini_read_string('ui','button_palette_pressed_color','0,0,0'),',')
-global.buttonhoveralpha = FS_ini_read_real('ui','button_active_alpha',0.5)
-global.buttonpalettepressedalpha = FS_ini_read_real('ui','button_palette_pressed_alpha',0.5)
-global.buttonhoverborder = FS_ini_read_real('ui','button_active_border',false)
+    ini_read_string('ui','button_palette_pressed_color','0,0,0'),',')
+global.buttonhoveralpha = ini_read_real('ui','button_active_alpha',0.5)
+global.buttonpalettepressedalpha = ini_read_real('ui','button_palette_pressed_alpha',0.5)
+global.buttonhoverborder = ini_read_real('ui','button_active_border',false)
 
 // objects
-var colorstring = FS_ini_read_string('objects','killer_idle_color','0,0,255')
+var colorstring = ini_read_string('objects','killer_idle_color','0,0,255')
 global.color_killerhue = real(splitDelimString(colorstring,',',0))
 global.color_killersat = real(splitDelimString(colorstring,',',1))
 global.color_killerval = real(splitDelimString(colorstring,',',2))
 global.color_killer = colorFromHsvDelimString(colorstring,',')
-var colorstring = FS_ini_read_string('objects','killer_active_color','0,128,255')
+var colorstring = ini_read_string('objects','killer_active_color','0,128,255')
 global.color_killer2hue = real(splitDelimString(colorstring,',',0))
 global.color_killer2sat = real(splitDelimString(colorstring,',',1))
 global.color_killer2val = real(splitDelimString(colorstring,',',2))
 global.color_killer2 = colorFromHsvDelimString(colorstring,',')
 global.color_warp = colorFromHsvDelimString(
-    FS_ini_read_string('objects','warp_color','67,196,239'),',')
-global.bulletblockeralpha = FS_ini_read_real('objects','bulletblocker_alpha',0.3)
-global.spikeframes = FS_ini_read_real('objects','spike_frames',1)
-global.spikeanimspeed = FS_ini_read_real('objects','spike_animspeed',1)
-global.minispikeframes = FS_ini_read_real('objects','minispike_frames',1)
-global.minispikeanimspeed = FS_ini_read_real('objects','minispike_animspeed',1)
+    ini_read_string('objects','warp_color','67,196,239'),',')
+global.bulletblockeralpha = ini_read_real('objects','bulletblocker_alpha',0.3)
+global.spikeframes = ini_read_real('objects','spike_frames',1)
+global.spikeanimspeed = ini_read_real('objects','spike_animspeed',1)
+global.minispikeframes = ini_read_real('objects','minispike_frames',1)
+global.minispikeanimspeed = ini_read_real('objects','minispike_animspeed',1)
 
 // bg
-var bg_type = FS_ini_read_string('bg','type','stretch')
-var bg_hspeed = FS_ini_read_real('bg','hspeed',0)
-var bg_vspeed = FS_ini_read_real('bg','vspeed',0)
-FS_ini_close()
-FS_file_delete(missing_ini_filename)
+var bg_type = ini_read_string('bg','type','stretch')
+var bg_hspeed = ini_read_real('bg','hspeed',0)
+var bg_vspeed = ini_read_real('bg','vspeed',0)
+ini_close()
+file_delete(missing_ini_filename)
 
 // assign sprites from file
 var resource_add_errors = ''
@@ -108,11 +115,8 @@ for (var i=0; i<100; i+=1) {
         default: continue
     }
     
-    if FS_file_exists(skinfolder+file) {
-        var copied_png = working_directory+'copied_skin_image.png'
-        FS_file_copy(skinfolder+file, copied_png)
-        var spr = sprite_add(copied_png,frames,false,false,xo,yo)
-        FS_file_delete(copied_png)
+    if file_exists(skinfolder+file) {
+        var spr = sprite_add(skinfolder+file,frames,false,false,xo,yo)
         if spr != -1 {
             sprite_assign(spr_index,spr)
             sprite_delete(spr)
@@ -129,11 +133,8 @@ for (var i=0; i<100; i+=1) {
 
 // assign background from file
 file = 'bg.png'
-if FS_file_exists(skinfolder+file) {
-    var copied_png = working_directory+'copied_skin_image.png'
-    FS_file_copy(skinfolder+file, copied_png)
-    var bg = background_add(copied_png,false,false)
-    FS_file_delete(copied_png)
+if file_exists(skinfolder+file) {
+    var bg = background_add(skinfolder+file,false,false)
     if bg != -1 {
         background_assign(bgBackground,bg)
         background_delete(bg)
@@ -166,5 +167,3 @@ background_y = 0
 if resource_add_errors != '' {
     inputOverlay(input_info,false,'Error when adding resources:#'+resource_add_errors+'#Try double checking everything.')
 }
-
-FS_clean_temporary()
