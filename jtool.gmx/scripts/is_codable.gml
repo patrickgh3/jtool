@@ -18,6 +18,7 @@ switch (argument0.object_index) {
     case oMiniSpikeLeft:
     case oMiniSpikeDown:
     case oApple:
+    case oTrg:
         return true
     default:
         return false

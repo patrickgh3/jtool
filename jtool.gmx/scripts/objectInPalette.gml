@@ -31,6 +31,7 @@ switch objectindex {
     case oGravityArrowUp:
     case oGravityArrowDown:
     case oSaveFlip:
+    case oTrg:
     return true
 }
 return false

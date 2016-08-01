@@ -27,9 +27,13 @@ switch (work_str) begin
  case "health":
    health=argument1;
   break;
-  
+  /*
  case "state":
    global.state=argument1;
+  break;
+  */
+ case "trg":
+   global.trg=argument1;
   break;
   
  default:

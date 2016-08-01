@@ -367,6 +367,7 @@
       <object>objects\oGravityArrowDown</object>
       <object>objects\oSaveFlip</object>
       <object>objects\oPatBall</object>
+      <object>objects\oTrg</object>
     </objects>
     <objects name="sidebar">
       <object>objects\oEditorInstructions</object>

@@ -109,6 +109,7 @@ for (i = 0; i &lt; 100; i += 1) {
         case 24: xx=0 yy=6 spr=sGravityArrowUp obj=oGravityArrowUp off=16 killer=false break
         case 25: xx=1 yy=6 spr=sGravityArrowDown obj=oGravityArrowDown off=16 killer=false break
         case 26: xx=2 yy=6 spr=sSaveFlip obj=oSaveFlip off=16 killer=false break
+        case 27: xx=3 yy=6 spr=sPink32 obj=oTrg off=16 killer=false break
         
         default: continue
     }

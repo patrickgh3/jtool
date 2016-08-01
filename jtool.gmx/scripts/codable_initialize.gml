@@ -3,3 +3,5 @@
 NSP_initialize();
 
 global.dynamic_instance_list = ds_list_create()
+
+global.trg=0;

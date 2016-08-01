@@ -14,7 +14,16 @@ switch (argument0) {
         return instance_nearest(argument1[0],argument1[1],argument1[2]);
 
     case "place_meeting":
-        return instance_nearest(argument1[0],argument1[1],argument1[2]);
+        return place_meeting(argument1[0],argument1[1],argument1[2]);
+        
+    case "sin":
+        return sin(argument1[0]);
+        
+    case "cos":
+        return cos(argument1[0]);
+        
+    case "tan":
+        return tan(argument1[0]);
 
     default:
         return undefined;
