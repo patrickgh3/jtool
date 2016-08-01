@@ -8,7 +8,7 @@
    but I think that's a safe assumption.
 */
 global.run_from_editor = string_pos('gm_ttt',working_directory) != 0
-global.editor_project_path = 'C:\Patrick\Projects\GameMaker\jtool'
+global.editor_project_path = 'E:\IWBTG\Projects\jtool'
 // add backslash to end
 if string_char_at(global.editor_project_path,string_length(global.editor_project_path)) != '\' {
     global.editor_project_path += '\'
@@ -65,3 +65,5 @@ global.key_shoot = ord('Z')
 global.key_restart = ord('R')
 global.key_suicide = ord('Q')
 global.key_pause = vk_escape
+
+codable_initialize()

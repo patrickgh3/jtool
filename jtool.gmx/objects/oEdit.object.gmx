@@ -91,7 +91,36 @@ y = mouse_y
 
 if cursor_in_area and global.state == globalstate_idle {
 
-    if not keyboard_check_direct(vk_control) {
+    // dropper
+    if keyboard_check_direct(vk_control) {
+        cursor_sprite = sCursorDropper
+        window_set_cursor(cr_none)
+        if leftpressed {
+            x = -1000
+            y = -1000
+            var inst = instance_position(mouse_x,mouse_y,all)
+            if inst != noone and objectInPalette(inst.object_index) {
+                selected_object = inst.object_index
+                selected_sprite = inst.sprite_index
+                selected_killer = object_is_ancestor(inst.object_index, oKiller)
+            }
+        }
+    }
+    //code editor
+    else if keyboard_check_direct(vk_alt) and not instance_exists(oInputOverlay) { 
+        cursor_sprite = sCursorCoder
+        window_set_cursor(cr_none)
+        if leftpressed {
+            x = -1000
+            y = -1000
+            var inst = instance_position(mouse_x,mouse_y,all)
+            if inst != noone and objectInPalette(inst.object_index) and is_codable(inst) {
+                inputOverlay(input_textarea,inputCallback_addCodeToObject,'Enter Code for Step Event:')
+                selected_instance = inst;
+                if inst.code_step_written != '' then keyboard_string=inst.code_step_written
+            }
+        }
+    } else { //pencil
         cursor_sprite = -1
         window_set_cursor(cr_default)
         
@@ -159,21 +188,6 @@ if cursor_in_area and global.state == globalstate_idle {
                 if collision_line(other.xprevious, other.yprevious, other.x, other.y,id,true,false) {
                     instance_destroy()
                 }
-            }
-        }
-    }
-    // dropper
-    else {
-        cursor_sprite = sCursorDropper
-        window_set_cursor(cr_none)
-        if leftpressed {
-            x = -1000
-            y = -1000
-            var inst = instance_position(mouse_x,mouse_y,all)
-            if inst != noone and objectInPalette(inst.object_index) {
-                selected_object = inst.object_index
-                selected_sprite = inst.sprite_index
-                selected_killer = object_is_ancestor(inst.object_index, oKiller)
             }
         }
     }
@@ -258,7 +272,7 @@ ysnapped_previous = ysnapped
           <argument>
             <kind>1</kind>
             <string>if cursor_in_area and global.state == globalstate_idle {
-    if not keyboard_check(vk_control) {
+    if not keyboard_check(vk_control) and not keyboard_check(vk_alt) {
         var color = c_white
         if selected_killer color = global.color_killer
         draw_sprite_ext(selected_sprite,0,xsnapped,ysnapped,1,1,0,color,0.3)

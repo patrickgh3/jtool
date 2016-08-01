@@ -136,6 +136,7 @@
       <sprite>sprites\sHintCursor</sprite>
       <sprite>sprites\sBorderDeath</sprite>
       <sprite>sprites\sCursorDropper</sprite>
+      <sprite>sprites\sCursorCoder</sprite>
       <sprite>sprites\sPatBall</sprite>
       <sprite>sprites\sEllipsis</sprite>
       <sprite>sprites\sJumpManyTimes</sprite>
@@ -174,6 +175,7 @@
       <script>scripts\inputCallback_ClearMap.gml</script>
       <script>scripts\inputCallback_VAlign.gml</script>
       <script>scripts\inputCallback_NewVersionOpenThread.gml</script>
+      <script>scripts\inputCallback_addCodeToObject.gml</script>
     </scripts>
     <scripts name="buttons">
       <script>scripts\menuButton.gml</script>
@@ -251,7 +253,74 @@
       <script>scripts\editCreateObjectIfNotSamePos.gml</script>
       <script>scripts\updatePaletteDepths.gml</script>
     </scripts>
+    <scripts name="object code">
+      <scripts name="NSP">
+        <script>scripts\NSP_Documentation.gml</script>
+        <script>scripts\NSP_initialize.gml</script>
+        <script>scripts\NSP_free.gml</script>
+        <script>scripts\NSP_execute_string.gml</script>
+        <script>scripts\NSP_evaluate.gml</script>
+        <script>scripts\NSP_notify.gml</script>
+        <script>scripts\NSP_save.gml</script>
+        <script>scripts\NSP_execute_saved.gml</script>
+        <script>scripts\NSP_evaluate_saved.gml</script>
+        <script>scripts\NSP_free_saved.gml</script>
+        <script>scripts\nsp_execute_master.gml</script>
+        <script>scripts\nsp_execute_block.gml</script>
+        <script>scripts\nsp_execute_line.gml</script>
+        <script>scripts\nsp_execute_single.gml</script>
+        <script>scripts\nsp_execute_script.gml</script>
+        <script>scripts\nsp_get_constant.gml</script>
+        <script>scripts\nsp_convert_to_list.gml</script>
+        <script>scripts\nsp_list_parameters.gml</script>
+        <script>scripts\nsp_statement_positions.gml</script>
+        <script>scripts\nsp_list_remove.gml</script>
+        <script>scripts\nsp_build_grid.gml</script>
+        <script>scripts\nsp_grid_shift.gml</script>
+        <script>scripts\nsp_list_to_string.gml</script>
+        <script>scripts\nsp_evaluate_list.gml</script>
+        <script>scripts\nsp_evaluate_single.gml</script>
+        <script>scripts\nsp_evaluate_long.gml</script>
+        <script>scripts\nsp_evaluate_special_word.gml</script>
+        <script>scripts\nsp_variable_set.gml</script>
+        <script>scripts\nsp_variable_get.gml</script>
+        <script>scripts\nsp_variable_global_set.gml</script>
+        <script>scripts\nsp_variable_global_get.gml</script>
+        <script>scripts\nsp_dsm_set.gml</script>
+        <script>scripts\nsp_dsm_get.gml</script>
+        <script>scripts\nsp_is_special_word.gml</script>
+        <script>scripts\nsp_is_string.gml</script>
+        <script>scripts\nsp_is_number.gml</script>
+        <script>scripts\nsp_is_script.gml</script>
+        <script>scripts\nsp_is_asset.gml</script>
+        <script>scripts\nsp_is_variable.gml</script>
+        <script>scripts\nsp_is_dsm.gml</script>
+        <script>scripts\nsp_gm_nom.gml</script>
+        <script>scripts\nsp_src_token.gml</script>
+        <script>scripts\nsp_token_is_valid.gml</script>
+        <script>scripts\nsp_arithmetic_calculate.gml</script>
+        <script>scripts\nsp_comparison_calculate.gml</script>
+        <script>scripts\nsp_combination_calculate.gml</script>
+        <script>scripts\nsp_is_equal.gml</script>
+        <script>scripts\nsp_string_crop.gml</script>
+        <script>scripts\nsp_string_crop_ext.gml</script>
+        <script>scripts\nsp_string_find_last.gml</script>
+        <script>scripts\nsp_string_force.gml</script>
+      </scripts>
+      <script>scripts\codable_create.gml</script>
+      <script>scripts\codable_step.gml</script>
+      <script>scripts\codable_draw.gml</script>
+      <script>scripts\is_codable.gml</script>
+      <script>scripts\codable_add_code.gml</script>
+      <script>scripts\codable_initialize.gml</script>
+      <script>scripts\codable_execute_script.gml</script>
+      <script>scripts\codable_instance_create.gml</script>
+      <script>scripts\codable_room_restart.gml</script>
+    </scripts>
   </scripts>
+  <shaders name="shaders">
+    <shader type="GLSLES">shaders\shdSingleColor.shader</shader>
+  </shaders>
   <fonts name="fonts">
     <font>fonts\font_small</font>
     <font>fonts\font_big</font>
@@ -340,7 +409,7 @@
   <rooms name="rooms">
     <room>rooms\rMain</room>
   </rooms>
-  <constants number="22">
+  <constants number="23">
     <constant name="globalstate_idle">1</constant>
     <constant name="globalstate_menu">2</constant>
     <constant name="globalstate_input">3</constant>
@@ -355,6 +424,7 @@
     <constant name="input_about">4</constant>
     <constant name="input_depth">5</constant>
     <constant name="input_newversion">6</constant>
+    <constant name="input_textarea">7</constant>
     <constant name="savetype_shoot">0</constant>
     <constant name="savetype_touch">1</constant>
     <constant name="bordertype_death">0</constant>
