@@ -81,6 +81,8 @@ while string_length(work_str)>0 {
               or copy_3=tokenArray[NSP_TOK.unequal]
               or copy_3=tokenArray[NSP_TOK._and]
               or copy_3=tokenArray[NSP_TOK._or]
+              or copy_3=tokenArray[NSP_TOK._and2]
+              or copy_3=tokenArray[NSP_TOK._or2]
               or copy_3=tokenArray[NSP_TOK._xor]
               or copy_3=tokenArray[NSP_TOK.assign]   ) {
 
@@ -111,6 +113,8 @@ while string_length(work_str)>0 {
               or copy_2=tokenArray[NSP_TOK.unequal]
               or copy_2=tokenArray[NSP_TOK._and]
               or copy_2=tokenArray[NSP_TOK._or]
+              or copy_2=tokenArray[NSP_TOK._and2]
+              or copy_2=tokenArray[NSP_TOK._or2]
               or copy_2=tokenArray[NSP_TOK._xor]
               or copy_2=tokenArray[NSP_TOK.assign]   ) {
             
@@ -141,6 +145,8 @@ while string_length(work_str)>0 {
                or copy_1=tokenArray[NSP_TOK.unequal]
                or copy_1=tokenArray[NSP_TOK._and]
                or copy_1=tokenArray[NSP_TOK._or]
+               or copy_1=tokenArray[NSP_TOK._and2]
+               or copy_1=tokenArray[NSP_TOK._or2]
                or copy_1=tokenArray[NSP_TOK._xor]
                or copy_1=tokenArray[NSP_TOK.assign]   ) {
              
