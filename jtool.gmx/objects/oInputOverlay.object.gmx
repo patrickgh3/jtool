@@ -49,6 +49,9 @@ else if mode == input_info {
     var back_w = 280
     var back_h = 120
     var label_yo = -30
+    if back_h &lt; string_height(label) + 64 {
+        back_h = string_height(label) + 64
+    }
 }
 else if mode == input_about {
     var back_w = 320
@@ -286,7 +289,8 @@ else if mode == input_info {
     var button_yo = 15
     var button_w = 90
     var button_h = 32
-    if menuButton(528-button_w/2,304+button_yo,button_w,button_h,'Ok',true,false)
+    //if menuButton(528-button_w/2,304+button_yo,button_w,button_h,'Ok',true,false)
+    if menuButton(528-button_w/2,304+back_h/2-button_h-button_yo,button_w,button_h,'Ok',true,false)
     or keyboard_check_pressed(vk_enter) {
         inputOverlayYes()
     }
