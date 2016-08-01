@@ -263,6 +263,17 @@ else if mode == input_textarea {
     if keyboard_check_pressed(vk_enter) {
         keyboard_string+="#"
     }
+    else if keyboard_check_pressed(ord('C')) { //copy code to clipboard
+        if keyboard_check_direct(vk_control) {
+            //keyboard_string = string_copy(keyboard_string,1,string_length(keyboard_string)-1)
+            clipboard_set_text(string_replace_all(keyboard_string,'#',chr(13)+chr(10)))
+        }
+    }
+    else if keyboard_check_pressed(ord('V')) { //paste to append code from clipboard
+        if keyboard_check_direct(vk_control) {
+            keyboard_string += string_replace_all(string_replace_all(clipboard_get_text(),chr(13),''),chr(10),'#')
+        }
+    }
 }
 else if mode == input_yesno {
     var button_yo = 15
