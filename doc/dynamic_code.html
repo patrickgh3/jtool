@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <title>Code editor</title>
+    <link rel="stylesheet" href="./docstyle.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <div class="content">
+      <h1>Code editor</h1>
+      Jtool now gives you the ability to edit the step event of many objects that you can place in the editor, giving them dynamic functionality. Now you can create moving obstacles, custom-angled spikes, and even complex triggers! Jtool uses the <a href="http://gmc.yoyogames.com/index.php?showtopic=681539&hl=">NSP code parser by Surgeon_, released under the GPLv3</a>. This parser, while very powerful, is not perfect; see below for all limitations.
+	  
+      <br><br>
+	  
+      The following objects can have code added to them:
+	  <ul>
+		  <li>Spikes</li>
+		  <li>Minispikes</li>
+		  <li>Apples</li>
+		  <li>Platforms</li>
+		  <li>Blocks</li>
+		  <li>Miniblocks</li>
+		  <li>Triggers</li>
+	  </ul>
+	  
+      <br><br>
+	  
+      The following functions are supported in code:
+	  <ul>
+		<li>instance_create(x,y,obj)</li>
+		<li>instance_destroy()</li>
+		<li>instance_nearest(x,y,obj)</li>
+		<li>instance_exists(obj)</li>
+		<li>place_meeting(x,y,obj)</li>
+
+		<li>sin(rad)</li>
+		<li>cos(rad)</li>
+		<li>tan(rad)</li>
+		<li>arctan2(y,x)</li>
+
+		<li>degtorad(deg)</li>
+		<li>radtodeg(rad)</li>
+
+		<li>abs(val)</li>
+		<li>floor(val)</li>
+		<li>ceil(val)</li>
+		<li>round(val)</li>
+		<li>sqrt(val)</li>
+
+		<li>min(a,b)</li>
+		<li>max(a,b)</li>
+
+		<li>lengthdir_x(len,dir)</li>
+		<li>lengthdir_y(len,dir)</li>
+
+		<li>point_distance(x1,y1,x2,y2)</li>
+		<li>point_direction(x1,y1,x2,y2)</li>
+
+		<li>random(n)</li>
+		<li>irandom(n)</li>
+		<li>random_range(n1,n2)</li>
+		<li>irandom_range(n1,n2)</li>
+	  </ul>
+	  
+      <br><br>
+	  
+      You may reference the following variables in your code:
+	  <ul>
+		<li>User-Defined Instance Variables: a, b, c, d, i, t, z</li>
+		<li>GM-Defined Instance Variables: x, y, xstart, ystart, hspeed, vspeed, direction, image_angle, image_index, image_speed, sprite_index, object_index</li>
+		<li>Global Trigger Variable: global.trg</li>
+	  </ul>
+	  
+      <br><br>
+	  
+      You can also use the following structures:
+	  <ul>
+		<li>If statements: if (a == 1) { hspeed=-1 }</li>
+		<li>For &amp; While loops</li>
+		<li>The With keyword: with(other) {...} with (all) {...}</li>
+	  </ul>
+      <br><br>
+      <script src="write_footer.js"></script>
+    </div>
+  </body>
+</html>

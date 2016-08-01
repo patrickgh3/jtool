@@ -22,6 +22,7 @@ enum NSP_TOK {
  smaller, smaller_equal,
  //Combining:
  _and, _or, _xor,
+ _and2, _or2,
  //Math:
  add, subtract,
  multiply, divide, 
@@ -44,6 +45,8 @@ still be used as the operator for subtraction, but ONLY for subtraction.)
 global.nspToken[NSP_TOK._and]          ="and";
 global.nspToken[NSP_TOK._or]           ="or";
 global.nspToken[NSP_TOK._xor]          ="xor";
+global.nspToken[NSP_TOK._and2]         ="&&";
+global.nspToken[NSP_TOK._or2]          ="||";
 
 //COMPARING:
 global.nspToken[NSP_TOK.equal]         ="==";
@@ -104,4 +107,4 @@ enum NSP_TYPE {
 
  
 //EDIT BY KLAZEN: set a global flag to indicate an error has occurred
-global._nsp_error=false;
+global._nsp_error='';

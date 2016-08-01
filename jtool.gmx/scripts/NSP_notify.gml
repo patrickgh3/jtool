@@ -11,7 +11,5 @@ if (argument_count>1) {
   
  }
 
-//EDIT BY KLAZEN: set a global flag to indicate an error has occurred
-//show_error(argument[0],false);
-show_message(argument[0]);
-global._nsp_error=true;
+//EDIT BY KLAZEN: build the error string for later
+global._nsp_error+=argument[0]+'#';

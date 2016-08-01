@@ -25,6 +25,8 @@ for (i=0; i<ds_list_size(str_list); i+=1) begin
        or str_list[|i]=nspToken[NSP_TOK.smaller_equal]
        or str_list[|i]=nspToken[NSP_TOK._and]
        or str_list[|i]=nspToken[NSP_TOK._or]
+       or str_list[|i]=nspToken[NSP_TOK._and2]
+       or str_list[|i]=nspToken[NSP_TOK._or2]
        or str_list[|i]=nspToken[NSP_TOK._xor]
        or str_list[|i]=nspToken[NSP_TOK.add]
        or str_list[|i]=nspToken[NSP_TOK.subtract]

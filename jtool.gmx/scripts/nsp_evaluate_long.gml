@@ -414,6 +414,8 @@ while (i<list_max) {
  
   if (   g[#i,0]=nspToken[NSP_TOK._and]
       or g[#i,0]=nspToken[NSP_TOK._or]
+      or g[#i,0]=nspToken[NSP_TOK._and2]
+      or g[#i,0]=nspToken[NSP_TOK._or2]
       or g[#i,0]=nspToken[NSP_TOK._xor]  ) {
       
    token=g[#i,0];

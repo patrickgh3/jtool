@@ -31,9 +31,13 @@ switch (work_str) begin
  case "mouse_y":
    return mouse_y;
   break;
-  
+/*
  case "state":
    return global.state;
+  break;
+  */
+ case "trg":
+   return global.trg;
   break;
   
  default:

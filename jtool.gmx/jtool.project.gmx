@@ -310,12 +310,14 @@
       <script>scripts\codable_create.gml</script>
       <script>scripts\codable_step.gml</script>
       <script>scripts\codable_draw.gml</script>
-      <script>scripts\is_codable.gml</script>
+      <script>scripts\codable_is_codable.gml</script>
       <script>scripts\codable_add_code.gml</script>
       <script>scripts\codable_initialize.gml</script>
       <script>scripts\codable_execute_script.gml</script>
       <script>scripts\codable_instance_create.gml</script>
       <script>scripts\codable_room_restart.gml</script>
+      <script>scripts\codable_is_dynamic.gml</script>
+      <script>scripts\codable_error_callback.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -367,6 +369,7 @@
       <object>objects\oGravityArrowDown</object>
       <object>objects\oSaveFlip</object>
       <object>objects\oPatBall</object>
+      <object>objects\oTrg</object>
     </objects>
     <objects name="sidebar">
       <object>objects\oEditorInstructions</object>
