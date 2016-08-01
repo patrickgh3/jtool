@@ -8,7 +8,7 @@
    but I think that's a safe assumption.
 */
 global.run_from_editor = string_pos('gm_ttt',working_directory) != 0
-global.editor_project_path = 'E:\IWBTG\Projects\jtool'
+global.editor_project_path = 'C:\Patrick\Projects\GameMaker\jtool'
 // add backslash to end
 if string_char_at(global.editor_project_path,string_length(global.editor_project_path)) != '\' {
     global.editor_project_path += '\'
