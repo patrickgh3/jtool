@@ -65,3 +65,5 @@ global.key_shoot = ord('Z')
 global.key_restart = ord('R')
 global.key_suicide = ord('Q')
 global.key_pause = vk_escape
+
+codable_initialize()
