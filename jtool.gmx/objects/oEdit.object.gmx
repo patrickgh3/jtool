@@ -114,7 +114,7 @@ if cursor_in_area and global.state == globalstate_idle {
             x = -1000
             y = -1000
             var inst = instance_position(mouse_x,mouse_y,all)
-            if inst != noone and objectInPalette(inst.object_index) and is_codable(inst) {
+            if inst != noone and objectInPalette(inst.object_index) and codable_is_codable(inst) {
                 inputOverlay(input_textarea,inputCallback_addCodeToObject,'Enter Code for Step Event:')
                 selected_instance = inst;
                 if inst.code_step_written != '' then keyboard_string=inst.code_step_written
@@ -179,7 +179,8 @@ if cursor_in_area and global.state == globalstate_idle {
                 
                 if (place_meeting(x,y,oEdit)
                 or collision_line(other.xprevious, other.yprevious, other.x, other.y,id,true,false))
-                and object_index != oPlayerStart {
+                and object_index != oPlayerStart 
+                and !codable_is_dynamic(id) {
                     other.undo_objectstring += undoSerializeObject(self)
                     instance_destroy()
                 }

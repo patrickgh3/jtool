@@ -1,4 +1,4 @@
-///is_codable(instance)
+///codable_is_codable(instance)
 //Returns true if this instance is a codable object type, false otherwise
 
 //If this instance was dynamically created, do not allow the user to give it code
