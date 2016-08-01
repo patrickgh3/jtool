@@ -6,11 +6,9 @@
 
 if not instance_exists(oInputOverlay) {
     if code_step_compiled {
-        NSP_execute_saved(code_step_compiled)
-        if global._nsp_error {
+        if not NSP_execute_saved(code_step_compiled) {
             NSP_free_saved(code_step_compiled)
             code_step_compiled = 0
-            global._nsp_error=false;
         }
     }
 }

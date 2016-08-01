@@ -107,4 +107,4 @@ enum NSP_TYPE {
 
  
 //EDIT BY KLAZEN: set a global flag to indicate an error has occurred
-global._nsp_error=false;
+global._nsp_error='';

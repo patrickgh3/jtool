@@ -317,6 +317,7 @@
       <script>scripts\codable_instance_create.gml</script>
       <script>scripts\codable_room_restart.gml</script>
       <script>scripts\codable_is_dynamic.gml</script>
+      <script>scripts\codable_error_callback.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
