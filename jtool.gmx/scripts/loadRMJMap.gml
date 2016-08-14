@@ -14,7 +14,7 @@ file_text_readln(f)
 file_text_readln(f)
 oEdit.undo_objectstring = ''
 oEdit.undo_nochanges = true
-with all if objectInPalette(object_index) instance_destroy()
+with all if objectInPalatte(object_index) instance_destroy()
 with oPatBall instance_destroy()
 while not file_text_eoln(f) {
     var xx = file_text_read_real(f)

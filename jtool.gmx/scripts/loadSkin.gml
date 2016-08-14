@@ -1,3 +1,4 @@
+/// loadSkin(skin_name)
 // Load the specified skin from file into the game.
 
 var skin_name = argument0
@@ -9,12 +10,15 @@ if not directory_exists('skins') {
     }
 }
 
-var skinfolder = 'skins\'+skin_name+'\'
-var ini_filename = skinfolder+'skin_config.ini'
+var skinFolder = 'skins\'+skin_name+'\'
+if not directory_exists(skinFolder) {
+    inputOverlay(input_info, false, "Couldn't find skin folder#"+skinFolder)
+}
+var ini_filename = skinFolder+'skin_config.ini'
 var missing_ini_filename = 'skin_config_missing.ini'
 
-if not directory_exists(skinfolder) {
-    inputOverlay(input_info,false,"Couldn't find skin folder#"+skinfolder)
+if not directory_exists(skinFolder) {
+    inputOverlay(input_info,false,"Couldn't find skin folder#"+skinFolder)
     ini_filename = missing_ini_filename
 }
 else if not file_exists(ini_filename) {
@@ -71,16 +75,141 @@ var bg_vspeed = ini_read_real('bg','vspeed',0)
 ini_close()
 file_delete(missing_ini_filename)
 
+
+
+// delete previous skin sprites
+var size = ds_map_size(global.skinSpriteMap);
+var key = ds_map_find_first(global.skinSpriteMap)
+for (var i=0; i<size; i+=1) {
+    var subMap = global.skinSpriteMap[? key]
+    var spr = subMap[? 'sprite']
+    if ds_list_find_index(global.defaultSkinSpriteList, spr) == -1 {
+        sprite_delete(spr)
+    }
+    ds_map_destroy(subMap)
+    key = ds_map_find_next(global.skinSpriteMap, key)
+}
+ds_map_clear(global.skinSpriteMap)
+
+
+// load sprite configs
+var skinConfigFilename = skinFolder+'skin_config.xml'
+if file_exists(skinConfigFilename) {
+    var subMap = -1
+    var lastValue = ''
+    DerpXmlRead_OpenFile(skinConfigFilename)
+    while DerpXmlRead_Read() {
+        var type = DerpXmlRead_CurType()
+        var value = DerpXmlRead_CurValue()
+        if type == DerpXmlType_OpenTag and value == 'sprite' {
+            subMap = ds_map_create()
+        }
+        else if type == DerpXmlType_CloseTag {
+            // todo: load general skin values (spike color, etc)
+            if value == 'name' {
+                global.skinSpriteMap[? lastValue] = subMap
+            }
+            else if value == 'xorig' or value == 'yorig'
+            or value = 'xpaloff' or value = 'ypaloff'
+            or value == 'animframes' {
+                subMap[? value] = real(lastValue)
+            }
+            else if value == 'animspeed' {
+                subMap[? value] = 1/real(lastValue)
+            }
+            else if value == 'animsync' {
+                subMap[? value] = lastValue
+            }
+        }
+        lastValue = value
+    }
+    DerpXmlRead_CloseFile()
+}
+else {
+    // Todo: handle skin config file not existing
+}
+
+
+// add default sprites
+var size = ds_map_size(global.stringToDefaultSkinSprite);
+var key = ds_map_find_first(global.stringToDefaultSkinSprite)
+for (var i=0; i<size; i+=1) {
+    var subMap = global.skinSpriteMap[? key];
+    if is_undefined(subMap) {
+        // TODO: show an error message if a sprite config isn't supplied!
+        subMap = ds_map_create()
+        global.skinSpriteMap[? key] = subMap
+        subMap[? 'xorig'] = 0
+        subMap[? 'yorig'] = 0
+        subMap[? 'xpaloff'] = 0
+        subMap[? 'ypaloff'] = 0
+        subMap[? 'animframes'] = 0
+        subMap[? 'animspeed'] = 0
+        subMap[? 'animsync'] = 'synced'
+    }
+    subMap[? 'sprite'] = global.stringToDefaultSkinSprite[? key]
+    key = ds_map_find_next(global.stringToDefaultSkinSprite, key)
+}
+
+
+// load png files
+var filename = file_find_first(skinFolder+'*.png', 0)
+while filename != '' {
+    var sprName = string_copy(filename, 1, string_pos('.', filename)-1)
+    var subMap = global.skinSpriteMap[? sprName]
+    if is_undefined(subMap) {
+        // TODO: show an error message if a sprite config isn't supplied!
+        subMap = ds_map_create()
+        global.skinSpriteMap[? sprName] = subMap
+        subMap[? 'xorig'] = 0
+        subMap[? 'yorig'] = 0
+        subMap[? 'xpaloff'] = 0
+        subMap[? 'ypaloff'] = 0
+        subMap[? 'animframes'] = 0
+        subMap[? 'animspeed'] = 0
+        subMap[? 'animsync'] = 'synced'
+    }
+    var xOrig = subMap[? 'xorig']
+    var yOrig = subMap[? 'yorig']
+    var animFrames = subMap[? 'animframes']
+    var addedSpr = sprite_add(skinFolder+filename, animFrames, false, false, xOrig, yOrig)
+    if addedSpr == -1 {
+        resource_add_errors += ', '+filename
+        addedSpr = sprite_duplicate(sSpikeUpDefault)
+    }
+    subMap[? 'sprite'] = addedSpr
+    filename = file_find_next()
+}
+file_find_close()
+
+
+// Hardcoded values (only apple anim speed)
+var subMap = global.skinSpriteMap[? 'apple'];
+subMap[? 'animspeed'] = 1/15
+
+
+// Set selected object to first one in palatte
+var palItemMap = global.palatteList[| 0]
+var spriteConfigMap = global.skinSpriteMap[? palItemMap[? 'spr']]
+with oEdit {
+    selected_object = global.stringToObjectMap[? palItemMap[? 'obj']]
+    selected_sprite = spriteConfigMap[? 'sprite']
+    selected_killer = selected_object == oKiller
+    selected_animspeed = spriteConfigMap[? 'animspeed']
+}
+
+
+/*
+
 // assign sprites from file
 var resource_add_errors = ''
 for (var i=0; i<100; i+=1) {
-    /* spr_index - sprite index to replace
-       spr_default - default sprite to use if png not found
-       file - name of png file
-       xo - sprite x origin to set (default 0)
-       yo - sprite y origin to set (default 0)
-       frames - number of frames the sprite png has (default 1)
-    */
+    // spr_index - sprite index to replace
+    // spr_default - default sprite to use if png not found
+    // file - name of png file
+    // xo - sprite x origin to set (default 0)
+    // yo - sprite y origin to set (default 0)
+    // frames - number of frames the sprite png has (default 1)
     var spr_index,spr_default,file,xo,yo,frames
     xo = 0
     yo = 0

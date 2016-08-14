@@ -14,7 +14,7 @@ switch saveid {
     case 11: return oApple
     case 12: return oSave
     case 13: return oPlatform
-    case 14: return oWater
+    case 14: return oWater1
     case 15: return oWater2
     case 16: return oWalljumpL
     case 17: return oWalljumpR
@@ -26,6 +26,6 @@ switch saveid {
     case 23: return oWater3
     case 24: return oGravityArrowUp
     case 25: return oGravityArrowDown
-    case 26: return oSaveFlip
+    case 26: return oSaveFlipped
     default: return noone
 }

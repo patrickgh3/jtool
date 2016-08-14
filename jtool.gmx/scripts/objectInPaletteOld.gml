@@ -19,7 +19,7 @@ switch objectindex {
     case oSave:
     case oPlatform:
     case oKillerBlock:
-    case oWater:
+    case oWater1:
     case oWater2:
     case oWater3:
     case oWalljumpL:
@@ -30,7 +30,7 @@ switch objectindex {
     case oJumpRefresher:
     case oGravityArrowUp:
     case oGravityArrowDown:
-    case oSaveFlip:
+    case oSaveFlipped:
     return true
 }
 return false

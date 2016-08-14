@@ -17,7 +17,7 @@ var non_rmj_object = false
 with all {
     var rmjcode = objectToRmjCode(object_index)
     if rmjcode == -1 {
-        if objectInPalette(object_index) non_rmj_object = true
+        if objectInPalatte(object_index) non_rmj_object = true
         continue
     }
     file_text_write_string(f,' '+string(x)+' '+string(y)+' '+string(rmjcode)) 

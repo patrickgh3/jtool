@@ -33,10 +33,14 @@ ymin = 0
 xmax = 799
 ymax = 607
 
-// selected object and sprite. set by the menu object.
-selected_object = oEditBlock
-selected_sprite = sEditBlock
-selected_killer = false
+// selected object and sprite. set by the palatte object.
+/*selected_object = -1
+selected_sprite = -1
+selected_objectstring = -1
+selected_spritestring = -1
+selected_custommask = -1
+selected_maskstring = -1
+selected_killer = -1*/
 
 // used internally
 xsnapped = 0
@@ -82,7 +86,7 @@ var rightpressed = mouse_check_button_pressed(mb_right)
 if not left undo_leftpressedinedit = false
 if not right undo_rightpressedinedit = false
 
-var xx = mouse_x+(snap-sprite_get_width(selected_sprite))/2
+var xx = mouse_x+(snap-sprite_get_width(selected_sprite))/2 // TODO: grab palatte offset of the sprite?
 var yy = mouse_y+(snap-sprite_get_height(selected_sprite))/2
 xsnapped = floor(xx/snap)*snap
 ysnapped = floor(yy/snap)*snap
@@ -97,7 +101,7 @@ if cursor_in_area and global.state == globalstate_idle {
         
         // creating
         if leftpressed and not right {
-            with all if objectInPalette(object_index) undo_recent = false
+            with all undo_recent = false
             undo_leftpressedinedit = true
             undo_objectstring = 'create'
             undo_nochanges = false
@@ -136,7 +140,7 @@ if cursor_in_area and global.state == globalstate_idle {
         
         // destroying
         if rightpressed and not left {
-            with all if objectInPalette(object_index) undo_recent = false
+            with all undo_recent = false
             undo_rightpressedinedit = true
             undo_objectstring = ''
             undo_nochanges = false
@@ -144,9 +148,9 @@ if cursor_in_area and global.state == globalstate_idle {
         }
         if right and not left and undo_rightpressedinedit {
             with all {
-                if not objectInPalette(object_index) continue
+                if not objectInPalatte(object_index) continue
                 if global.waterlocked and
-                    (object_index == oWater
+                    (object_index == oWater1
                     or object_index == oWater2
                     or object_index == oWater3) continue
                 
@@ -173,9 +177,9 @@ if cursor_in_area and global.state == globalstate_idle {
             y = -1000
             with all {
                 if not position_meeting(mouse_x, mouse_y, self) continue
-                if not objectInPalette(object_index) continue
+                if not objectInPalatte(object_index) continue
                 if global.waterlocked and
-                    (object_index == oWater
+                    (object_index == oWater1
                     or object_index == oWater2
                     or object_index == oWater3) continue
                 other.selected_object = object_index
@@ -196,7 +200,7 @@ if keyboard_check_direct(vk_control) and keyboard_check_pressed(ord('Z'))
 and global.state == globalstate_idle and not left and not right {
     if undo_objectstring == 'create' {
         with all {
-            if objectInPalette(object_index)
+            if objectInPalatte(object_index)
             and object_index != oPlayerStart
             and undo_recent {
                 instance_destroy()
@@ -215,33 +219,6 @@ and global.state == globalstate_idle and not left and not right {
 xsnapped_previous = xsnapped
 ysnapped_previous = ysnapped
 
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>with all {
-    if objectInPalette(object_index) {
-        undo_recent = false
-    }
-}
 </string>
           </argument>
         </arguments>

@@ -12,7 +12,7 @@ switch rmjobject {
     case 16: return oMiniSpikeDown
     case 32: return oSave
     case 31: return oPlatform
-    case 23: return oWater
+    case 23: return oWater1
     case 30: return oWater2
     case 20: return oApple
     case 27: return oKillerBlock

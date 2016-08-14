@@ -14,7 +14,7 @@ switch objectindex {
     case oApple:            return 11
     case oSave:             return 12
     case oPlatform:         return 13
-    case oWater:            return 14
+    case oWater1:            return 14
     case oWater2:           return 15
     case oWalljumpL:        return 16
     case oWalljumpR:        return 17
@@ -26,6 +26,6 @@ switch objectindex {
     case oWater3:           return 23
     case oGravityArrowUp:   return 24
     case oGravityArrowDown: return 25
-    case oSaveFlip:         return 26
+    case oSaveFlipped:         return 26
     default: return -1
 }

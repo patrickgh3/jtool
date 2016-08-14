@@ -12,7 +12,7 @@ switch obj {
     case oMiniSpikeDown: return 16
     case oSave: return 32
     case oPlatform: return 31
-    case oWater: return 23
+    case oWater1: return 23
     case oWater2: return 30
     case oApple: return 20
     case oKillerBlock: return 27

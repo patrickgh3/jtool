@@ -2,7 +2,7 @@
 <object>
   <spriteName>sBlockMask</spriteName>
   <solid>-1</solid>
-  <visible>0</visible>
+  <visible>-1</visible>
   <depth>100</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>

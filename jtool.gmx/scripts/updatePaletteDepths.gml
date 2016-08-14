@@ -27,7 +27,7 @@ for (var i=0; i<ds_list_size(global.depthList); i++) {
            ds_list_add(objectList, oKillerBlock)
            break
         case depthorder_water:
-           ds_list_add(objectList, oWater)
+           ds_list_add(objectList, oWater1)
            ds_list_add(objectList, oWater2)
            ds_list_add(objectList, oWater3)
            break

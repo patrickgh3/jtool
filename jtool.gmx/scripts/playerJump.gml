@@ -1,6 +1,6 @@
 if place_meeting(x,y+global.grav,oBlock)
 or onPlatform
-or place_meeting(x,y+global.grav,oWater) {
+or place_meeting(x,y+global.grav,oWater1) {
     vspeed = -jump
     djump = true
     audio_play_sound(sndJump,0,0)

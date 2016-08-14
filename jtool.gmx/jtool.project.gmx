@@ -3,7 +3,7 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="10" name="datafiles">
+  <datafiles number="11" name="datafiles">
     <datafile>
       <name>stock_skins_zip_included.zip</name>
       <exists>-1</exists>
@@ -21,9 +21,27 @@
       </ConfigOptions>
       <filename>stock_skins_zip_included.zip</filename>
     </datafile>
+    <datafile>
+      <name>palatte_config_default.xml</name>
+      <exists>-1</exists>
+      <size>199</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>palatte_config_default.xml</filename>
+    </datafile>
   </datafiles>
   <NewExtensions>
     <extension index="0">extensions\PatFileStuff</extension>
+    <extension index="1">extensions\DerpXml</extension>
   </NewExtensions>
   <sounds name="sound">
     <sound>sound\sndJump</sound>
@@ -85,6 +103,9 @@
       <sprite>sprites\sPlayerStartDefault</sprite>
       <sprite>sprites\sWarpDefault</sprite>
       <sprite>sprites\sJumpRefresherDefault</sprite>
+      <sprite>sprites\sGravityUpDefault</sprite>
+      <sprite>sprites\sGravityDownDefault</sprite>
+      <sprite>sprites\sSaveFlippedDefault</sprite>
       <sprite>sprites\sSidebarDefault</sprite>
       <sprite>sprites\sMenuDefault</sprite>
       <sprite>sprites\sPopupDefault</sprite>
@@ -252,7 +273,6 @@
       </scripts>
     </scripts>
     <scripts name="misc">
-      <script>scripts\mainInit.gml</script>
       <script>scripts\highlightGetFraction.gml</script>
       <script>scripts\number_to_frames_string.gml</script>
       <script>scripts\undoSerializeObject.gml</script>
@@ -261,7 +281,7 @@
       <script>scripts\restoreZoom.gml</script>
       <script>scripts\completelyResetZoom.gml</script>
       <script>scripts\nudgePlayerHalf.gml</script>
-      <script>scripts\objectInPalette.gml</script>
+      <script>scripts\objectInPaletteOld.gml</script>
       <script>scripts\cycleSkin.gml</script>
       <script>scripts\updateCaption.gml</script>
       <script>scripts\editCreateObject.gml</script>
@@ -269,6 +289,47 @@
       <script>scripts\editCreateObjectIfNotSamePos.gml</script>
       <script>scripts\updatePaletteDepths.gml</script>
     </scripts>
+    <scripts name="DerpXml">
+      <script>scripts\DerpXml_Init.gml</script>
+      <scripts name="Read">
+        <script>scripts\DerpXmlRead_OpenFile.gml</script>
+        <script>scripts\DerpXmlRead_CloseFile.gml</script>
+        <script>scripts\DerpXmlRead_LoadString.gml</script>
+        <script>scripts\DerpXmlRead_UnloadString.gml</script>
+        <script>scripts\DerpXmlRead_Read.gml</script>
+        <script>scripts\DerpXmlRead_CurType.gml</script>
+        <script>scripts\DerpXmlRead_CurValue.gml</script>
+        <script>scripts\DerpXmlRead_CurRawValue.gml</script>
+        <script>scripts\DerpXmlRead_CurGetAttribute.gml</script>
+      </scripts>
+      <scripts name="Write">
+        <script>scripts\DerpXmlWrite_New.gml</script>
+        <script>scripts\DerpXmlWrite_Config.gml</script>
+        <script>scripts\DerpXmlWrite_GetString.gml</script>
+        <script>scripts\DerpXmlWrite_UnloadString.gml</script>
+        <script>scripts\DerpXmlWrite_OpenTag.gml</script>
+        <script>scripts\DerpXmlWrite_CloseTag.gml</script>
+        <script>scripts\DerpXmlWrite_Text.gml</script>
+        <script>scripts\DerpXmlWrite_Attribute.gml</script>
+        <script>scripts\DerpXmlWrite_LeafElement.gml</script>
+      </scripts>
+      <scripts name="Examples ">
+        <scripts name=" Tutorials">
+          <script>scripts\DerpXmlExample_Read.gml</script>
+          <script>scripts\DerpXmlExample_ReadOther.gml</script>
+          <script>scripts\DerpXmlExample_ReadComplex.gml</script>
+          <script>scripts\DerpXmlExample_Write.gml</script>
+        </scripts>
+      </scripts>
+      <scripts name="Internal">
+        <script>scripts\DerpXml_ThrowError.gml</script>
+      </scripts>
+    </scripts>
+    <script>scripts\mainInit.gml</script>
+    <script>scripts\addObjectStringPairing.gml</script>
+    <script>scripts\loadPalatteConfig.gml</script>
+    <script>scripts\objectInPalatte.gml</script>
+    <script>scripts\addDefaultSkinSprite.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\font_small</font>
@@ -298,7 +359,7 @@
       <object>objects\oMiniSpikeDown</object>
       <object>objects\oApple</object>
       <object>objects\oKillerBlock</object>
-      <object>objects\oWater</object>
+      <object>objects\oWater1</object>
       <object>objects\oWater2</object>
       <object>objects\oWater3</object>
       <object>objects\oWalljumpL</object>
@@ -306,15 +367,15 @@
       <object>objects\oSave</object>
       <object>objects\oWarp</object>
       <object>objects\oJumpRefresher</object>
+      <object>objects\oGravityArrowUp</object>
+      <object>objects\oGravityArrowDown</object>
+      <object>objects\oSaveFlipped</object>
     </objects>
     <objects name="other elements">
       <object>objects\oSlipBlock</object>
       <object>objects\oWaterNekoron</object>
       <object>objects\oSlideBlock</object>
       <object>objects\oSlideBlockR</object>
-      <object>objects\oGravityArrowUp</object>
-      <object>objects\oGravityArrowDown</object>
-      <object>objects\oSaveFlip</object>
       <object>objects\oPatBall</object>
     </objects>
     <objects name="sidebar">
@@ -353,6 +414,10 @@
       <object>objects\oBorderTypeController</object>
       <object>objects\oDepthOrderPlayerHint</object>
       <object>objects\oWakahaEasterEgg</object>
+    </objects>
+    <objects name="DerpXml">
+      <object>objects\objDerpXmlRead</object>
+      <object>objects\objDerpXmlWrite</object>
     </objects>
   </objects>
   <rooms name="rooms">

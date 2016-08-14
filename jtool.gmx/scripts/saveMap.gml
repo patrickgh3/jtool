@@ -31,11 +31,11 @@ file_text_write_string(f,'objects:')
 var objects_out_of_range = false
 var objects_unrecognized = false
 with all {
-    if not objectInPalette(object_index) continue
+    if not objectInPalatte(object_index) continue
     saved = false
 }
 with all {
-    if not objectInPalette(object_index) continue
+    if not objectInPalatte(object_index) continue
     if saved continue
     var maxpos = 896
     var minpos = -128
@@ -47,7 +47,7 @@ with all {
     var yy = y
     file_text_write_string(f,'-'+padStringLeft(intToBase32String(y+128),2,'0'))
     with all {
-        if not objectInPalette(object_index) or y != yy or saved continue
+        if not objectInPalatte(object_index) or y != yy or saved continue
         if x >= maxpos or y >= maxpos or x < minpos or y < minpos {
             objects_out_of_range = true
             continue
@@ -72,7 +72,7 @@ file_text_writeln(f)
 file_text_write_string(f,'objects: (x, y, type)')
 file_text_writeln(f)
 with all {
-    if not objectInPalette(object_index) continue
+    if not objectInPalatte(object_index) continue
     var maxpos = 896
     var minpos = -128
     if x >= maxpos or y >= maxpos or x < minpos or y < minpos {
