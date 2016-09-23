@@ -1,5 +1,9 @@
 jtool change log
 
+--- 1.2.3   9/23/16 ---
+Edit object step code (by Klazen)
+^ read dynamic_code.html
+
 --- 1.2.1   2/26/16 ---
 Fix crash when no internet connection
 Windows 10-specific bugfixes
