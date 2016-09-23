@@ -37,7 +37,7 @@ if mode == input_textbox {
 }
 else if mode == input_textarea {
     var back_w = 450
-    var back_h = 300
+    var back_h = 140+max(160, string_height(keyboard_string)+26)
     var label_yo = -30
 }
 else if mode == input_yesno {
@@ -236,9 +236,9 @@ else if mode == input_textbox {
     }
 }
 else if mode == input_textarea {
-    var textbox_yo = -10-64
     var textbox_w = 400
-    var textbox_h = 160
+    var textbox_h = max(160, string_height(keyboard_string)+26)
+    var textbox_yo = -10-64-(textbox_h-160)/2
     var cursor_h = 20
     var xx = 528-textbox_w/2
     var yy = 304+textbox_yo
@@ -246,10 +246,21 @@ else if mode == input_textarea {
     drawButton(xx,yy,textbox_w,textbox_h,true)
     fontSetup(font_small,c_black,fa_left,fa_top,1)
     draw_text(xx+6,yy+6,keyboard_string)
+    // find cursor position and draw it
     if floor(global.count/20) mod 2 == 0 {
-        //var xxx = xx+string_width(keyboard_string)+8
-        //var yyy = yy+6+6+string_height(keyboard_string)-string_height("1")
-        //draw_line(xxx,yyy-cursor_h/2,xxx,yyy+cursor_h/2) //TODO: figure out cursor position
+        var tempstr = keyboard_string
+        var charindex = 0
+        var numlines = 0
+        var lastnewline = string_pos('#', tempstr)
+        while lastnewline != 0 {
+            charindex += lastnewline
+            tempstr = string_copy(tempstr, lastnewline+1, string_length(tempstr)-lastnewline)
+            numlines += 1
+            lastnewline = string_pos('#', tempstr)
+        }
+        var xxx = xx+string_width(tempstr)+8
+        var yyy = yy+6+6+string_height('1')*numlines
+        draw_line(xxx,yyy-cursor_h/2,xxx,yyy+cursor_h/2)
     }
     fontSetup(font_small,c_black,fa_center,fa_center,1)
     draw_text(528,yy-32,label)
@@ -312,6 +323,7 @@ else if mode == input_about {
     +'#Special thanks:'
     +'#YoYoYoDude1 for his studio engine'
     +'#Thenewgeezer for the original RMJ'
+    +'#Klazen108 for adding object code'
     +'#people who gave feedback and feature ideas'
     +'##Please read readme.html for more info!')
     
