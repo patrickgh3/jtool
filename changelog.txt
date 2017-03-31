@@ -1,5 +1,14 @@
 jtool change log
 
+--- 1.2.4   3/31/17 ---
+Automatic backups every 5 minutes in case of crashes (can be disabled)
+Prompt on close if unsaved work (exPatchWindowClose extension)
+Misc bugfixes
+Change skin button can go backwards
+Shift all objects buttons
+Ability to disable update check
+Add skin library to About
+
 --- 1.2.3   9/23/16 ---
 Edit object step code (by Klazen)
 ^ read dynamic_code.html

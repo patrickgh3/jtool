@@ -31,6 +31,33 @@
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Backup
+if global.backup {
+    saveMapName(prefix_project_path_if_needed('backup.jmap'))
+}
+alarm[5] = global.backup_period
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="2" enumb="4">
       <action>
         <libid>1</libid>
@@ -194,8 +221,46 @@ if keyboard_check_direct(vk_alt) and keyboard_check_pressed(vk_f4) {
 
 adjustPlayerPosition_EndStep()
 
+// crash the game, for backup testing purposes
+/*if keyboard_check_pressed(ord('C')) {
+    a = 0
+    a += 'a'
+}*/
+
 global.count += 1
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (ex_patch_window_close_event()) {
+    if not oEdit.undo_nochanges {
+        if (show_question('The map has unsaved changes.#Are you sure you want to exit?')) {
+            game_end()
+        }
+    }
+    else {
+        game_end()
+    }
+}
 </string>
           </argument>
         </arguments>
@@ -233,6 +298,29 @@ if Id == versionRequestId {
             "There's a new Jtool version ("+newestVersionString+")#Visit the forum thread to download it.")
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>deleteBackup()
 </string>
           </argument>
         </arguments>

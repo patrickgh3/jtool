@@ -6,6 +6,7 @@
   <datafiles number="2" name="datafiles"/>
   <NewExtensions>
     <extension index="0">extensions\GMFileSystem</extension>
+    <extension index="1">extensions\exPatchWindowClose</extension>
   </NewExtensions>
   <sounds name="sound">
     <sound>sound\sndJump</sound>
@@ -183,6 +184,8 @@
       <script>scripts\drawButton.gml</script>
       <script>scripts\menuSection.gml</script>
       <script>scripts\comboBoxButton.gml</script>
+      <script>scripts\menuButtonTwoPart.gml</script>
+      <script>scripts\menuButtonShift.gml</script>
     </scripts>
     <scripts name="jump analysis">
       <script>scripts\jumpDurations_Create.gml</script>
@@ -205,6 +208,7 @@
     <scripts name="saveload">
       <scripts name="save map">
         <script>scripts\saveMap.gml</script>
+        <script>scripts\saveMapName.gml</script>
         <script>scripts\intToBase32String.gml</script>
         <script>scripts\floatToBase32String.gml</script>
         <script>scripts\objectToSaveID.gml</script>
@@ -252,6 +256,7 @@
       <script>scripts\editCreateObjectIfFree.gml</script>
       <script>scripts\editCreateObjectIfNotSamePos.gml</script>
       <script>scripts\updatePaletteDepths.gml</script>
+      <script>scripts\deleteBackup.gml</script>
     </scripts>
     <scripts name="object code">
       <scripts name="NSP">
@@ -411,6 +416,7 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\rMain</room>
+    <room>rooms\rm_sample_ex_patch_windowclose</room>
   </rooms>
   <constants number="23">
     <constant name="globalstate_idle">1</constant>

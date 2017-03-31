@@ -18,6 +18,8 @@ if global.run_from_editor and not FS_directory_exists(global.editor_project_path
     game_end()
 }
 
+ex_patch_window_close_capture(true)
+
 // global state
 global.state = globalstate_idle
 global.comboboxselected = false
@@ -29,13 +31,16 @@ global.player_xscale = 1 // setting the player's xscale causes physics issues
 global.joketitleindex = 0 // used in buttonCallback_JokeTitle
 global.version_major = 1
 global.version_minor = 2
-global.version_patch = 3
+global.version_patch = 4
 global.version_string = string(global.version_major)+'.'+string(global.version_minor)+'.'+string(global.version_patch)
 global.input_string = ''
 global.input_bool = false
 global.input_cancel = false
 global.depthList = ds_list_create()
 global.waterlocked = false
+global.backup_period = 5*60*50
+alarm[5] = global.backup_period
+global.shouldresetloadedmapname = false
 
 // maybe later load from map
 global.grav = 1
@@ -47,9 +52,17 @@ global.killer_fadeduration = 4
 
 loadConfig()
 
-loadStartupMap()
-
-versionRequestId = http_get('http://cwpat.me/jtool-version')
+var backupFilename = prefix_project_path_if_needed('backup.jmap')
+if FS_file_exists(backupFilename) {
+    loadMap(backupFilename)
+    inputOverlay(input_info,false,'Jtool did not exit successfully.#Backup map has been loaded.')
+}
+else {
+    loadStartupMap()
+    if global.checkupdates {
+        versionRequestId = http_get('http://cwpat.me/jtool-version')
+    }
+}
 
 // misc
 randomize()

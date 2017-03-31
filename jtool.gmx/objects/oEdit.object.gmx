@@ -273,7 +273,7 @@ ysnapped_previous = ysnapped
           <argument>
             <kind>1</kind>
             <string>if cursor_in_area and global.state == globalstate_idle {
-    if not keyboard_check(vk_control) and not keyboard_check(vk_alt) {
+    if not keyboard_check(vk_control) and not keyboard_check_direct(vk_alt) {
         var color = c_white
         if selected_killer color = global.color_killer
         draw_sprite_ext(selected_sprite,0,xsnapped,ysnapped,1,1,0,color,0.3)

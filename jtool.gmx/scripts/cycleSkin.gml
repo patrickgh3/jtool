@@ -1,3 +1,5 @@
+var skinCycleDir = argument0
+
 var skinsfolder = prefix_project_path_if_needed('skins/')
 var filename = skinsfolder+'skins.ini'
 
@@ -22,7 +24,10 @@ var nextSkinIndex = 0
 for (var i=0; i<numskins; i++) {
     var name = splitDelimString(str,',',i)
     if name == global.skinName {
-        nextSkinIndex = (i+1) mod numskins
+        var n = i+skinCycleDir
+        if n < 0 n = numskins-1
+        if n >= numskins n = 0
+        nextSkinIndex = n
     }
 }
 

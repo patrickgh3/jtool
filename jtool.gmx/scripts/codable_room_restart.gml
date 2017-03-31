@@ -14,10 +14,11 @@ if not instance_exists(oInputOverlay) {
     global.trg=0;
 
     with all {
-        if codable_is_codable(id) {
+        if codable_is_codable(id) and code_step_written != '' {
             new_instance = instance_create(xstart,ystart,object_index)
             new_instance.code_step_compiled = code_step_compiled
             new_instance.code_step_written = code_step_written
+            new_instance.undo_recent = false
             instance_destroy()
         }
     }

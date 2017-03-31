@@ -16,6 +16,8 @@ global.grid_draw = FS_ini_read_real('prefs','grid_draw',false)
 global.mousecoords = FS_ini_read_real('prefs','mousecoords',false)
 global.playery_extended = FS_ini_read_real('prefs','playery_extended',false)
 var depthstring = FS_ini_read_string('prefs','depthorder','0,1,2,3')
+global.backup = FS_ini_read_real('prefs','backup',true)
+global.checkupdates = FS_ini_read_real('prefs','checkupdates',true)
 FS_ini_close()
 
 if string_count(',',depthstring) != 3 depthstring = '0,1,2,3'
