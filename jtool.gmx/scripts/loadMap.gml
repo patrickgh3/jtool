@@ -42,7 +42,7 @@ while index <= string_length(content) {
             var prefix = splitDelimString(currentstring,':',0)
             var suffix = splitDelimString(currentstring,':',1)
             if prefix == 'objects' {
-                oEdit.undo_objectstring = ''
+                with( oEdit ) { clearUndoStack(); }
                 oEdit.undo_nochanges = true
                 with all if objectInPalette(object_index) instance_destroy()
                 with oPatBall instance_destroy()
@@ -59,7 +59,6 @@ while index <= string_length(content) {
                         if objectid != noone {
                             var xx = base32StringToInt(string_copy(objectstring,i+1,2))
                             var inst = instance_create(xx-128,yy-128,objectid);
-                            inst.undo_recent = false;
                         }
                         i += 3
                     }

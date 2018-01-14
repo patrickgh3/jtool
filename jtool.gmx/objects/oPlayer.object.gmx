@@ -35,6 +35,7 @@ frozen = false
 djump = true
 onPlatform = false
 image_speed = 0.2
+nudgeBlockCheck = false;
 
 if not global.dotkid {
     mask_index = sPlayerMask
@@ -175,6 +176,13 @@ var R = keyboard_check_direct(global.key_right)
 var h = R
 if h == 0 h = -L
 if frozen h = 0
+
+// Check for block underneath for nudging.
+if( global.checkNudgeEarly ) {
+    nudgeBlockCheck = place_meeting(x,y+global.grav,oBlock);
+} else {
+    nudgeBlockCheck = false;
+}
 
 var slipBlockTouching = instance_place(x,y+4*global.grav,oSlipBlock)
 

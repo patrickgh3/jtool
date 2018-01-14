@@ -332,20 +332,24 @@ yy -= dy-6
 
 xx += sdx*2
 if menuButtonShift(xx, yy, sw, sh, '&gt;', buttons_enabled, 0) {
-    with all if objectInPalette(object_index) x += oEdit.snap
+    with( oEdit ) { clearUndoStack(); }
+    with all if objectInPalette(object_index) x += oEdit.snap;
 }
 xx -= sdx
 yy += sdy
 if menuButtonShift(xx, yy, sw, sh, 'v', buttons_enabled, 0) {
+    with( oEdit ) { clearUndoStack(); }
     with all if objectInPalette(object_index) y += oEdit.snap
 }
 yy -= sdy*2
 if menuButtonShift(xx, yy, sw, sh, '^', buttons_enabled, 0) {
+    with( oEdit ) { clearUndoStack(); }
     with all if objectInPalette(object_index) y -= oEdit.snap
 }
 xx -= sdx
 yy += sdy
 if menuButtonShift(xx, yy, sw, sh, '&lt;', buttons_enabled, 0) {
+    with( oEdit ) { clearUndoStack(); }
     with all if objectInPalette(object_index) x -= oEdit.snap
 }
 
@@ -366,7 +370,7 @@ if menuButton(xx,yy,w,h,'About',buttons_enabled,false) {
 // game end
 yy += dy
 if menuButton(xx,yy,w,h,'Quit',buttons_enabled,false) {
-    game_end()
+    exitPressed()
 }
 </string>
           </argument>

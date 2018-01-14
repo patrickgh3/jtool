@@ -3,7 +3,7 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="2" name="datafiles"/>
+  <datafiles number="3" name="datafiles"/>
   <NewExtensions>
     <extension index="0">extensions\GMFileSystem</extension>
     <extension index="1">extensions\exPatchWindowClose</extension>
@@ -138,6 +138,8 @@
       <sprite>sprites\sBorderDeath</sprite>
       <sprite>sprites\sCursorDropper</sprite>
       <sprite>sprites\sCursorCoder</sprite>
+      <sprite>sprites\sCursorClosedHand</sprite>
+      <sprite>sprites\sCursorOpenHand</sprite>
       <sprite>sprites\sPatBall</sprite>
       <sprite>sprites\sEllipsis</sprite>
       <sprite>sprites\sJumpManyTimes</sprite>
@@ -161,6 +163,12 @@
       <script>scripts\stringIsInt.gml</script>
       <script>scripts\colorFromHsvDelimString.gml</script>
       <script>scripts\prefix_project_path_if_needed.gml</script>
+      <script>scripts\FSIniReadReal.gml</script>
+      <script>scripts\selectPrevObject.gml</script>
+      <script>scripts\selectNextObject.gml</script>
+      <script>scripts\selectEditObject.gml</script>
+      <script>scripts\handleObjectDragMode.gml</script>
+      <script>scripts\findInstanceToDrag.gml</script>
     </scripts>
     <scripts name="input overlay">
       <script>scripts\inputOverlay.gml</script>
@@ -243,8 +251,6 @@
       <script>scripts\mainInit.gml</script>
       <script>scripts\highlightGetFraction.gml</script>
       <script>scripts\number_to_frames_string.gml</script>
-      <script>scripts\undoSerializeObject.gml</script>
-      <script>scripts\undoDeserializeObject.gml</script>
       <script>scripts\saveAndResetZoom.gml</script>
       <script>scripts\restoreZoom.gml</script>
       <script>scripts\completelyResetZoom.gml</script>
@@ -257,6 +263,7 @@
       <script>scripts\editCreateObjectIfNotSamePos.gml</script>
       <script>scripts\updatePaletteDepths.gml</script>
       <script>scripts\deleteBackup.gml</script>
+      <script>scripts\exitPressed.gml</script>
     </scripts>
     <scripts name="object code">
       <scripts name="NSP">
@@ -323,6 +330,21 @@
       <script>scripts\codable_room_restart.gml</script>
       <script>scripts\codable_is_dynamic.gml</script>
       <script>scripts\codable_error_callback.gml</script>
+    </scripts>
+    <scripts name="undo">
+      <script>scripts\createStringFromInstance.gml</script>
+      <script>scripts\addUndoEvent.gml</script>
+      <script>scripts\handleUndoCommand.gml</script>
+      <script>scripts\handleRedoCommand.gml</script>
+      <script>scripts\expandUndoEvent.gml</script>
+      <script>scripts\clearUndoStack.gml</script>
+      <script>scripts\undoCreate.gml</script>
+      <script>scripts\undoMove.gml</script>
+      <script>scripts\undoDestroy.gml</script>
+      <script>scripts\redoCreate.gml</script>
+      <script>scripts\redoMove.gml</script>
+      <script>scripts\redoDestroy.gml</script>
+      <script>scripts\getPositionString.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">

@@ -8,7 +8,7 @@
    but I think that's a safe assumption.
 */
 global.run_from_editor = string_pos('gm_ttt',working_directory) != 0
-global.editor_project_path = 'C:\Patrick\Projects\GameMaker\jtool'
+global.editor_project_path = 'C:\Patrick\Projects\GameMaker\Current\JToolSrc'
 // add backslash to end
 if string_char_at(global.editor_project_path,string_length(global.editor_project_path)) != '\' {
     global.editor_project_path += '\'
@@ -30,8 +30,8 @@ global.frameaction_jumpslow = false
 global.player_xscale = 1 // setting the player's xscale causes physics issues
 global.joketitleindex = 0 // used in buttonCallback_JokeTitle
 global.version_major = 1
-global.version_minor = 2
-global.version_patch = 4
+global.version_minor = 3
+global.version_patch = 0
 global.version_string = string(global.version_major)+'.'+string(global.version_minor)+'.'+string(global.version_patch)
 global.input_string = ''
 global.input_bool = false
@@ -49,6 +49,8 @@ global.saveGrav = 1
 // might load from config later
 global.killer_holdduration = 12
 global.killer_fadeduration = 4
+global.restartWithDJump = true;
+global.checkNudgeEarly = true;
 
 loadConfig()
 

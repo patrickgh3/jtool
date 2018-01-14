@@ -1,0 +1,1 @@
+undoDestroy( argument0 );

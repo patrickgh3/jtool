@@ -55,7 +55,7 @@ else if mode == input_info {
 }
 else if mode == input_about {
     var back_w = 320
-    var back_h = 440
+    var back_h = 480
     var label_yo = 0
 }
 else if mode == input_depth {
@@ -319,16 +319,17 @@ else if mode == input_info {
 }
 else if mode == input_about {
     fontSetup(font_small,c_black,fa_center,fa_top,1)
-    draw_text(528,304-190,'jtool version '+global.version_string+'##made by Patrickgh3#'
+    draw_text(528,304-210,'jtool version '+global.version_string+'##made by Patrickgh3#'
     +'#Special thanks:'
     +'#YoYoYoDude1 for his studio engine'
     +'#Thenewgeezer for the original RMJ'
     +'#Klazen108 for adding object code'
+    +'#Redire for making additional features'
     +'#people who gave feedback and feature ideas'
     
     +'##Please read readme.html for more info!')
     
-    draw_sprite(sIcon32, 0, 528-105, 304-193)
+    draw_sprite(sIcon32, 0, 528-105, 304-213)
     
     var button_w = 130
     var button_h = 32

@@ -39,17 +39,20 @@ if global.editorinstructions {
     var yy = 5
     var dy = 25
     var dx = 70
-    var h = 332
+    var h = 407
     
     draw_sprite_ext(sPopup,0,xx-12,0,(800-(xx-12))/sprite_get_width(sPopup),(h-0)/sprite_get_height(sPopup),0,c_white,0.9)
     fontSetup(font_small,c_black,fa_left,fa_top,1)
     draw_rectangle(xx-12,-1,800,h,true)
     
     draw_text(xx,yy,'L click')
-    draw_text(xx+dx,yy,'Place object')
+    draw_text(xx+dx,yy,'Place Object')
     yy += dy
     draw_text(xx,yy,'R click')
-    draw_text(xx+dx,yy,'Remove object')
+    draw_text(xx+dx,yy,'Remove Object')
+    yy += dy
+    draw_text(xx,yy,'M button')
+    draw_text(xx+dx,yy,'Move Object')
     yy += dy
     draw_text(xx,yy,'Ctrl')
     draw_text(xx+dx,yy,'Select')
@@ -60,26 +63,32 @@ if global.editorinstructions {
     draw_text(xx,yy,'Ctrl+Z')
     draw_text(xx+dx,yy,'Undo')
     yy += dy
+    draw_text(xx,yy,'Ctrl+Y')
+    draw_text(xx+dx,yy,'Redo')
+    yy += dy
     draw_text(xx,yy,'S')
     draw_text(xx+dx,yy,'Save')
     yy += dy
     draw_text(xx,yy,'W')
-    draw_text(xx+dx,yy,'Move kid')
+    draw_text(xx+dx,yy,'Move Kid')
     yy += dy
     draw_text(xx,yy,'A, D')
-    draw_text(xx+dx,yy,'Nudge kid x')
+    draw_text(xx+dx,yy,'Nudge Kid X')
     yy += dy
     draw_text(xx,yy,'V')
     draw_text(xx+dx,yy,'Set Valign')
     yy += dy
+    draw_text(xx,yy,'0...9')
+    draw_text(xx+dx,yy,'Select Object')
+    yy += dy
     draw_text(xx,yy,'Mwheel')
-    draw_text(xx+dx,yy,'Zoom in/out')
+    draw_text(xx+dx,yy,'Change Object')
     yy += dy
     draw_text(xx,yy,'X, C')
-    draw_text(xx+dx,yy,'Zoom in/out')
+    draw_text(xx+dx,yy,'Zoom In/Out')
     yy += dy
     draw_text(xx,yy,'Space')
-    draw_text(xx+dx,yy,'Pan view')
+    draw_text(xx+dx,yy,'Move Objects')
     yy += dy
     draw_text(xx,yy,'B')
     draw_text(xx+dx,yy,'Ball')

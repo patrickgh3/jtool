@@ -42,10 +42,17 @@ selected_killer = false
 xsnapped = 0
 ysnapped = 0
 cursor_in_area = false
-undo_objectstring = ''
+clearUndoStack();
 undo_rightpressedinedit = false
 undo_leftpressedinedit = false
 undo_nochanges = true
+
+draggedInstance = noone;
+dragStartX = 0;
+dragStartY = 0;
+
+undoDelay = 30;
+redoDelay = 30;
 
 xsnapped_previous = 0
 ysnapped_previous = 0
@@ -75,12 +82,29 @@ ysnapped_previous = 0
 
 var left = mouse_check_button(mb_left)
 var right = mouse_check_button(mb_right)
-var shift = keyboard_check_direct(vk_shift)
+var control = keyboard_check_direct(vk_control)
+var alt = keyboard_check_direct(vk_alt)
+var space = keyboard_check_direct( vk_space );
+var middleHeld = mouse_check_button( mb_middle );
+var middlePressed = mouse_check_button_pressed( mb_middle );
+var leftHeld = mouse_check_button(mb_left)
 var leftpressed = mouse_check_button_pressed(mb_left)
 var rightpressed = mouse_check_button_pressed(mb_right)
 
 if not left undo_leftpressedinedit = false
 if not right undo_rightpressedinedit = false
+
+var shouldCaptureControls = cursor_in_area &amp;&amp; global.state == globalstate_idle;
+
+if( shouldCaptureControls ) {
+    // Object rotation.
+    if( !control &amp;&amp; !alt &amp;&amp; mouse_wheel_up() ) {
+        selectPrevObject();
+    }
+    if( !control &amp;&amp; !alt &amp;&amp; mouse_wheel_down() ) {
+        selectNextObject();
+    }
+}
 
 var xx = mouse_x+(snap-sprite_get_width(selected_sprite))/2
 var yy = mouse_y+(snap-sprite_get_height(selected_sprite))/2
@@ -89,10 +113,21 @@ ysnapped = floor(yy/snap)*snap
 x = mouse_x
 y = mouse_y
 
-if cursor_in_area and global.state == globalstate_idle {
-
+if( shouldCaptureControls ) {
+   
+    // changing grid snap.
+    if( alt &amp;&amp; mouse_wheel_down() ) {
+        snap = max( 1, snap / 2 );
+        saveConfig()
+    }
+    if( alt &amp;&amp; mouse_wheel_up() ) {
+        snap = min( 32, snap * 2 );
+        saveConfig()
+    }
+    
     // dropper
-    if keyboard_check_direct(vk_control) {
+    if control {
+        draggedInstance = noone;
         cursor_sprite = sCursorDropper
         window_set_cursor(cr_none)
         if leftpressed {
@@ -107,7 +142,8 @@ if cursor_in_area and global.state == globalstate_idle {
         }
     }
     //code editor
-    else if keyboard_check_direct(vk_alt) and not instance_exists(oInputOverlay) { 
+    else if alt and not instance_exists(oInputOverlay) { 
+        draggedInstance = noone;
         cursor_sprite = sCursorCoder
         window_set_cursor(cr_none)
         if leftpressed {
@@ -120,15 +156,17 @@ if cursor_in_area and global.state == globalstate_idle {
                 if inst.code_step_written != '' then keyboard_string=inst.code_step_written
             }
         }
+    } else if( space || middleHeld || draggedInstance != noone ) {  // object movement
+        handleObjectDragMode( middlePressed || leftpressed, middleHeld || leftHeld );
     } else { //pencil
+        draggedInstance = noone;
         cursor_sprite = -1
         window_set_cursor(cr_default)
         
         // creating
         if leftpressed and not right {
-            with all if objectInPalette(object_index) undo_recent = false
             undo_leftpressedinedit = true
-            undo_objectstring = 'create'
+            addUndoEvent( 'c' );
             undo_nochanges = false
         }
         if left and not right and undo_leftpressedinedit {
@@ -164,9 +202,8 @@ if cursor_in_area and global.state == globalstate_idle {
         
         // destroying
         if rightpressed and not left {
-            with all if objectInPalette(object_index) undo_recent = false
             undo_rightpressedinedit = true
-            undo_objectstring = ''
+            addUndoEvent( 'd' );
             undo_nochanges = false
         }
         if right and not left and undo_rightpressedinedit {
@@ -181,7 +218,8 @@ if cursor_in_area and global.state == globalstate_idle {
                 or collision_line(other.xprevious, other.yprevious, other.x, other.y,id,true,false))
                 and object_index != oPlayerStart 
                 and !codable_is_dynamic(id) {
-                    other.undo_objectstring += undoSerializeObject(self)
+                    var undoStr = createStringFromInstance( self );
+                    with( oEdit ) { expandUndoEvent( undoStr ); }
                     instance_destroy()
                 }
             }
@@ -200,56 +238,43 @@ else {
 
 // undo
 if keyboard_check_direct(vk_control) and keyboard_check_pressed(ord('Z'))
-and global.state == globalstate_idle and not left and not right {
-    if undo_objectstring == 'create' {
-        with all {
-            if objectInPalette(object_index)
-            and object_index != oPlayerStart
-            and undo_recent {
-                instance_destroy()
-            }
-        }
-    }
-    else if undo_objectstring != '' {
-        for (var i=1; i&lt;string_length(undo_objectstring); i+=9) {
-            var s = string_copy(undo_objectstring,i,9)
-            undoDeserializeObject(s)
-        }
-    }
+and global.state == globalstate_idle and not left and not right and not middleHeld {
+    handleUndoCommand();
     undo_nochanges = false
-    undo_objectstring = ''
+    undoDelay = 20;
+}
+
+if keyboard_check_direct(vk_control) and keyboard_check(ord('Z') )
+and global.state == globalstate_idle and not left and not right and not middleHeld {
+    undoDelay -= 1;
+    if( undoDelay &lt;= 0 ) {
+        handleUndoCommand();
+        undo_nochanges = false
+        undoDelay = 4;
+    }
+}
+
+// redo
+if keyboard_check_direct(vk_control) and keyboard_check_pressed(ord('Y'))
+and global.state == globalstate_idle and not left and not right and not middleHeld {
+    handleRedoCommand();
+    undo_nochanges = false
+    redoDelay = 20;
+}
+
+if keyboard_check_direct(vk_control) and keyboard_check(ord('Y') )
+and global.state == globalstate_idle and not left and not right and not middleHeld {
+    redoDelay -= 1;
+    if( redoDelay &lt;= 0 ) {
+        handleRedoCommand();
+        undo_nochanges = false
+        redoDelay = 4;
+    }
 }
 
 xsnapped_previous = xsnapped
 ysnapped_previous = ysnapped
 
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>with all {
-    if objectInPalette(object_index) {
-        undo_recent = false
-    }
-}
 </string>
           </argument>
         </arguments>
@@ -273,7 +298,7 @@ ysnapped_previous = ysnapped
           <argument>
             <kind>1</kind>
             <string>if cursor_in_area and global.state == globalstate_idle {
-    if not keyboard_check(vk_control) and not keyboard_check_direct(vk_alt) {
+    if( !keyboard_check(vk_control) &amp;&amp; !keyboard_check_direct(vk_alt) &amp;&amp; !keyboard_check_direct( vk_space ) &amp;&amp; !mouse_check_button( mb_middle ) ) {
         var color = c_white
         if selected_killer color = global.color_killer
         draw_sprite_ext(selected_sprite,0,xsnapped,ysnapped,1,1,0,color,0.3)

@@ -7,7 +7,13 @@
 */
 
 with oPlayer {
-    if place_meeting(x,y+global.grav,oBlock) and not frozen {
+    var isOnBlock;
+    if( global.checkNudgeEarly ) {
+        isOnBlock = nudgeBlockCheck;
+    } else {
+        isOnBlock = place_meeting(x,y+global.grav,oBlock);
+    }
+    if isOnBlock and not frozen {
         if keyboard_check_pressed(ord('A')) and not place_meeting(x-1,y,oBlock) {
             x -= 1
         }

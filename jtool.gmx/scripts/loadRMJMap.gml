@@ -12,7 +12,7 @@ if firstline != ' 1.030000' {
 file_text_readln(f)
 file_text_readln(f)
 file_text_readln(f)
-oEdit.undo_objectstring = ''
+with( oEdit ) { clearUndoStack(); }
 oEdit.undo_nochanges = true
 with all if objectInPalette(object_index) instance_destroy()
 with oPatBall instance_destroy()

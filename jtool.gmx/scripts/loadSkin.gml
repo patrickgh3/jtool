@@ -34,9 +34,9 @@ global.color_buttonhover = colorFromHsvDelimString(
     FS_ini_read_string('ui','button_active_color','0,0,255'),',')
 global.color_palettepressed = colorFromHsvDelimString(
     FS_ini_read_string('ui','button_palette_pressed_color','0,0,0'),',')
-global.buttonhoveralpha = FS_ini_read_real('ui','button_active_alpha',0.5)
-global.buttonpalettepressedalpha = FS_ini_read_real('ui','button_palette_pressed_alpha',0.5)
-global.buttonhoverborder = FS_ini_read_real('ui','button_active_border',false)
+global.buttonhoveralpha = FSIniReadReal('ui','button_active_alpha',0.5)
+global.buttonpalettepressedalpha = FSIniReadReal('ui','button_palette_pressed_alpha',0.5)
+global.buttonhoverborder = FSIniReadReal('ui','button_active_border',false)
 
 // objects
 var colorstring = FS_ini_read_string('objects','killer_idle_color','0,0,255')
@@ -51,16 +51,16 @@ global.color_killer2val = real(splitDelimString(colorstring,',',2))
 global.color_killer2 = colorFromHsvDelimString(colorstring,',')
 global.color_warp = colorFromHsvDelimString(
     FS_ini_read_string('objects','warp_color','67,196,239'),',')
-global.bulletblockeralpha = FS_ini_read_real('objects','bulletblocker_alpha',0.3)
-global.spikeframes = FS_ini_read_real('objects','spike_frames',1)
-global.spikeanimspeed = FS_ini_read_real('objects','spike_animspeed',1)
-global.minispikeframes = FS_ini_read_real('objects','minispike_frames',1)
-global.minispikeanimspeed = FS_ini_read_real('objects','minispike_animspeed',1)
+global.bulletblockeralpha = FSIniReadReal('objects','bulletblocker_alpha',0.3)
+global.spikeframes = FSIniReadReal('objects','spike_frames',1)
+global.spikeanimspeed = FSIniReadReal('objects','spike_animspeed',1)
+global.minispikeframes = FSIniReadReal('objects','minispike_frames',1)
+global.minispikeanimspeed = FSIniReadReal('objects','minispike_animspeed',1)
 
 // bg
 var bg_type = FS_ini_read_string('bg','type','stretch')
-var bg_hspeed = FS_ini_read_real('bg','hspeed',0)
-var bg_vspeed = FS_ini_read_real('bg','vspeed',0)
+var bg_hspeed = FSIniReadReal('bg','hspeed',0)
+var bg_vspeed = FSIniReadReal('bg','vspeed',0)
 FS_ini_close()
 FS_file_delete(missing_ini_filename)
 

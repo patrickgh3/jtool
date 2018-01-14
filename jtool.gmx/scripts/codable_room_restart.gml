@@ -18,7 +18,6 @@ if not instance_exists(oInputOverlay) {
             new_instance = instance_create(xstart,ystart,object_index)
             new_instance.code_step_compiled = code_step_compiled
             new_instance.code_step_written = code_step_written
-            new_instance.undo_recent = false
             instance_destroy()
         }
     }

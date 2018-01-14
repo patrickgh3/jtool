@@ -209,6 +209,7 @@ keyboard_check_direct(global.key_right)
 
 if keyboard_check_pressed(global.key_restart) {
     loadPlayer()
+    with oPlayer djump = global.restartWithDJump;
     with oJumpRefresher count = 0
     with oKiller highlight_count = 1000
     with oWarp highlight_count = 1000
@@ -252,14 +253,7 @@ global.count += 1
           <argument>
             <kind>1</kind>
             <string>if (ex_patch_window_close_event()) {
-    if not oEdit.undo_nochanges {
-        if (show_question('The map has unsaved changes.#Are you sure you want to exit?')) {
-            game_end()
-        }
-    }
-    else {
-        game_end()
-    }
+    exitPressed()
 }
 </string>
           </argument>

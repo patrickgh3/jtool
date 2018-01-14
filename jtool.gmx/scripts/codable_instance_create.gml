@@ -3,7 +3,6 @@
 //for instance, we want to destroy all dynamic objects on restart
 
 var inst = instance_create(argument0,argument1,argument2);
-inst.undo_recent = false
 ds_list_add(global.dynamic_instance_list,inst)
 
 //force all dynamic instances to be at a lower depth, to prevent covering normal instances
