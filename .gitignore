@@ -18,5 +18,5 @@ config.ini
 startup.jmap
 
 # Rust
-/target/
+libjtool/target/
 **/*.rs.bk
