@@ -4,15 +4,9 @@ version = "0.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
-name = "lazy_static"
-version = "1.0.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-
-[[package]]
 name = "libjtool"
-version = "0.1.0"
+version = "0.2.0"
 dependencies = [
- "lazy_static 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "rust-ini 0.10.2 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
@@ -34,6 +28,5 @@ dependencies = [
 
 [metadata]
 "checksum cfg-if 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)" = "d4c819a1287eb618df47cc647173c5c4c66ba19d888a6e50d605672aed3140de"
-"checksum lazy_static 1.0.0 (registry+https://github.com/rust-lang/crates.io-index)" = "c8f31047daa365f19be14b47c29df4f7c3b581832407daabe6ae77397619237d"
 "checksum log 0.4.1 (registry+https://github.com/rust-lang/crates.io-index)" = "89f010e843f2b1a31dbd316b3b8d443758bc634bed37aabade59c686d644e0a2"
 "checksum rust-ini 0.10.2 (registry+https://github.com/rust-lang/crates.io-index)" = "22dab655e8122ccb15db25a56852ce62506f1486cdefd37e86371bf34ea8f601"

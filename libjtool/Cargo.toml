@@ -1,11 +1,10 @@
 [package]
 name = "libjtool"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Starz0r <starz0rdesign@gmail.com>"]
 
 [dependencies]
 rust-ini = "0.10.2"
-lazy_static = "1.0.0"
 
 [lib]
 crate-type = ["dylib", "cdylib"]
