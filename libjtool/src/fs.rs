@@ -2,24 +2,50 @@ use std::ffi::{CStr, CString};
 use std::os::raw::c_char;
 use std::cell::RefCell;
 use std::collections::HashMap;
-use std::io::BufReader;
 use std::fs::File;
+use std::io::{BufReader, BufWriter};
+use std::any::Any;
 
 thread_local!
 {
-    static FILES_G: RefCell<HashMap<i32, FileStore>> = RefCell::new(HashMap::new());
+    static FILES_G: RefCell<HashMap<i32, Box<Any>>> = RefCell::new(HashMap::new());
 }
 
-pub struct FileStore {
+#[no_mangle]
+pub extern "C" fn file_text_close(handle: f64)
+{
+    FILES_G.with
+    (
+        |f|
+        {
+            // Close the file
+            let mut f = f.borrow_mut();
+            let ref mut handle_ref = handle as i32;
+            let f = f.get_mut(handle_ref).unwrap();
+
+            if let Some(store) = f.downcast_mut::<FileStoreRead>()
+            {
+                store.close(handle as usize);
+            }
+
+            if let Some(store) = f.downcast_mut::<FileStoreWrite>()
+            {
+                store.close(handle as usize);
+            }
+        }
+    )
+}
+
+pub struct FileStoreRead {
     n: usize,
     read: HashMap<usize, BufReader<File>>,
     unread: HashMap<usize, File>
 }
 
-impl FileStore {
-    pub fn new() -> FileStore
+impl FileStoreRead {
+    pub fn new() -> FileStoreRead
     {
-        FileStore{n: 0, read: HashMap::new(), unread: HashMap::new()}
+        FileStoreRead{n: 0, read: HashMap::new(), unread: HashMap::new()}
     }
 
     pub fn read(&mut self, n: usize) -> String
@@ -42,12 +68,14 @@ impl FileStore {
             return self.read(n);
         }
 
-        return String::from("not found");
+        // No Reader Found
+        return String::from("");
     }
 
     pub fn close(&mut self, n: usize)
     {
         self.read.remove(&n);
+        self.unread.remove(&n);
     }
 }
 
@@ -63,7 +91,7 @@ pub unsafe extern "C" fn file_text_open_read(path: *const c_char) -> f64
             let len = f.len();
 
             // Store file unread
-            let mut store = FileStore::new();
+            let mut store = FileStoreRead::new();
 
             let nf = File::open(CStr::from_ptr(path).to_str().unwrap()).unwrap();
 
@@ -73,7 +101,7 @@ pub unsafe extern "C" fn file_text_open_read(path: *const c_char) -> f64
             store.n = len as usize;
             store.unread = ur;
 
-            f.insert(len as i32, store);
+            f.insert(len as i32, Box::new(store));
 
             len as f64
         }
@@ -90,7 +118,7 @@ pub extern "C" fn file_text_read_string(handle: f64) -> *const c_char
             // Borrow Mutabily and Buffer the resulting File
             let mut f = f.borrow_mut();
             let ref handle_ref = handle as i32;
-            let store = f.get_mut(handle_ref).unwrap();
+            let store = f.get_mut(handle_ref).unwrap().downcast_mut::<FileStoreRead>().unwrap();
             let result = store.read(handle as usize);
 
             // Return the next line
@@ -99,18 +127,64 @@ pub extern "C" fn file_text_read_string(handle: f64) -> *const c_char
     )
 }
 
+pub struct FileStoreWrite {
+    n: usize,
+    written: HashMap<usize, BufWriter<File>>,
+}
+
+impl FileStoreWrite {
+    pub fn new() -> FileStoreWrite
+    {
+        FileStoreWrite{n: 0, written: HashMap::new()}
+    }
+
+    pub fn write(&mut self, n: usize, s: &[u8])
+    {
+        use std::io::Write;
+
+        if let Some(ref mut writer) = self.written.get_mut(&n)
+        {
+            let result = writer.write_all(s).unwrap();
+
+            return result;
+        }
+
+        // No Writer Found
+        return;
+    }
+
+    pub fn close(&mut self, n: usize)
+    {
+        self.written.remove(&n);
+    }
+}
+
 #[no_mangle]
-pub extern "C" fn file_text_close(handle: f64)
+pub unsafe extern "C" fn file_text_open_write(path: *const c_char) -> f64
 {
     FILES_G.with
     (
         |f|
         {
-            // Close the file
+            // Mutabily borrow the HashMap
             let mut f = f.borrow_mut();
-            let ref handle_ref = handle as i32;
-            let store = f.get_mut(handle_ref).unwrap();
-            store.close(handle as usize);
+            let len = f.len();
+
+            // Store file unwritten
+            let mut store = FileStoreWrite::new();
+
+            let nf = File::open(CStr::from_ptr(path).to_str().unwrap()).unwrap();
+            let bf = BufWriter::new(nf);
+
+            let mut ur: HashMap<usize, BufWriter<File>> = HashMap::new();
+            ur.insert(len as usize, bf);
+
+            store.n = len as usize;
+            store.written = ur;
+
+            f.insert(len as i32, Box::new(store));
+
+            len as f64
         }
     )
 }
