@@ -23,12 +23,7 @@ pub extern "C" fn file_text_close(handle: f64)
             let ref mut handle_ref = handle as i32;
             let f = f.get_mut(handle_ref).unwrap();
 
-            if let Some(store) = f.downcast_mut::<FileStoreRead>()
-            {
-                store.close(handle as usize);
-            }
-
-            if let Some(store) = f.downcast_mut::<FileStoreWrite>()
+            if let Some(store) = f.downcast_mut::<FileStore>()
             {
                 store.close(handle as usize);
             }
@@ -36,16 +31,23 @@ pub extern "C" fn file_text_close(handle: f64)
     )
 }
 
-pub struct FileStoreRead {
+pub struct FileStore {
     n: usize,
     read: HashMap<usize, BufReader<File>>,
-    unread: HashMap<usize, File>
+    unread: HashMap<usize, File>,
+    written: HashMap<usize, BufWriter<File>>
 }
 
-impl FileStoreRead {
-    pub fn new() -> FileStoreRead
+impl FileStore {
+    pub fn new() -> FileStore
     {
-        FileStoreRead{n: 0, read: HashMap::new(), unread: HashMap::new()}
+        FileStore
+        {
+            n: 0,
+            read: HashMap::new(),
+            unread: HashMap::new(),
+            written: HashMap::new()
+        }
     }
 
     pub fn read(&mut self, n: usize) -> String
@@ -70,72 +72,6 @@ impl FileStoreRead {
 
         // No Reader Found
         return String::from("");
-    }
-
-    pub fn close(&mut self, n: usize)
-    {
-        self.read.remove(&n);
-        self.unread.remove(&n);
-    }
-}
-
-#[no_mangle]
-pub unsafe extern "C" fn file_text_open_read(path: *const c_char) -> f64
-{
-    FILES_G.with
-    (
-        |f|
-        {
-            // Mutabily borrow the HashMap
-            let mut f = f.borrow_mut();
-            let len = f.len();
-
-            // Store file unread
-            let mut store = FileStoreRead::new();
-
-            let nf = File::open(CStr::from_ptr(path).to_str().unwrap()).unwrap();
-
-            let mut ur: HashMap<usize, File> = HashMap::new();
-            ur.insert(len as usize, nf);
-
-            store.n = len as usize;
-            store.unread = ur;
-
-            f.insert(len as i32, Box::new(store));
-
-            len as f64
-        }
-    )
-}
-
-#[no_mangle]
-pub extern "C" fn file_text_read_string(handle: f64) -> *const c_char
-{
-    FILES_G.with
-    (
-        |f|
-        {
-            // Borrow Mutabily and Buffer the resulting File
-            let mut f = f.borrow_mut();
-            let ref handle_ref = handle as i32;
-            let store = f.get_mut(handle_ref).unwrap().downcast_mut::<FileStoreRead>().unwrap();
-            let result = store.read(handle as usize);
-
-            // Return the next line
-            CString::new(result).unwrap().into_raw()
-        }
-    )
-}
-
-pub struct FileStoreWrite {
-    n: usize,
-    written: HashMap<usize, BufWriter<File>>,
-}
-
-impl FileStoreWrite {
-    pub fn new() -> FileStoreWrite
-    {
-        FileStoreWrite{n: 0, written: HashMap::new()}
     }
 
     pub fn write(&mut self, n: usize, s: &[u8])
@@ -171,8 +107,58 @@ impl FileStoreWrite {
 
     pub fn close(&mut self, n: usize)
     {
+        self.read.remove(&n);
+        self.unread.remove(&n);
         self.written.remove(&n);
     }
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn file_text_open_read(path: *const c_char) -> f64
+{
+    FILES_G.with
+    (
+        |f|
+        {
+            // Mutabily borrow the HashMap
+            let mut f = f.borrow_mut();
+            let len = f.len();
+
+            // Store file unread
+            let mut store = FileStore::new();
+
+            let nf = File::open(CStr::from_ptr(path).to_str().unwrap()).unwrap();
+
+            let mut ur: HashMap<usize, File> = HashMap::new();
+            ur.insert(len as usize, nf);
+
+            store.n = len as usize;
+            store.unread = ur;
+
+            f.insert(len as i32, Box::new(store));
+
+            len as f64
+        }
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn file_text_read_string(handle: f64) -> *const c_char
+{
+    FILES_G.with
+    (
+        |f|
+        {
+            // Borrow Mutabily and Buffer the resulting File
+            let mut f = f.borrow_mut();
+            let ref handle_ref = handle as i32;
+            let store = f.get_mut(handle_ref).unwrap().downcast_mut::<FileStore>().unwrap();
+            let result = store.read(handle as usize);
+
+            // Return the next line
+            CString::new(result).unwrap().into_raw()
+        }
+    )
 }
 
 #[no_mangle]
@@ -187,7 +173,7 @@ pub unsafe extern "C" fn file_text_open_write(path: *const c_char) -> f64
             let len = f.len();
 
             // Store file unwritten
-            let mut store = FileStoreWrite::new();
+            let mut store = FileStore::new();
             let nf = OpenOptions::new()
                 .write(true)
                 .truncate(true)
@@ -221,7 +207,7 @@ pub unsafe extern "C" fn file_text_write_string(handle: f64, value: *const c_cha
             let ref handle_ref = handle as i32;
 
             // Downcast to concrete FileStoreWrite type and write to file
-            let store = f.get_mut(handle_ref).unwrap().downcast_mut::<FileStoreWrite>().unwrap();
+            let store = f.get_mut(handle_ref).unwrap().downcast_mut::<FileStore>().unwrap();
             store.write(handle as usize, CStr::from_ptr(value).to_bytes_with_nul());
 
             0.0f64
@@ -241,8 +227,8 @@ pub unsafe extern "C" fn file_text_writeln(handle: f64) -> f64
             let ref handle_ref = handle as i32;
 
             // Downcast to concrete FileStoreWrite type and write to file
-            let store = f.get_mut(handle_ref).unwrap().downcast_mut::<FileStoreWrite>().unwrap();
-            store.writeln(handle as usize, CStr::from_ptr(path).to_bytes_with_nul());
+            let store = f.get_mut(handle_ref).unwrap().downcast_mut::<FileStore>().unwrap();
+            store.writeln(handle as usize);
 
             0.0f64
         }
