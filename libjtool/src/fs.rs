@@ -17,24 +17,29 @@ pub struct FileStore {
 }
 
 impl FileStore {
-    pub fn new() -> FileStore {
+    pub fn new() -> FileStore
+    {
         FileStore{n: 0, read: HashMap::new(), unread: HashMap::new()}
     }
 
-    pub fn read(&mut self, n: usize) -> String {
+    pub fn read(&mut self, n: usize) -> String
+    {
         use std::io::BufRead;
 
-        if let Some(ref mut reader) = self.read.get_mut(&n) {
+        if let Some(ref mut reader) = self.read.get_mut(&n)
+        {
             let mut result: &mut String = &mut String::new();
             reader.read_line(result).unwrap();
 
             return result.to_string();
         }
 
-        if let Some(file) = self.unread.remove(&n) {
+        if let Some(file) = self.unread.remove(&n)
+        {
             let reader = BufReader::new(file);
             self.read.insert(n, reader);
-            return String::from("file");
+
+            return self.read(n);
         }
 
         return String::from("not found");
