@@ -2,7 +2,7 @@ use std::ffi::{CStr, CString};
 use std::os::raw::c_char;
 use std::cell::RefCell;
 use std::collections::HashMap;
-use std::fs::File;
+use std::fs::{OpenOptions, File};
 use std::io::{BufReader, BufWriter};
 use std::any::Any;
 
@@ -144,7 +144,23 @@ impl FileStoreWrite {
 
         if let Some(ref mut writer) = self.written.get_mut(&n)
         {
+            // Write
             let result = writer.write_all(s).unwrap();
+            return result;
+        }
+
+        // No Writer Found
+        return;
+    }
+
+    pub fn writeln(&mut self, n: usize)
+    {
+        use std::io::Write;
+
+        if let Some(ref mut writer) = self.written.get_mut(&n)
+        {
+            //Writes a newline to the file
+            let result = writer.write_all(&[0u8]).unwrap();
 
             return result;
         }
@@ -172,8 +188,11 @@ pub unsafe extern "C" fn file_text_open_write(path: *const c_char) -> f64
 
             // Store file unwritten
             let mut store = FileStoreWrite::new();
-
-            let nf = File::open(CStr::from_ptr(path).to_str().unwrap()).unwrap();
+            let nf = OpenOptions::new()
+                .write(true)
+                .truncate(true)
+                .open(CStr::from_ptr(path).to_str().unwrap())
+                .unwrap();
             let bf = BufWriter::new(nf);
 
             let mut ur: HashMap<usize, BufWriter<File>> = HashMap::new();
@@ -185,6 +204,47 @@ pub unsafe extern "C" fn file_text_open_write(path: *const c_char) -> f64
             f.insert(len as i32, Box::new(store));
 
             len as f64
+        }
+    )
+}
+
+
+#[no_mangle]
+pub unsafe extern "C" fn file_text_write_string(handle: f64, value: *const c_char) -> f64
+{
+    FILES_G.with
+    (
+        |f|
+        {
+            // Borrow Mutabily
+            let mut f = f.borrow_mut();
+            let ref handle_ref = handle as i32;
+
+            // Downcast to concrete FileStoreWrite type and write to file
+            let store = f.get_mut(handle_ref).unwrap().downcast_mut::<FileStoreWrite>().unwrap();
+            store.write(handle as usize, CStr::from_ptr(value).to_bytes_with_nul());
+
+            0.0f64
+        }
+    )
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn file_text_writeln(handle: f64) -> f64
+{
+    FILES_G.with
+    (
+        |f|
+        {
+            // Borrow Mutabily
+            let mut f = f.borrow_mut();
+            let ref handle_ref = handle as i32;
+
+            // Downcast to concrete FileStoreWrite type and write to file
+            let store = f.get_mut(handle_ref).unwrap().downcast_mut::<FileStoreWrite>().unwrap();
+            store.writeln(handle as usize, CStr::from_ptr(path).to_bytes_with_nul());
+
+            0.0f64
         }
     )
 }
