@@ -44,6 +44,11 @@ impl FileStore {
 
         return String::from("not found");
     }
+
+    pub fn close(&mut self, n: usize)
+    {
+        self.read.remove(&n);
+    }
 }
 
 #[no_mangle]
@@ -90,6 +95,22 @@ pub extern "C" fn file_text_read_string(handle: f64) -> *const c_char
 
             // Return the next line
             CString::new(result).unwrap().into_raw()
+        }
+    )
+}
+
+#[no_mangle]
+pub extern "C" fn file_text_close(handle: f64)
+{
+    FILES_G.with
+    (
+        |f|
+        {
+            // Close the file
+            let mut f = f.borrow_mut();
+            let ref handle_ref = handle as i32;
+            let store = f.get_mut(handle_ref).unwrap();
+            store.close(handle as usize);
         }
     )
 }
