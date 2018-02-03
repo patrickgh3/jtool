@@ -1,9 +1,10 @@
 use std::cell::{Cell, RefCell};
 use std::collections::HashMap;
-use std::ffi::{CStr, CString};
-use std::fs::{OpenOptions, File};
+use std::ffi::{CStr, CString, OsStr};
+use std::fs::{OpenOptions, File, copy, remove_file, create_dir};
 use std::io::{self, Read, Write, BufRead, BufReader, BufWriter};
 use std::os::raw::c_char;
+use std::path::Path;
 
 thread_local!
 {
@@ -186,6 +187,48 @@ pub unsafe extern "C" fn file_text_writeln(id: f64) -> f64 {
     });
 
     result.unwrap_or(-1.0)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn file_copy(from: *const c_char, to: *const c_char) -> f64
+{
+    copy(OsStr::new(CStr::from_ptr(from).to_str().unwrap()), OsStr::new(CStr::from_ptr(to).to_str().unwrap())).unwrap();
+
+    0.0f64
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn file_delete(path: *const c_char) -> f64
+{
+    match remove_file(OsStr::new(CStr::from_ptr(path).to_str().unwrap()))
+    {
+        Ok(()) => return 1.0,
+        Err(_) => return 0.0,
+    }
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn directory_exists(path: *const c_char) -> f64
+{
+    let result = match Path::new(OsStr::new(CStr::from_ptr(path).to_str().unwrap())).exists()
+    {
+        true => return 1.0,
+        false => return 0.0,
+    };
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn file_exists(path: *const c_char) -> f64
+{
+    return directory_exists(path);
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn directory_create(path: *const c_char) -> f64
+{
+    create_dir(OsStr::new(CStr::from_ptr(path).to_str().unwrap())).unwrap();
+
+    return 0.0;
 }
 
 struct BufStream<S: Read + Write> {
