@@ -2,6 +2,8 @@
 mod ini;
 pub use self::ini::ini_open;
 pub use self::ini::ini_read_string;
+pub use self::ini::ini_write_string;
+pub use self::ini::ini_close;
 
 mod fs;
 pub use self::fs::file_text_open_read;
