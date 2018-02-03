@@ -1,236 +1,248 @@
-use std::ffi::{CStr, CString};
-use std::os::raw::c_char;
-use std::cell::RefCell;
+use std::cell::{Cell, RefCell};
 use std::collections::HashMap;
+use std::ffi::{CStr, CString};
 use std::fs::{OpenOptions, File};
-use std::io::{BufReader, BufWriter};
-use std::any::Any;
+use std::io::{self, Read, Write, BufRead, BufReader, BufWriter};
+use std::os::raw::c_char;
 
 thread_local!
 {
-    static FILES_G: RefCell<HashMap<i32, Box<Any>>> = RefCell::new(HashMap::new());
+    static NEXT_ID: Cell<i32> = Cell::new(0);
+    static FILES: RefCell<HashMap<i32, BufStream<File>>> = RefCell::new(HashMap::new());
+
+    static LINE: Cell<Option<CString>> = Cell::new(None);
 }
 
 #[no_mangle]
-pub extern "C" fn file_text_close(handle: f64)
-{
-    FILES_G.with
-    (
-        |f|
-        {
-            // Close the file
-            let mut f = f.borrow_mut();
-            let ref mut handle_ref = handle as i32;
-            let f = f.get_mut(handle_ref).unwrap();
+pub unsafe extern "C" fn file_text_open_read(path: *const c_char) -> f64 {
+    let id = NEXT_ID.with(|next_id| {
+        let id = next_id.get();
+        next_id.set(id + 1);
+        id
+    });
 
-            if let Some(store) = f.downcast_mut::<FileStore>()
-            {
-                store.close(handle as usize);
-            }
-        }
-    )
+    let path = match CStr::from_ptr(path).to_str() {
+        Ok(path) => path,
+        Err(_) => return -1.0,
+    };
+
+    let result: io::Result<f64> = FILES.with(|files| {
+        let mut files = files.borrow_mut();
+
+        let file = OpenOptions::new()
+            .read(true)
+            .open(path)?;
+        let stream = BufStream::new(file);
+        files.insert(id, stream);
+
+        Ok(id as f64)
+    });
+
+    result.unwrap_or(-1.0)
 }
 
-pub struct FileStore {
-    n: usize,
-    read: HashMap<usize, BufReader<File>>,
-    unread: HashMap<usize, File>,
-    written: HashMap<usize, BufWriter<File>>
+#[no_mangle]
+pub unsafe extern "C" fn file_text_open_write(path: *const c_char) -> f64 {
+    let id = NEXT_ID.with(|next_id| {
+        let id = next_id.get();
+        next_id.set(id + 1);
+        id
+    });
+
+    let path = match CStr::from_ptr(path).to_str() {
+        Ok(path) => path,
+        Err(_) => return -1.0,
+    };
+
+    let result: io::Result<f64> = FILES.with(|files| {
+        let mut files = files.borrow_mut();
+
+        let file = OpenOptions::new()
+            .write(true)
+            .truncate(true)
+            .create(true)
+            .open(path)?;
+        let stream = BufStream::new(file);
+        files.insert(id, stream);
+
+        Ok(id as f64)
+    });
+
+    result.unwrap_or(-1.0)
 }
 
-impl FileStore {
-    pub fn new() -> FileStore
-    {
-        FileStore
+#[no_mangle]
+pub unsafe extern "C" fn file_text_open_append(path: *const c_char) -> f64 {
+    let id = NEXT_ID.with(|next_id| {
+        let id = next_id.get();
+        next_id.set(id + 1);
+        id
+    });
+
+    let path = match CStr::from_ptr(path).to_str() {
+        Ok(path) => path,
+        Err(_) => return -1.0,
+    };
+
+    let result: io::Result<f64> = FILES.with(|files| {
+        let mut files = files.borrow_mut();
+
+        let file = OpenOptions::new()
+            .write(true)
+            .append(true)
+            .create(true)
+            .open(path)?;
+        let stream = BufStream::new(file);
+        files.insert(id, stream);
+
+        Ok(id as f64)
+    });
+
+    result.unwrap_or(-1.0)
+}
+
+#[no_mangle]
+pub extern "C" fn file_text_close(id: f64) {
+    let id = id as i32;
+    FILES.with(|files| {
+        let mut files = files.borrow_mut();
+        files.remove(&id);
+    });
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn file_text_read_string(id: f64) -> *const c_char {
+    let id = id as i32;
+
+    let line: io::Result<String> = FILES.with(|files| {
+        let mut files = files.borrow_mut();
+        let file = files.get_mut(&id).ok_or(io::ErrorKind::InvalidInput)?;
+
+        let mut line = String::new();
+        file.read_line(&mut line)?;
+
+        Ok(line)
+    });
+    let line = line.unwrap_or_default();
+
+    // remove the trailing newline if it exists
+    let mut line = line.into_bytes();
+
+    let string = CString::from_vec_unchecked(line);
+    let result = string.as_ptr();
+    LINE.with(|line| {
+        line.set(Some(string));
+    });
+
+    result
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn file_text_write_string(id: f64, line: *const c_char) -> f64 {
+    let id = id as i32;
+
+    let line = CStr::from_ptr(line).to_bytes();
+
+    let result: io::Result<f64> = FILES.with(|files| {
+        let mut files = files.borrow_mut();
+        let file = files.get_mut(&id).ok_or(io::ErrorKind::InvalidInput)?;
+
+        file.write_all(line)?;
+
+        Ok(line.len() as f64)
+    });
+
+    result.unwrap_or(-1.0)
+}
+
+#[no_mangle]
+pub unsafe extern "C" fn file_text_writeln(id: f64) -> f64 {
+    let id = id as i32;
+
+    let result: io::Result<f64> = FILES.with(|files| {
+        let mut files = files.borrow_mut();
+        let file = files.get_mut(&id).ok_or(io::ErrorKind::InvalidInput)?;
+
+        // Windows CRLF
+        if cfg!(target_os = "windows")
         {
-            n: 0,
-            read: HashMap::new(),
-            unread: HashMap::new(),
-            written: HashMap::new()
+            file.write_all(&[0x0D])?;
+            file.write_all(&[0x0A])?;
         }
+
+        // Macintosh CR
+        if cfg!(target_os = "macos")
+        {
+            file.write_all(&[0x0D])?;
+        }
+
+        // GNU/Linux LR
+        if cfg!(target_os = "linux")
+        {
+            file.write_all(&[0x0A])?;
+        }
+
+        Ok(1.0)
+    });
+
+    result.unwrap_or(-1.0)
+}
+
+struct BufStream<S: Read + Write> {
+    reader: BufReader<InternalBufWriter<S>>,
+}
+
+struct InternalBufWriter<S: Read + Write> {
+    writer: BufWriter<S>,
+}
+
+impl<S: Read + Write> BufStream<S> {
+    fn new(stream: S) -> BufStream<S> {
+        let writer = InternalBufWriter::new(stream);
+        let reader = BufReader::new(writer);
+        BufStream { reader }
     }
+}
 
-    pub fn read(&mut self, n: usize) -> String
-    {
-        use std::io::BufRead;
-
-        if let Some(ref mut reader) = self.read.get_mut(&n)
-        {
-            let mut result: &mut String = &mut String::new();
-            reader.read_line(result).unwrap();
-
-            return result.to_string();
-        }
-
-        if let Some(file) = self.unread.remove(&n)
-        {
-            let reader = BufReader::new(file);
-            self.read.insert(n, reader);
-
-            return self.read(n);
-        }
-
-        // No Reader Found
-        return String::from("");
-    }
-
-    pub fn write(&mut self, n: usize, s: &[u8])
-    {
-        use std::io::Write;
-
-        if let Some(ref mut writer) = self.written.get_mut(&n)
-        {
-            // Write
-            let result = writer.write_all(s).unwrap();
-            return result;
-        }
-
-        // No Writer Found
-        return;
-    }
-
-    pub fn writeln(&mut self, n: usize)
-    {
-        use std::io::Write;
-
-        if let Some(ref mut writer) = self.written.get_mut(&n)
-        {
-            //Writes a newline to the file
-            let result = writer.write_all(&[0u8]).unwrap();
-
-            return result;
-        }
-
-        // No Writer Found
-        return;
-    }
-
-    pub fn close(&mut self, n: usize)
-    {
-        self.read.remove(&n);
-        self.unread.remove(&n);
-        self.written.remove(&n);
+impl<S: Read + Write> InternalBufWriter<S> {
+    fn new(stream: S) -> InternalBufWriter<S> {
+        let writer = BufWriter::new(stream);
+        InternalBufWriter { writer }
     }
 }
 
-#[no_mangle]
-pub unsafe extern "C" fn file_text_open_read(path: *const c_char) -> f64
-{
-    FILES_G.with
-    (
-        |f|
-        {
-            // Mutabily borrow the HashMap
-            let mut f = f.borrow_mut();
-            let len = f.len();
-
-            // Store file unread
-            let mut store = FileStore::new();
-
-            let nf = File::open(CStr::from_ptr(path).to_str().unwrap()).unwrap();
-
-            let mut ur: HashMap<usize, File> = HashMap::new();
-            ur.insert(len as usize, nf);
-
-            store.n = len as usize;
-            store.unread = ur;
-
-            f.insert(len as i32, Box::new(store));
-
-            len as f64
-        }
-    )
+impl<S: Read + Write> BufRead for BufStream<S> {
+    fn fill_buf(&mut self) -> io::Result<&[u8]> {
+        self.reader.fill_buf()
+    }
+    fn consume(&mut self, amt: usize) {
+        self.reader.consume(amt)
+    }
+    fn read_until(&mut self, byte: u8, buf: &mut Vec<u8>) -> io::Result<usize> {
+        self.reader.read_until(byte, buf)
+    }
+    fn read_line(&mut self, string: &mut String) -> io::Result<usize> {
+        self.reader.read_line(string)
+    }
 }
 
-#[no_mangle]
-pub extern "C" fn file_text_read_string(handle: f64) -> *const c_char
-{
-    FILES_G.with
-    (
-        |f|
-        {
-            // Borrow Mutabily and Buffer the resulting File
-            let mut f = f.borrow_mut();
-            let ref handle_ref = handle as i32;
-            let store = f.get_mut(handle_ref).unwrap().downcast_mut::<FileStore>().unwrap();
-            let result = store.read(handle as usize);
-
-            // Return the next line
-            CString::new(result).unwrap().into_raw()
-        }
-    )
+impl<S: Read + Write> Read for BufStream<S> {
+    fn read(&mut self, buf: &mut [u8]) -> io::Result<usize> {
+        self.reader.read(buf)
+    }
 }
 
-#[no_mangle]
-pub unsafe extern "C" fn file_text_open_write(path: *const c_char) -> f64
-{
-    FILES_G.with
-    (
-        |f|
-        {
-            // Mutabily borrow the HashMap
-            let mut f = f.borrow_mut();
-            let len = f.len();
-
-            // Store file unwritten
-            let mut store = FileStore::new();
-            let nf = OpenOptions::new()
-                .write(true)
-                .truncate(true)
-                .open(CStr::from_ptr(path).to_str().unwrap())
-                .unwrap();
-            let bf = BufWriter::new(nf);
-
-            let mut ur: HashMap<usize, BufWriter<File>> = HashMap::new();
-            ur.insert(len as usize, bf);
-
-            store.n = len as usize;
-            store.written = ur;
-
-            f.insert(len as i32, Box::new(store));
-
-            len as f64
-        }
-    )
+impl<S: Read + Write> Write for BufStream<S> {
+    fn write(&mut self, buf: &[u8]) -> io::Result<usize> {
+        self.reader.get_mut().writer.write(buf)
+    }
+    fn flush(&mut self) -> io::Result<()> {
+        self.reader.get_mut().writer.flush()
+    }
 }
 
-
-#[no_mangle]
-pub unsafe extern "C" fn file_text_write_string(handle: f64, value: *const c_char) -> f64
-{
-    FILES_G.with
-    (
-        |f|
-        {
-            // Borrow Mutabily
-            let mut f = f.borrow_mut();
-            let ref handle_ref = handle as i32;
-
-            // Downcast to concrete FileStoreWrite type and write to file
-            let store = f.get_mut(handle_ref).unwrap().downcast_mut::<FileStore>().unwrap();
-            store.write(handle as usize, CStr::from_ptr(value).to_bytes_with_nul());
-
-            0.0f64
-        }
-    )
-}
-
-#[no_mangle]
-pub unsafe extern "C" fn file_text_writeln(handle: f64) -> f64
-{
-    FILES_G.with
-    (
-        |f|
-        {
-            // Borrow Mutabily
-            let mut f = f.borrow_mut();
-            let ref handle_ref = handle as i32;
-
-            // Downcast to concrete FileStoreWrite type and write to file
-            let store = f.get_mut(handle_ref).unwrap().downcast_mut::<FileStore>().unwrap();
-            store.writeln(handle as usize);
-
-            0.0f64
-        }
-    )
+impl<S: Read + Write> Read for InternalBufWriter<S> {
+    fn read(&mut self, buf: &mut [u8]) -> io::Result<usize> {
+        self.writer.get_mut().read(buf)
+    }
 }
