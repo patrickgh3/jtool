@@ -6,8 +6,7 @@ use std::io::{self, Read, Write, BufRead, BufReader, BufWriter};
 use std::os::raw::c_char;
 use std::path::Path;
 
-thread_local!
-{
+thread_local! {
     static NEXT_ID: Cell<i32> = Cell::new(0);
     static FILES: RefCell<HashMap<i32, BufStream<File>>> = RefCell::new(HashMap::new());
 
@@ -16,95 +15,64 @@ thread_local!
 
 #[no_mangle]
 pub unsafe extern "C" fn file_text_open_read(path: *const c_char) -> f64 {
-    let id = NEXT_ID.with(|next_id| {
-        let id = next_id.get();
-        next_id.set(id + 1);
-        id
-    });
-
-    let path = match CStr::from_ptr(path).to_str() {
-        Ok(path) => path,
+    let mut options = OpenOptions::new();
+    options.read(true);
+    let id = match open(path, options) {
+        Ok(id) => id,
         Err(_) => return -1.0,
     };
 
-    let result: io::Result<f64> = FILES.with(|files| {
-        let mut files = files.borrow_mut();
-
-        let file = OpenOptions::new()
-            .read(true)
-            .open(path)?;
-        let stream = BufStream::new(file);
-        files.insert(id, stream);
-
-        Ok(id as f64)
-    });
-
-    result.unwrap_or(-1.0)
+    id as f64
 }
 
 #[no_mangle]
 pub unsafe extern "C" fn file_text_open_write(path: *const c_char) -> f64 {
-    let id = NEXT_ID.with(|next_id| {
-        let id = next_id.get();
-        next_id.set(id + 1);
-        id
-    });
-
-    let path = match CStr::from_ptr(path).to_str() {
-        Ok(path) => path,
+    let mut options = OpenOptions::new();
+    options.write(true).create(true);
+    let id = match open(path, options) {
+        Ok(id) => id,
         Err(_) => return -1.0,
     };
 
-    let result: io::Result<f64> = FILES.with(|files| {
-        let mut files = files.borrow_mut();
-
-        let file = OpenOptions::new()
-            .write(true)
-            .truncate(true)
-            .create(true)
-            .open(path)?;
-        let stream = BufStream::new(file);
-        files.insert(id, stream);
-
-        Ok(id as f64)
-    });
-
-    result.unwrap_or(-1.0)
+    id as f64
 }
 
 #[no_mangle]
 pub unsafe extern "C" fn file_text_open_append(path: *const c_char) -> f64 {
+    let mut options = OpenOptions::new();
+    options.write(true).append(true).create(true);
+    let id = match open(path, options) {
+        Ok(id) => id,
+        Err(_) => return -1.0,
+    };
+
+    id as f64
+}
+
+unsafe fn open(path: *const c_char, options: OpenOptions) -> io::Result<i32> {
+    let path = CStr::from_ptr(path).to_str()
+        .map_err(|_| io::ErrorKind::InvalidInput)?;
+
+    let file = options.open(path)?;
+    let stream = BufStream::new(file);
+
     let id = NEXT_ID.with(|next_id| {
         let id = next_id.get();
         next_id.set(id + 1);
         id
     });
 
-    let path = match CStr::from_ptr(path).to_str() {
-        Ok(path) => path,
-        Err(_) => return -1.0,
-    };
-
-    let result: io::Result<f64> = FILES.with(|files| {
-        let mut files = files.borrow_mut();
-
-        let file = OpenOptions::new()
-            .write(true)
-            .append(true)
-            .create(true)
-            .open(path)?;
-        let stream = BufStream::new(file);
-        files.insert(id, stream);
-
-        Ok(id as f64)
+    FILES.with(|files| {
+        files.borrow_mut().insert(id, stream);
     });
 
-    result.unwrap_or(-1.0)
+    Ok(id)
 }
 
 #[no_mangle]
 pub extern "C" fn file_text_close(id: f64) {
     let id = id as i32;
+
     FILES.with(|files| {
         let mut files = files.borrow_mut();
         files.remove(&id);
@@ -115,75 +83,52 @@ pub extern "C" fn file_text_close(id: f64) {
 pub unsafe extern "C" fn file_text_read_string(id: f64) -> *const c_char {
     let id = id as i32;
 
-    let line: io::Result<String> = FILES.with(|files| {
-        let mut files = files.borrow_mut();
-        let file = files.get_mut(&id).ok_or(io::ErrorKind::InvalidInput)?;
-
-        let mut line = String::new();
-        file.read_line(&mut line)?;
-
-        Ok(line)
+    let mut line = LINE.with(|line| {
+        line.take().unwrap_or_default().into_bytes_with_nul()
     });
-    let line = line.unwrap_or_default();
+    line.clear();
 
-    // remove the trailing newline if it exists
-    let mut line = line.into_bytes();
+    let _: io::Result<()> = FILES.with(|files| {
+        let mut files = files.borrow_mut();
+        let file = files.get_mut(&id)
+            .ok_or(io::ErrorKind::InvalidInput)?;
+
+        file.read_until(b'\n', &mut line)?;
+
+        Ok(())
+    });
 
     let string = CString::from_vec_unchecked(line);
-    let result = string.as_ptr();
+    let ptr = string.as_ptr();
     LINE.with(|line| {
         line.set(Some(string));
     });
 
-    result
+    ptr
 }
 
 #[no_mangle]
 pub unsafe extern "C" fn file_text_write_string(id: f64, line: *const c_char) -> f64 {
-    let id = id as i32;
-
     let line = CStr::from_ptr(line).to_bytes();
-
-    let result: io::Result<f64> = FILES.with(|files| {
-        let mut files = files.borrow_mut();
-        let file = files.get_mut(&id).ok_or(io::ErrorKind::InvalidInput)?;
-
-        file.write_all(line)?;
-
-        Ok(line.len() as f64)
-    });
-
-    result.unwrap_or(-1.0)
+    write(id, line)
 }
 
 #[no_mangle]
 pub unsafe extern "C" fn file_text_writeln(id: f64) -> f64 {
+    write(id, b"\r\n")
+}
+
+unsafe fn write(id: f64, bytes: &[u8]) -> f64 {
     let id = id as i32;
 
     let result: io::Result<f64> = FILES.with(|files| {
         let mut files = files.borrow_mut();
-        let file = files.get_mut(&id).ok_or(io::ErrorKind::InvalidInput)?;
+        let file = files.get_mut(&id)
+            .ok_or(io::ErrorKind::InvalidInput)?;
 
-        // Windows CRLF
-        if cfg!(target_os = "windows")
-        {
-            file.write_all(&[0x0D])?;
-            file.write_all(&[0x0A])?;
-        }
+        file.write_all(bytes)?;
 
-        // Macintosh CR
-        if cfg!(target_os = "macos")
-        {
-            file.write_all(&[0x0D])?;
-        }
-
-        // GNU/Linux LR
-        if cfg!(target_os = "linux")
-        {
-            file.write_all(&[0x0A])?;
-        }
-
-        Ok(1.0)
+        Ok(bytes.len() as f64)
     });
 
     result.unwrap_or(-1.0)
