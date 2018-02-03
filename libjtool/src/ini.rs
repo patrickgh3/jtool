@@ -90,16 +90,6 @@ pub unsafe extern "C" fn ini_close(path: *const c_char) -> *const c_char
             let mut conf = &*f.borrow_mut();
             let mut result = String::new();
 
-            // Go through the INI in the reverse order, because GameMaker wants you to ¯\_(ツ)_/¯
-            for (sec, prop) in conf.iter().rev()
-            {
-                write!(&mut result, "[{:?}] ", *sec);
-                for (k, v) in prop.iter().rev()
-                {
-                    write!(&mut result, "{}={}", *k, *v);
-                }
-            }
-
             // Deallocate by dropping
             drop(conf);
 
