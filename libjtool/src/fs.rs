@@ -115,7 +115,26 @@ pub unsafe extern "C" fn file_text_write_string(id: f64, line: *const c_char) ->
 
 #[no_mangle]
 pub unsafe extern "C" fn file_text_writeln(id: f64) -> f64 {
-    write(id, b"\r\n")
+
+    let mut res: f64 = -1.0;
+
+    // Windows CRLF
+    if cfg!(target_os = "windows")
+    {
+    	res = write(id, &[0x0D, 0x0A]);
+    }
+    //Macintosh CR
+    else if cfg!(target_os = "macos")
+    {
+    	res = write(id, &[0x0D]);
+    }
+    // GNU/Linux LR
+    else if cfg!(target_os = "linux")
+    {
+    	res = write(id, &[0x0A]);
+    }
+
+    res
 }
 
 unsafe fn write(id: f64, bytes: &[u8]) -> f64 {
