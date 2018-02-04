@@ -3,18 +3,18 @@ var skinCycleDir = argument0
 var skinsfolder = prefix_project_path_if_needed('skins/')
 var filename = skinsfolder+'skins.ini'
 
-if not FS_directory_exists(skinsfolder) {
-    FS_directory_create(skinsfolder)
+if not directory_exists(skinsfolder) {
+    directory_create(skinsfolder)
 }
 
-FS_ini_open(filename)
-var str = FS_ini_read_string('skins','names','')
-FS_ini_close()
+ini_open(filename)
+var str = ini_read_string('skins','names','')
+ini_close()
 
 if str == '' {
-    FS_ini_open(filename)
-    FS_ini_write_string('skins','names','skin1,skin2,skin3,skin4')
-    FS_ini_close()
+    ini_open(filename)
+    ini_write_string('skins','names','skin1,skin2,skin3,skin4')
+    ini_close()
     inputOverlay(input_info,false,'skins/skins.ini has no skin folder names.#Please add some!')
     exit
 }

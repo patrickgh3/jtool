@@ -1,10 +1,10 @@
 // Load the currently set options from a previously saved ini file.
 
 var filename = prefix_project_path_if_needed('config.ini')
-FS_ini_open(filename)
+ini_open(filename)
 global.deathEnabled = FSIniReadReal('prefs','death',false)
 oEdit.snap = FSIniReadReal('prefs','gridsnap',32)
-global.skinName = FS_ini_read_string('prefs','skin','pat_default')
+global.skinName = ini_read_string('prefs','skin','pat_default')
 window_set_fullscreen(FSIniReadReal('prefs','fullscreen',false))
 oWorld.alarm[0]=1
 global.showanalysis = FSIniReadReal('prefs','showanalysis',true)
@@ -15,10 +15,10 @@ global.showhitbox = FSIniReadReal('prefs','showhitbox',0)
 global.grid_draw = FSIniReadReal('prefs','grid_draw',false)
 global.mousecoords = FSIniReadReal('prefs','mousecoords',false)
 global.playery_extended = FSIniReadReal('prefs','playery_extended',false)
-var depthstring = FS_ini_read_string('prefs','depthorder','0,1,2,3')
+var depthstring = ini_read_string('prefs','depthorder','0,1,2,3')
 global.backup = FSIniReadReal('prefs','backup',true)
 global.checkupdates = FSIniReadReal('prefs','checkupdates',true)
-FS_ini_close()
+ini_close()
 
 if string_count(',',depthstring) != 3 depthstring = '0,1,2,3'
 ds_list_clear(global.depthList)

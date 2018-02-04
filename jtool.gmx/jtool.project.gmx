@@ -5,8 +5,7 @@
   </Configs>
   <datafiles number="3" name="datafiles"/>
   <NewExtensions>
-    <extension index="0">extensions\GMFileSystem</extension>
-    <extension index="1">extensions\exPatchWindowClose</extension>
+    <extension index="0">extensions\libjtool</extension>
   </NewExtensions>
   <sounds name="sound">
     <sound>sound\sndJump</sound>

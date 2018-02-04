@@ -252,9 +252,9 @@ global.count += 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (ex_patch_window_close_event()) {
+            <string>/*if (ex_patch_window_close_event()) {
     exitPressed()
-}
+}*/
 </string>
           </argument>
         </arguments>
