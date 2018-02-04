@@ -2,7 +2,9 @@
 mod ini;
 pub use self::ini::ini_open;
 pub use self::ini::ini_read_string;
+pub use self::ini::ini_read_real;
 pub use self::ini::ini_write_string;
+pub use self::ini::ini_write_real;
 pub use self::ini::ini_close;
 
 mod fs;
