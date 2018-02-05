@@ -6,6 +6,7 @@
   <datafiles number="3" name="datafiles"/>
   <NewExtensions>
     <extension index="0">extensions\libjtool</extension>
+    <extension index="1">extensions\window_command_hook</extension>
   </NewExtensions>
   <sounds name="sound">
     <sound>sound\sndJump</sound>

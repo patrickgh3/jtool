@@ -18,6 +18,8 @@ if global.run_from_editor and not directory_exists(global.editor_project_path) {
     game_end()
 }
 
+window_command_hook(window_command_close);
+
 // global state
 global.state = globalstate_idle
 global.comboboxselected = false
