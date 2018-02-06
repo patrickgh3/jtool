@@ -19,4 +19,3 @@ if nspToken[NSP_TOK.dsm_allowed]=1
   exit;
   }
 
-

@@ -58,4 +58,3 @@ or nsp_is_script(temp_str)
 //Default:
 return 0;
 
-

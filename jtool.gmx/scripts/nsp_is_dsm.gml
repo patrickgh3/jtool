@@ -16,4 +16,3 @@ if work_str=nspToken[NSP_TOK.dsm_name]
  
 return false;
 
-

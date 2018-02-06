@@ -1,24 +1,38 @@
 ///NSP_execute_string(String)
 /*
+
 Executes a string of GML code.
+
+Returns: Argument of "return" statement or undefined
+         (see the documentation). 
+
 */
-var nspListStr=global.nspListStr,
-    nspListPar=global.nspListPar;
+var nspListStr = ds_list_create(),
+    nspListPar = ds_list_create(),
+    rv, succ;
 
-if argument0="" exit;
+if (argument0 == "") return undefined;
 
-nsp_convert_to_list(argument0,nspListStr);
-nsp_list_parameters(nspListStr,nspListPar);
+succ = nsp_convert_to_list(argument0, nspListStr, nspListPar);
 
-nsp_execute_master(0,ds_list_size(nspListStr)-1,false);
+if (!succ) {
 
-ds_list_clear(nspListStr);
-ds_list_clear(nspListPar);
+  NSP_notify("SCRIPT: NSP_execute_string. ERROR: String will not be executed because it could not be converted.");
 
-//KLAZEN: moved error check internal here, calls the callabck function with the error string and returns status
-if (global._nsp_error != '') {
-    codable_error_callback(global._nsp_error);
-    global._nsp_error='';
-    return false;
-}
-return true;
+  ds_list_destroy(nspListStr);
+  ds_list_destroy(nspListPar);
+  
+  return undefined;
+  
+  }
+  
+rv = nsp_execute_master(0, ds_list_size(nspListStr)-1, false, nspListStr, nspListPar);
+
+ds_list_destroy(nspListStr);
+ds_list_destroy(nspListPar);
+
+  //DEBUG:
+  //show_message("NSP_execute_string returned:");
+  //show_message(rv);
+
+return rv;

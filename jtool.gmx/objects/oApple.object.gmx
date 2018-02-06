@@ -27,7 +27,6 @@
             <kind>1</kind>
             <string>event_inherited()
 image_speed=0
-codable_create()
 </string>
           </argument>
         </arguments>
@@ -52,7 +51,6 @@ codable_create()
             <kind>1</kind>
             <string>event_inherited()
 image_index = floor(global.count/15) mod 2
-codable_step()
 </string>
           </argument>
         </arguments>
@@ -76,7 +74,6 @@ codable_step()
           <argument>
             <kind>1</kind>
             <string>event_inherited()
-codable_draw(false)
 </string>
           </argument>
         </arguments>

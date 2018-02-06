@@ -8,4 +8,3 @@ if is_string(argument0)
  
 return string(argument0);
 
-

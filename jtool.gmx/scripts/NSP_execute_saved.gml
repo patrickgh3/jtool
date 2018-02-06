@@ -1,22 +1,32 @@
 ///NSP_execute_saved(List ID)
 /*
+
 Executes a saved (converted) string.
+
+Returns: Argument of "return" statement or undefined
+         (see the documentation). 
+
 */
-var nspListStr=global.nspListStr,
-    nspListPar=global.nspListPar;
+var nspListStr = ds_list_create(),
+    nspListPar = ds_list_create(),
+    rv;
 
-ds_list_copy(nspListStr,argument0[|0]);
-ds_list_copy(nspListPar,argument0[|1]);
+if (argument0[|2] == 0) {
 
-nsp_execute_master(0,ds_list_size(nspListStr)-1,false);
+  ds_list_destroy(nspListStr);
+  ds_list_destroy(nspListPar);
+  
+  NSP_notify("SCRIPT: NSP_execute_saved. ERROR: Input did not pass validation.");
+  return undefined;
 
-ds_list_clear(nspListStr);
-ds_list_clear(nspListPar);
+  }
+    
+ds_list_copy(nspListStr, argument0[|0]);
+ds_list_copy(nspListPar, argument0[|1]);
 
-//KLAZEN: moved error check internal here, calls the callabck function with the error string and returns status
-if (global._nsp_error != '') {
-    codable_error_callback(global._nsp_error);
-    global._nsp_error='';
-    return false;
-}
-return true;
+rv = nsp_execute_master(0, ds_list_size(nspListStr)-1, false, nspListStr, nspListPar);
+
+ds_list_destroy(nspListStr);
+ds_list_destroy(nspListPar);
+
+return rv;

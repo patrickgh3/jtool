@@ -11,14 +11,14 @@ if is_string(argument1)
  argument1=real(argument1);
  
 //And:
-if argument2=nspToken[NSP_TOK._and] or argument2=nspToken[NSP_TOK._and2] {
+if argument2=nspToken[NSP_TOK._and] {
     
  return string( (argument0 and argument1)*1.0 );
  
  }
   
 //Or:
-if argument2=nspToken[NSP_TOK._or] or argument2=nspToken[NSP_TOK._or2] {
+if argument2=nspToken[NSP_TOK._or] {
 
  return string( (argument0 or argument1)*1.0 );
    
@@ -30,6 +30,5 @@ if argument2=nspToken[NSP_TOK._xor] {
  return string( (argument0 xor argument1)*1.0 );
    
  }
-
 
 

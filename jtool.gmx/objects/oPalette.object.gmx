@@ -91,10 +91,6 @@ xxs[buttonCount]=1 yys[buttonCount]=6 sprs[buttonCount]=sGravityArrowDown objs[b
 buttonCount++;
 xxs[buttonCount]=2 yys[buttonCount]=6 sprs[buttonCount]=sSaveFlip objs[buttonCount]=oSaveFlip offs[buttonCount]=16 killers[buttonCount]=false tooltips[buttonCount] = ''; 
 buttonCount++;
-xxs[buttonCount]=3 yys[buttonCount]=6 sprs[buttonCount]=sPink32 objs[buttonCount]=oTrg offs[buttonCount]=16 killers[buttonCount]=false tooltips[buttonCount] = ''; 
-buttonCount++;
-
-
 </string>
           </argument>
         </arguments>

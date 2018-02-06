@@ -23,4 +23,3 @@ while (string_copy(work_str,string_length(work_str)-string_length(cond_str)+1,st
  
 return work_str;
 
-

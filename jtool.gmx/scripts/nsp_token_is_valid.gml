@@ -15,4 +15,3 @@ if string_letters(char1)<>char1 &&
  
 return false;
 
-

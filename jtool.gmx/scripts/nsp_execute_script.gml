@@ -20,18 +20,73 @@ if is_array(argument1) {
  }
  
 //PART 1 (Built-in scripts): ------------------------------------------------------------------------------------------
+switch (argument0) begin
 
-//EDIT BY KLAZEN: move this to a more visible place
-rv = codable_execute_script(argument0,argument1);
-if rv == undefined && asset_get_type(argument0)<>asset_script {
+ case "show_message":
+  show_message(argument1[0]);
+  return 0;
+  
+ case "instance_create":
+  return instance_create(argument1[0],argument1[1],argument1[2]);
+  
+ case "instance_destroy":
+  instance_destroy();
+  return 0;
+  
+ case "game_restart":
+  game_restart();
+  return 0;
+  
+ case "room_goto_next":
+  room_goto_next();
+  return 0;
+  
+ case "keyboard_check":
+  return keyboard_check(argument1[0]);
+  
+ case "ds_list_add":
+  ds_list_add(argument1[0],argument1[1]);
+  return 0;
+  
+ case "ds_list_create":
+  return ds_list_create();
+  
+ case "ds_list_find_value":
+  return ds_list_find_value(argument1[0],argument1[1]);
+  
+ case "ds_list_destroy":
+  ds_list_destroy(argument1[0]);
+  return 0;
+  
+ case "instance_nearest":
+  return instance_nearest(argument1[0],argument1[1],argument1[2]);
+  
+ case "sqr":
+  return sqr(argument1[0]);
+  
+ case "sqrt":
+  return sqrt(argument1[0]);
+  
+  case "irandom_range":
+  return choose(argument1[0], argument1[1]);
+  
+  case "random":
+  return random(argument1[0]);
+  
+  case "irandom":
+  return irandom(argument1[0]);
+
+ default:
+   if asset_get_type(argument0)<>asset_script {
     NSP_notify("SCRIPT: nsp_execute_script. ERROR: Script not supported ( "+argument0+" ).");
     return nspToken[NSP_TOK.abort];
-}
-else return rv;
+    }
+  break;
+  
+end;
 
 //PART 2 (Custom scripts): --------------------------------------------------------------------------------------------
-//EDIT BY KLAZEN: don't support custom scripts
-/*
+
 argument0=asset_get_index(argument0);
 
 if is_array(argument1)
@@ -108,7 +163,8 @@ switch (a) begin
    NSP_notify("SCRIPT: nsp_execute_script. ERROR: Too many arguments.");
    return nspToken[NSP_TOK.abort];
   break;
-
+ 
 end;
-*/
+
 return rv;
+

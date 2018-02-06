@@ -14,6 +14,8 @@ switch (argument0) begin
  case "repeat": return true;
   
  case "if": return true;
+ 
+ case "else": return true;
   
  case "while": return true;
  
@@ -21,8 +23,9 @@ switch (argument0) begin
  
  case "end": return true;
  
+ case "return": return true;
+ 
  default: return false;
 
 end;
-
 

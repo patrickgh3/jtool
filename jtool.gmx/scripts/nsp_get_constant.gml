@@ -4,9 +4,14 @@ Underlying NSP script. Can be changed by user (read NSP Documentation for more i
 */
 var work_str;
 
-work_str=argument0;
+work_str = argument0;
 
 switch (work_str) begin
+
+ //Boolean:
+ case "true": return true;
+ 
+ case "false": return false;
 
  //Mouse:
  case "mb_left": return mb_left;
@@ -27,9 +32,6 @@ switch (work_str) begin
  case "vk_enter": return vk_enter;
  
  //If not a defined constant:
- default:
-   return -9999;
-  break;
+ default: return -9999;
 
 end;
-

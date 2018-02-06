@@ -1,6 +1,6 @@
 ///nsp_variable_global_set(Name, Value)
 /*
-Underlying NSP script. Can be changed by user (read NSP Documentation for more info).
+Underlying NSP script.
 */
 var work_str;
 
@@ -27,13 +27,9 @@ switch (work_str) begin
  case "health":
    health=argument1;
   break;
-  /*
+  
  case "state":
    global.state=argument1;
-  break;
-  */
- case "trg":
-   global.trg=argument1;
   break;
   
  default:

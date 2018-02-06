@@ -39,4 +39,3 @@ for (i=a; i<=string_length(work_str); i+=1) begin
   }
  
 end;
-

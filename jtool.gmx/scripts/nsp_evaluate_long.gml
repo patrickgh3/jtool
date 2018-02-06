@@ -1,4 +1,4 @@
-///nsp_evaluate_long(Grid, Recursive call, [Optional] Start, [Optional] End)
+///nsp_evaluate_long(Grid, Nested call, [Optional] Start, [Optional] End)
 /*
 Underlying NSP script.
 */
@@ -40,7 +40,7 @@ while (i<=list_max) begin
  
   //Find arguments:
   pri_b=0;
-  var arg,counter=0,pos_a=i+2;
+  var arg, counter = 0, pos_a = i+2;
       arg[0]=0;
   for (t=pos_a; t<=list_max; t+=1) {
   
@@ -87,6 +87,13 @@ while (i<=list_max) begin
    }
   //SQ:
   if is_string(rv) rv=nspToken[NSP_TOK.quote]+rv+nspToken[NSP_TOK.quote];
+  
+  // Special case - the script was the only thing to evaluate:
+  if (i == list_min and t == list_max) {
+    ds_grid_destroy(g);
+    return rv;
+    }
+  // ***
   
   nsp_grid_shift(g,i+1,t);
   
@@ -176,7 +183,7 @@ while (i<=list_max) begin
    }
   
   if is_real(target) {
-   a=nsp_variable_get(target,variable);
+   a=nsp_variable_get_br(target,variable);
    }
    else {
     a=nsp_dsm_get(variable);
@@ -288,7 +295,7 @@ var a,token,val_l,val_r;
 i=list_min;
 while (i<list_max) {
 
- if g[#i,1]=NSP_TYPE._token {
+ if g[#i,1]=NSP_TYPE._operator {
  
   if (   g[#i,0]=nspToken[NSP_TOK.multiply]
       or g[#i,0]=nspToken[NSP_TOK.divide]
@@ -326,9 +333,14 @@ while (i<list_max) {
  
 //Math (add, subtract):
 i=list_min;
+
+//DEBUG:
+//show_message("Grid before addition:" + grid_string_1d(g) +
+//"##>>list_min = " + string(list_min) + ", list_max = " + string(list_max) + ", i = " + string(i));
+
 while (i<list_max) {
 
- if g[#i,1]=NSP_TYPE._token {
+ if g[#i,1]=NSP_TYPE._operator {
  
   if (   g[#i,0]=nspToken[NSP_TOK.add]
       or g[#i,0]=nspToken[NSP_TOK.subtract]) {
@@ -336,6 +348,10 @@ while (i<list_max) {
    token=g[#i,0];
    val_r=nsp_evaluate_single(g[#i+1,0],g[#i+1,1]);
    val_l=nsp_evaluate_single(g[#i-1,0],g[#i-1,1]);
+   
+   //DEBUG:
+   //show_message("val_l: "+nsp_string_force(val_l)+", isString: "+string(is_string(val_l)));
+   //show_message("val_r: "+nsp_string_force(val_r)+", isString: "+string(is_string(val_r)));
    
    if nsp_is_equal(val_l,nspToken[NSP_TOK.abort]) or nsp_is_equal(val_r,nspToken[NSP_TOK.abort]) {
     NSP_notify("SCRIPT: nsp_evaluate_long. ERROR: Calculations failed.");
@@ -357,6 +373,10 @@ while (i<list_max) {
      
    i-=1;
    
+   //DEBUG:
+   //show_message("Grid after addition:" + grid_string_1d(g) +
+   //"##>>list_min = " + string(list_min) + ", list_max = " + string(list_max) + ", i = " + string(i));
+   
    }
  
   }
@@ -369,7 +389,7 @@ while (i<list_max) {
 i=list_min;
 while (i<list_max) {
 
- if g[#i,1]=NSP_TYPE._token {
+ if g[#i,1]=NSP_TYPE._operator {
  
   if (   g[#i,0]=nspToken[NSP_TOK.equal]
       or g[#i,0]=nspToken[NSP_TOK.larger]
@@ -410,12 +430,10 @@ while (i<list_max) {
 i=list_min;
 while (i<list_max) {
 
- if g[#i,1]=NSP_TYPE._token {
+ if g[#i,1]=NSP_TYPE._operator {
  
   if (   g[#i,0]=nspToken[NSP_TOK._and]
       or g[#i,0]=nspToken[NSP_TOK._or]
-      or g[#i,0]=nspToken[NSP_TOK._and2]
-      or g[#i,0]=nspToken[NSP_TOK._or2]
       or g[#i,0]=nspToken[NSP_TOK._xor]  ) {
       
    token=g[#i,0];
@@ -457,4 +475,3 @@ while (i<list_max) {
 NSP_notify("SCRIPT: nsp_evaluate_long. ERROR: Evaluation failed - unknown format.");
 ds_grid_destroy(g);
 return nspToken[NSP_TOK.abort];
-

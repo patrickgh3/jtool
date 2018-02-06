@@ -52,7 +52,7 @@ switch (argument1) begin
   
  //Variable (SL):
  case NSP_TYPE._variablesl:
-   rv=nsp_variable_get(id,work_str);
+   rv=nsp_variable_get_br(id,work_str);
    if nsp_is_equal(rv,nspToken[NSP_TOK.abort]) {
     NSP_notify("SCRIPT: nsp_evaluate_single. ERROR: Cannot get the variable ("+work_str+").");
     return nspToken[NSP_TOK.abort];
@@ -64,7 +64,7 @@ switch (argument1) begin
   
  //Variable (GL):
  case NSP_TYPE._variablegl:
-   rv=nsp_variable_global_get(work_str);
+   rv=nsp_variable_global_get_br(work_str);
    if nsp_is_equal(rv,nspToken[NSP_TOK.abort]) {
     NSP_notify("SCRIPT: nsp_evaluate_single. ERROR: Cannot get the variable ("+work_str+").");
     return nspToken[NSP_TOK.abort];
@@ -75,11 +75,8 @@ switch (argument1) begin
   break; 
   
  default:
-   //EDIT BY KLAZEN: to avoid work_str concat errors
-   if (is_string(work_str)) NSP_notify("SCRIPT: nsp_evaluate_single. ERROR: Cannot identify the string ("+work_str+").");
-   else NSP_notify("SCRIPT: nsp_evaluate_single. ERROR: Cannot identify the string ("+string(work_str)+").");
+   NSP_notify("SCRIPT: nsp_evaluate_single. ERROR: Cannot identify the string ("+work_str+").");
    return nspToken[NSP_TOK.abort];
   break;
 
 end;
-

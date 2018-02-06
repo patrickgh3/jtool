@@ -9,4 +9,3 @@ if asset_get_type(argument0)<>asset_unknown
  
 return false;
 
-

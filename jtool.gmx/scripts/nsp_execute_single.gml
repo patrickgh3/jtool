@@ -1,9 +1,9 @@
-///nsp_execute_single(Start, End)
+///nsp_execute_single(Start, End, StrList, ParList)
 /*
 Underlying NSP script.
 */
-var nspListStr=global.nspListStr,
-    nspListPar=global.nspListPar,
+var nspListStr = argument2,
+    nspListPar = argument3,
     nspToken=global.nspToken;
 var i,av,list_min,list_max,pos,op_char,as_var_max,exec_code_min;
 
@@ -53,7 +53,7 @@ if pos<>-1 {
   }    
   
 //***Evaluate code:
-av=nsp_evaluate_list(exec_code_min,list_max);
+av=nsp_evaluate_list(exec_code_min, list_max, nspListStr, nspListPar);
 if nsp_is_equal(av,nspToken[NSP_TOK.abort]) {
  NSP_notify("SCRIPT: nsp_execute_single. ERROR: Aborting because evaluation failed.",nspListStr,list_min,list_max);
  return nspToken[NSP_TOK.abort];
@@ -80,7 +80,7 @@ if as_var_max<>-1 {
      mode=3;
      }
      else {
-      target=nsp_evaluate_list(list_min,as_var_max-1);
+      target=nsp_evaluate_list(list_min, as_var_max-1, nspListStr, nspListPar);
     
       if nsp_is_equal(target,nspToken[NSP_TOK.abort]) {
        NSP_notify("SCRIPT: nsp_execute_single. ERROR: Cannot assign value because target could not be evaluated.",nspListStr,list_min,list_max);
@@ -111,7 +111,7 @@ if as_var_max<>-1 {
  
   if mode<=1 {
   
-    old_val=nsp_variable_get(target,varname);
+    old_val=nsp_variable_get_br(target,varname);
     if nsp_is_equal(old_val,nspToken[NSP_TOK.abort]) {
      exit;
      }
@@ -121,7 +121,7 @@ if as_var_max<>-1 {
     }
     else if mode=2 {
     
-     old_val=nsp_variable_global_get(varname);
+     old_val=nsp_variable_global_get_br(varname);
      if nsp_is_equal(old_val,nspToken[NSP_TOK.abort]) {
       exit;
       }
@@ -147,14 +147,14 @@ if as_var_max<>-1 {
   case "+":
    
     if is_real(old_val)
-     av=real(nsp_arithmetic_calculate(av,old_val,nspToken[NSP_TOK.add]))
-     else av=nsp_arithmetic_calculate(av,old_val,nspToken[NSP_TOK.add]);
+     av=real(nsp_arithmetic_calculate(old_val,av,nspToken[NSP_TOK.add]))
+     else av=nsp_arithmetic_calculate(old_val,av,nspToken[NSP_TOK.add]);
   
     if mode<=1 {
-     nsp_variable_set(target,varname,av);
+     nsp_variable_set_br(target,varname,av);
      }
      else if mode=2 {
-      nsp_variable_global_set(varname,av);
+      nsp_variable_global_set_br(varname,av);
       }
       else if mode=3 {
        nsp_dsm_set(varname,av);
@@ -164,10 +164,10 @@ if as_var_max<>-1 {
    
   case "-":
     if mode<=1 {
-     nsp_variable_set(target,varname,old_val-av);
+     nsp_variable_set_br(target,varname,old_val-av);
      }
      else if mode=2 {
-      nsp_variable_global_set(varname,old_val-av);
+      nsp_variable_global_set_br(varname,old_val-av);
       }
       else if mode=3 {
        nsp_dsm_set(varname,old_val-av);
@@ -176,10 +176,10 @@ if as_var_max<>-1 {
     
   case "*":
     if mode<=1 {
-     nsp_variable_set(target,varname,old_val*av);
+     nsp_variable_set_br(target,varname,old_val*av);
      }
      else if mode=2 {
-      nsp_variable_global_set(varname,old_val*av);
+      nsp_variable_global_set_br(varname,old_val*av);
       }
       else if mode=3 {
        nsp_dsm_set(varname,old_val*av);
@@ -188,10 +188,10 @@ if as_var_max<>-1 {
  
   case "/":
     if mode<=1 {
-     nsp_variable_set(target,varname,old_val/av);
+     nsp_variable_set_br(target,varname,old_val/av);
      }
      else if mode=2 {
-      nsp_variable_global_set(varname,old_val/av);
+      nsp_variable_global_set_br(varname,old_val/av);
       }
       else if mode=3 {
        nsp_dsm_set(varname,old_val/av);
@@ -200,10 +200,10 @@ if as_var_max<>-1 {
    
   default:
     if mode<=1 {
-     nsp_variable_set(target,varname,av);
+     nsp_variable_set_br(target,varname,av);
      }
      else if mode=2 {
-      nsp_variable_global_set(varname,av);
+      nsp_variable_global_set_br(varname,av);
       }
       else if mode=3 {
        nsp_dsm_set(varname,av);
@@ -213,4 +213,3 @@ if as_var_max<>-1 {
  end;
   
  }
-

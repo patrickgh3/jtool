@@ -1,9 +1,9 @@
-///nsp_statement_positions(Start, End, Statement)
+///nsp_statement_positions(Start, End, Statement, StrList)
 /*
 Underlying NSP script.
 */
-var nspListStr=global.nspListStr,
-    nspToken=global.nspToken;
+var nspListStr = argument3,
+    nspToken = global.nspToken;
 var a,i,pos_1,pos_2,pos_3,list_min,list_max;
 
 //Set up:
@@ -70,4 +70,3 @@ a[1]=pos_2;
 a[2]=pos_3;
 
 return a;
-

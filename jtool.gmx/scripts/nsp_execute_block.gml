@@ -1,9 +1,10 @@
-///nsp_execute_block(Start, End)
+///nsp_execute_block(Start, End, StrList, ParList)
 /*
 Underlying NSP script.
 */
-var nspListStr=global.nspListStr;
-var i,list_min,list_max,pri_b,pos;
+var nspListStr = argument2,
+    nspListPar = argument3;
+var i,list_min,list_max,pri_b,pos,rv;
 
 list_min=argument0;
 list_max=argument1;
@@ -28,9 +29,11 @@ while (list_min<list_max) begin
  end;
 
  //Pass to master again: 
- nsp_execute_master(list_min,pos,true);
+ rv=nsp_execute_master(list_min, pos, true, nspListStr, nspListPar);
+ if !is_undefined(rv) return rv;
  list_min=i+1;
  
 end;
 
+return undefined;
 

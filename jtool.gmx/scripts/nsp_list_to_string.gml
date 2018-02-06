@@ -13,4 +13,3 @@ for (i=argument1; i<=argument2; i+=1) begin
 end;
 
 return s;
-

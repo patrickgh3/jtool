@@ -5,6 +5,7 @@ ini_open(filename)
 global.deathEnabled = FSIniReadReal('prefs','death',false)
 oEdit.snap = FSIniReadReal('prefs','gridsnap',32)
 global.skinName = ini_read_string('prefs','skin','pat_default')
+global.deathAnimName = ini_read_string('prefs','deathanim','default')
 window_set_fullscreen(FSIniReadReal('prefs','fullscreen',false))
 oWorld.alarm[0]=1
 global.showanalysis = FSIniReadReal('prefs','showanalysis',true)
@@ -28,3 +29,4 @@ for (var i=0; i<4; i++) {
 updatePaletteDepths()
 
 loadSkin(global.skinName)
+loadDeathAnim(global.deathAnimName)

@@ -316,8 +316,16 @@ if menuButtonToggle(xx,yy,w,h,buttons_enabled,0,'Backups on','Backups off',globa
     saveConfig()
 }
 
-// toggle update check
+// change death animation
 xx += dx
+yy = y+yo
+var m = menuButtonTwoPart(xx,yy,w-16,h,'Death Anim',buttons_enabled,sMenuDeathAnim)
+if m != 0 {
+    cycleDeathAnim((m-1)*2-1)
+}
+
+// toggle update check
+yy += dy*2
 if menuButtonToggle(xx,yy,w,h,buttons_enabled,0,'Update check on','Update check off',global.checkupdates) {
     global.checkupdates = not global.checkupdates
     saveConfig()

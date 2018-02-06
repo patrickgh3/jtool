@@ -30,7 +30,7 @@ global.frameaction_jumpslow = false
 global.player_xscale = 1 // setting the player's xscale causes physics issues
 global.joketitleindex = 0 // used in buttonCallback_JokeTitle
 global.version_major = 1
-global.version_minor = 3
+global.version_minor = 4
 global.version_patch = 0
 global.version_string = string(global.version_major)+'.'+string(global.version_minor)+'.'+string(global.version_patch)
 global.input_string = ''
@@ -52,6 +52,7 @@ global.killer_fadeduration = 4
 global.restartWithDJump = true;
 global.checkNudgeEarly = true;
 
+NSP_initialize();
 loadConfig()
 
 var backupFilename = prefix_project_path_if_needed('backup.jmap')
@@ -80,5 +81,3 @@ global.key_shoot = ord('Z')
 global.key_restart = ord('R')
 global.key_suicide = ord('Q')
 global.key_pause = vk_escape
-
-codable_initialize()

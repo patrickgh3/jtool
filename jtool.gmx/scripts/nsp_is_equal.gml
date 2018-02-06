@@ -9,4 +9,3 @@ if (is_string(argument0) + is_string(argument1)) <> 1
  
 return false;
 
-

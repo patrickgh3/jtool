@@ -7,6 +7,7 @@
   <NewExtensions>
     <extension index="0">extensions\libjtool</extension>
     <extension index="1">extensions\window_command_hook</extension>
+    <extension index="2">extensions\N String Parser 2</extension>
   </NewExtensions>
   <sounds name="sound">
     <sound>sound\sndJump</sound>
@@ -131,6 +132,7 @@
       <sprite>sprites\sMenuClearMap</sprite>
       <sprite>sprites\sMenuWaterLock</sprite>
       <sprite>sprites\sMenuWaterLock2</sprite>
+      <sprite>sprites\sMenuDeathAnim</sprite>
     </sprites>
     <sprites name="misc">
       <sprite>sprites\sEditCursor</sprite>
@@ -184,7 +186,6 @@
       <script>scripts\inputCallback_ClearMap.gml</script>
       <script>scripts\inputCallback_VAlign.gml</script>
       <script>scripts\inputCallback_NewVersionOpenThread.gml</script>
-      <script>scripts\inputCallback_addCodeToObject.gml</script>
     </scripts>
     <scripts name="buttons">
       <script>scripts\menuButton.gml</script>
@@ -245,6 +246,7 @@
         <script>scripts\saveConfig.gml</script>
         <script>scripts\loadConfig.gml</script>
         <script>scripts\loadSkin.gml</script>
+        <script>scripts\loadDeathAnim.gml</script>
       </scripts>
     </scripts>
     <scripts name="misc">
@@ -257,6 +259,7 @@
       <script>scripts\nudgePlayerHalf.gml</script>
       <script>scripts\objectInPalette.gml</script>
       <script>scripts\cycleSkin.gml</script>
+      <script>scripts\cycleDeathAnim.gml</script>
       <script>scripts\updateCaption.gml</script>
       <script>scripts\editCreateObject.gml</script>
       <script>scripts\editCreateObjectIfFree.gml</script>
@@ -264,72 +267,6 @@
       <script>scripts\updatePaletteDepths.gml</script>
       <script>scripts\deleteBackup.gml</script>
       <script>scripts\exitPressed.gml</script>
-    </scripts>
-    <scripts name="object code">
-      <scripts name="NSP">
-        <script>scripts\NSP_Documentation.gml</script>
-        <script>scripts\NSP_initialize.gml</script>
-        <script>scripts\NSP_free.gml</script>
-        <script>scripts\NSP_execute_string.gml</script>
-        <script>scripts\NSP_evaluate.gml</script>
-        <script>scripts\NSP_notify.gml</script>
-        <script>scripts\NSP_save.gml</script>
-        <script>scripts\NSP_execute_saved.gml</script>
-        <script>scripts\NSP_evaluate_saved.gml</script>
-        <script>scripts\NSP_free_saved.gml</script>
-        <script>scripts\nsp_execute_master.gml</script>
-        <script>scripts\nsp_execute_block.gml</script>
-        <script>scripts\nsp_execute_line.gml</script>
-        <script>scripts\nsp_execute_single.gml</script>
-        <script>scripts\nsp_execute_script.gml</script>
-        <script>scripts\nsp_get_constant.gml</script>
-        <script>scripts\nsp_convert_to_list.gml</script>
-        <script>scripts\nsp_list_parameters.gml</script>
-        <script>scripts\nsp_statement_positions.gml</script>
-        <script>scripts\nsp_list_remove.gml</script>
-        <script>scripts\nsp_build_grid.gml</script>
-        <script>scripts\nsp_grid_shift.gml</script>
-        <script>scripts\nsp_list_to_string.gml</script>
-        <script>scripts\nsp_evaluate_list.gml</script>
-        <script>scripts\nsp_evaluate_single.gml</script>
-        <script>scripts\nsp_evaluate_long.gml</script>
-        <script>scripts\nsp_evaluate_special_word.gml</script>
-        <script>scripts\nsp_variable_set.gml</script>
-        <script>scripts\nsp_variable_get.gml</script>
-        <script>scripts\nsp_variable_global_set.gml</script>
-        <script>scripts\nsp_variable_global_get.gml</script>
-        <script>scripts\nsp_dsm_set.gml</script>
-        <script>scripts\nsp_dsm_get.gml</script>
-        <script>scripts\nsp_is_special_word.gml</script>
-        <script>scripts\nsp_is_string.gml</script>
-        <script>scripts\nsp_is_number.gml</script>
-        <script>scripts\nsp_is_script.gml</script>
-        <script>scripts\nsp_is_asset.gml</script>
-        <script>scripts\nsp_is_variable.gml</script>
-        <script>scripts\nsp_is_dsm.gml</script>
-        <script>scripts\nsp_gm_nom.gml</script>
-        <script>scripts\nsp_src_token.gml</script>
-        <script>scripts\nsp_token_is_valid.gml</script>
-        <script>scripts\nsp_arithmetic_calculate.gml</script>
-        <script>scripts\nsp_comparison_calculate.gml</script>
-        <script>scripts\nsp_combination_calculate.gml</script>
-        <script>scripts\nsp_is_equal.gml</script>
-        <script>scripts\nsp_string_crop.gml</script>
-        <script>scripts\nsp_string_crop_ext.gml</script>
-        <script>scripts\nsp_string_find_last.gml</script>
-        <script>scripts\nsp_string_force.gml</script>
-      </scripts>
-      <script>scripts\codable_create.gml</script>
-      <script>scripts\codable_step.gml</script>
-      <script>scripts\codable_draw.gml</script>
-      <script>scripts\codable_is_codable.gml</script>
-      <script>scripts\codable_add_code.gml</script>
-      <script>scripts\codable_initialize.gml</script>
-      <script>scripts\codable_execute_script.gml</script>
-      <script>scripts\codable_instance_create.gml</script>
-      <script>scripts\codable_room_restart.gml</script>
-      <script>scripts\codable_is_dynamic.gml</script>
-      <script>scripts\codable_error_callback.gml</script>
     </scripts>
     <scripts name="undo">
       <script>scripts\createStringFromInstance.gml</script>
@@ -346,6 +283,99 @@
       <script>scripts\redoDestroy.gml</script>
       <script>scripts\getPositionString.gml</script>
     </scripts>
+    <scripts name="N String Parser v2_6">
+      <script>scripts\NSP_Documentation.gml</script>
+      <script>scripts\NSP_initialize.gml</script>
+      <script>scripts\NSP_free.gml</script>
+      <script>scripts\NSP_execute_string.gml</script>
+      <script>scripts\NSP_evaluate.gml</script>
+      <script>scripts\NSP_notify.gml</script>
+      <script>scripts\NSP_save.gml</script>
+      <script>scripts\NSP_check_saved.gml</script>
+      <script>scripts\NSP_execute_saved.gml</script>
+      <script>scripts\NSP_evaluate_saved.gml</script>
+      <script>scripts\NSP_free_saved.gml</script>
+      <scripts name="Main">
+        <script>scripts\nsp_execute_master.gml</script>
+        <script>scripts\nsp_execute_block.gml</script>
+        <script>scripts\nsp_execute_line.gml</script>
+        <script>scripts\nsp_execute_single.gml</script>
+        <script>scripts\nsp_execute_script.gml</script>
+      </scripts>
+      <scripts name="Utility">
+        <scripts name="List Conversion">
+          <script>scripts\nsp_convert_to_list.gml</script>
+          <script>scripts\nsp_tokenize.gml</script>
+          <script>scripts\nsp_get_token_type.gml</script>
+          <script>scripts\nsp_list_set_types.gml</script>
+          <script>scripts\nsp_list_tidy_and_verify.gml</script>
+        </scripts>
+        <script>scripts\nsp_get_constant.gml</script>
+        <script>scripts\nsp_statement_positions.gml</script>
+        <script>scripts\nsp_list_remove.gml</script>
+        <script>scripts\nsp_build_grid.gml</script>
+        <script>scripts\nsp_grid_shift.gml</script>
+        <script>scripts\nsp_list_to_string.gml</script>
+        <script>scripts\nsp_type_is_a_value.gml</script>
+        <script>scripts\nsp_type_name.gml</script>
+      </scripts>
+      <scripts name="Evaluator">
+        <script>scripts\nsp_evaluate_list.gml</script>
+        <script>scripts\nsp_evaluate_single.gml</script>
+        <script>scripts\nsp_evaluate_long.gml</script>
+        <script>scripts\nsp_evaluate_special_word.gml</script>
+      </scripts>
+      <scripts name="Setters and Getters">
+        <script>scripts\nsp_variable_set_br.gml</script>
+        <script>scripts\nsp_variable_get_br.gml</script>
+        <script>scripts\nsp_variable_global_set_br.gml</script>
+        <script>scripts\nsp_variable_global_get_br.gml</script>
+        <scripts name="New">
+          <script>scripts\nsp_variable_set_new.gml</script>
+          <script>scripts\nsp_variable_get_new.gml</script>
+          <script>scripts\nsp_variable_global_set_new.gml</script>
+          <script>scripts\nsp_variable_global_get_new.gml</script>
+        </scripts>
+        <scripts name="Legacy">
+          <script>scripts\nsp_variable_set.gml</script>
+          <script>scripts\nsp_variable_get.gml</script>
+          <script>scripts\nsp_variable_global_set.gml</script>
+          <script>scripts\nsp_variable_global_get.gml</script>
+        </scripts>
+        <scripts name="DSM">
+          <script>scripts\nsp_dsm_set.gml</script>
+          <script>scripts\nsp_dsm_get.gml</script>
+        </scripts>
+      </scripts>
+      <scripts name="Identifier">
+        <script>scripts\nsp_is_special_word.gml</script>
+        <script>scripts\nsp_is_string.gml</script>
+        <script>scripts\nsp_is_number.gml</script>
+        <script>scripts\nsp_is_script.gml</script>
+        <script>scripts\nsp_is_asset.gml</script>
+        <script>scripts\nsp_is_variable.gml</script>
+        <script>scripts\nsp_is_dsm.gml</script>
+        <scripts name="Misc">
+          <script>scripts\nsp_gm_nom.gml</script>
+          <script>scripts\nsp_src_token.gml</script>
+          <script>scripts\nsp_token_is_valid.gml</script>
+        </scripts>
+      </scripts>
+      <scripts name="Calculator">
+        <script>scripts\nsp_arithmetic_calculate.gml</script>
+        <script>scripts\nsp_comparison_calculate.gml</script>
+        <script>scripts\nsp_combination_calculate.gml</script>
+        <script>scripts\nsp_is_equal.gml</script>
+      </scripts>
+      <scripts name="String Format">
+        <script>scripts\nsp_string_crop.gml</script>
+        <script>scripts\nsp_string_crop_ext.gml</script>
+        <script>scripts\nsp_string_find_last.gml</script>
+        <script>scripts\nsp_string_force.gml</script>
+      </scripts>
+    </scripts>
+    <script>scripts\string_remove_whitespace.gml</script>
+    <script>scripts\alarm_setter.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shdSingleColor.shader</shader>
@@ -416,7 +446,10 @@
       </objects>
     </objects>
     <objects name="engine misc">
+      <object>objects\oPlayerBloodEmitter</object>
       <object>objects\oPlayerBlood</object>
+      <object>objects\oPlayerBloodTypeB</object>
+      <object>objects\oPlayerBloodCharm1</object>
       <object>objects\oPlayerBullet</object>
       <object>objects\oBlock</object>
       <object>objects\oKiller</object>

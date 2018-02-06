@@ -22,14 +22,6 @@ switch (argument1) begin
  case "y":
    return (argument0).y;
   break;
-
- case "xstart":
-   return (argument0).xstart;
-  break;
- 
- case "ystart":
-   return (argument0).ystart;
-  break;
   
  case "a":
    return (argument0).a;
@@ -117,5 +109,4 @@ switch (argument1) begin
   break;
 
 end;
-
 

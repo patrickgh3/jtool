@@ -8,6 +8,10 @@ var nspToken=global.nspToken;
 //Add:
 if argument2=nspToken[NSP_TOK.add] {
 
+ //DEBUG:
+ //show_message("Arg0: "+nsp_string_force(argument0)+", isString: "+string(is_string(argument0)));
+ //show_message("Arg1: "+nsp_string_force(argument1)+", isString: "+string(is_string(argument1)));
+
  if is_string(argument0) {
   if nsp_is_number(argument0)
    argument0=real(argument0)
@@ -19,7 +23,11 @@ if argument2=nspToken[NSP_TOK.add] {
    argument1=real(argument1)
    else argument1=string_delete(argument1,1,1);
   }
-    
+   
+ //DEBUG: 
+ //show_message("Arg0: "+nsp_string_force(argument0)+", isString: "+string(is_string(argument0)));
+ //show_message("Arg1: "+nsp_string_force(argument1)+", isString: "+string(is_string(argument1)));
+  
  return nsp_string_force(argument0+argument1);
  
  }
@@ -71,5 +79,4 @@ if argument2=nspToken[NSP_TOK._power] {
    return string(power(argument0,argument1));
    
    }
-
 

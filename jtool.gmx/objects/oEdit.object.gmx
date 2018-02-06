@@ -141,22 +141,7 @@ if( shouldCaptureControls ) {
             }
         }
     }
-    //code editor
-    else if alt and not instance_exists(oInputOverlay) { 
-        draggedInstance = noone;
-        cursor_sprite = sCursorCoder
-        window_set_cursor(cr_none)
-        if leftpressed {
-            x = -1000
-            y = -1000
-            var inst = instance_position(mouse_x,mouse_y,all)
-            if inst != noone and objectInPalette(inst.object_index) and codable_is_codable(inst) {
-                inputOverlay(input_textarea,inputCallback_addCodeToObject,'Enter Code for Step Event:')
-                selected_instance = inst;
-                if inst.code_step_written != '' then keyboard_string=inst.code_step_written
-            }
-        }
-    } else if( space || middleHeld || draggedInstance != noone ) {  // object movement
+    else if( space || middleHeld || draggedInstance != noone ) {  // object movement
         handleObjectDragMode( middlePressed || leftpressed, middleHeld || leftHeld );
     } else { //pencil
         draggedInstance = noone;
@@ -216,8 +201,7 @@ if( shouldCaptureControls ) {
                 
                 if (place_meeting(x,y,oEdit)
                 or collision_line(other.xprevious, other.yprevious, other.x, other.y,id,true,false))
-                and object_index != oPlayerStart 
-                and !codable_is_dynamic(id) {
+                and object_index != oPlayerStart {
                     var undoStr = createStringFromInstance( self );
                     with( oEdit ) { expandUndoEvent( undoStr ); }
                     instance_destroy()
