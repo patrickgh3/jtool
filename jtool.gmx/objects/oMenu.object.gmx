@@ -321,7 +321,10 @@ xx += dx
 yy = y+yo
 var m = menuButtonTwoPart(xx,yy,w-16,h,'Death Anim',buttons_enabled,sMenuDeathAnim)
 if m != 0 {
-    cycleDeathAnim((m-1)*2-1)
+    if (instance_exists(oPlayer))
+        cycleDeathAnim((m-1)*2-1)
+    else
+        inputOverlay(input_info,false,'Warning: You cannot change the death animation while dead!')
 }
 
 // toggle update check
