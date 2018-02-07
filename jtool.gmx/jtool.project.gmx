@@ -14,7 +14,6 @@
     <sound>sound\sndDJump</sound>
     <sound>sound\sndShoot</sound>
     <sound>sound\sndWallJump</sound>
-    <sound>sound\sndDeath</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="skin">
