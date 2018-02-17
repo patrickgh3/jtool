@@ -174,3 +174,47 @@ do
 until (adder == "");
 global.ScrCharm1Alarm0 = string_remove_whitespace(global.ScrCharm1Alarm0);
 global.ScrCharm1Alarm0 = NSP_save(global.ScrCharm1Alarm0);
+
+var charm1_alarm1 = file_text_open_read(deathanim_folder+'charm1_alarm1.gml');
+global.ScrCharm1Alarm1 = "";
+do
+{
+    var adder = file_text_read_string(charm1_alarm1);
+    global.ScrCharm1Alarm1 += adder
+}
+until (adder == "");
+global.ScrCharm1Alarm1 = string_remove_whitespace(global.ScrCharm1Alarm1);
+global.ScrCharm1Alarm1 = NSP_save(global.ScrCharm1Alarm1);
+
+var charm1_alarm2 = file_text_open_read(deathanim_folder+'charm1_alarm2.gml');
+global.ScrCharm1Alarm2 = "";
+do
+{
+    var adder = file_text_read_string(charm1_alarm2);
+    global.ScrCharm1Alarm2 += adder
+}
+until (adder == "");
+global.ScrCharm1Alarm2 = string_remove_whitespace(global.ScrCharm1Alarm2);
+global.ScrCharm1Alarm2 = NSP_save(global.ScrCharm1Alarm2);
+
+var charm1_alarm3 = file_text_open_read(deathanim_folder+'charm1_alarm3.gml');
+global.ScrCharm1Alarm3 = "";
+do
+{
+    var adder = file_text_read_string(charm1_alarm3);
+    global.ScrCharm1Alarm3 += adder
+}
+until (adder == "");
+global.ScrCharm1Alarm3 = string_remove_whitespace(global.ScrCharm1Alarm3);
+global.ScrCharm1Alarm3 = NSP_save(global.ScrCharm1Alarm3);
+
+var charm1_animation_end = file_text_open_read(deathanim_folder+'charm1_animation_end.gml');
+global.ScrCharm1AnimationEnd = "";
+do
+{
+    var adder = file_text_read_string(charm1_animation_end);
+    global.ScrCharm1AnimationEnd += adder
+}
+until (adder == "");
+global.ScrCharm1AnimationEnd = string_remove_whitespace(global.ScrCharm1AnimationEnd);
+global.ScrCharm1AnimationEnd = NSP_save(global.ScrCharm1AnimationEnd);
