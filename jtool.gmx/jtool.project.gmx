@@ -470,7 +470,6 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\rMain</room>
-    <room>rooms\rm_sample_ex_patch_windowclose</room>
   </rooms>
   <constants number="23">
     <constant name="globalstate_idle">1</constant>
