@@ -251,9 +251,16 @@ global.count += 1
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (window_command_check(window_command_close))
+            <string>if (os_type == os_windows)
 {
-    exitPressed();
+    if (window_command_check(window_command_close))
+    {
+        exitPressed();
+    }
+}
+else
+{
+    game_end();
 }
 </string>
           </argument>
