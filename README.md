@@ -16,3 +16,5 @@ Download and import the <a href="http://gmc.yoyogames.com/index.php?showtopic=56
 In the script mainInit, set the global variable editor_project to be the folder the project resides in. This allows GMFileSystem to work correctly when running the game from the editor (as opposed to exporting the game).
 
 You should be good to go. Have fun tweaking stuff or poking around in the code. If you're having trouble, feel free to contact me; my info is in documentation_index.html.
+
+//jtool fork by DuckNumbers
