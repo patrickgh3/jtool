@@ -1,4 +1,4 @@
-Jump tool (for lack of a better name)
+Jtool
 ===
 
 A tool for guy game players and creators to practice advanced techniques and design intricate platforming. For a long time, the community has used <a href="http://delicious-fruit.com/ratings/game_details.php?id=12455">RMJ</a> by TheNewGeezer, which is a great tool, but it lacks a few features and its UI is quirky in a few places. I had the motivation to make this tool and make it well, so here we are.
