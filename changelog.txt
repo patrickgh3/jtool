@@ -6,8 +6,8 @@ Save states and frame advance have been added.
 Controls:
 [F5-F12] = Load Save State 
 Enter + [F5-F12] = Create Save State
-Space = Pause/Advance
-F1 = Unpause
+F1 = Pause/Advance
+Space = Unpause
 Hold when pressing Advance:
 K = Shift Press
 L = Shift Release

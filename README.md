@@ -65,9 +65,9 @@ Controls:
  
 Enter + [F5-F12] = Create Save State
 
-Space = Pause/Advance
+F1 = Pause/Advance
 
-F1 = Unpause
+Space = Unpause
 
 Hold when pressing Advance:
 

@@ -86,7 +86,7 @@ if (file_exists("Screenie.png"))
             <string>
 //Event: oPause_Step_1
 
-if(keyboard_check_pressed(vk_space)){   
+if(keyboard_check_pressed(vk_f1)){   
   
 
 paused = false;
@@ -102,7 +102,7 @@ if(paused = false){
 instance_activate_object(oPlayer)
 
 }
-if(keyboard_check_pressed(vk_f1)){
+if(keyboard_check_pressed(vk_space)){
 paused = false
 //if file_exists("Screenie.png")
 {
