@@ -17,4 +17,32 @@ In the script mainInit, set the global variable editor_project to be the folder 
 
 You should be good to go. Have fun tweaking stuff or poking around in the code. If you're having trouble, feel free to contact me; my info is in documentation_index.html.
 
-//jtool fork by DuckNumbers
+---
+
+http://www.mediafire.com/file/47z25w41pwy91wd/jtool.7z
+
+Save states and frame advance added by DuckNumbers.
+
+Controls: 
+
+[F5-F12] = Load Save State
+ 
+Enter + [F5-F12] = Create Save State
+
+Space = Pause/Advance
+
+F1 = Unpause
+
+Hold when pressing Advance:
+
+K = Shift Press
+
+L = Shift Release
+
+U = Nudge Left
+
+I = Nudge Right
+
+O = Left for Vines
+
+P = Right for Vines
