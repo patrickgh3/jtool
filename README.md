@@ -25,6 +25,36 @@ In the script mainInit, set the global variable editor_project to be the folder 
 
 You should be good to go. Have fun tweaking stuff or poking around in the code. If you're having trouble, feel free to contact me; my info is in documentation_index.html.
 
+Contributing
+---
+I don't have much interest in maintaining jtool anymore. Hopefully this process
+will allow others to make new "official" jtool versions if they wish.
+
+Make a Github fork of master, and work off of that. When you're ready to
+release a new version, see below.
+
+How to release a new version
+---
+1. Make sure you've tested thoroughly, preferably with another set of eyes,
+so that the new version doesn't cause problems with people.
+2. Update changelog.txt.
+3. Update mainInit script with the new version number.
+4. Package a release zip. (see below)
+5. Update README.md with the new download link and version number.
+6. Update current-version.json. (Jtool reads this file to see if it's
+out-of-date)
+7. Make a pull request, and message Patrick no. 0303 on Discord so I can
+approve it.
+
+How to package a relase zip
+---
+1. Compile the game as a zip (not executable or installer).
+2. Unzip that zip into a temp folder.
+3. Add the other files to the temp folder.
+[See this image](https://i.imgur.com/2jeg6OW.png)
+4. Zip the temp folder.
+5. Upload to your favorite file hosting site.
+
 ---
 
 Save states and frame advance added by DuckNumbers.
