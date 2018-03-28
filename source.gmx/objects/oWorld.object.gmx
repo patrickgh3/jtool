@@ -289,7 +289,7 @@ if Id == versionRequestId {
     var newestVersionString = ds_map_find_value(map, 'jtool-version')
     if newestVersionString != global.version_string {
         inputOverlay(input_newversion, inputCallback_NewVersionOpenThread,
-            "There's a new Jtool version ("+newestVersionString+")#Visit the forum thread to download it.")
+            "There's a new Jtool version ("+newestVersionString+")#Visit the Github repository to download it.")
     }
 }
 </string>

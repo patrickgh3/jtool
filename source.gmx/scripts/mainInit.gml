@@ -62,7 +62,7 @@ if FS_file_exists(backupFilename) {
 else {
     loadStartupMap()
     if global.checkupdates {
-        versionRequestId = http_get('http://cwpat.me/jtool-version')
+        versionRequestId = http_get('https://raw.githubusercontent.com/patrickgh3/jtool/master/current-version.json')
     }
 }
 
