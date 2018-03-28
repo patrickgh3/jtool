@@ -24,14 +24,24 @@ Save states and frame advance added by DuckNumbers.
 
 Controls: 
 
-[F5-F12] = Load Save State 
+[F5-F12] = Load Save State
+ 
 Enter + [F5-F12] = Create Save State
+
 Space = Pause/Advance
+
 F1 = Unpause
+
 Hold when pressing Advance:
+
 K = Shift Press
+
 L = Shift Release
+
 U = Nudge Left
+
 I = Nudge Right
+
 O = Left for Vines
+
 P = Right for Vines
