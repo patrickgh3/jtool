@@ -33,6 +33,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</license>
 
 Filesystem improvements</description>
   <helpfile></helpfile>
+  <androidProps>-1</androidProps>
+  <iosProps>-1</iosProps>
   <installdir></installdir>
   <classname></classname>
   <androidclassname></androidclassname>
@@ -42,17 +44,9 @@ Filesystem improvements</description>
   <maclinkerflags></maclinkerflags>
   <maccompilerflags></maccompilerflags>
   <androidinject></androidinject>
-  <androidmanifestinject></androidmanifestinject>
-  <iosplistinject></iosplistinject>
-  <androidactivityinject></androidactivityinject>
   <gradleinject></gradleinject>
   <iosSystemFrameworks/>
   <iosThirdPartyFrameworks/>
-  <ConfigOptions>
-    <Config name="Default">
-      <CopyToMask>9223372036854775807</CopyToMask>
-    </Config>
-  </ConfigOptions>
   <androidPermissions/>
   <IncludedResources/>
   <files>
