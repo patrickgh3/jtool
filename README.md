@@ -18,8 +18,10 @@ by Thenewgeezer. To learn more about the IWBTG fangame community, visit
 
 ![](http://i.imgur.com/nhoLqV1.png)
 
-For developers
+Contributing
 ===
+
+(March 2018)
 
 I've lost interest in maintaining Jtool. But I'm going to let others make
 their own improvements and new official versions, since Redire, Starz0r, and
