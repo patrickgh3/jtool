@@ -17,7 +17,8 @@ In the script mainInit, set the global variable editor_project to be the folder 
 
 You should be good to go. Have fun tweaking stuff or poking around in the code. If you're having trouble, feel free to contact me; my info is in documentation_index.html.
 
-//
+---
+
 http://www.mediafire.com/file/47z25w41pwy91wd/jtool.7z
 
 Save states and frame advance added by DuckNumbers.
