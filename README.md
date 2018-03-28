@@ -61,7 +61,7 @@ How to package a relase zip
 1. Compile the game as a zip (not executable or installer).
 2. Unzip that zip into a temp folder.
 3. Add the other files to the temp folder.
-[See this image](https://i.imgur.com/2jeg6OW.png)
+[See this image (maybe don't include source.gmz anymore)](https://i.imgur.com/2jeg6OW.png)
 4. Zip the temp folder.
 5. Upload to your favorite file hosting site.
 
