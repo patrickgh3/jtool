@@ -8,3 +8,5 @@ if global.input_bool {
 if should_load {
     loadStartupMap()
 }
+
+eraserRecord()

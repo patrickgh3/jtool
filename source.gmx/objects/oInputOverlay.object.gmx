@@ -99,7 +99,7 @@ if mode == input_newversion {
     var button_yo = 25
     var button_w = 110
     var button_h = 32
-    if menuButton(528-button_w/2,304+button_yo,button_w,button_h,'Forum thread',true,false)
+    if menuButton(528-button_w/2,304+button_yo,button_w,button_h,'Github repo',true,false)
     or keyboard_check_pressed(vk_enter) {
         inputOverlayYes()
     }
@@ -319,7 +319,7 @@ else if mode == input_info {
 }
 else if mode == input_about {
     fontSetup(font_small,c_black,fa_center,fa_top,1)
-    draw_text(528,304-210,'jtool version '+global.version_string+'##made by Patrickgh3#'
+    draw_text(528,304-210,'jtool version '+global.version_string+'#record version 1.1##made by Patrickgh3#record mod by Cube#'
     +'#Special thanks:'
     +'#YoYoYoDude1 for his studio engine'
     +'#Thenewgeezer for the original RMJ'

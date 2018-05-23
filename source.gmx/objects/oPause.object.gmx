@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string> paused = false;
+            <string>global.paused = false;
 global.Saved = false
 screen_save_part("Screenie.png",0,0,800,600);
 Background = sprite_add("Screenie.png", 0, false, true, 0, 0);
@@ -55,7 +55,12 @@ Background = sprite_add("Screenie.png", 0, false, true, 0, 0);
             <kind>1</kind>
             <string>//Event: oPause_Alarm 1_1
 screen_save_part("Screenie.png",0,0,display_get_width(),display_get_height())
-paused = true
+global.pausedX = oPlayer.x
+global.pausedY = oPlayer.y
+global.pausedgrav = global.recordGrav
+global.pausedplayer_xscale = global.player_xscale
+global.pausedVspeed = oPlayer.vspeed
+global.paused = true
 if (file_exists("Screenie.png"))
 {
    Background = sprite_add("Screenie.png",0,false,true,0,0)
@@ -86,11 +91,11 @@ if (file_exists("Screenie.png"))
             <string>
 //Event: oPause_Step_1
 
-if(keyboard_check_pressed(vk_space)){   
+if(keyboard_check_pressed(vk_f1)){   
   
 
-paused = false;
-if(paused = false){
+global.paused = false;
+if(global.paused = false){
 instance_activate_object(oPlayer)
 }
 screen_save_part("Screenie.png",0,0,display_get_width(),display_get_height());
@@ -98,24 +103,24 @@ screen_save_part("Screenie.png",0,0,display_get_width(),display_get_height());
    alarm[1] = 1;
 
  }    
-if(paused = false){
+if(global.paused = false){
 instance_activate_object(oPlayer)
 
 }
-if(keyboard_check_pressed(vk_f1)){
-paused = false
+if(keyboard_check_pressed(vk_space)){
+global.paused = false
 //if file_exists("Screenie.png")
 {
    //file_delete("Screenie.png");
 }
 }
-if(paused){
+if(global.paused){
     instance_deactivate_object(oPlayer)
 }
 
 if keyboard_check_pressed(vk_f5) and keyboard_check(vk_enter)
    {
-   if(paused = true){
+   if(global.paused = true){
 screen_save_part("Screenie.png",0,0,display_get_width(),display_get_height());
 
 Background = sprite_add("Screenie.png",0,false,true,0,0)}
@@ -130,7 +135,7 @@ if keyboard_check_pressed(vk_f5) and file_exists("Save5.dat") = true
    {
    game_load("Save5.dat");
    }
-   if paused = true and file_exists("Screenie.png")
+   if global.paused = true and file_exists("Screenie.png")
    {
    Background = sprite_add("Screenie.png",0,false,true,0,0)
    }
@@ -210,6 +215,45 @@ if keyboard_check_pressed(vk_f12) and file_exists("Save12.dat")
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Recording - save states
+if global.record==1 {
+if keyboard_check_pressed(vk_f5) and keyboard_check(vk_enter) {ds_list_copy(global.recordListSS5,global.recordList)}
+if keyboard_check_pressed(vk_f5) {ds_list_copy(global.recordList,global.recordListSS5)}
+if keyboard_check_pressed(vk_f6) and keyboard_check(vk_enter) {ds_list_copy(global.recordListSS6,global.recordList)}
+if keyboard_check_pressed(vk_f6) {ds_list_copy(global.recordList,global.recordListSS6)}
+if keyboard_check_pressed(vk_f7) and keyboard_check(vk_enter) {ds_list_copy(global.recordListSS7,global.recordList)}
+if keyboard_check_pressed(vk_f7) {ds_list_copy(global.recordList,global.recordListSS7)}
+if keyboard_check_pressed(vk_f8) and keyboard_check(vk_enter) {ds_list_copy(global.recordListSS8,global.recordList)}
+if keyboard_check_pressed(vk_f8) {ds_list_copy(global.recordList,global.recordListSS8)}
+if keyboard_check_pressed(vk_f9) and keyboard_check(vk_enter) {ds_list_copy(global.recordListSS9,global.recordList)}
+if keyboard_check_pressed(vk_f9) {ds_list_copy(global.recordList,global.recordListSS9)}
+if keyboard_check_pressed(vk_f10) and keyboard_check(vk_enter) {ds_list_copy(global.recordListSS10,global.recordList)}
+if keyboard_check_pressed(vk_f10) {ds_list_copy(global.recordList,global.recordListSS10)}
+if keyboard_check_pressed(vk_f11) and keyboard_check(vk_enter) {ds_list_copy(global.recordListSS11,global.recordList)}
+if keyboard_check_pressed(vk_f11) {ds_list_copy(global.recordList,global.recordListSS11)}
+if keyboard_check_pressed(vk_f12) and keyboard_check(vk_enter) {ds_list_copy(global.recordListSS12,global.recordList)}
+if keyboard_check_pressed(vk_f12) {ds_list_copy(global.recordList,global.recordListSS12)}
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="8" enumb="64">
       <action>
@@ -229,7 +273,7 @@ if keyboard_check_pressed(vk_f12) and file_exists("Save12.dat")
           <argument>
             <kind>1</kind>
             <string>//Event: oPause_Draw GUI_1
-if paused = true {
+if global.paused = true {
 if file_exists("Screenie.png") {
 draw_sprite(Background,0,0,0)
 }

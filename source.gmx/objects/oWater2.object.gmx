@@ -33,6 +33,14 @@
         }
     }
 }
+if place_meeting(x,y,oRecordPlayer) {
+    with oRecordPlayer
+    {
+        if vspeed*oRecordPlayer.grav &gt; 2 {
+            vspeed = 2*oRecordPlayer.grav
+        }
+    }
+}
 </string>
           </argument>
         </arguments>
