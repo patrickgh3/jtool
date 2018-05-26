@@ -4,6 +4,9 @@ Jtool
 [Download newest version - v1.3.1](http://www.mediafire.com/file/cwfmfmogjs5zyuj/jtool%201.3.1.zip)
 ---
 
+[Change log](https://github.com/patrickgh3/jtool/blob/master/changelog.txt)
+---
+
 Here is a link to the old forum thread:
 [http://iwannacommunity.com/forum/index.php?topic=1964.0]()
 

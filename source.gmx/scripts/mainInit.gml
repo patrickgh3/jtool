@@ -8,7 +8,9 @@
    but I think that's a safe assumption.
 */
 global.run_from_editor = string_pos('gm_ttt',working_directory) != 0
-global.editor_project_path = 'C:\Users\Ducknumbers\Downloads\Fangames\jtool 1.3.0\'
+global.editor_project_path = 'C:\Users\Davis Simon\Downloads\Fangames\jtool 1.3.2 change\jtool 1.3.2\source.gmx'
+//global.editor_project_path = 'C:\Patrick\Projects\GameMaker\Current\jtool-github'
+
 // add backslash to end
 if string_char_at(global.editor_project_path,string_length(global.editor_project_path)) != '\' {
     global.editor_project_path += '\'
@@ -31,7 +33,7 @@ global.player_xscale = 1 // setting the player's xscale causes physics issues
 global.joketitleindex = 0 // used in buttonCallback_JokeTitle
 global.version_major = 1
 global.version_minor = 3
-global.version_patch = 1
+global.version_patch = 2
 global.version_string = string(global.version_major)+'.'+string(global.version_minor)+'.'+string(global.version_patch)
 global.input_string = ''
 global.input_bool = false
@@ -80,5 +82,23 @@ global.key_shoot = ord('Z')
 global.key_restart = ord('R')
 global.key_suicide = ord('Q')
 global.key_pause = vk_escape
+global.record = false; // 0=noone,1=record,2=play
+
+global.recordList = ds_list_create();
+global.recordX = 0;
+global.recordY = 0;
+global.recordGrav = 1;
+global.recordXscale = 1;
+
+//Record Save State Variables
+global.recordListSS5 = ds_list_create()
+global.recordListSS6 = ds_list_create()
+global.recordListSS7 = ds_list_create()
+global.recordListSS8 = ds_list_create()
+global.recordListSS9 = ds_list_create()
+global.recordListSS10 = ds_list_create()
+global.recordListSS11 = ds_list_create()
+global.recordListSS12 = ds_list_create()
+
 
 codable_initialize()

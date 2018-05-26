@@ -55,7 +55,7 @@ else if mode == input_info {
 }
 else if mode == input_about {
     var back_w = 320
-    var back_h = 480
+    var back_h = 580
     var label_yo = 0
 }
 else if mode == input_depth {
@@ -319,34 +319,37 @@ else if mode == input_info {
 }
 else if mode == input_about {
     fontSetup(font_small,c_black,fa_center,fa_top,1)
-    draw_text(528,304-210,'jtool version '+global.version_string+'##made by Patrickgh3#'
-    +'#Special thanks:'
-    +'#YoYoYoDude1 for his studio engine'
-    +'#Thenewgeezer for the original RMJ'
-    +'#Klazen108 for adding object code'
-    +'#Redire for making additional features'
+    draw_text(528,304-270,'jtool version '+global.version_string+'#record version 1.1'
+    +'##Patrickgh3 - initial author'
+    +'#Klazen108 - object code'
+    +'#Redire - additional features'
+    +'#DuckNumbers - additional features'
+    +'#Cube - player recording'
+    +'##Special Thanks:'
+    +'#YoYoYoDude1 - studio engine'
+    +'#Thenewgeezer - the original RMJ'
     +'#people who gave feedback and feature ideas'
     
-    +'##Please read readme.html for more info!')
+    +'##Please read readme.html and changelog.txt#for more info!')
     
-    draw_sprite(sIcon32, 0, 528-105, 304-213)
+    draw_sprite(sIcon32, 0, 528-105, 304-263)
     
     var button_w = 130
     var button_h = 32
-    if menuButton(528-button_w/2,304+40,button_w,button_h,'Forum thread',true,false) {
+    if menuButton(528-button_w/2,304+90,button_w,button_h,'Forum thread',true,false) {
         url_open_full('http://www.iwannacommunity.com/forum/index.php?topic=1964.0','_blank', '')
     }
     
-    if menuButton(528-button_w/2,304+80,button_w,button_h,'Skin library',true,false) {
+    if menuButton(528-button_w/2,304+130,button_w,button_h,'Skin library',true,false) {
         url_open_full('http://iwannacommunity.com/forum/index.php?topic=2605','_blank', '')
     }
     
-    if menuButton(528-button_w/2,304+120,button_w,button_h,'More of my tools',true,false) {
+    if menuButton(528-button_w/2,304+170,button_w,button_h,'More of my tools',true,false) {
         url_open_full('http://cwpat.me/iwanna-tools/','_blank', '')
     }
     
     var button_w = 90
-    if menuButton(528-button_w/2,304+180,button_w,button_h,'Ok',true,false) {
+    if menuButton(528-button_w/2,304+230,button_w,button_h,'Ok',true,false) {
         inputOverlayYes()
     }
     

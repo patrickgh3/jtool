@@ -3,10 +3,11 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="3" name="datafiles"/>
+  <datafiles number="4" name="datafiles"/>
   <NewExtensions>
     <extension index="0">extensions\GMFileSystem</extension>
     <extension index="1">extensions\exPatchWindowClose</extension>
+    <extension index="2">extensions\CleanMemEx</extension>
   </NewExtensions>
   <sounds name="sound">
     <sound>sound\sndJump</sound>
@@ -131,6 +132,10 @@
       <sprite>sprites\sMenuClearMap</sprite>
       <sprite>sprites\sMenuWaterLock</sprite>
       <sprite>sprites\sMenuWaterLock2</sprite>
+      <sprite>sprites\sMenuRecord</sprite>
+      <sprite>sprites\sMenuContinue</sprite>
+      <sprite>sprites\sMenuStop</sprite>
+      <sprite>sprites\sMenuEraser</sprite>
     </sprites>
     <sprites name="misc">
       <sprite>sprites\sEditCursor</sprite>
@@ -148,10 +153,12 @@
       <sprite>sprites\sDepthPlayerHint</sprite>
       <sprite>sprites\sWakahaEasterEgg</sprite>
     </sprites>
+    <sprite>sprites\sprite121</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bgBackground</background>
     <background>background\bgBackgroundDefault</background>
+    <background>background\bgRecord</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -182,6 +189,7 @@
       <script>scripts\inputCallback_LoadMap.gml</script>
       <script>scripts\inputCallback_LoadRMJMap.gml</script>
       <script>scripts\inputCallback_ClearMap.gml</script>
+      <script>scripts\inputCallback_HAlign.gml</script>
       <script>scripts\inputCallback_VAlign.gml</script>
       <script>scripts\inputCallback_NewVersionOpenThread.gml</script>
       <script>scripts\inputCallback_addCodeToObject.gml</script>
@@ -212,6 +220,7 @@
       <script>scripts\playerShoot.gml</script>
       <script>scripts\killPlayer.gml</script>
       <script>scripts\flipGravity.gml</script>
+      <script>scripts\flipGravityRecord.gml</script>
     </scripts>
     <scripts name="saveload">
       <scripts name="save map">
@@ -346,10 +355,22 @@
       <script>scripts\redoDestroy.gml</script>
       <script>scripts\getPositionString.gml</script>
     </scripts>
-    <script>scripts\script163.gml</script>
-    <script>scripts\script164.gml</script>
-    <script>scripts\script165.gml</script>
-    <script>scripts\script166.gml</script>
+    <scripts name="record">
+      <script>scripts\startRecord.gml</script>
+      <script>scripts\continueRecordBegin.gml</script>
+      <script>scripts\playRecord.gml</script>
+      <script>scripts\eraserRecord.gml</script>
+      <script>scripts\clearRecordList.gml</script>
+      <script>scripts\adjustPlayerPosition_EndStep_Record.gml</script>
+      <scripts name="save/load">
+        <script>scripts\saveRecord.gml</script>
+        <script>scripts\saveRecordName.gml</script>
+        <script>scripts\loadRecordAskName.gml</script>
+        <script>scripts\continueRecordAskName.gml</script>
+        <script>scripts\loadRecord.gml</script>
+        <script>scripts\continueRecord.gml</script>
+      </scripts>
+    </scripts>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\shdSingleColor.shader</shader>
@@ -360,12 +381,15 @@
   </fonts>
   <objects name="objects">
     <object>objects\oPlayer</object>
+    <object>objects\oRecordPlayer</object>
     <object>objects\oPause</object>
     <object>objects\oWorld</object>
     <object>objects\oMenu</object>
     <object>objects\oEdit</object>
     <object>objects\oInputOverlay</object>
     <object>objects\oZoom</object>
+    <object>objects\oRecord</object>
+    <object>objects\oContinue</object>
     <object>objects\oPalette</object>
     <objects name="palette">
       <object>objects\oEditBlock</object>

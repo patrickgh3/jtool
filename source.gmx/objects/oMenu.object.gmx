@@ -25,13 +25,43 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>menu_height = 215//200
+            <string>menu_height = 290//200
 x = 0
 y = -menu_height
 steps_in_menu = 0
 steps_out_of_menu = 0
 yspeed = 0
 escape_button_just_clicked = false
+
+global.stopX = -1
+   global.stopY = 0
+   global.stopgrav = 0
+   global.stopplayer_xscale = 0
+
+Background = sprite_add("Screenie.png", 0, false, true, 0, 0);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>continueRecordBegin()
 </string>
           </argument>
         </arguments>
@@ -164,6 +194,16 @@ if menuButton(xx,yy,w,h,'Export RMJ Map',buttons_enabled,false) {
     }
     else saveRMJMap()
 }
+//save REC
+yy += dy
+if menuButton(xx,yy,w,h,'Save Record',buttons_enabled,false) {
+    saveRecord()
+}
+//load REC
+yy += dy
+if menuButton(xx,yy,w,h,'Load Record',buttons_enabled,false) {
+    loadRecordAskName()
+}
 
 xx += dx+dx2
 yy = y+yo
@@ -243,6 +283,21 @@ if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuDotOutline,
     saveConfig()
 }
 
+// start record
+yy += dy
+if menuButton(xx,yy,w,h,'Record',buttons_enabled,sMenuRecord) {
+    startRecord();
+    escape_button_just_clicked = true;
+}
+
+//continue record
+yy +=dy
+if menuButton(xx,yy,w,h,'Continue',buttons_enabled,sMenuContinue) {
+   escape_button_just_clicked = true;
+    continueRecordAskName()
+}
+
+
 // change skin
 xx += dx
 yy = y+yo
@@ -279,6 +334,20 @@ if menuButtonToggle(xx,yy,w,h,buttons_enabled,sidebar_spr,
     saveConfig()
 }
 
+// stop record
+yy += dy
+if menuButton(xx,yy,w,h,'Stop',buttons_enabled,sMenuStop) {
+   if global.paused = false {
+   global.stopX = oPlayer.x
+   global.stopY = oPlayer.y
+   global.stopgrav = global.recordGrav
+   global.stopplayer_xscale = global.player_xscale
+   global.stopVspeed = oPlayer.vspeed }
+    playRecord();
+    escape_button_just_clicked = true;
+}
+
+
 // depth
 xx += dx
 yy = y+yo
@@ -314,6 +383,11 @@ yy += dy
 if menuButtonToggle(xx,yy,w,h,buttons_enabled,0,'Backups on','Backups off',global.backup) {
     global.backup = not global.backup
     saveConfig()
+}
+
+yy += dy
+if menuButton(xx,yy,w,h,'Eraser',buttons_enabled,sMenuEraser) {
+    eraserRecord();
 }
 
 // toggle update check
@@ -372,6 +446,8 @@ yy += dy
 if menuButton(xx,yy,w,h,'Quit',buttons_enabled,false) {
     exitPressed()
 }
+
+
 </string>
           </argument>
         </arguments>
