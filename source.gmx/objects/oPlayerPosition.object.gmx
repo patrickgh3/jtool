@@ -58,11 +58,16 @@ var w = 136
 if global.playery_extended w = 240
 drawButton(x,y,w,80,false)
 fontSetup(font_small,c_black,fa_left,fa_top,1)
-if instance_exists(oPlayer) {
+if instance_exists(oRecordPlayer) {
+ align = oRecordPlayer.x mod 3
+    ypos = oRecordPlayer.y
+    xpos = oRecordPlayer.x }
+else if instance_exists(oPlayer) {
     align = oPlayer.x mod 3
     ypos = oPlayer.y
     xpos = oPlayer.x
 }
+
 var yy = y+5
 var dy = 20
 var xx = x+7
