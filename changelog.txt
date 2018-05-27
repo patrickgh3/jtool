@@ -6,7 +6,7 @@ Recordings of gameplay can now be created. Click the Record button in the menu t
 Recordings can be saved and loaded.
 Saved recordings can also be continued. Click the Continue button to add onto a saved recording. The player will be paused when a recording is selected.
 Recordings work fully with TAS controls and save states.
-When recordings are playing, they can be paused and viewed frame by frame. Press Enter+F1 to pause and frame advance. Enter+Space will put the recording back in full speed mode. 
+When recordings are playing, they can be paused and viewed frame by frame. Press Enter+1 to pause and frame advance. Enter+Space will put the recording back in full speed mode. 
 When a recording is playing, the position coordinates will reflect the recorded player's. 
 Decimal horizontal aligns can now be chosen. Press H to set your decimal Halign.
 "N" and "M" now nudge the player a half pixel left or right. 
