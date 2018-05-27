@@ -26,7 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>global.paused = false;
-recordingpaused = false;
+global.recordingpaused = false;
 global.Saved = false
 screen_save_part("Screenie.png",0,0,800,600);
 Background = sprite_add("Screenie.png", 0, false, true, 0, 0);
@@ -57,7 +57,7 @@ Background = sprite_add("Screenie.png", 0, false, true, 0, 0);
             <string>//Event: oPause_Alarm 2_1
 screen_save_part("Screenie.png",0,0,display_get_width(),display_get_height())
 
-recordingpaused = true
+global.recordingpaused = true
 if (file_exists("Screenie.png"))
 {
    Background = sprite_add("Screenie.png",0,false,true,0,0)
@@ -307,8 +307,8 @@ if keyboard_check_pressed(vk_f12) {ds_list_copy(global.recordList,global.recordL
 if(keyboard_check(vk_enter) and keyboard_check_pressed(ord("1"))){   
   
 
-recordingpaused = false;
-if(recordingpaused = false){
+global.recordingpaused = false;
+if(global.recordingpaused = false){
 instance_activate_object(oRecordPlayer)
 }
 screen_save_part("Screenie.png",0,0,display_get_width(),display_get_height());
@@ -316,15 +316,15 @@ screen_save_part("Screenie.png",0,0,display_get_width(),display_get_height());
    alarm[2] = 1;
 
  }    
-if(recordingpaused = false){
+if(global.recordingpaused = false){
 instance_activate_object(oRecordPlayer)
 
 }
 if(keyboard_check(vk_enter) and keyboard_check_pressed(vk_space)){
-recordingpaused = false
+global.recordingpaused = false
 
 }
-if(recordingpaused){
+if(global.recordingpaused){
     instance_deactivate_object(oRecordPlayer)
 }
 </string>
@@ -350,7 +350,7 @@ if(recordingpaused){
           <argument>
             <kind>1</kind>
             <string>//Event: oPause_Draw GUI_1
-if global.paused = true or recordingpaused = true {
+if global.paused = true or global.recordingpaused = true{
 if file_exists("Screenie.png") {
 draw_sprite(Background,0,0,0)
 }
