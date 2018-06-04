@@ -86,12 +86,14 @@ if (file_exists("Screenie.png"))
           <argument>
             <kind>1</kind>
             <string>//Event: oPause_Alarm 1_1
+
 screen_save_part("Screenie.png",0,0,display_get_width(),display_get_height())
+if instance_exists(oPlayer) {
 global.pausedX = oPlayer.x
 global.pausedY = oPlayer.y
 global.pausedgrav = global.recordGrav
 global.pausedplayer_xscale = global.player_xscale
-global.pausedVspeed = oPlayer.vspeed
+global.pausedVspeed = oPlayer.vspeed }
 global.paused = true
 if (file_exists("Screenie.png"))
 {

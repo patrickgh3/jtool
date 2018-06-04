@@ -207,6 +207,7 @@
       <script>scripts\jumpDurations_Create.gml</script>
       <script>scripts\jumpDurations_EndStep.gml</script>
       <script>scripts\jumpDurations_Draw.gml</script>
+      <script>scripts\lowcancels.gml</script>
       <script>scripts\cancelHints_Create.gml</script>
       <script>scripts\cancelHints_EndStep.gml</script>
       <script>scripts\bhopHint_Create.gml</script>

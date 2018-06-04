@@ -35,10 +35,16 @@ global.continueVspeed=real(file_text_read_string(f))
 
 file_text_close(f)
 
+if instance_exists(oPlayer) {
 oPlayer.x = global.continueX
 oPlayer.y = global.continueY
 global.grav = global.continueGrav
 global.player_xscale = global.continueXscale
-oPlayer.vspeed = global.continueVspeed
+oPlayer.vspeed = global.continueVspeed }
+else { 
+instance_create(global.continueX,global.continueY,oPlayer) 
+global.grav = global.continueGrav
+global.player_xscale = global.continueXscale
+oPlayer.vspeed = global.continueVspeed }
 screen_save_part("Screenie.png",0,0,display_get_width(),display_get_height())
 continueRecordBegin()
