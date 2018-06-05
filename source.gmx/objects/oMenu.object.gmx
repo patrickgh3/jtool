@@ -344,13 +344,13 @@ if menuButton(xx,yy,w,h,'Stop',buttons_enabled,sMenuStop) {
    global.stopgrav = global.recordGrav
    global.stopplayer_xscale = global.player_xscale
    global.stopVspeed = oPlayer.vspeed }
-   else { 
-   loadPlayer()
-   global.stopX = oPlayer.x
-   global.stopY = oPlayer.y
-   global.stopgrav = global.recordGrav
-   global.stopplayer_xscale = global.player_xscale
-   global.stopVspeed = oPlayer.vspeed }
+   else if global.paused { 
+   
+   global.stopX = global.pausedX
+   global.stopY = global.pausedY
+   global.stopgrav = global.pausedgrav
+   global.stopplayer_xscale = global.pausedplayer_xscale
+   global.stopVspeed = global.pausedVspeed }
    }
     playRecord();
     escape_button_just_clicked = true;

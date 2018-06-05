@@ -12,9 +12,12 @@ global.recordY=real(file_text_read_string(f))
 file_text_readln(f)
 
 global.recordGrav=real(file_text_read_string(f))
-FS_file_text_readln(f)
+file_text_readln(f)
 
 global.recordXscale=real(file_text_read_string(f));
+file_text_readln(f)
+
+global.recordVspeed=real(file_text_read_string(f));
 
 
 

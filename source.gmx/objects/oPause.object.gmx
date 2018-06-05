@@ -94,7 +94,9 @@ global.pausedY = oPlayer.y
 global.pausedgrav = global.recordGrav
 global.pausedplayer_xscale = global.player_xscale
 global.pausedVspeed = oPlayer.vspeed }
+
 global.paused = true
+
 if (file_exists("Screenie.png"))
 {
    Background = sprite_add("Screenie.png",0,false,true,0,0)

@@ -28,6 +28,7 @@
             <string>pos = 0;
 grav = global.recordGrav;
 xscale = global.recordXscale;
+vspeed = global.recordVspeed;
 L = 0;
 R = 0;
 J = 0;

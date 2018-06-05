@@ -19,6 +19,9 @@ file_text_readln(f)
 global.recordXscale=real(file_text_read_string(f))
 file_text_readln(f)
 
+global.recordVspeed=real(file_text_read_string(f))
+file_text_readln(f)
+
 global.continueX=real(file_text_read_string(f))
 file_text_readln(f)
 

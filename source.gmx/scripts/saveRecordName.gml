@@ -18,6 +18,9 @@ file_text_writeln(f)
 file_text_write_string(f,string(global.recordXscale))
 file_text_writeln(f)
 
+file_text_write_string(f,string(global.recordVspeed))
+file_text_writeln(f)
+
 //Variables to continue a saved record
 if global.stopX != -1 {
 file_text_write_string(f,string(global.stopX))

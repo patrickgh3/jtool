@@ -87,6 +87,7 @@ global.recordX = 0;
 global.recordY = 0;
 global.recordGrav = 1;
 global.recordXscale = 1;
+global.recordVspeed = 0;
 
 //Record Save State Variables
 global.recordListSS5 = ds_list_create()
