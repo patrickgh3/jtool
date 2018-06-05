@@ -141,7 +141,7 @@ draw_text(xx,yy,'TAS Controls')
     draw_text(xx,yy,'Space')
     draw_text(xx+dx,yy,'Unpause')
     yy += dy
-    draw_text(xx,yy,'Enter+F1')
+    draw_text(xx,yy,'Enter+1')
     draw_text(xx+dx,yy,'Recording FA')
     yy += dy
     draw_text(xx,yy,'Space')
