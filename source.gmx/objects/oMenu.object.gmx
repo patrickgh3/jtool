@@ -196,12 +196,12 @@ if menuButton(xx,yy,w,h,'Export RMJ Map',buttons_enabled,false) {
 }
 //save REC
 yy += dy
-if menuButton(xx,yy,w,h,'Save Record',buttons_enabled,false) {
+if global.paused = false and menuButton(xx,yy,w,h,'Save Record',buttons_enabled,false) {
     saveRecord()
 }
 //load REC
 yy += dy
-if menuButton(xx,yy,w,h,'Load Record',buttons_enabled,false) {
+if global.paused = false and menuButton(xx,yy,w,h,'Load Record',buttons_enabled,false) {
     loadRecordAskName()
 }
 
@@ -293,8 +293,9 @@ if menuButton(xx,yy,w,h,'Record',buttons_enabled,sMenuRecord) {
 //continue record
 yy +=dy
 if menuButton(xx,yy,w,h,'Continue',buttons_enabled,sMenuContinue) {
-   escape_button_just_clicked = true;
-    continueRecordAskName()
+    escape_button_just_clicked = true;
+    if global.paused = false {
+    continueRecordAskName() }
 }
 
 
@@ -337,7 +338,7 @@ if menuButtonToggle(xx,yy,w,h,buttons_enabled,sidebar_spr,
 // stop record
 yy += dy
 if menuButton(xx,yy,w,h,'Stop',buttons_enabled,sMenuStop) {
-   if global.paused = false {
+   
    if instance_exists(oPlayer) {
    global.stopX = oPlayer.x
    global.stopY = oPlayer.y
@@ -351,7 +352,7 @@ if menuButton(xx,yy,w,h,'Stop',buttons_enabled,sMenuStop) {
    global.stopgrav = global.pausedgrav
    global.stopplayer_xscale = global.pausedplayer_xscale
    global.stopVspeed = global.pausedVspeed }
-   }
+   
     playRecord();
     escape_button_just_clicked = true;
 }

@@ -1,3 +1,5 @@
+global.paused = false
+
 var filename = argument0
 
 var f = file_text_open_read(filename)

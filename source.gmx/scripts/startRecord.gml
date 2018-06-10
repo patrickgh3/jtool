@@ -1,3 +1,4 @@
+global.deathEnabled = false 
 with oRecordPlayer {instance_destroy();}
 
 //if not instance_exists(oPlayer) {loadPlayer() }
