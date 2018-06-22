@@ -25,12 +25,32 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.PlayerFrameCounter = 0
-jump = 8.5 * global.grav
-jump2 = 7 * global.grav
+            <string>pos = 0;
+grav = global.recordGrav;
+xscale = global.recordXscale;
+//vspeed = global.recordVspeed;
+//global.PlayerFrameCounter = 0
+L = 0;
+R = 0;
+J = 0;
+RJ = 0;
+PL = 0;
+PR = 0;
+PJ = 0;
+FK = 0;
+FP = 0;
+FO = 0;
+FU = 0;
+FD = 0;
+FU = 0;
+FI = 0;
+
+image_alpha = 0.5;
+jump = 8.5 * grav
+jump2 = 7 * grav
 maxSpeed = 3
 maxVspeed = 9
-gravity = 0.4 * global.grav
+gravity = 0
 
 frozen = false
 djump = true
@@ -43,7 +63,7 @@ nudgeBlockCheck = false;
 if not global.dotkid {
     mask_index = sPlayerMask
     sprite_index = sPlayerIdle
-    if global.grav == 1 {
+    if grav == 1 {
         mask_index = sPlayerMask
     }
     else {
@@ -81,21 +101,38 @@ else {
             <string>/// Edge of screen death
 
 if x &lt; 0 {
-    if global.deathEnabled killPlayer()
     with oBorderDeath if type == 'left' highlight_count = 0
 }
 if x &gt; 800 {
-    if global.deathEnabled killPlayer()
     with oBorderDeath if type == 'right' highlight_count = 0
 }
 if y &lt; 0 {
-    if global.deathEnabled killPlayer()
     with oBorderDeath if type == 'top' highlight_count = 0
 }
 if y &gt; 608 {
-    if global.deathEnabled killPlayer()
     with oBorderDeath if type == 'bottom' highlight_count = 0
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/*adjustPlayerPosition_EndStep_Record();
 </string>
           </argument>
         </arguments>
@@ -143,45 +180,48 @@ global.frameaction_jumpslow = false
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///record add list
-if global.record==1 {
-    //#1
-    ds_list_add(global.recordList,keyboard_check_direct(global.key_right));
-    
-    ds_list_add(global.recordList,keyboard_check_direct(global.key_left));
-    
-    ds_list_add(global.recordList,keyboard_check_pressed(global.key_right));  
-     
-    ds_list_add(global.recordList,keyboard_check_pressed(global.key_left));
-    
-    ds_list_add(global.recordList,keyboard_check(global.key_jump));
-    
-    ds_list_add(global.recordList,keyboard_check_pressed(global.key_jump));
-    
-    ds_list_add(global.recordList,keyboard_check_released(global.key_jump));
-    
-    //#2
-    ds_list_add(global.recordList,keyboard_check(ord("J")));
-    
-    ds_list_add(global.recordList,keyboard_check(ord("K")));
-    
-    ds_list_add(global.recordList,keyboard_check(ord("P")));
-    
-    ds_list_add(global.recordList,keyboard_check(ord("O")));
-    
-    //#3
-    ds_list_add(global.recordList,keyboard_check_pressed(ord('A')));
-    
-    ds_list_add(global.recordList,keyboard_check_pressed(ord('D')));
-    
-    ds_list_add(global.recordList,keyboard_check(ord("U")));
-    
-    ds_list_add(global.recordList,keyboard_check(ord("I")));
-    
-    ds_list_add(global.recordList,keyboard_check_pressed(ord("N")));
-    
-     ds_list_add(global.recordList,keyboard_check_pressed(ord("M")));
+            <string>/// record load list
+/*
+R = ds_list_find_value(global.recordList,pos);
+pos++;
+L = ds_list_find_value(global.recordList,pos);
+pos++;
+PR = ds_list_find_value(global.recordList,pos);
+pos++;
+PL = ds_list_find_value(global.recordList,pos);
+pos++;
+J = ds_list_find_value(global.recordList,pos);
+pos++;
+PJ = ds_list_find_value(global.recordList,pos);
+pos++;
+RJ = ds_list_find_value(global.recordList,pos);
+pos++;
 
+FJ = ds_list_find_value(global.recordList,pos);
+pos++;
+FK = ds_list_find_value(global.recordList,pos);
+pos++;
+FP = ds_list_find_value(global.recordList,pos);
+pos++;
+FO = ds_list_find_value(global.recordList,pos);
+pos++;
+
+FA = ds_list_find_value(global.recordList,pos);
+pos++;
+FD = ds_list_find_value(global.recordList,pos);
+pos++;
+FU = ds_list_find_value(global.recordList,pos);
+pos++;
+FI = ds_list_find_value(global.recordList,pos);
+pos++;
+FN = ds_list_find_value(global.recordList,pos);
+pos++;
+FM = ds_list_find_value(global.recordList,pos);
+pos++;
+
+if (pos &gt;= ds_list_size(global.recordList)) {
+    instance_destroy();
+    instance_create(global.recordX,global.recordY,oRecordPlayer);
 }
 </string>
           </argument>
@@ -234,27 +274,30 @@ else if not global.dotkid and mask_index == sDotkid {
           <argument>
             <kind>1</kind>
             <string>/// standard stuff
-var L = keyboard_check_direct(global.key_left) 
-var R = keyboard_check_direct(global.key_right)
-var h = R
+
+// position
+
+// load control
+
+/*
+
+h = R
 if h == 0 h = -L
-if frozen h = 0
-if global.recordingpaused = false {
-global.PlayerFrameCounter += 1 }
+if frozen h = 0  
 
 // Check for block underneath for nudging.
 if( global.checkNudgeEarly ) {
-    nudgeBlockCheck = place_meeting(x,y+global.grav,oBlock);
+    nudgeBlockCheck = place_meeting(x,y+grav,oBlock);
 } else {
     nudgeBlockCheck = false;
 }
 
-var slipBlockTouching = instance_place(x,y+4*global.grav,oSlipBlock)
+var slipBlockTouching = instance_place(x,y+4*grav,oSlipBlock)
 
 // moving
 if h != 0 {
     if distance_to_object(oWalljumpR) &gt; 1 and distance_to_object(oWalljumpL) &gt; 1 {
-        global.player_xscale = h
+        xscale = h
     }
     if (h == -1 and distance_to_object(oWalljumpR) &gt; 1) or (h == 1 and distance_to_object(oWalljumpL) &gt; 1) {
         if slipBlockTouching == noone {
@@ -290,22 +333,22 @@ else {
 
 // set jump/fall sprite
 if not onPlatform {
-    if vspeed*global.grav &lt; -0.05 {
+    if vspeed*grav &lt; -0.05 {
         sprite_index = sPlayerJump
     }
-    else if vspeed*global.grav &gt; 0.05 {
+    else if vspeed*grav &gt; 0.05 {
         sprite_index = sPlayerFall
     }
 }
 // fall off platform
 else {
-    if not place_meeting(x,y+4*global.grav,oPlatform) {
+    if not place_meeting(x,y+4*grav,oPlatform) {
         onPlatform = false
     }
 }
 
 // slide block
-var slideBlockTouching = instance_place(x,y+global.grav,oSlideBlock)
+var slideBlockTouching = instance_place(x,y+grav,oSlideBlock)
 if slideBlockTouching != noone {
     hspeed += slideBlockTouching.h
 }
@@ -315,16 +358,17 @@ if abs(vspeed) &gt; maxVspeed {
     vspeed = sign(vspeed)*maxVspeed
 }
 
-// jump, shoot, suicide
-if not frozen {
-    if keyboard_check_pressed(global.key_shoot)
-        and not keyboard_check(vk_control) playerShoot()
-    if keyboard_check_pressed(global.key_jump) playerJump()
-    if keyboard_check_released(global.key_jump) playerVJump()
-    if keyboard_check(ord("J")) playerJump()
-    if keyboard_check(ord("K")) playerVJump()
-    if keyboard_check_pressed(global.key_suicide) killPlayer()
+// jump
+      
+if PJ {
+    playerJump()
 }
+if RJ {
+    playerVJump()
+}
+
+if FJ playerJump()
+if FK playerVJump()
 </string>
           </argument>
         </arguments>
@@ -346,26 +390,26 @@ if not frozen {
           <argument>
             <kind>1</kind>
             <string>///walljumps
-
-var onVineL = distance_to_object(oWalljumpL) &lt;= 1 and place_free(x,y+global.grav)
-var onVineR = distance_to_object(oWalljumpR) &lt;= 1 and place_free(x,y+global.grav)
+/*
+var onVineL = distance_to_object(oWalljumpL) &lt;= 1 and place_free(x,y+grav)
+var onVineR = distance_to_object(oWalljumpR) &lt;= 1 and place_free(x,y+grav)
 
 if onVineL or onVineR {
-    if onVineR global.player_xscale = -1
-    else global.player_xscale = 1
-    vspeed = 2*global.grav
+    if onVineR xscale = -1
+    else xscale = 1
+    vspeed = 2*grav
     sprite_index = sPlayerSliding
     image_speed = 0.5
     
     // pressed away from the vine
-    if (onVineL and keyboard_check_pressed(global.key_right)) || keyboard_check(ord("P"))
-    or (onVineR and keyboard_check_pressed(global.key_left)) || keyboard_check(ord("O")) {
+    if (onVineL and PR || FP)
+    or (onVineR and PL || FO) {
         
         // jumping off vine
-        if keyboard_check(global.key_jump) {
+        if J {
             if onVineR hspeed = -15
             else hspeed = 15
-            vspeed = -9 * global.grav
+            vspeed = -9 * grav
             audio_play_sound(sndWallJump,0,0)
             sprite_index = sPlayerJump
         }
@@ -378,29 +422,6 @@ if onVineL or onVineR {
         }
     }
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// low cancels info
-
-//lowcancels()
 </string>
           </argument>
         </arguments>
@@ -423,8 +444,7 @@ if onVineL or onVineR {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if global.deathEnabled killPlayer()
-with other {
+            <string>with other {
     highlight_count = 0
 }
 </string>
@@ -451,7 +471,7 @@ with other {
             <kind>1</kind>
             <string>// push against blocks horizontally
 if not place_free(x+hspeed,y) {
-    if global.grav == 1 {
+    if grav == 1 {
         var dir
         if hspeed &lt;= 0 dir = 180
         if hspeed &gt; 0 dir = 0
@@ -468,7 +488,7 @@ if not place_free(x+hspeed,y) {
 
 // push against blocks vertically
 if not place_free(x,y+vspeed) {
-    if global.grav == 1 {
+    if grav == 1 {
         var dir
         if vspeed &lt;= 0 dir = 90
         if vspeed &gt; 0 {
@@ -573,20 +593,20 @@ else {
 }*/
 
 var drawY = y
-if global.grav == -1 drawY += 1
+if grav == -1 drawY += 1
 
 if mask_index != sDotkid {
     if global.showhitbox != 2 {
         draw_sprite_ext(sprite_index,image_index,x,drawY,
-        global.player_xscale,global.grav,image_angle,image_blend,image_alpha)
+        xscale,grav,image_angle,image_blend,image_alpha)
     }
     if global.showhitbox == 1 {
         draw_sprite_ext(mask_index,0,x,drawY,
-        global.player_xscale,global.grav,image_angle,c_white,0.5)
+        xscale,grav,image_angle,c_white,0.5)
     }
     else if global.showhitbox == 2 {
         draw_sprite_ext(mask_index,0,x,drawY,
-        global.player_xscale,global.grav,image_angle,c_white,1)
+        xscale,grav,image_angle,c_white,1)
     }
 }
 else {

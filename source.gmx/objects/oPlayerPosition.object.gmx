@@ -59,10 +59,16 @@ var w = 136
 if global.playery_extended w = 240
 drawButton(x,y,w,80,false)
 fontSetup(font_small,c_black,fa_left,fa_top,1)
-if instance_exists(oRecordPlayer) and global.RecordPlayerPosition = true {
+if (instance_exists(oRecordPlayer) or instance_exists(oRecordPlayerCopy)) and global.RecordPlayerPosition = true {
+ if instance_exists(oRecordPlayer) {
  align = oRecordPlayer.x mod 3
     ypos = oRecordPlayer.y
     xpos = oRecordPlayer.x }
+if instance_exists(oRecordPlayerCopy) {
+ align = oRecordPlayerCopy.x mod 3
+    ypos = oRecordPlayerCopy.y
+    xpos = oRecordPlayerCopy.x }
+   } 
 else if instance_exists(oPlayer) {
     align = oPlayer.x mod 3
     ypos = oPlayer.y
@@ -72,7 +78,7 @@ else if instance_exists(oPlayer) {
 var yy = y+5
 var dy = 20
 var xx = x+7
-if instance_exists(oRecordPlayer) and global.RecordPlayerPosition = true {
+if (instance_exists(oRecordPlayer) or instance_exists(oRecordPlayerCopy)) and global.RecordPlayerPosition = true {
 draw_text(xx,yy+5,'R Align    '+string(align))
 yy += dy
 draw_text(xx,yy+5,'R X pos   '+string(xpos))

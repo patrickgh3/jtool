@@ -127,7 +127,7 @@ draw_text(xx+220,h,'. . .')
     draw_text(xx+dx,yy,'Ball')
     } 
 else {
-draw_text(xx,yy,'TAS Controls')
+draw_text(xx,yy,'TAS/Recording Controls')
     yy += dy
      draw_text(xx,yy,'Enter+F5-12')
     draw_text(xx+dx,yy,'Create Save State')
@@ -138,14 +138,17 @@ draw_text(xx,yy,'TAS Controls')
      draw_text(xx,yy,'F1')
     draw_text(xx+dx,yy,'Frame Advance')
     yy += dy
+     draw_text(xx,yy,'Enter+F1')
+    draw_text(xx+dx,yy,'Rewind')
+    yy += dy
     draw_text(xx,yy,'Space')
     draw_text(xx+dx,yy,'Unpause')
     yy += dy
     draw_text(xx,yy,'Enter+1')
     draw_text(xx+dx,yy,'Recording FA')
     yy += dy
-    draw_text(xx,yy,'Space')
-    draw_text(xx+dx,yy,'Recording Unpause')
+    draw_text(xx,yy,'Enter+2')
+    draw_text(xx+dx,yy,'Recording Rewind')
     yy += dy
     draw_text(xx,yy,'J')
     draw_text(xx+dx,yy,'Jump')

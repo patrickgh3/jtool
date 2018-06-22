@@ -29,6 +29,7 @@
 grav = global.recordGrav;
 xscale = global.recordXscale;
 vspeed = global.recordVspeed;
+global.PlayerFrameCounter = 0
 L = 0;
 R = 0;
 J = 0;
@@ -277,6 +278,8 @@ else if not global.dotkid and mask_index == sDotkid {
 // position
 
 // load control
+
+
 
 h = R
 if h == 0 h = -L

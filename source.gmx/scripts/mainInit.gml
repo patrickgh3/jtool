@@ -88,6 +88,7 @@ global.recordY = 0;
 global.recordGrav = 1;
 global.recordXscale = 1;
 global.recordVspeed = 0;
+global.continueclicked = false
 
 //Record Save State Variables
 global.recordListSS5 = ds_list_create()
@@ -99,5 +100,7 @@ global.recordListSS10 = ds_list_create()
 global.recordListSS11 = ds_list_create()
 global.recordListSS12 = ds_list_create()
 
+for (var i = 1; i < 101; i +=1) {
+global.recordListRewind[i] = ds_list_create() }
 
 codable_initialize()

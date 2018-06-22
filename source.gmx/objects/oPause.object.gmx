@@ -28,6 +28,10 @@
             <string>global.paused = false;
 global.recordingpaused = false;
 global.Saved = false
+global.FrameCounter = 0
+global.FrameCounterOn = false
+global.savecount = 0
+showscreenshot = true
 screen_save_part("Screenie.png",0,0,800,600);
 Background = sprite_add("Screenie.png", 0, false, true, 0, 0);
 
@@ -55,13 +59,16 @@ Background = sprite_add("Screenie.png", 0, false, true, 0, 0);
           <argument>
             <kind>1</kind>
             <string>//Event: oPause_Alarm 2_1
-screen_save_part("Screenie.png",0,0,display_get_width(),display_get_height())
-
+global.pausedrecordX = oRecordPlayer.x
+global.pausedrecordY = oRecordPlayer.y
+global.pausedrecordSprite = oRecordPlayer.sprite_index
+global.paussedrecordx_scale = oRecordPlayer.xscale
 global.recordingpaused = true
-if (file_exists("Screenie.png"))
-{
-   Background = sprite_add("Screenie.png",0,false,true,0,0)
-}
+
+global.savecount += 1
+   if global.savecount = 100 {
+   global.savecount = 1 }
+   game_save("RewindSave"+string(global.savecount)+".dat")
 
 </string>
           </argument>
@@ -87,21 +94,32 @@ if (file_exists("Screenie.png"))
             <kind>1</kind>
             <string>//Event: oPause_Alarm 1_1
 
-screen_save_part("Screenie.png",0,0,display_get_width(),display_get_height())
+//screen_save_part("Screenie.png",0,0,display_get_width(),display_get_height())
 if instance_exists(oPlayer) {
 global.pausedX = oPlayer.x
 global.pausedY = oPlayer.y
 global.pausedgrav = global.recordGrav
 global.pausedplayer_xscale = global.player_xscale
-global.pausedVspeed = oPlayer.vspeed }
+global.pausedVspeed = oPlayer.vspeed 
+global.pausedSprite = oPlayer.sprite_index
+global.continueclicked = false
+}
+global.FrameCounter = 0
 
 global.paused = true
 
-if (file_exists("Screenie.png"))
+/*if (file_exists("Screenie.png"))
 {
    Background = sprite_add("Screenie.png",0,false,true,0,0)
-}
+   
+}*/
 
+global.savecount += 1
+   if global.savecount = 100 {
+   global.savecount = 1 }
+   if global.record == 1 {
+   ds_list_copy(global.recordListRewind[global.savecount],global.recordList) }
+   game_save("RewindSave"+string(global.savecount)+".dat")
 </string>
           </argument>
         </arguments>
@@ -126,25 +144,34 @@ if (file_exists("Screenie.png"))
             <kind>1</kind>
             <string>
 //Event: oPause_Step_1
+/*if file_exists("Screenie.png") and keyboard_check_pressed(vk_alt) and (global.paused = true or global.recordingpaused = true) {
+showscreenshot =! showscreenshot }*/
 
 if(keyboard_check_pressed(vk_f1)){   
-  
+global.FrameCounterOn = true  
 
 global.paused = false;
 if(global.paused = false){
+if instance_exists(oPlayerCopy) {
+instance_deactivate_object(oPlayerCopy) }
 instance_activate_object(oPlayer)
 }
-screen_save_part("Screenie.png",0,0,display_get_width(),display_get_height());
+//screen_save_part("Screenie.png",0,0,display_get_width(),display_get_height());
 
    alarm[1] = 1;
 
  }    
 if(global.paused = false){
+if instance_exists(oPlayerCopy) {
+instance_deactivate_object(oPlayerCopy) }
 instance_activate_object(oPlayer)
 
 }
 if(keyboard_check_pressed(vk_space)){
+global.FrameCounter = 0
+global.FrameCounterOn = false
 global.paused = false
+global.savecount = 0
 //if file_exists("Screenie.png")
 {
    //file_delete("Screenie.png");
@@ -152,101 +179,115 @@ global.paused = false
 }
 if(global.paused){
     instance_deactivate_object(oPlayer)
+    if global.continueclicked = false and not instance_exists(oPlayerCopy) {
+    instance_create(global.pausedX,global.pausedY,oPlayerCopy) }
+    if global.continueclicked = false {
+        instance_activate_object(oPlayerCopy)
+oPlayerCopy.x = global.pausedX
+oPlayerCopy.y = global.pausedY }
+if global.continueclicked = true {
+instance_create(global.continueX,global.continueY,oPlayerCopy) }
+oPlayerCopy.vspeed = 0
+if global.continueclicked = false {
+oPlayerCopy.sprite_index = global.pausedSprite }
+else {oPlayerCopy.sprite_index = sPlayerIdle}
+oPlayerCopy.image_speed = 0
+
 }
 
 if keyboard_check_pressed(vk_f5) and keyboard_check(vk_enter)
    {
-   if(global.paused = true){
+  /* if(global.paused = true){
 screen_save_part("Screenie.png",0,0,display_get_width(),display_get_height());
 
-Background = sprite_add("Screenie.png",0,false,true,0,0)}
-   global.Saved = true;
+Background = sprite_add("Screenie.png",0,false,true,0,0)}*/
+   //global.Saved = true;
    
    game_save("Save5.dat");
    }
    
 if keyboard_check_pressed(vk_f5) and file_exists("Save5.dat") = true
-   {
-   if global.Saved 
-   {
-   game_load("Save5.dat");
-   }
-   if global.paused = true and file_exists("Screenie.png")
-   {
-   Background = sprite_add("Screenie.png",0,false,true,0,0)
-   }
-   }
+   {   
+   game_load("Save5.dat");   }
    
 if keyboard_check_pressed(vk_f6) and keyboard_check(vk_enter)
    {
-   global.Saved = true;
+   
    game_save("Save6.dat");
    }
    
 if keyboard_check_pressed(vk_f6) and file_exists("Save6.dat")
    {
-   if global.Saved game_load("Save6.dat");
+    game_load("Save6.dat");
    }
 if keyboard_check_pressed(vk_f7) and keyboard_check(vk_enter)
    {
-   global.Saved = true;
+   
    game_save("Save7.dat");
    }
    
 if keyboard_check_pressed(vk_f7) and file_exists("Save7.dat")
    {
-   if global.Saved game_load("Save7.dat");
+    game_load("Save7.dat");
    }
 if keyboard_check_pressed(vk_f8) and keyboard_check(vk_enter)
    {
-   global.Saved = true;
+   
    game_save("Save8.dat");
    }
    
 if keyboard_check_pressed(vk_f8) and file_exists("Save8.dat")
    {
-   if global.Saved game_load("Save8.dat");
+    game_load("Save8.dat");
    }
 if keyboard_check_pressed(vk_f9) and keyboard_check(vk_enter)
    {
-   global.Saved = true;
+  
    game_save("Save9.dat");
    }
    
 if keyboard_check_pressed(vk_f9) and file_exists("Save9.dat")
    {
-   if global.Saved game_load("Save9.dat");
+    game_load("Save9.dat");
    }
    if keyboard_check_pressed(vk_f10) and keyboard_check(vk_enter)
    {
-   global.Saved = true;
+   
    game_save("Save10.dat");
    }
    
 if keyboard_check_pressed(vk_f10) and file_exists("Save10.dat")
    {
-   if global.Saved game_load("Save10.dat");
+    game_load("Save10.dat");
    }
 if keyboard_check_pressed(vk_f11) and keyboard_check(vk_enter)
    {
-   global.Saved = true;
+   
    game_save("Save11.dat");
    }
    
 if keyboard_check_pressed(vk_f11) and file_exists("Save11.dat")
    {
-   if global.Saved game_load("Save11.dat");
+    game_load("Save11.dat");
    }
 if keyboard_check_pressed(vk_f12) and keyboard_check(vk_enter)
    {
-   global.Saved = true;
+   
    game_save("Save12.dat");
    }
    
 if keyboard_check_pressed(vk_f12) and file_exists("Save12.dat")
    {
-   if global.Saved game_load("Save12.dat");
+    game_load("Save12.dat");
    }
+if keyboard_check(vk_enter) and (keyboard_check_pressed(vk_f1) | keyboard_check_pressed(ord("2"))) and file_exists("RewindSave"+string(global.savecount)+".dat") {
+if global.savecount &gt; 1 {
+global.savecount -= 1}
+if global.record == 1 {
+ds_list_copy(global.recordList,global.recordListRewind[global.savecount]) }
+game_load("RewindSave"+string(global.savecount)+".dat")
+
+}
 </string>
           </argument>
         </arguments>
@@ -314,13 +355,16 @@ if(keyboard_check(vk_enter) and keyboard_check_pressed(ord("1"))){
 global.recordingpaused = false;
 if(global.recordingpaused = false){
 instance_activate_object(oRecordPlayer)
+global.PlayerFrameCounter += 1
 }
-screen_save_part("Screenie.png",0,0,display_get_width(),display_get_height());
+//screen_save_part("Screenie.png",0,0,display_get_width(),display_get_height());
 
    alarm[2] = 1;
 
  }    
 if(global.recordingpaused = false){
+if instance_exists(oRecordPlayerCopy) {
+instance_deactivate_object(oRecordPlayerCopy) }
 instance_activate_object(oRecordPlayer)
 
 }
@@ -330,6 +374,15 @@ global.recordingpaused = false
 }
 if(global.recordingpaused){
     instance_deactivate_object(oRecordPlayer)
+    if not instance_exists(oRecordPlayerCopy) {
+    instance_create(global.pausedrecordX,global.pausedrecordY,oRecordPlayerCopy) }
+    instance_activate_object(oRecordPlayerCopy)
+oRecordPlayerCopy.x = global.pausedrecordX
+oRecordPlayerCopy.y = global.pausedrecordY
+oRecordPlayerCopy.vspeed = 0
+oRecordPlayerCopy.sprite_index = global.pausedrecordSprite
+oRecordPlayerCopy.image_speed = 0
+oRecordPlayerCopy.xscale = global.paussedrecordx_scale
 }
 </string>
           </argument>
@@ -354,7 +407,7 @@ if(global.recordingpaused){
           <argument>
             <kind>1</kind>
             <string>//Event: oPause_Draw GUI_1
-if global.paused = true or global.recordingpaused = true{
+/*if (global.paused = true or global.recordingpaused = true) and showscreenshot = true{
 if file_exists("Screenie.png") {
 draw_sprite(Background,0,0,0)
 }

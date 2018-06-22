@@ -338,7 +338,7 @@ if menuButtonToggle(xx,yy,w,h,buttons_enabled,sidebar_spr,
 // stop record
 yy += dy
 if menuButton(xx,yy,w,h,'Stop',buttons_enabled,sMenuStop) {
-   
+   global.savecount = 0
    if instance_exists(oPlayer) {
    global.stopX = oPlayer.x
    global.stopY = oPlayer.y

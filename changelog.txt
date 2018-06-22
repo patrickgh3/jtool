@@ -1,12 +1,14 @@
 jtool change log
 
---- 1.3.2 5/25/18 ---
->This update was made by Cube#2434, with some edits by DuckNumbers.
+--- 1.3.2 6/22/18 ---
+>This update was made by Cube#2434, with additions made by DuckNumbers.
 Recordings of gameplay can now be created. Click the Record button in the menu to start recording.
 Recordings can be saved and loaded.
 Saved recordings can also be continued. Click the Continue button to add onto a saved recording. The player will be paused when a recording is selected.
 Recordings work fully with TAS controls and save states.
 When recordings are playing, they can be paused and viewed frame by frame. Press Enter+1 to pause and frame advance. Enter+Space will put the recording back in full speed mode. 
+When in frame advance mode, press Enter+F1 to rewind one frame. The past 100 frames are stored while in frame advance mode. 
+When viewing recordings in frame advance mode, press Enter+2 to rewind one frame. 
 Can toggle between recorded player's and player's coordinates.  
 Decimal horizontal aligns can now be chosen. Press H to set your decimal Halign.
 "N" and "M" now nudge the player a half pixel left or right.

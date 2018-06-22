@@ -382,7 +382,9 @@
   </fonts>
   <objects name="objects">
     <object>objects\oPlayer</object>
+    <object>objects\oPlayerCopy</object>
     <object>objects\oRecordPlayer</object>
+    <object>objects\oRecordPlayerCopy</object>
     <object>objects\oPause</object>
     <object>objects\oWorld</object>
     <object>objects\oMenu</object>

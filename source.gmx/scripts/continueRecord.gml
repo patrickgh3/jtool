@@ -51,5 +51,5 @@ instance_create(global.continueX,global.continueY,oPlayer)
 global.grav = global.continueGrav
 global.player_xscale = global.continueXscale
 oPlayer.vspeed = global.continueVspeed }
-screen_save_part("Screenie.png",0,0,display_get_width(),display_get_height())
+//screen_save_part("Screenie.png",0,0,display_get_width(),display_get_height())
 continueRecordBegin()

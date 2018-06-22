@@ -25,12 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.PlayerFrameCounter = 0
+            <string>//global.PlayerFrameCounter = 0
 jump = 8.5 * global.grav
 jump2 = 7 * global.grav
 maxSpeed = 3
 maxVspeed = 9
-gravity = 0.4 * global.grav
+gravity = 0
 
 frozen = false
 djump = true
@@ -144,7 +144,7 @@ global.frameaction_jumpslow = false
           <argument>
             <kind>1</kind>
             <string>///record add list
-if global.record==1 {
+/*if global.record==1 {
     //#1
     ds_list_add(global.recordList,keyboard_check_direct(global.key_right));
     
@@ -234,7 +234,7 @@ else if not global.dotkid and mask_index == sDotkid {
           <argument>
             <kind>1</kind>
             <string>/// standard stuff
-var L = keyboard_check_direct(global.key_left) 
+/*var L = keyboard_check_direct(global.key_left) 
 var R = keyboard_check_direct(global.key_right)
 var h = R
 if h == 0 h = -L
@@ -347,7 +347,7 @@ if not frozen {
             <kind>1</kind>
             <string>///walljumps
 
-var onVineL = distance_to_object(oWalljumpL) &lt;= 1 and place_free(x,y+global.grav)
+/*var onVineL = distance_to_object(oWalljumpL) &lt;= 1 and place_free(x,y+global.grav)
 var onVineR = distance_to_object(oWalljumpR) &lt;= 1 and place_free(x,y+global.grav)
 
 if onVineL or onVineR {
