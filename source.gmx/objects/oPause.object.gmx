@@ -31,6 +31,8 @@ global.Saved = false
 global.FrameCounter = 0
 global.FrameCounterOn = false
 global.savecount = 0
+global.pausedHspeed = 0
+global.adjustTAS = false
 showscreenshot = true
 screen_save_part("Screenie.png",0,0,800,600);
 Background = sprite_add("Screenie.png", 0, false, true, 0, 0);
@@ -59,17 +61,18 @@ Background = sprite_add("Screenie.png", 0, false, true, 0, 0);
           <argument>
             <kind>1</kind>
             <string>//Event: oPause_Alarm 2_1
+if instance_exists(oRecordPlayer) {
 global.pausedrecordX = oRecordPlayer.x
 global.pausedrecordY = oRecordPlayer.y
 global.pausedrecordSprite = oRecordPlayer.sprite_index
-global.paussedrecordx_scale = oRecordPlayer.xscale
+global.paussedrecordx_scale = oRecordPlayer.xscale 
 global.recordingpaused = true
 
 global.savecount += 1
    if global.savecount = 100 {
    global.savecount = 1 }
    game_save("RewindSave"+string(global.savecount)+".dat")
-
+}
 </string>
           </argument>
         </arguments>
@@ -96,11 +99,13 @@ global.savecount += 1
 
 //screen_save_part("Screenie.png",0,0,display_get_width(),display_get_height())
 if instance_exists(oPlayer) {
+
 global.pausedX = oPlayer.x
 global.pausedY = oPlayer.y
 global.pausedgrav = global.recordGrav
 global.pausedplayer_xscale = global.player_xscale
 global.pausedVspeed = oPlayer.vspeed 
+global.pausedHspeed = oPlayer.hspeed 
 global.pausedSprite = oPlayer.sprite_index
 global.continueclicked = false
 }
@@ -147,7 +152,7 @@ global.savecount += 1
 /*if file_exists("Screenie.png") and keyboard_check_pressed(vk_alt) and (global.paused = true or global.recordingpaused = true) {
 showscreenshot =! showscreenshot }*/
 
-if(keyboard_check_pressed(vk_f1)){   
+if(keyboard_check_pressed(vk_f1)) and not keyboard_check(vk_enter){   
 global.FrameCounterOn = true  
 
 global.paused = false;
@@ -155,6 +160,9 @@ if(global.paused = false){
 if instance_exists(oPlayerCopy) {
 instance_deactivate_object(oPlayerCopy) }
 instance_activate_object(oPlayer)
+/*TASNudgeCheck() 
+adjustPlayerPosition_EndStep()*/
+global.adjustTAS = true
 }
 //screen_save_part("Screenie.png",0,0,display_get_width(),display_get_height());
 
@@ -165,9 +173,9 @@ if(global.paused = false){
 if instance_exists(oPlayerCopy) {
 instance_deactivate_object(oPlayerCopy) }
 instance_activate_object(oPlayer)
-
 }
 if(keyboard_check_pressed(vk_space)){
+global.pausedHspeed = 0
 global.FrameCounter = 0
 global.FrameCounterOn = false
 global.paused = false
@@ -178,6 +186,7 @@ global.savecount = 0
 }
 }
 if(global.paused){
+    TASwater3check()         
     instance_deactivate_object(oPlayer)
     if global.continueclicked = false and not instance_exists(oPlayerCopy) {
     instance_create(global.pausedX,global.pausedY,oPlayerCopy) }

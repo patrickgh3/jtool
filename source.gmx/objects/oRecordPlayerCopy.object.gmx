@@ -25,12 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>pos = 0;
+            <string>//pos = 0;
 grav = global.recordGrav;
 xscale = global.recordXscale;
 //vspeed = global.recordVspeed;
 //global.PlayerFrameCounter = 0
-L = 0;
+/*L = 0;
 R = 0;
 J = 0;
 RJ = 0;
@@ -43,7 +43,7 @@ FO = 0;
 FU = 0;
 FD = 0;
 FU = 0;
-FI = 0;
+FI = 0;*/
 
 image_alpha = 0.5;
 jump = 8.5 * grav

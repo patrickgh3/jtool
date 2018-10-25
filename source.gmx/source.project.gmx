@@ -72,6 +72,11 @@
       <sprite>sprites\sSidebarDefault</sprite>
       <sprite>sprites\sMenuDefault</sprite>
       <sprite>sprites\sPopupDefault</sprite>
+      <sprite>sprites\sPlayerFallDefault</sprite>
+      <sprite>sprites\sPlayerIdleDefault</sprite>
+      <sprite>sprites\sPlayerJumpDefault</sprite>
+      <sprite>sprites\sPlayerRunningDefault</sprite>
+      <sprite>sprites\sPlayerSlidingDefault</sprite>
     </sprites>
     <sprites name="player">
       <sprite>sprites\sPlayerFall</sprite>
@@ -219,6 +224,8 @@
       <script>scripts\playerJump.gml</script>
       <script>scripts\playerVJump.gml</script>
       <script>scripts\playerShoot.gml</script>
+      <script>scripts\TASwater3check.gml</script>
+      <script>scripts\TASNudgeCheck.gml</script>
       <script>scripts\killPlayer.gml</script>
       <script>scripts\flipGravity.gml</script>
       <script>scripts\flipGravityRecord.gml</script>

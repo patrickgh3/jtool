@@ -50,6 +50,7 @@
             <kind>1</kind>
             <string>/// Backup
 if global.backup {
+   global.BackupFailSafe = true
     saveMapName(prefix_project_path_if_needed('backup.jmap'))
 }
 alarm[5] = global.backup_period
@@ -227,8 +228,8 @@ if global.paused = false and keyboard_check_pressed(global.key_restart) {
 if keyboard_check_direct(vk_alt) and keyboard_check_pressed(vk_f4) {
     game_end()
 }
-
-adjustPlayerPosition_EndStep()
+if not global.adjustTAS{
+adjustPlayerPosition_EndStep()}
 
 // crash the game, for backup testing purposes
 /*if keyboard_check_pressed(ord('C')) {

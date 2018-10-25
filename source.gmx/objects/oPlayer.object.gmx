@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>global.PlayerFrameCounter = 0
+global.tasAD = false
 jump = 8.5 * global.grav
 jump2 = 7 * global.grav
 maxSpeed = 3
@@ -321,10 +322,11 @@ if not frozen {
         and not keyboard_check(vk_control) playerShoot()
     if keyboard_check_pressed(global.key_jump) playerJump()
     if keyboard_check_released(global.key_jump) playerVJump()
-    if keyboard_check(ord("J")) playerJump()
+    if keyboard_check(ord("J")) {global.tasAD = true;playerJump()}
     if keyboard_check(ord("K")) playerVJump()
     if keyboard_check_pressed(global.key_suicide) killPlayer()
 }
+if global.adjustTAS {adjustPlayerPosition_EndStep()}
 </string>
           </argument>
         </arguments>

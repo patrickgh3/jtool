@@ -398,6 +398,9 @@ if menuButtonToggle(xx,yy,w,h,buttons_enabled,0,'Backups on','Backups off',globa
 yy += dy
 if menuButton(xx,yy,w,h,'Eraser',buttons_enabled,sMenuEraser) {
     eraserRecord();
+    global.record = 0
+    global.FrameCounterOn = false
+    global.PlayerFrameCounter = 0
 }
 
 // toggle update check
