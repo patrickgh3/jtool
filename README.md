@@ -1,7 +1,7 @@
 Jtool
 ===
 
-[Download newest version - v1.3.2](http://www.mediafire.com/file/oo2qol6qmuc69on/jtool%201.3.2.7z)
+[Download newest version - v1.3.3](http://www.mediafire.com/file/5cbkfzbf5rxq5wq/jtool+1.3.3.7z)
 ---
 
 Here is a link to the old forum thread:
