@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>global.PlayerFrameCounter = 0
+global.tasAD = false
 jump = 8.5 * global.grav
 jump2 = 7 * global.grav
 maxSpeed = 3
@@ -143,6 +144,66 @@ global.frameaction_jumpslow = false
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///record add list
+if global.record==1 {
+    //#1
+    ds_list_add(global.recordList,keyboard_check_direct(global.key_right));
+    
+    ds_list_add(global.recordList,keyboard_check_direct(global.key_left));
+    
+    ds_list_add(global.recordList,keyboard_check_pressed(global.key_right));  
+     
+    ds_list_add(global.recordList,keyboard_check_pressed(global.key_left));
+    
+    ds_list_add(global.recordList,keyboard_check(global.key_jump));
+    
+    ds_list_add(global.recordList,keyboard_check_pressed(global.key_jump));
+    
+    ds_list_add(global.recordList,keyboard_check_released(global.key_jump));
+    
+    //#2
+    ds_list_add(global.recordList,keyboard_check(ord("J")));
+    
+    ds_list_add(global.recordList,keyboard_check(ord("K")));
+    
+    ds_list_add(global.recordList,keyboard_check(ord("P")));
+    
+    ds_list_add(global.recordList,keyboard_check(ord("O")));
+    
+    //#3
+    ds_list_add(global.recordList,keyboard_check_pressed(ord('A')));
+    
+    ds_list_add(global.recordList,keyboard_check_pressed(ord('D')));
+    
+    ds_list_add(global.recordList,keyboard_check(ord("U")));
+    
+    ds_list_add(global.recordList,keyboard_check(ord("I")));
+    
+    ds_list_add(global.recordList,keyboard_check_pressed(ord("N")));
+    
+     ds_list_add(global.recordList,keyboard_check_pressed(ord("M")));
+
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// dotkid / regular kid
 
 if global.dotkid and mask_index != sDotkid {
@@ -179,8 +240,8 @@ var R = keyboard_check_direct(global.key_right)
 var h = R
 if h == 0 h = -L
 if frozen h = 0
-
-
+if global.recordingpaused = false {
+global.PlayerFrameCounter += 1 }
 
 // Check for block underneath for nudging.
 if( global.checkNudgeEarly ) {
@@ -261,10 +322,11 @@ if not frozen {
         and not keyboard_check(vk_control) playerShoot()
     if keyboard_check_pressed(global.key_jump) playerJump()
     if keyboard_check_released(global.key_jump) playerVJump()
-    if keyboard_check(ord("J")) playerJump()
+    if keyboard_check(ord("J")) {global.tasAD = true;playerJump()}
     if keyboard_check(ord("K")) playerVJump()
     if keyboard_check_pressed(global.key_suicide) killPlayer()
 }
+if global.adjustTAS {adjustPlayerPosition_EndStep()}
 </string>
           </argument>
         </arguments>
@@ -318,6 +380,29 @@ if onVineL or onVineR {
         }
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// low cancels info
+
+//lowcancels()
 </string>
           </argument>
         </arguments>

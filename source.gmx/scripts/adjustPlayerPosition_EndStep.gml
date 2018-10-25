@@ -15,11 +15,21 @@ with oPlayer {
     }
     if isOnBlock and not frozen {
         if keyboard_check_pressed(ord('A')) || keyboard_check(ord("U")) and not place_meeting(x-1,y,oBlock) {
+            
             x -= 1
         }
         if keyboard_check_pressed(ord('D')) || keyboard_check(ord("I")) and not place_meeting(x+1,y,oBlock) {
-            x += 1
+           /*if global.tasAD = true {
+            oPlayer.vspeed = -jump; 
+            oPlayer.djump = true}*/
+             x += 1
         }
+        if keyboard_check_pressed(ord('N')) and not place_meeting(x-1,y,oBlock) {
+            x -= .5
+        }
+         if keyboard_check_pressed(ord('M')) and not place_meeting(x+1,y,oBlock) {
+            x += .5
+         }
     }
 }
 
@@ -50,3 +60,14 @@ if keyboard_check_pressed(ord('V')) and instance_exists(oPlayer) {
         oInputOverlay.textbox_label = '0.'
     }
 }
+if keyboard_check_pressed(ord('H')) and instance_exists(oPlayer) {
+    var onblock;
+    with oPlayer onblock = place_meeting(x,y+global.grav,oBlock)
+    if onblock {
+        inputOverlay(input_textbox,inputCallback_HAlign,
+            'Halign (was '+string(oPlayer.x-floor(oPlayer.x))+')')
+        oInputOverlay.textbox_label = '0.'
+    }
+}
+global.tasAD = false
+global.adjustTAS = false

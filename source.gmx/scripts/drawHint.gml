@@ -29,8 +29,21 @@ if show {
     1,1,0,cursorcolor,1)
     
     var str = string(abs(time))+' f '
-    if time == 0 str = 'good'
+    /*var lowcancelstr = ''
+    */if time == 0 {str = 'good' ;
+    /*if global.lowcancel3 != '' {
+    lowcancelstr = global.lowcancel1 & "," & global.lowcancel2 & "," & global.lowcancel3}
+    else if global.lowcancel2 != '' {
+    lowcancelstr = global.lowcancel1 & "," & global.lowcancel2}
+    else if global.lowcancel1 != '' {
+    lowcancelstr = global.lowcancel1 }*/
+    }
     else if time < 0 str += 'early'
     else if time > 0 str += 'late'
     draw_text(xx+5,yy+40,str)
+    /*if lowcancelstr != '' {
+    draw_text(xx+w-30,yy,lowcancelstr)}*/
+    
+
 }
+

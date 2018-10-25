@@ -6,6 +6,11 @@ jc_leftshiftlast=false
 jc_rightshiftlast=false
 jc_show=false
 jc_cutoff = 3
+/*global.TIMER_ON = false
+global.lowcancel1 = ''
+global.lowcancel2 = ''
+global.lowcancel3 = ''
+global.start_time = ''*/
 
 jc_successwaitingforrelease=false
 jc_successduration=0

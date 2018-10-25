@@ -32,6 +32,8 @@ var h = 32
 drawButton(x,y,w,h,false)
 fontSetup(font_small, c_black, fa_left, fa_center, 1)
 draw_text(x+12, y+16, 'FPS: '+string(fps))
+if global.FrameCounterOn = true or global.record == 2 {
+draw_text(x+70, y+16, string(global.PlayerFrameCounter)) }
 </string>
           </argument>
         </arguments>

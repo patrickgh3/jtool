@@ -64,6 +64,7 @@ var bg_vspeed = FSIniReadReal('bg','vspeed',0)
 FS_ini_close()
 FS_file_delete(missing_ini_filename)
 
+
 // assign sprites from file
 var resource_add_errors = ''
 for (var i=0; i<100; i+=1) {
@@ -105,6 +106,11 @@ for (var i=0; i<100; i+=1) {
         case 23: spr_index=sJumpRefresher spr_default=sJumpRefresherDefault file='jumprefresher.png' xo=15 yo=15 break
         case 24: spr_index=sWater3 spr_default=sWater3Default file='water3.png' break
         case 25: spr_index=sPopup spr_default=sPopupDefault file='popup.png' break
+        case 26: spr_index=sPlayerFall spr_default=sPlayerFallDefault file='playerfall.png' xo = 17 yo = 23 frames = 2 break
+        case 27: spr_index=sPlayerIdle spr_default=sPlayerIdleDefault file='playeridle.png' xo = 17 yo = 23 frames = 4 break
+        case 28: spr_index=sPlayerJump spr_default=sPlayerJumpDefault file='playerjump.png' xo = 17 yo = 23 frames = 2 break
+        case 29: spr_index=sPlayerRunning spr_default=sPlayerRunningDefault file='playerrunning.png' xo = 17 yo = 23 frames = 4 break
+        case 30: spr_index=sPlayerSliding spr_default=sPlayerSlidingDefault file='playersliding.png' xo = 7 yo = 10 frames = 2 break 
         default: continue
     }
     

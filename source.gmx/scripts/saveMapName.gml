@@ -1,7 +1,7 @@
 var filename = argument0
-
-oEdit.undo_nochanges = true
-
+if not global.BackupFailSafe{
+oEdit.undo_nochanges = true}
+global.BackupFailSafe = false
 // header and info
 var f = FS_file_text_open_write(filename)
 var delim = '|'

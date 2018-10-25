@@ -40,5 +40,12 @@ if file_exists("Save12.dat")
    {
    file_delete("Save12.dat");
    }
+global.savecount = 1
+while file_exists("RewindSave"+string(global.savecount)+".dat")
+{
+file_delete("RewindSave"+string(global.savecount)+".dat")
+global.savecount += 1 }
     game_end()
 }
+
+
