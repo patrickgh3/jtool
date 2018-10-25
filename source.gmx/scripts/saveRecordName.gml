@@ -26,7 +26,7 @@ if global.stopX != -1 {
 file_text_write_string(f,string(global.stopX))
 file_text_writeln(f)
 
-file_text_write_string(f,string(global.stopY))
+file_text_write_string(f,string_format(global.stopY,1,6))
 file_text_writeln(f)
 
 file_text_write_string(f,string(global.stopgrav))
@@ -35,14 +35,14 @@ file_text_writeln(f)
 file_text_write_string(f,string(global.stopplayer_xscale)) 
 file_text_writeln(f)
 
-file_text_write_string(f,string(global.stopVspeed)) 
+file_text_write_string(f,string_format(global.stopVspeed,1,6)) 
 }
 
 else{ 
 file_text_write_string(f,string(global.pausedX))
 file_text_writeln(f)
 
-file_text_write_string(f,string(global.pausedY))
+file_text_write_string(f,string_format(global.pausedY,1,6))
 file_text_writeln(f)
 
 file_text_write_string(f,string(global.pausedgrav))
@@ -51,7 +51,7 @@ file_text_writeln(f)
 file_text_write_string(f,string(global.pausedplayer_xscale)) 
 file_text_writeln(f)
 
-file_text_write_string(f,string(global.pausedVspeed)) 
+file_text_write_string(f,string_format(global.pausedVspeed,1,6)) 
 }
 
 
