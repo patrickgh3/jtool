@@ -8,7 +8,7 @@
    but I think that's a safe assumption.
 */
 global.run_from_editor = string_pos('gm_ttt',working_directory) != 0
-global.editor_project_path = 'C:\Users\User\Downloads\jtool 1.x.y\source.gmx'
+global.editor_project_path = 'C:\Users\User\Downloads\jtool 1.x.y\jtool.gmx'
 // add backslash to end
 if string_char_at(global.editor_project_path,string_length(global.editor_project_path)) != '\' {
     global.editor_project_path += '\'
@@ -31,7 +31,7 @@ global.player_xscale = 1 // setting the player's xscale causes physics issues
 global.joketitleindex = 0 // used in buttonCallback_JokeTitle
 global.version_major = 1
 global.version_minor = 3
-global.version_patch = 2
+global.version_patch = 3
 global.version_string = string(global.version_major)+'.'+string(global.version_minor)+'.'+string(global.version_patch)
 global.input_string = ''
 global.input_bool = false
@@ -40,7 +40,7 @@ global.depthList = ds_list_create()
 global.waterlocked = false
 global.backup_period = 5*60*50
 alarm[5] = global.backup_period
-global.backupFailsafe = false
+global.BackupFailSafe = false
 global.shouldresetloadedmapname = false
 
 // maybe later load from map
