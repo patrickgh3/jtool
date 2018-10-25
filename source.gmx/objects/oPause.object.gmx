@@ -175,11 +175,7 @@ instance_deactivate_object(oPlayerCopy) }
 instance_activate_object(oPlayer)
 }
 if(keyboard_check_pressed(vk_space)){
-global.pausedHspeed = 0
-global.FrameCounter = 0
-global.FrameCounterOn = false
-global.paused = false
-global.savecount = 0
+paused = false
 //if file_exists("Screenie.png")
 {
    //file_delete("Screenie.png");
