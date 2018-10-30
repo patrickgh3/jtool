@@ -8,7 +8,7 @@
    but I think that's a safe assumption.
 */
 global.run_from_editor = string_pos('gm_ttt',working_directory) != 0
-global.editor_project_path = 'C:\Users\User\Downloads\jtool 1.x.y\jtool.gmx'
+global.editor_project_path = 'C:\Users\Davis Simon\Downloads\Fangames\jtool work\jtool edits\jtool 1.3.4 Final\jtool 1.3.4\source.gmx'
 // add backslash to end
 if string_char_at(global.editor_project_path,string_length(global.editor_project_path)) != '\' {
     global.editor_project_path += '\'
@@ -90,6 +90,11 @@ global.recordGrav = 1;
 global.recordXscale = 1;
 global.recordVspeed = 0;
 global.continueclicked = false
+global.pausedX = 0
+global.pausedY = 0
+global.pausedgrav = 1
+global.pausedplayer_xscale = 1
+global.pausedVspeed = 0
 
 //Record Save State Variables
 global.recordListSS5 = ds_list_create()

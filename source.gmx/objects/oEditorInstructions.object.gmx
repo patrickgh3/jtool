@@ -150,6 +150,9 @@ draw_text(xx,yy,'TAS/Recording Controls')
     draw_text(xx,yy,'Enter+2')
     draw_text(xx+dx,yy,'Recording Rewind')
     yy += dy
+    draw_text(xx,yy,'Enter+Space')
+    draw_text(xx+dx,yy,'Recording Unpause')
+    yy += dy
     draw_text(xx,yy,'J')
     draw_text(xx+dx,yy,'Jump')
     yy += dy

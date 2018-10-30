@@ -377,6 +377,7 @@ global.recordingpaused = false
 
 }
 if(global.recordingpaused){
+    TASwatercheck() 
     instance_deactivate_object(oRecordPlayer)
     if not instance_exists(oRecordPlayerCopy) {
     instance_create(global.pausedrecordX,global.pausedrecordY,oRecordPlayerCopy) }
