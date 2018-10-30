@@ -169,20 +169,19 @@ global.adjustTAS = true
    alarm[1] = 1;
 
  }    
+
+if(keyboard_check_pressed(vk_space)){
+global.paused = false
+}
+
 if(global.paused = false){
 if instance_exists(oPlayerCopy) {
 instance_deactivate_object(oPlayerCopy) }
 instance_activate_object(oPlayer)
 }
-if(keyboard_check_pressed(vk_space)){
-paused = false
-//if file_exists("Screenie.png")
-{
-   //file_delete("Screenie.png");
-}
-}
+
 if(global.paused){
-    TASwater3check()         
+    TASwatercheck()         
     instance_deactivate_object(oPlayer)
     if global.continueclicked = false and not instance_exists(oPlayerCopy) {
     instance_create(global.pausedX,global.pausedY,oPlayerCopy) }

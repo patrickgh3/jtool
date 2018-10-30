@@ -1,5 +1,9 @@
 jtool change log
 
+--- 1.3.4 10/30/18 ---
+Fix for water when in TAS mode.
+Made recording starting coordinates more precise.
+
 --- 1.3.3 10/25/18 ---
 Bugfix for saving maps.
 

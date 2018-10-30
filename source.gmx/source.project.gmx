@@ -224,7 +224,7 @@
       <script>scripts\playerJump.gml</script>
       <script>scripts\playerVJump.gml</script>
       <script>scripts\playerShoot.gml</script>
-      <script>scripts\TASwater3check.gml</script>
+      <script>scripts\TASwatercheck.gml</script>
       <script>scripts\TASNudgeCheck.gml</script>
       <script>scripts\killPlayer.gml</script>
       <script>scripts\flipGravity.gml</script>
