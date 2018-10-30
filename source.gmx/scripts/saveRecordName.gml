@@ -9,7 +9,7 @@ file_text_writeln(f)
 file_text_write_string(f,string(global.recordX))
 file_text_writeln(f)
 
-file_text_write_string(f,string(global.recordY))
+file_text_write_string(f,string_format(global.recordY,1,6))
 file_text_writeln(f)
 
 file_text_write_string(f,string(global.recordGrav))
@@ -18,7 +18,7 @@ file_text_writeln(f)
 file_text_write_string(f,string(global.recordXscale))
 file_text_writeln(f)
 
-file_text_write_string(f,string(global.recordVspeed))
+file_text_write_string(f,string_format(global.recordVspeed,1,6))
 file_text_writeln(f)
 
 //Variables to continue a saved record
