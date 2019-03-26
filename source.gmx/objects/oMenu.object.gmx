@@ -197,7 +197,7 @@ if menuButton(xx,yy,w,h,'Export RMJ Map',buttons_enabled,false) {
 //save REC
 yy += dy
 if global.paused = false and menuButton(xx,yy,w,h,'Save Record',buttons_enabled,false) {
-    saveRecord()
+    saveRecordAskName()
 }
 //load REC
 yy += dy
@@ -286,6 +286,7 @@ if menuButtonToggle(xx,yy,w,h,buttons_enabled,sMenuDotOutline,
 // start record
 yy += dy
 if menuButton(xx,yy,w,h,'Record',buttons_enabled,sMenuRecord) {
+   global.PlayerFrameCounter = 0
     startRecord();
     escape_button_just_clicked = true;
 }
@@ -339,19 +340,22 @@ if menuButtonToggle(xx,yy,w,h,buttons_enabled,sidebar_spr,
 yy += dy
 if menuButton(xx,yy,w,h,'Stop',buttons_enabled,sMenuStop) {
    global.savecount = 0
+   global.SavedPlayerFrameCounter = global.PlayerFrameCounter
    if instance_exists(oPlayer) {
    global.stopX = oPlayer.x
    global.stopY = oPlayer.y
    global.stopgrav = global.recordGrav
    global.stopplayer_xscale = global.player_xscale
-   global.stopVspeed = oPlayer.vspeed }
+   global.stopVspeed = oPlayer.vspeed
+   global.stopDjump = oPlayer.djump }
    else if global.paused { 
    
    global.stopX = global.pausedX
    global.stopY = global.pausedY
    global.stopgrav = global.pausedgrav
    global.stopplayer_xscale = global.pausedplayer_xscale
-   global.stopVspeed = global.pausedVspeed }
+   global.stopVspeed = global.pausedVspeed
+   global.stopDjump = global.pausedDjump }
    
     playRecord();
     escape_button_just_clicked = true;
@@ -375,8 +379,8 @@ if menuButtonToggle(xx,yy,w,h,buttons_enabled,waterlock_spr,'[ Lock Water ]','Lo
 
 // clear map
 yy += dy
-if menuButton(xx,yy,w,h,'Clear Map (F2)',buttons_enabled,sMenuClearMap)
-or keyboard_check_pressed(vk_f2) {
+if (menuButton(xx,yy,w,h,'Clear Map (F2)',buttons_enabled,sMenuClearMap)
+or keyboard_check_pressed(vk_f2)) and global.paused=false {
     if not oEdit.undo_nochanges {
         inputOverlay(input_yesno,inputCallback_ClearMap,
         'Map has been modified. Save changes?')

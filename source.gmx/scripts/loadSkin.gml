@@ -111,6 +111,9 @@ for (var i=0; i<100; i+=1) {
         case 28: spr_index=sPlayerJump spr_default=sPlayerJumpDefault file='playerjump.png' xo = 17 yo = 23 frames = 2 break
         case 29: spr_index=sPlayerRunning spr_default=sPlayerRunningDefault file='playerrunning.png' xo = 17 yo = 23 frames = 4 break
         case 30: spr_index=sPlayerSliding spr_default=sPlayerSlidingDefault file='playersliding.png' xo = 7 yo = 10 frames = 2 break 
+        case 31: spr_index=sMiniKillerBlock spr_default=sMiniKillerBlockDefault file='minikillerblock.png' break
+        case 32: spr_index=sPlayerBullet spr_default=sPlayerBulletDefault file='bullet.png' xo=1 yo=1 frames = 2 break
+        case 33: spr_index=sPlayerShoot spr_default=sPlayerShootDefault file='playershoot.png' xo = 17 yo = 23 frames = 4 break
         default: continue
     }
     

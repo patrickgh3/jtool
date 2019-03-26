@@ -21,6 +21,9 @@ file_text_writeln(f)
 file_text_write_string(f,string_format(global.recordVspeed,1,6))
 file_text_writeln(f)
 
+file_text_write_string(f,string(global.recordDjump))
+file_text_writeln(f)
+
 //Variables to continue a saved record
 if global.stopX != -1 {
 file_text_write_string(f,string(global.stopX))
@@ -36,6 +39,9 @@ file_text_write_string(f,string(global.stopplayer_xscale))
 file_text_writeln(f)
 
 file_text_write_string(f,string_format(global.stopVspeed,1,6)) 
+file_text_writeln(f)
+
+file_text_write_string(f,string(global.stopDjump)) 
 }
 
 else{ 
@@ -52,6 +58,9 @@ file_text_write_string(f,string(global.pausedplayer_xscale))
 file_text_writeln(f)
 
 file_text_write_string(f,string_format(global.pausedVspeed,1,6)) 
+file_text_writeln(f)
+
+file_text_write_string(f,string(global.pausedDjump)) 
 }
 
 
@@ -63,5 +72,5 @@ global.stopY = 0
 global.stopgrav = 0
 global.stopplayer_xscale = 0
 global.stopVspeed = 0
-
+global.stopDjump = true
 

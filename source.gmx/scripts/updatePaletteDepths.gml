@@ -25,6 +25,7 @@ for (var i=0; i<ds_list_size(global.depthList); i++) {
            ds_list_add(objectList, oMiniSpikeDown)
            ds_list_add(objectList, oApple)
            ds_list_add(objectList, oKillerBlock)
+           ds_list_add(objectList, oMiniKillerBlock)
            break
         case depthorder_water:
            ds_list_add(objectList, oWater)

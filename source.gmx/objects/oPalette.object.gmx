@@ -93,6 +93,8 @@ xxs[buttonCount]=2 yys[buttonCount]=6 sprs[buttonCount]=sSaveFlip objs[buttonCou
 buttonCount++;
 xxs[buttonCount]=3 yys[buttonCount]=6 sprs[buttonCount]=sPink32 objs[buttonCount]=oTrg offs[buttonCount]=16 killers[buttonCount]=false tooltips[buttonCount] = ''; 
 buttonCount++;
+xxs[buttonCount]=0 yys[buttonCount]=7 sprs[buttonCount]=sMiniKillerBlock objs[buttonCount]=oMiniKillerBlock offs[buttonCount]=0 killers[buttonCount]=true tooltips[buttonCount]='Mini killer block';
+buttonCount++;
 
 
 </string>
@@ -151,7 +153,7 @@ for (i = 0; i &lt; buttonCount; i += 1) {
     var killer = killers[i];
     var tooltip = tooltips[i];
     
-    var in_combobox = yy == 5 or yy == 6
+    var in_combobox = yy == 5 or yy == 6 or yy==7
     if in_combobox and not combobox_selected continue
     
     // draw button backing and sprite
@@ -215,7 +217,7 @@ for (i = 0; i &lt; buttonCount; i += 1) {
         var combo_x = x+xo-8
         var combo_y = y+yo+5*dy-9
         var combo_w = dx*4+8
-        var combo_h = dy*2+9
+        var combo_h = dy*3+9
         
         drawButton(combo_x,combo_y,combo_w,combo_h,false)
         drawButton(xxx,yyy,w,combo_y-yyy+1,false)

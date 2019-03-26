@@ -100,7 +100,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if count &gt; 0 count -= 1
+            <string>if global.paused=false and global.recordingpaused=false{
+if count &gt; 0 count -= 1}
 if count == 0 image_alpha = 1
 else image_alpha = 0.1
 

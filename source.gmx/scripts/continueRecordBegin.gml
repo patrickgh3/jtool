@@ -6,7 +6,7 @@ global.paused = true
 //global.continueclicked = false
 //Background = sprite_add("Screenie.png", 0, false, true, 0, 0);
 //loadPlayer()
-with oPlayer djump = global.restartWithDJump;
+with oPlayer djump = global.continuedjump;
 with oJumpRefresher count = 0
 with oKiller highlight_count = 1000
 with oWarp highlight_count = 1000

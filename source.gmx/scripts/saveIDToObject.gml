@@ -27,5 +27,6 @@ switch saveid {
     case 24: return oGravityArrowUp
     case 25: return oGravityArrowDown
     case 26: return oSaveFlip
+    case 27: return oMiniKillerBlock
     default: return noone
 }
