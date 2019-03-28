@@ -8,7 +8,7 @@
    but I think that's a safe assumption.
 */
 global.run_from_editor = string_pos('gm_ttt',working_directory) != 0
-global.editor_project_path = 'C:\Users\Davis Simon\Downloads\Fangames\jtool work\jtool edits\jtool 1.3.4 Final\jtool 1.3.4\source.gmx'
+global.editor_project_path = 'C:\Users\User\Downloads\jtool 1.x.y\source.gmx'
 // add backslash to end
 if string_char_at(global.editor_project_path,string_length(global.editor_project_path)) != '\' {
     global.editor_project_path += '\'
@@ -31,7 +31,7 @@ global.player_xscale = 1 // setting the player's xscale causes physics issues
 global.joketitleindex = 0 // used in buttonCallback_JokeTitle
 global.version_major = 1
 global.version_minor = 3
-global.version_patch = 4
+global.version_patch = 5
 global.version_string = string(global.version_major)+'.'+string(global.version_minor)+'.'+string(global.version_patch)
 global.input_string = ''
 global.input_bool = false
@@ -89,12 +89,14 @@ global.recordY = 0;
 global.recordGrav = 1;
 global.recordXscale = 1;
 global.recordVspeed = 0;
+global.recordDjump = true
 global.continueclicked = false
 global.pausedX = 0
 global.pausedY = 0
 global.pausedgrav = 1
 global.pausedplayer_xscale = 1
 global.pausedVspeed = 0
+global.pausedDjump = true
 
 //Record Save State Variables
 global.recordListSS5 = ds_list_create()

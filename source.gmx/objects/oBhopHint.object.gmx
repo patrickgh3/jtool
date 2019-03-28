@@ -48,7 +48,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>bhopHint_EndStep()
+            <string>var choose_player = oPlayer
+if instance_exists(oRecordPlayer) {choose_player = oRecordPlayer}
+bhopHint_EndStep(choose_player)
 </string>
           </argument>
         </arguments>

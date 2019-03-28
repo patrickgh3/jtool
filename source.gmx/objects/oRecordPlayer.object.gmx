@@ -57,7 +57,7 @@ djump = true
 onPlatform = false
 image_speed = 0.2
 nudgeBlockCheck = false;
-
+warp = 0;
 
 
 if not global.dotkid {
@@ -222,6 +222,7 @@ pos++;
 if (pos &gt;= ds_list_size(global.recordList)) {
     instance_destroy();
     instance_create(global.recordX,global.recordY,oRecordPlayer);
+    with oJumpRefresher{count = 0};
 }
 </string>
           </argument>
@@ -284,7 +285,7 @@ else if not global.dotkid and mask_index == sDotkid {
 h = R
 if h == 0 h = -L
 if frozen h = 0  
-
+global.PlayerFrameCounter += 1
 // Check for block underneath for nudging.
 if( global.checkNudgeEarly ) {
     nudgeBlockCheck = place_meeting(x,y+grav,oBlock);

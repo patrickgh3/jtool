@@ -51,8 +51,9 @@ codable_create()
           <argument>
             <kind>1</kind>
             <string>event_inherited()
+if global.paused=false and global.recordingpaused=false{
 image_index = floor(global.count/15) mod 2
-codable_step()
+codable_step()}
 </string>
           </argument>
         </arguments>

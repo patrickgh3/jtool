@@ -3,7 +3,7 @@
 bhcount += 1
 
 var player_on_ground = false
-with oPlayer {
+with argument0 {
     player_on_ground = (place_meeting(x,y+global.grav,oBlock)
     and place_meeting(x,y+global.grav,oBlock))
 }
@@ -14,10 +14,10 @@ if global.frameaction_jump {
 
 // press jump before hitting ground
 // simulate player to find out how many frames it would have taken to hit the ground
-if keyboard_check_pressed(vk_shift) and not global.frameaction_jump and instance_exists(oPlayer) {
-    var realplayer = oPlayer
+if keyboard_check_pressed(vk_shift) and not global.frameaction_jump and instance_exists(argument0) {
+    var realplayer = argument0
     var playersim
-    with oPlayer playersim = instance_copy(true)
+    with argument0 playersim = instance_copy(true)
     playersim.y = realplayer.yprevious
     playersim.vspeed = bhop_vspeedprevious
     
@@ -57,4 +57,4 @@ if not player_on_ground {
     bhop_waitinglate = false
 }
 
-if instance_exists(oPlayer) bhop_vspeedprevious = oPlayer.vspeed
+if instance_exists(argument0) bhop_vspeedprevious = argument0.vspeed

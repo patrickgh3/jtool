@@ -27,5 +27,6 @@ switch objectindex {
     case oGravityArrowUp:   return 24
     case oGravityArrowDown: return 25
     case oSaveFlip:         return 26
+    case oMiniKillerBlock:  return 27
     default: return -1
 }

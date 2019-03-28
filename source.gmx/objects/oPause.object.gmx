@@ -65,7 +65,7 @@ if instance_exists(oRecordPlayer) {
 global.pausedrecordX = oRecordPlayer.x
 global.pausedrecordY = oRecordPlayer.y
 global.pausedrecordSprite = oRecordPlayer.sprite_index
-global.paussedrecordx_scale = oRecordPlayer.xscale 
+global.pausedrecordx_scale = oRecordPlayer.xscale 
 global.recordingpaused = true
 
 global.savecount += 1
@@ -107,6 +107,7 @@ global.pausedplayer_xscale = global.player_xscale
 global.pausedVspeed = oPlayer.vspeed 
 global.pausedHspeed = oPlayer.hspeed 
 global.pausedSprite = oPlayer.sprite_index
+global.pausedDjump = oPlayer.djump
 global.continueclicked = false
 }
 global.FrameCounter = 0
@@ -172,6 +173,7 @@ global.adjustTAS = true
 
 if(keyboard_check_pressed(vk_space)){
 global.paused = false
+global.FrameCounterOn = false
 }
 
 if(global.paused = false){
@@ -359,7 +361,7 @@ if(keyboard_check(vk_enter) and keyboard_check_pressed(ord("1"))){
 global.recordingpaused = false;
 if(global.recordingpaused = false){
 instance_activate_object(oRecordPlayer)
-global.PlayerFrameCounter += 1
+//global.PlayerFrameCounter += 1
 }
 //screen_save_part("Screenie.png",0,0,display_get_width(),display_get_height());
 
@@ -387,7 +389,7 @@ oRecordPlayerCopy.y = global.pausedrecordY
 oRecordPlayerCopy.vspeed = 0
 oRecordPlayerCopy.sprite_index = global.pausedrecordSprite
 oRecordPlayerCopy.image_speed = 0
-oRecordPlayerCopy.xscale = global.paussedrecordx_scale
+oRecordPlayerCopy.xscale = global.pausedrecordx_scale
 }
 </string>
           </argument>

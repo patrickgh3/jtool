@@ -25,8 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.PlayerFrameCounter = 0
-global.tasAD = false
+            <string>global.tasAD = false
 jump = 8.5 * global.grav
 jump2 = 7 * global.grav
 maxSpeed = 3
@@ -240,7 +239,7 @@ var R = keyboard_check_direct(global.key_right)
 var h = R
 if h == 0 h = -L
 if frozen h = 0
-if global.recordingpaused = false {
+if global.recordingpaused = false and not instance_exists(oRecordPlayer) {
 global.PlayerFrameCounter += 1 }
 
 // Check for block underneath for nudging.
@@ -298,6 +297,13 @@ if not onPlatform {
         sprite_index = sPlayerFall
     }
 }
+
+// shooting
+
+if distance_to_object(oPlayerBullet) &lt;=(abs(global.player_xscale*64)) and instance_number(oPlayerBullet) &gt; 0 {
+sprite_index=sPlayerShoot
+image_speed=0.2}
+
 // fall off platform
 else {
     if not place_meeting(x,y+4*global.grav,oPlatform) {
@@ -402,7 +408,54 @@ if onVineL or onVineR {
             <kind>1</kind>
             <string>/// low cancels info
 
-//lowcancels()
+//Says what frame(s) extra shift releases happened on
+
+/*
+if oPlayer.vspeed &lt; 0 and keyboard_check_released(global.key_jump) and global.TIMER_ON = false
+{ //initialise
+    
+    global.lowcancel1 = ''
+    global.lowcancel2 = ''
+    global.lowcancel3 = ''
+    global.TIMER_ON = true;
+    global.start_time = 1; 
+    exit
+}
+
+if(global.TIMER_ON)
+{//check your conditions
+global.start_time = global.start_time + 1;
+    if(oPlayer.vspeed &lt; 0 and keyboard_check_released(global.key_jump)) and global.lowcancel1 = '' and global.start_time &gt; 1 
+    {
+        global.lowcancel1 = global.start_time; //log the time this happened
+        exit
+        
+    }
+
+    if(oPlayer.vspeed &lt; 0 and keyboard_check_released(global.key_jump) and global.lowcancel1 != '')
+    {
+       global.lowcancel2 = global.start_time; //log the time this happened
+       exit
+    }
+    if(oPlayer.vspeed &lt; 0 and keyboard_check_released(global.key_jump) and global.lowcancel2 != '')
+    {
+        global.lowcancel3 = global.start_time; //log the time this happened
+        exit
+    }
+
+    if(oPlayer.vspeed &gt;= 0)
+    {
+        global.TIMER_ON = false;
+        /*global.lowcancel1 -= global.start_time ; //subtract start time to get relative time
+        global.lowcancel2 -= global.start_time ;
+        global.lowcancel3 -= global.start_time ;
+    //}
+//}
+
+var lowcancelstr = ''
+    lowcancelstr = string(global.lowcancel1 &amp; ' ' &amp; global.lowcancel2 &amp; ' ' &amp; global.lowcancel3)
+if global.lowcancel1 != '' /*and global.lowcancel1 != 0 {
+draw_text(oCancelHint.x+96-30,oCancelHint.y,lowcancelstr)}
 </string>
           </argument>
         </arguments>

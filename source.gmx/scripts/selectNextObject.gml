@@ -85,6 +85,10 @@ switch( selected_object ) {
         selected_sprite = sKillerBlock;
         break;
     case oKillerBlock:
+        selected_object = oMiniKillerBlock;
+        selected_sprite = sMiniKillerBlock;
+        break;
+    case oMiniKillerBlock:
         selected_object = oApple;
         selected_sprite = sApple;
         break;

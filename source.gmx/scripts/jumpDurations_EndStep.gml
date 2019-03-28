@@ -3,7 +3,7 @@
 jcount += 1
 
 var player_on_ground = false
-with oPlayer {
+with argument0 {
     player_on_ground = (place_meeting(x,y+global.grav,oBlock)
     and place_meeting(x,y+global.grav,oBlock))
 }
@@ -58,8 +58,8 @@ if flag_lastjumpframenext {
     jcount = 0
 }
 
-if instance_exists(oPlayer) {
-    var player_dy = oPlayer.y - oPlayer.yprevious
+if instance_exists(argument0) {
+    var player_dy = argument0.y - argument0.yprevious
     var moved_down = (global.grav == 1 and player_dy > 0)
                      or (global.grav == -1 and player_dy < 0)
     if moved_down and (jumpstate == jstate_1hold or jumpstate == jstate_2hold)

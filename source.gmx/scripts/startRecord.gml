@@ -14,7 +14,8 @@ global.recordX = oPlayer.x;
 global.recordY = oPlayer.y;
 global.recordGrav = global.grav;
 global.recordXscale = global.player_xscale; 
-global.recordVspeed = 0}
+global.recordVspeed = 0
+global.recordDjump = oPlayer.djump}
 
 else if global.paused = false { 
 loadPlayer()
@@ -22,14 +23,16 @@ global.recordX = oPlayer.x;
 global.recordY = oPlayer.y;
 global.recordGrav = global.grav;
 global.recordXscale = global.player_xscale; 
-global.recordVspeed = 0}
+global.recordVspeed = 0
+global.recordDjump = oPlayer.djump}
 
 else if global.paused = true {
 global.recordX = global.pausedX;
 global.recordY = global.pausedY;
 global.recordGrav = global.pausedgrav;
 global.recordXscale = global.pausedplayer_xscale;
-global.recordVspeed = global.pausedVspeed}
+global.recordVspeed = global.pausedVspeed
+global.recordDjump = global.pausedDjump}
 
 global.record = 1;
         

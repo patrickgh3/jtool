@@ -33,7 +33,7 @@ with oPlayer {
     }
 }
 
-if keyboard_check_pressed(ord('W'))
+if keyboard_check_pressed(ord('W')) and global.paused=false
 and mouse_x >= 0 and mouse_x < 800 and mouse_y >= 0 and mouse_y < 608 {
     if not instance_exists(oPlayer) loadPlayer()
     with oPlayer {
