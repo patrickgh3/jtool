@@ -15,6 +15,10 @@ thread_local! {
 
 #[no_mangle]
 pub unsafe extern "C" fn ini_open(path: *const c_char) -> f64 {
+    if (Path::new(OsStr::new(CStr::from_ptr(path).to_str().unwrap())).exists() == false) {
+        File::create(OsStr::new(CStr::from_ptr(path).to_str().unwrap()));
+    }
+
     // Load the INI file and store it
     INI_G.with(|f| {
         PATH_G.with(|p| {
