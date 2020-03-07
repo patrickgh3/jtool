@@ -1,8 +1,8 @@
 use std::cell::{Cell, RefCell};
 use std::collections::HashMap;
 use std::ffi::{CStr, CString, OsStr};
-use std::fs::{OpenOptions, File, copy, remove_file, create_dir};
-use std::io::{self, Read, Write, BufRead, BufReader, BufWriter};
+use std::fs::{copy, create_dir, remove_file, File, OpenOptions};
+use std::io::{self, BufRead, BufReader, BufWriter, Read, Write};
 use std::os::raw::c_char;
 use std::path::Path;
 
@@ -50,7 +50,8 @@ pub unsafe extern "C" fn file_text_open_append(path: *const c_char) -> f64 {
 }
 
 unsafe fn open(path: *const c_char, options: OpenOptions) -> io::Result<i32> {
-    let path = CStr::from_ptr(path).to_str()
+    let path = CStr::from_ptr(path)
+        .to_str()
         .map_err(|_| io::ErrorKind::InvalidInput)?;
 
     let file = options.open(path)?;
@@ -83,15 +84,12 @@ pub extern "C" fn file_text_close(id: f64) {
 pub unsafe extern "C" fn file_text_read_string(id: f64) -> *const c_char {
     let id = id as i32;
 
-    let mut line = LINE.with(|line| {
-        line.take().unwrap_or_default().into_bytes_with_nul()
-    });
+    let mut line = LINE.with(|line| line.take().unwrap_or_default().into_bytes_with_nul());
     line.clear();
 
     let _: io::Result<()> = FILES.with(|files| {
         let mut files = files.borrow_mut();
-        let file = files.get_mut(&id)
-            .ok_or(io::ErrorKind::InvalidInput)?;
+        let file = files.get_mut(&id).ok_or(io::ErrorKind::InvalidInput)?;
 
         file.read_until(b'\n', &mut line)?;
 
@@ -115,23 +113,19 @@ pub unsafe extern "C" fn file_text_write_string(id: f64, line: *const c_char) ->
 
 #[no_mangle]
 pub unsafe extern "C" fn file_text_writeln(id: f64) -> f64 {
-
     let mut res: f64 = -1.0;
 
     // Windows CRLF
-    if cfg!(target_os = "windows")
-    {
-    	res = write(id, &[0x0D, 0x0A]);
+    if cfg!(target_os = "windows") {
+        res = write(id, &[0x0D, 0x0A]);
     }
     //Macintosh CR
-    else if cfg!(target_os = "macos")
-    {
-    	res = write(id, &[0x0D]);
+    else if cfg!(target_os = "macos") {
+        res = write(id, &[0x0D]);
     }
     // GNU/Linux LR
-    else if cfg!(target_os = "linux")
-    {
-    	res = write(id, &[0x0A]);
+    else if cfg!(target_os = "linux") {
+        res = write(id, &[0x0A]);
     }
 
     res
@@ -142,8 +136,7 @@ unsafe fn write(id: f64, bytes: &[u8]) -> f64 {
 
     let result: io::Result<f64> = FILES.with(|files| {
         let mut files = files.borrow_mut();
-        let file = files.get_mut(&id)
-            .ok_or(io::ErrorKind::InvalidInput)?;
+        let file = files.get_mut(&id).ok_or(io::ErrorKind::InvalidInput)?;
 
         file.write_all(bytes)?;
 
@@ -154,42 +147,39 @@ unsafe fn write(id: f64, bytes: &[u8]) -> f64 {
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn file_copy(from: *const c_char, to: *const c_char) -> f64
-{
-    copy(OsStr::new(CStr::from_ptr(from).to_str().unwrap()), OsStr::new(CStr::from_ptr(to).to_str().unwrap())).unwrap();
+pub unsafe extern "C" fn file_copy(from: *const c_char, to: *const c_char) -> f64 {
+    copy(
+        OsStr::new(CStr::from_ptr(from).to_str().unwrap()),
+        OsStr::new(CStr::from_ptr(to).to_str().unwrap()),
+    )
+    .unwrap();
 
     0.0f64
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn file_delete(path: *const c_char) -> f64
-{
-    match remove_file(OsStr::new(CStr::from_ptr(path).to_str().unwrap()))
-    {
+pub unsafe extern "C" fn file_delete(path: *const c_char) -> f64 {
+    match remove_file(OsStr::new(CStr::from_ptr(path).to_str().unwrap())) {
         Ok(()) => return 1.0,
         Err(_) => return 0.0,
     }
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn directory_exists(path: *const c_char) -> f64
-{
-    let result = match Path::new(OsStr::new(CStr::from_ptr(path).to_str().unwrap())).exists()
-    {
+pub unsafe extern "C" fn directory_exists(path: *const c_char) -> f64 {
+    let result = match Path::new(OsStr::new(CStr::from_ptr(path).to_str().unwrap())).exists() {
         true => return 1.0,
         false => return 0.0,
     };
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn file_exists(path: *const c_char) -> f64
-{
+pub unsafe extern "C" fn file_exists(path: *const c_char) -> f64 {
     return directory_exists(path);
 }
 
 #[no_mangle]
-pub unsafe extern "C" fn directory_create(path: *const c_char) -> f64
-{
+pub unsafe extern "C" fn directory_create(path: *const c_char) -> f64 {
     create_dir(OsStr::new(CStr::from_ptr(path).to_str().unwrap())).unwrap();
 
     return 0.0;
