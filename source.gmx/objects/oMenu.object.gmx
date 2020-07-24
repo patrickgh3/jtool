@@ -194,16 +194,6 @@ if menuButton(xx,yy,w,h,'Export RMJ Map',buttons_enabled,false) {
     }
     else saveRMJMap()
 }
-//save REC
-yy += dy
-if global.paused = false and menuButton(xx,yy,w,h,'Save Record',buttons_enabled,false) {
-    saveRecordAskName()
-}
-//load REC
-yy += dy
-if global.paused = false and menuButton(xx,yy,w,h,'Load Record',buttons_enabled,false) {
-    loadRecordAskName()
-}
 
 xx += dx+dx2
 yy = y+yo

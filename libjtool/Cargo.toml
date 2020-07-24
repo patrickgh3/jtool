@@ -1,0 +1,10 @@
+[package]
+name = "libjtool"
+version = "1.0.2"
+authors = ["Starz0r <starz0rdesign@gmail.com>"]
+
+[dependencies]
+rust-ini = "0.10.2"
+
+[lib]
+crate-type = ["dylib", "cdylib"]

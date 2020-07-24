@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>codable_create()
+            <string>event_inherited();
+codable_create();
 </string>
           </argument>
         </arguments>
@@ -48,7 +49,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>codable_step()
+            <string>codable_step();
 </string>
           </argument>
         </arguments>
@@ -71,7 +72,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>codable_draw(true)
+            <string>codable_draw(true);
 </string>
           </argument>
         </arguments>

@@ -25,9 +25,9 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>event_inherited()
+            <string>event_inherited();
 image_speed=0
-codable_create()
+codable_create();
 </string>
           </argument>
         </arguments>

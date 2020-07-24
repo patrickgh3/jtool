@@ -8,17 +8,17 @@
    but I think that's a safe assumption.
 */
 global.run_from_editor = string_pos('gm_ttt',working_directory) != 0
-global.editor_project_path = 'C:\Users\User\Downloads\jtool 1.x.y\source.gmx'
+global.editor_project_path = 'C:\Users\Starz0r\Development\jtool'
 // add backslash to end
 if string_char_at(global.editor_project_path,string_length(global.editor_project_path)) != '\' {
     global.editor_project_path += '\'
 }
-if global.run_from_editor and not FS_directory_exists(global.editor_project_path) {
+if global.run_from_editor and not directory_exists(global.editor_project_path) {
     show_message("The editor project path you specified doesnt exist!#Edit the variable in the misc/mainInit script.")
     game_end()
 }
 
-ex_patch_window_close_capture(true)
+window_command_hook(window_command_close);
 
 // global state
 global.state = globalstate_idle
@@ -30,8 +30,8 @@ global.frameaction_jumpslow = false
 global.player_xscale = 1 // setting the player's xscale causes physics issues
 global.joketitleindex = 0 // used in buttonCallback_JokeTitle
 global.version_major = 1
-global.version_minor = 3
-global.version_patch = 5
+global.version_minor = 4
+global.version_patch = 0
 global.version_string = string(global.version_major)+'.'+string(global.version_minor)+'.'+string(global.version_patch)
 global.input_string = ''
 global.input_bool = false
@@ -53,10 +53,11 @@ global.killer_fadeduration = 4
 global.restartWithDJump = true;
 global.checkNudgeEarly = true;
 
+NSP_initialize();
 loadConfig()
 
 var backupFilename = prefix_project_path_if_needed('backup.jmap')
-if FS_file_exists(backupFilename) {
+if file_exists(backupFilename) {
     loadMap(backupFilename)
     inputOverlay(input_info,false,'Jtool did not exit successfully.#Backup map has been loaded.')
 }

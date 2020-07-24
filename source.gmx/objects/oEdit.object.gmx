@@ -141,7 +141,7 @@ if( shouldCaptureControls ) {
             }
         }
     }
-    //code editor
+    // code editor
     else if alt and not instance_exists(oInputOverlay) { 
         draggedInstance = noone;
         cursor_sprite = sCursorCoder
@@ -216,8 +216,7 @@ if( shouldCaptureControls ) {
                 
                 if (place_meeting(x,y,oEdit)
                 or collision_line(other.xprevious, other.yprevious, other.x, other.y,id,true,false))
-                and object_index != oPlayerStart 
-                and !codable_is_dynamic(id) {
+                and object_index != oPlayerStart {
                     var undoStr = createStringFromInstance( self );
                     with( oEdit ) { expandUndoEvent( undoStr ); }
                     instance_destroy()
